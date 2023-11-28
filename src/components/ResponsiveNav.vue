@@ -16,7 +16,7 @@ export default {
 </script>
 <style scoped>
   nav {
-    background-color: lightgray;
+
     width:100%;
     height: 4em;
     display: grid;

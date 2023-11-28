@@ -1,4 +1,7 @@
 <template>
+  <header>
+    <h1> Skapa ditt eget spel! </h1>
+  </header>
   <div>
     Poll link: 
     <input type="text" v-model="pollId">
@@ -75,3 +78,10 @@ export default {
   }
 }
 </script>
+
+<style>
+header {
+  color: orange;
+}
+
+</style>
