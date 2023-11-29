@@ -1,8 +1,8 @@
 <template>
        <div>
-        <h2>
-          {{ uiLabels.joinGame }}
-        </h2>
+        <h1>
+          {{ uiLabels.headerJoinGame }}
+        </h1>
 
         <label>
       <br>
@@ -75,6 +75,9 @@
       height: 100px;
       width: 33%;
       margin:19px;
+      font-size: 30px;
+      background-color: lightgreen;
     }
+    h1 {color:rgb(249, 192, 86)}
 </style>
   
