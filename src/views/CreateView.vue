@@ -75,7 +75,12 @@
   <footer>
     <nav>
   <ResponsiveNav v-bind:hideNav="hideNav">
-      <button id= "tillbakaButton" v-on:click="tillbaka">Tillbaka </button>  
+
+    <router-link v-bind:to="'/'">
+      <button id= "tillbakaButton" v-on:click="tillbaka">Tillbaka </button>      <!-- göra så att man kan justera språk-->
+    </router-link>
+
+
       <button id= "skapaButton" v-on:click="skapaspel">Skapa spel </button>    <!-- lägga in FAQ info i uiLabels-->
     </ResponsiveNav>
   </nav>
