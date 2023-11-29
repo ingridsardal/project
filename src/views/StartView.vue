@@ -20,14 +20,14 @@
     <h1>{{ uiLabels["sales-pitch"] }}</h1>
     <h2>{{ uiLabels.subHeading }}</h2>
   
-  
-   <!-- <label>
+  <!--
+   <label>
       Write poll id: 
       <input type="text" v-model="id">
     </label>
-  -->
+-->
   
-    <router-link v-bind:to="'/poll/'+id">
+    <router-link v-bind:to="'/participate/'">
         <button id="participateButton">           <!-- måste skapa en write poll id number så att det funkar-->
           {{uiLabels.participatePoll}}
         </button>
