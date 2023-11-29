@@ -10,6 +10,18 @@
         <h2>
             TEST
         </h2>
+
+        <label>
+      <br>
+      Write poll id: 
+      <input type="text" v-model="id">
+    </label>
+    <label>
+      Name: 
+      <input type="text" v-model="id">
+    </label>
+
+    <div>{{ uiLabels.joinGame }} <br> {{ uiLabels.createPoll }}</div>
     </div>
   </template>
   
@@ -26,6 +38,9 @@
     },
     data: function () {
       return {
+      lang: localStorage.getItem("lang") || "en",
+      data: {},
+      uiLabels: {},
         question: {
           q: "",
           a: []
@@ -43,7 +58,13 @@
       socket.on("dataUpdate", answers =>
         this.submittedAnswers = answers
       )
+    socket.emit("pageLoaded", this.lang);
+      socket.on("init", (labels) => {
+        this.uiLabels = labels
+      })
+      
     },
+
     methods: {
       submitAnswer: function (answer) {
         socket.emit("submitAnswer", {pollId: this.pollId, answer: answer})
