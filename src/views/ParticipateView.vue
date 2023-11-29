@@ -1,14 +1,7 @@
 <template>
-    <div>
-      {{pollId}}
-      <QuestionComponent v-bind:question="question"
-                v-on:answer="submitAnswer($event)"/>
-  
-                <span>{{submittedAnswers}}</span>
-    </div>
-    <div>
+       <div>
         <h2>
-            TEST
+          {{ uiLabels.joinGame }}
         </h2>
 
         <label>
@@ -16,12 +9,17 @@
       Write poll id: 
       <input type="text" v-model="id">
     </label>
+    <br>
     <label>
       Name: 
       <input type="text" v-model="id">
     </label>
-
-    <div>{{ uiLabels.joinGame }} <br> {{ uiLabels.createPoll }}</div>
+   <br>
+    <router-link v-bind:to="'/poll/'">
+        <button id="joinButton">           <!-- måste skapa en write poll id number så att det funkar-->
+          {{uiLabels.joinGame}}
+        </button>
+    </router-link>
     </div>
   </template>
   
@@ -72,4 +70,11 @@
     }
   }
   </script>
+  <style>
+    #joinButton {
+      height: 100px;
+      width: 33%;
+      margin:19px;
+    }
+</style>
   
