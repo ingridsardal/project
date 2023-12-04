@@ -15,7 +15,7 @@
       <input type="text" v-model="id">
     </label>
    <br>
-    <router-link v-bind:to="'/poll/'">
+    <router-link v-bind:to="'/waiting/'">
         <button id="joinButton">           <!-- måste skapa en write poll id number så att det funkar-->
           {{uiLabels.joinGame}}
         </button>

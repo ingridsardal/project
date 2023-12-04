@@ -28,7 +28,13 @@ const router = createRouter({
       path: '/participate/',
       name: 'ParticipateView',
       component: () => import('../views/ParticipateView.vue')
+    }, 
+    {
+      path: '/waiting/',
+      name: 'WaitingView',
+      component: () => import('../views/WaitingView.vue')
     }
+
   ]
 })
 
