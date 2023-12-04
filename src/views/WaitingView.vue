@@ -1,12 +1,14 @@
 <template>
     <header>
-        <h2> Spelkod: </h2>
+        <h2 id = "gamecode"> Spelkod: </h2>
     </header>
 <br>
 
 <p id = "shareCode">
     Dela koden med dina vänner! 
 </p>
+
+<div id="waitingButton">Väntar på spelledaren...</div>
 
  <footer>
  <nav>
@@ -87,9 +89,26 @@ export default {
   position: absolute;
   bottom: 0;
   left: 0;
+  border-radius: 5px;
 }
 
- h2 { 
+#waitingButton {
+  background-color: rgb(197, 255, 248);
+  height: 80px;
+  width: 12em;
+  margin: 25px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+ #gamecode { 
     color:rgb(249, 192, 86);
     text-shadow: rgb(255, 183, 0) 1px 0 10px;
     font-size: 50px; 
