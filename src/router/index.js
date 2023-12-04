@@ -33,6 +33,18 @@ const router = createRouter({
       path: '/waiting/',
       name: 'WaitingView',
       component: () => import('../views/WaitingView.vue')
+    },
+
+    {
+      path: '/creatorwaiting/',
+      name: 'CreatorWaitingView',
+      component: () => import('../views/CreatorWaitingView.vue')
+    },
+    
+    {
+      path: '/gamecreator/',
+      name: 'GameCreatorView',
+      component: () => import('../views/GameCreatorView.vue')
     }
 
   ]

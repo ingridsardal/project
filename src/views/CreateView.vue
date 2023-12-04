@@ -83,6 +83,13 @@
 
       <button id= "skapaButton" v-on:click="skapaspel">Skapa spel </button>    <!-- lägga in FAQ info i uiLabels-->
     </ResponsiveNav>
+
+    <ResponsiveNav v-bind:hideNav="hideNav">
+    <router-link v-bind:to="'/creatorwaiting/'">
+    <button id= "skapaButton" v-on:click="skapaspel">Skapa Spel </button>      <!-- göra så att man kan justera språk-->
+    </router-link>
+ </ResponsiveNav>
+
   </nav>
   </footer>
 
@@ -214,7 +221,7 @@ header {
       margin-right: 5px;
     }
 
-    #skapaButton {
+  #skapaButton {
   background-color: rgb(113, 255, 113);
   height: 80px;
   width: 12em;
