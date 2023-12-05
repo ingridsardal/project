@@ -1,12 +1,39 @@
 {
+	"joinGame": "Join game",
+	"createGame": "Create Game",
+
+	"changeLanguage": "Byt till svenska",
+	"about": "About",
+	"faq":"FAQ",
+
+	"backButton":"Go Back",
+
+	"NumberOfRounds":"Number of Rounds",
+
+	"städer":"Cities",
+	"länder":"Countries",
+	"floder":"Rivers",
+	"maträtter":"Dishes",
+	"frukter":"Fruits",
+	"bilmärken":"Car Brands",
+	"kändisar":"Celerities",
+	"klädmärken":"Clothing Brands",
+	"sevärdheter":"Tourist Attractions",
+
+
+
+
+
+
+
+
+	
 	"sales-pitch": "Simply. Great. Polling.",
 	"subHeading": "A simple polling tool",
 	"invite": "Invite participants with this link:",
-	"createPoll": "Create poll",
-	"participatePoll": "Participate in poll",
+	
+
+
 	"question": "Question",
-	"changeLanguage": "Byt till svenska",
-	"about": "About",
-	"joinGame": "Join game",
 	"headerJoinGame": "Join a game!"
 }

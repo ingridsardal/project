@@ -10,13 +10,6 @@
         <img src="../assets/logo.svg">
       </div>
     </header>
-  
-  
-  
-    <button v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>
-  
-  
-  
     <h1>{{ uiLabels["sales-pitch"] }}</h1>
     <h2>{{ uiLabels.subHeading }}</h2>
   
@@ -27,26 +20,26 @@
     </label>
 -->
   
-    <router-link v-bind:to="'/participate/'">
-        <button id="participateButton">           <!-- måste skapa en write poll id number så att det funkar-->
-          {{uiLabels.participatePoll}}
+    <router-link to="/create/">
+        <button id="createButton">
+          {{uiLabels.createGame}}
         </button>
     </router-link>
   
   <br>
   
-    <router-link to="/create/">
-        <button id="createButton">
-          {{uiLabels.createPoll}}
+    <router-link v-bind:to="'/participate/'">
+        <button id="participateButton">          
+          {{uiLabels.joinGame}}
         </button>
     </router-link>
   
   </body>
   <footer>
   <ResponsiveNav v-bind:hideNav="hideNav">
-      <button v-on:click="switchLanguage">{{uiLabels.changeLanguage}}</button>  
-      <button v-on:click="aboutFunction"> About </button>    <!-- lägga in about info i uiLabels-->
-      <button v-on:click="FAQFunction"> FAQ </button>    <!-- lägga in FAQ info i uiLabels-->
+      <button v-on:click="switchLanguage" >{{uiLabels.changeLanguage}}</button>  <!--:class="{ 'english': lang === 'en', 'swedish': lang === 'sv' }"-->
+      <button v-on:click="aboutFunction"> {{uiLabels.about}} </button>    <!-- lägga in about info i uiLabels-->
+      <button v-on:click="FAQFunction"> {{uiLabels.faq}} </button>    <!-- lägga in FAQ info i uiLabels-->
     </ResponsiveNav>
   </footer>
   </template>
@@ -149,7 +142,14 @@
     padding: 20px;
     text-align: center;
   }
-  
+  /*.english {
+  background-image: url('"../../public/img/englishFlag.jpg"');  Update with the actual path 
+  }
+
+  .swedish {
+  background-image: url('/path/to/Flag_of_Sweden.png');  Update with the actual path 
+  }
+  */
   @media screen and (max-width:50em) {
     .logo {
       font-size: 5vw;
