@@ -37,9 +37,9 @@
   </body>
   <footer>
   <ResponsiveNav v-bind:hideNav="hideNav">
-      <button v-on:click="switchLanguage" >{{uiLabels.changeLanguage}}</button>  <!--:class="{ 'english': lang === 'en', 'swedish': lang === 'sv' }"-->
-      <button v-on:click="aboutFunction"> {{uiLabels.about}} </button>    <!-- lägga in about info i uiLabels-->
-      <button v-on:click="FAQFunction"> {{uiLabels.faq}} </button>    <!-- lägga in FAQ info i uiLabels-->
+      <button v-on:click="switchLanguage" :class="{ 'english': lang === 'en', 'swedish': lang === 'sv' }" ></button> 
+      <button v-on:click="aboutFunction"> {{uiLabels.about}} </button>   
+      <button v-on:click="FAQFunction"> {{uiLabels.faq}} </button>    
     </ResponsiveNav>
   </footer>
   </template>
@@ -142,14 +142,20 @@
     padding: 20px;
     text-align: center;
   }
-  /*.english {
-  background-image: url('"../../public/img/englishFlag.jpg"');  Update with the actual path 
+  .english {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../../public/img/englishFlag.jpg');  
   }
 
   .swedish {
-  background-image: url('/path/to/Flag_of_Sweden.png');  Update with the actual path 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../../public/img/Flag_of_Sweden.png');  
   }
-  */
+  
   @media screen and (max-width:50em) {
     .logo {
       font-size: 5vw;

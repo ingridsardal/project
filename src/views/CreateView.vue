@@ -81,7 +81,7 @@
     </router-link>
     </ResponsiveNav>
 
-    <button id="langButton" v-on:click="switchLanguage" class="{ english: lang === 'en', swedish: lang === 'sv' }">{{uiLabels.changeLanguage}}</button>  
+    <button id="langButton" v-on:click="switchLanguage" :class="{ 'english': lang === 'en', 'swedish': lang === 'sv' }"></button>  
 
     <ResponsiveNav v-bind:hideNav="hideNav">
     <router-link v-bind:to="'/creatorwaiting/'">
@@ -257,14 +257,22 @@ header {
   left: 0;
 }
 #langButton{
-  background-color: rgb(114, 255, 142);
   height: 80px;
   width: 12em;
   margin: 25px;
   position: absolute;
   bottom: 0;
-  left:13em
+  left:13em;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+.english {
+    background-image: url('../../public/img/englishFlag.jpg');  
+  }
+  .swedish {
+    background-image: url('../../public/img/Flag_of_Sweden.png');  
+  }
 
 button:hover {
     background-color: grey;
