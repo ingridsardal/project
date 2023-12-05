@@ -5,14 +5,14 @@
 <br>
 
 <p id = "shareCode">
-    Dela koden med dina vänner! 
+    Dela koden med dina vänner! randomNumber
 </p>
 
  <footer>
  <nav>
 
 <ResponsiveNav v-bind:hideNav="hideNav">
-    <router-link v-bind:to="'/participate/'">
+    <router-link v-bind:to="'/create/'">
     <button id= "tillbakaButton" v-on:click="tillbaka">Tillbaka </button>      <!-- göra så att man kan justera språk-->
     </router-link>
  </ResponsiveNav>

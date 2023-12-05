@@ -6,7 +6,7 @@
       </div>
       <div class="logo">
         <img src="/img/logo.png">
-        Polly polling tool 
+        Stad Land Flod  
         <img src="../assets/logo.svg">
       </div>
     </header>

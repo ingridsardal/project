@@ -80,13 +80,11 @@
       <button id= "tillbakaButton" v-on:click="tillbaka">Tillbaka </button>      <!-- göra så att man kan justera språk-->
     </router-link>
 
-
-      <button id= "skapaButton" v-on:click="skapaspel">Skapa spel </button>    <!-- lägga in FAQ info i uiLabels-->
     </ResponsiveNav>
 
     <ResponsiveNav v-bind:hideNav="hideNav">
     <router-link v-bind:to="'/creatorwaiting/'">
-    <button id= "skapaButton" v-on:click="skapaspel">Skapa Spel </button>      <!-- göra så att man kan justera språk-->
+    <button id= "skapaButton" v-on:click="skapaButton">Skapa Spel </button>      <!-- göra så att man kan justera språk-->
     </router-link>
  </ResponsiveNav>
 
@@ -126,7 +124,7 @@
     <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
   </div>
   -->
-
+  <p v-if="randomNumber">Generated Number: {{ randomNumber }}</p>
 </template>
 
 <script>
@@ -140,9 +138,9 @@ export default {
       lang: localStorage.getItem("lang") || "en",
       pollId: "",
       omgångar: "Antal omgångar",
-
       data: {},
-      uiLabels: {}
+      uiLabels: {},
+      randomNumber: null
     }
   },
   created: function () {
@@ -169,7 +167,13 @@ export default {
     },
     runQuestion: function () {
       socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
+    },
+    skapaButton: function () {
+      // Generate a random 4-digit number
+      this.randomNumber = Math.floor(1000 + Math.random() * 9000);
+      console.log(this.randomNumber)
     }
+    
   }
 }
 function toggleCheckbox(checkbox) {

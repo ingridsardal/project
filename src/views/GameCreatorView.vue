@@ -1,5 +1,5 @@
 <template> 
 <div>
-  Hej hopp!!!!!!!!!!!! hora  
+  Hej hopp!!!!!!!!!!!!  
 </div>
 </template>
