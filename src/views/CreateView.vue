@@ -268,10 +268,11 @@ header {
   background-repeat: no-repeat;
 }
 .english {
-    background-image: url('../../public/img/englishFlag.jpg');  
+
+    background-image: url('../../public/img/Flag_of_Sweden.png'); 
   }
   .swedish {
-    background-image: url('../../public/img/Flag_of_Sweden.png');  
+    background-image: url('../../public/img/englishFlag.jpg');  
   }
 
 button:hover {

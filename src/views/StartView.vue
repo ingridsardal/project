@@ -146,14 +146,14 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('../../public/img/englishFlag.jpg');  
+    background-image: url('../../public/img/Flag_of_Sweden.png');  
   }
-
+  
   .swedish {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('../../public/img/Flag_of_Sweden.png');  
+    background-image: url('../../public/img/englishFlag.jpg');  
   }
   
   @media screen and (max-width:50em) {
