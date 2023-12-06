@@ -83,8 +83,8 @@
     </ResponsiveNav>
 
     <ResponsiveNav v-bind:hideNav="hideNav">
-    <router-link v-bind:to="'/creatorwaiting/'">
-    <button id= "skapaButton" v-on:click="skapaButton">Skapa Spel </button>      <!-- göra så att man kan justera språk-->
+    <router-link v-bind:to="'/creatorwaiting/'+pollId">
+    <button id= "skapaButton" v-on:click="createPoll">Skapa Spel </button>      <!-- göra så att man kan justera språk-->
     </router-link>
  </ResponsiveNav>
 
@@ -140,7 +140,6 @@ export default {
       omgångar: "Antal omgångar",
       data: {},
       uiLabels: {},
-      randomNumber: null
     }
   },
   created: function () {
@@ -157,6 +156,7 @@ export default {
   },
   methods: {
     createPoll: function () {
+      this.pollId = Math.floor(1000 + Math.random() * 9000)
       socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
     },
     addQuestion: function () {
@@ -167,12 +167,12 @@ export default {
     },
     runQuestion: function () {
       socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
-    },
-    skapaButton: function () {
-      // Generate a random 4-digit number
-      this.randomNumber = Math.floor(1000 + Math.random() * 9000);
-      console.log(this.randomNumber)
     }
+ //   skapaButton: function () {
+      // Generate a random 4-digit number
+ //     this.randomNumber = Math.floor(1000 + Math.random() * 9000);
+ //     console.log(this.randomNumber)
+ //   }
     
   }
 }
@@ -293,3 +293,4 @@ left:-12em;
 */
 
 </style>
+

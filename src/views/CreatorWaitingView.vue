@@ -1,11 +1,11 @@
 <template>
     <header>
-        <h2> Spelkod: </h2>
+        <h2> Spelkod: {{ gameId }}</h2>
     </header>
 <br>
 
 <p id = "shareCode">
-    Dela koden med dina vänner! randomNumber
+    Dela koden med dina vänner! 
 </p>
 
  <footer>
@@ -35,6 +35,18 @@ import QuestionComponent from '@/components/QuestionComponent.vue';
 import io from 'socket.io-client';
 const socket = io("localhost:3000");
 
+// Get the full URL
+const currentURL = window.location.href;
+
+// Extract the path from the URL
+const pathArray = window.location.pathname.split('/');
+
+// Get the last part of the path
+const gameId = pathArray[pathArray.length - 1];
+
+console.log('GameID:', gameId);
+
+
 export default {
  name: 'ParticipateView',
  components: {
@@ -49,27 +61,40 @@ export default {
        q: "",
        a: []
      },
-     pollId: "inactive poll",
-     submittedAnswers: {}
+     submittedAnswers: {},
+     pollId: null,
+     gameId: null
    }
  },
+
+ beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.updateGameId();
+    });
+  },
+
+  beforeRouteUpdate(to, from, next) {
+    this.updateGameId();
+    next();
+  },
+
  created: function () {
-   this.pollId = this.$route.params.id
-   socket.emit('joinPoll', this.pollId)
-   socket.on("newQuestion", q =>
-     this.question = q
-   )
-   socket.on("dataUpdate", answers =>
-     this.submittedAnswers = answers
-   )
- socket.emit("pageLoaded", this.lang);
-   socket.on("init", (labels) => {
-     this.uiLabels = labels
-   })
-   
- },
+    // Listen for the pollId event
+    socket.on('createPoll', (pollId) => {
+      this.pollId = pollId;
+      this.gameId = pollId;
+    });
+  },
+
 
  methods: {
+  updateGameId() {
+      // Extract the path from the URL
+      const pathArray = this.$route.path.split('/');
+      // Get the last part of the path
+      this.gameId = pathArray[pathArray.length - 1];
+    },
+  
    submitAnswer: function (answer) {
      socket.emit("submitAnswer", {pollId: this.pollId, answer: answer})
    }

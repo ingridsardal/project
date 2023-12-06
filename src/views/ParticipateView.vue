@@ -7,16 +7,16 @@
         <label>
       <br>
       Write poll id: 
-      <input type="text" v-model="id">
+      <input type="text" v-model="pollId">
     </label>
     <br>
     <label>
       Name: 
-      <input type="text" v-model="id">
+      <input type="text" v-model="nameId">
     </label>
    <br>
-    <router-link v-bind:to="'/waiting/'">
-        <button id="joinButton">           <!-- måste skapa en write poll id number så att det funkar-->
+    <router-link v-bind:to="'/waiting/'+pollId">
+        <button id="joinButton" v-on:click="joinButton">           <!-- måste skapa en write poll id number så att det funkar-->
           {{uiLabels.joinGame}}
         </button>
     </router-link>
@@ -57,7 +57,8 @@
           a: []
         },
         pollId: "inactive poll",
-        submittedAnswers: {}
+        submittedAnswers: {},
+        nameId: ""
       }
     },
     created: function () {
@@ -79,7 +80,10 @@
     methods: {
       submitAnswer: function (answer) {
         socket.emit("submitAnswer", {pollId: this.pollId, answer: answer})
-      }
+      },
+      joinButton: function () {
+      socket.emit("joinGame", {pollId: this.pollId, nameId: this.nameId})
+    }
     }
   }
   </script>

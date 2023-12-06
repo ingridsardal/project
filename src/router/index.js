@@ -30,13 +30,13 @@ const router = createRouter({
       component: () => import('../views/ParticipateView.vue')
     }, 
     {
-      path: '/waiting/',
+      path: '/waiting/:id',
       name: 'WaitingView',
       component: () => import('../views/WaitingView.vue')
     },
 
     {
-      path: '/creatorwaiting/',
+      path: '/creatorwaiting/:id',
       name: 'CreatorWaitingView',
       component: () => import('../views/CreatorWaitingView.vue')
     },

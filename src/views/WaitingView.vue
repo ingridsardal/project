@@ -1,6 +1,6 @@
 <template>
     <header>
-        <h2 id = "gamecode"> Spelkod: </h2>
+        <h2 id = "gamecode"> Spelkod: {{ pollId }}</h2>
     </header>
 <br>
 
