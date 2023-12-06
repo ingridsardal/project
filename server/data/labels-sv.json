@@ -1,12 +1,33 @@
 {
+	"joinGame": "Joina spel",
+	"createGame": "Skapa Spel",
+
+	"changeLanguage": "Change to English",
+	"about": "Om oss",
+	"faq":"FAQ",
+
+	"backButton":"Tillbaka",
+
+	"NumberOfRounds":"Antal Omgångar",
+
+	"städer":"Städer",
+	"länder":"Länder",
+	"floder":"Floder",
+	"maträtter":"Maträtter",
+	"frukter":"Frukter",
+	"bilmärken":"Bilmärken",
+	"kändisar":"Kändisar",
+	"klädmärken":"Klädmärken",
+	"sevärdheter":"Sevärdheter",
+
+
+
 	"sales-pitch": "Svar. Helt. Enkelt.",
 	"subHeading": "Ett enkelt enkätverktyg",
 	"invite": "Bjud in deltagare med den här länken:",
-	"createPoll": "Skapa röstning",
-	"participatePoll": "Delta i röstning",
+	
+
+
 	"question": "Fråga",
-	"changeLanguage": "Change to English",
-	"about": "Om oss",
-	"joinGame": "Joina spel",
 	"headerJoinGame": "Gå med i ett spel!"
 }

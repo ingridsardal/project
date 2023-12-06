@@ -11,54 +11,54 @@
     <div class="grid-container">
     <div class="grid-item">
       <input type="checkbox" id="Städer" name="items" onclick="toggleCheckbox(this)" checked>
-      <label for="Städer">Städer</label>
+      <label for="Städer">{{uiLabels.städer}}</label>
     </div>
 
     <div class="grid-item">
       <input type="checkbox" id="Länder" name="items" onclick="toggleCheckbox(this)">
-      <label for="Länder">Länder</label>
+      <label for="Länder">{{uiLabels.länder}}</label>
     </div>
 
     <div class="grid-item">
       <input type="checkbox" id="Floder" name="items" onclick="toggleCheckbox(this)">
-      <label for="Floder">Floder</label>
+      <label for="Floder">{{uiLabels.floder}}</label>
     </div>
 
     <div class="grid-item">
       <input type="checkbox" id="Maträtter" name="items" onclick="toggleCheckbox(this)">
-      <label for="Maträtter">Maträtter</label>
+      <label for="Maträtter">{{uiLabels.maträtter}}</label>
     </div>
 
     <div class="grid-item">
       <input type="checkbox" id="Frukter" name="items" onclick="toggleCheckbox(this)">
-      <label for="Frukter">Frukter</label>
+      <label for="Frukter">{{uiLabels.frukter}}</label>
     </div>
 
     <div class="grid-item">
       <input type="checkbox" id="Bilmärken" name="items" onclick="toggleCheckbox(this)">
-      <label for="Bilmärken">Bilmärken</label>
+      <label for="Bilmärken">{{uiLabels.bilmärken}}</label>
     </div>
 
     <div class="grid-item">
       <input type="checkbox" id="Kändisar" name="items" onclick="toggleCheckbox(this)">
-      <label for="Kändisar">Kändisar</label>
+      <label for="Kändisar">{{uiLabels.kändisar}}</label>
     </div>
 
     <div class="grid-item">
       <input type="checkbox" id="Klädmärken" name="items" onclick="toggleCheckbox(this)">
-      <label for="Klädmärken">Klädmärken</label>
+      <label for="Klädmärken">{{uiLabels.klädmärken}}</label>
     </div>
 
     <div class="grid-item">
       <input type="checkbox" id="Sevärdheter" name="items" onclick="toggleCheckbox(this)">
-      <label for="Sevärdheter">Sevärdheter</label>
+      <label for="Sevärdheter">{{uiLabels.sevärdheter}}</label>
     </div>
   </div> <br>
 
   <div class="antalomgångar">
-    <label for="omgångar">Välj antal omgångar</label>
+    <label for="omgångar">{{uiLabels.NumberOfRounds}}</label>
     <select id="omgångar" v-model="omgångar" style="overflow-y: auto;">
-                <option>Antal omgångar</option>
+                <option>0</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -71,16 +71,17 @@
                 <option>10</option>
             </select>
   </div> <br>
-
+</body>
   <footer>
+    
     <nav>
   <ResponsiveNav v-bind:hideNav="hideNav">
-
     <router-link v-bind:to="'/'">
-      <button id= "tillbakaButton" v-on:click="tillbaka">Tillbaka </button>      <!-- göra så att man kan justera språk-->
+      <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
     </router-link>
-
     </ResponsiveNav>
+
+    <button id="langButton" v-on:click="switchLanguage" :class="{ 'english': lang === 'en', 'swedish': lang === 'sv' }"></button>  
 
     <ResponsiveNav v-bind:hideNav="hideNav">
     <router-link v-bind:to="'/creatorwaiting/'+pollId">
@@ -89,9 +90,10 @@
  </ResponsiveNav>
 
   </nav>
+  
   </footer>
 
-</body>
+
 
 <!--
   <div>
@@ -137,7 +139,7 @@ export default {
     return {
       lang: localStorage.getItem("lang") || "en",
       pollId: "",
-      omgångar: "Antal omgångar",
+      omgångar: "0",
       data: {},
       uiLabels: {},
     }
@@ -155,6 +157,16 @@ export default {
       this.data = data)
   },
   methods: {
+    switchLanguage: function() {
+        if (this.lang === "en") {
+          this.lang = "sv"
+        }
+        else {
+          this.lang = "en"
+        }
+        localStorage.setItem("lang", this.lang);
+        socket.emit("switchLanguage", this.lang)
+      },
     createPoll: function () {
       this.pollId = Math.floor(1000 + Math.random() * 9000)
       socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
@@ -244,6 +256,24 @@ header {
   bottom: 0;
   left: 0;
 }
+#langButton{
+  height: 80px;
+  width: 12em;
+  margin: 25px;
+  position: absolute;
+  bottom: 0;
+  left:13em;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.english {
+
+    background-image: url('../../public/img/Flag_of_Sweden.png'); 
+  }
+  .swedish {
+    background-image: url('../../public/img/englishFlag.jpg');  
+  }
 
 button:hover {
     background-color: grey;
