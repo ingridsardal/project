@@ -27,7 +27,7 @@
   <ResponsiveNav v-bind:hideNav="hideNav">
 
     <router-link v-bind:to="'/'">
-      <button id= "tillbakaButton" v-on:click="tillbaka">Tillbaka </button>      <!-- göra så att man kan justera språk-->
+      <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}}  </button>      <!-- göra så att man kan justera språk-->
     </router-link>
     </ResponsiveNav>
   </nav>
@@ -95,6 +95,15 @@
       font-size: 30px;
       background-color: lightgreen;
     }
+    #tillbakaButton {
+  background-color: rgb(255, 206, 114);
+  height: 80px;
+  width: 12em;
+  margin: 25px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
     h1 {color:rgb(249, 192, 86)}
 </style>
   
