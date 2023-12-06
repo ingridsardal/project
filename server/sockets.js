@@ -43,10 +43,6 @@ function sockets(io, socket, data) {
     data = new Data();
     data.initializeData();
   });
-
-  socket.on('joinGame', function(d)){
-    
-  }
  
 }
 
