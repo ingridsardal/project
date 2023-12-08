@@ -30,9 +30,9 @@ const router = createRouter({
       component: () => import('../views/ParticipateView.vue')
     }, 
     {
-      path: '/waiting/:id',
-      name: 'WaitingView',
-      component: () => import('../views/WaitingView.vue')
+      path: '/participantwaiting/:id',
+      name: 'ParticipantWaitingView',
+      component: () => import('../views/ParticipantWaitingView.vue')
     },
 
     {
@@ -42,11 +42,43 @@ const router = createRouter({
     },
     
     {
-      path: '/gamecreator/',
-      name: 'GameCreatorView',
-      component: () => import('../views/GameCreatorView.vue')
+      path: '/creatorgame/',
+      name: 'CreatorGameView',
+      component: () => import('../views/CreatorGameView.vue')
+    },
+
+    {
+      path: '/participantgame/',
+      name: 'ParticipantGameView',
+      component: () => import('../views/ParticipantGameView.vue')
     }
 
+/*
+    {
+      path: '/creatorleaderboard/',
+      name: 'CreatorLeaderboardView',
+      component: () => import('../views/CreatorLeaderboardView.vue')
+    },
+
+    
+
+    {
+      path: '/participantlivescore/',
+      name: 'ParticipantLiveScoreView',
+      component: () => import('../views/ParticipantLiveScoreView.vue')
+    },
+    
+    {
+      path: '/participantleaderboard/',
+      name: 'ParticipantLeaderBoardView',
+      component: () => import('../views/ParticipantLeaderBoardView.vue')
+    },
+        {
+      path: '/result/',
+      name: 'ResultView',
+      component: () => import('../views/ResultView.vue')
+    }
+  */
   ]
 })
 

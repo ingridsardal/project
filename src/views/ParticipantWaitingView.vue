@@ -8,8 +8,16 @@
     Dela koden med dina vänner! 
 </p>
 
-<div id="waitingButton">Väntar på spelledaren...</div>
+<ResponsiveNav v-bind:hideNav="hideNav">
+    <router-link v-bind:to="'/participantgame/'">
+    <button id= "tillfälligPG" v-on:click="tillfälligPG">Tillfällig PG </button>      <!-- göra så att man kan justera språk-->
+    </router-link>
+ </ResponsiveNav>
 
+ <!-- 
+<div id="waitingButton">Väntar på spelledaren...</div>
+ -->
+ 
  <footer>
  <nav>
 
@@ -92,6 +100,7 @@ export default {
   border-radius: 5px;
 }
 
+/*
 #waitingButton {
   background-color: rgb(197, 255, 248);
   height: 80px;
@@ -106,6 +115,18 @@ export default {
   justify-content: center;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+*/
+
+#tillfälligPG {
+  background-color: rgb(255, 206, 114);
+  height: 80px;
+  width: 12em;
+  margin: 25px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: 5px;
 }
 
  #gamecode { 
