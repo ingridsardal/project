@@ -2,16 +2,18 @@ function sockets(io, socket, data) {
   socket.emit('init', data.getUILabels());
   
   socket.on('pageLoaded', function (lang) {
+    console.log('Page loaded');
     socket.emit('init', data.getUILabels(lang));
   });
 
   socket.on('switchLanguage', function(lang) {
+    console.log('Byt språk');
     socket.emit('init', data.getUILabels(lang));
   });
 
   socket.on('createPoll', function(d) {
-    console.log("Vi är i socket")
-    data.createPoll(d.pollId, d.lang, d.rounds)
+    console.log("Vi är i socket");
+    data.createPoll(d.pollId, d.lang, d.rounds);
   });
 
   socket.on('addQuestion', function(d) {
@@ -26,7 +28,7 @@ function sockets(io, socket, data) {
 
   socket.on('joinPoll', function(pollId) {
     socket.join(pollId);
-    socket.emit('newQuestion', data.getQuestion(pollId))
+    socket.emit('newQuestion', data.getQuestion(pollId));
     socket.emit('dataUpdate', data.getAnswers(pollId));
   });
 
@@ -51,7 +53,7 @@ function sockets(io, socket, data) {
    }); */
 
    socket.on('startGame', function(d){;
-    socket.emit('getInfo', data.startGame(d.pollId))
+    socket.emit('getInfo', data.startGame(d.pollId));
    }); 
 }
 

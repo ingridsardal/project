@@ -65,7 +65,6 @@ export default {
  },
 
  created: function () {
-    // Listen for the pollId event
     this.pollId = this.$route.params.id;
 
     socket.emit('startGame', (this.pollId));
