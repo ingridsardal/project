@@ -87,7 +87,7 @@
     }
   }
   </script>
-  <style>
+   <style scoped>
     #joinButton {
       height: 100px;
       width: 33%;
