@@ -63,7 +63,8 @@ export default {
      submittedAnswers: {},
      pollId: "",
      gameId: "",
-     rounds: "0"
+     rounds: "0",
+     categories: []
    }
  },
 
@@ -83,12 +84,12 @@ export default {
     socket.on('createPoll', (pollId) => {
       this.pollId = pollId;
       this.gameId = pollId;
-      this.rounds = rounds;
     });
 
-    socket.emit('startGame', (gameId));
-      socket.on('getInfo', (rounds) => {
-        this.rounds = rounds
+    socket.emit('startGame', (this.gameId));
+  
+    socket.on('getInfo', (poll) => {
+        this.rounds = poll.rounds;
       })
   },
 

@@ -142,7 +142,7 @@ export default {
       rounds: "0",
       data: {},
       uiLabels: {},
-      categories: []
+      categories: "hej"
     }
   },
   created: function () {
@@ -170,9 +170,10 @@ export default {
         socket.emit("switchLanguage", this.lang)
       },
     createPoll: function () {
-      console.log("CreatorView", rounds)
+      console.log("CreatorView")
       this.pollId = Math.floor(1000 + Math.random() * 9000)
       socket.emit("createPoll", {pollId: this.pollId, lang: this.lang, rounds: this.rounds})
+      console.log("CreatorView igen")
     },
     addQuestion: function () {
       socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers } )

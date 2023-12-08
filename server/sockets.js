@@ -10,7 +10,8 @@ function sockets(io, socket, data) {
   });
 
   socket.on('createPoll', function(d) {
-    socket.emit('createPoll', data.createPoll(d.pollId, d.lang, d.rounds));
+    console.log("Vi är i socket")
+    data.createPoll(d.pollId, d.lang, d.rounds)
   });
 
   socket.on('addQuestion', function(d) {
@@ -45,14 +46,13 @@ function sockets(io, socket, data) {
   });
 
   // Här lägger vi till egna sockets
-   socket.on('joinGame', function(d){;
+   /* socket.on('joinGame', function(d){;
     data.joinGame(d.pollId, d.nameId)
-   });
-   
-/*
-   socket.on('startGame', function(d){;
-    socket.emit('getInfo', data.startGame(d.pollId))
    }); */
+
+   socket.on('startGame', function(d){;
+    socket.emit('getInfo', data.startGame(d.gameId))
+   }); 
 }
 
 export { sockets };

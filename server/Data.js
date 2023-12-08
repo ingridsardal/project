@@ -19,14 +19,14 @@ Data.prototype.getUILabels = function (lang = "en") {
 }
 
 Data.prototype.createPoll = function(pollId, lang="en", rounds) {
- // if (typeof this.polls[pollId] === "") {
+  if (typeof this.polls[pollId] === "undefined") {
     let poll = {};
-    poll.lang = lang;  
+    poll.lang = lang;
     poll.rounds = rounds;
     poll.categories = [];
     this.polls[pollId] = poll;
-    console.log("poll created", pollId, poll, rounds);
-//  }
+    console.log("poll created ");
+  }
   return this.polls[pollId];
 }
 
@@ -87,11 +87,12 @@ Data.prototype.getAnswers = function(pollId) {
 }
 
 // Data vi gjort själva:
-/*  Data.prototype.startGame = function(pollId) {
+  Data.prototype.startGame = function(pollId) {
   const poll = this.polls[pollId];
-  rounds = poll.rounds;
-  return rounds
-} */
+  if (typeof poll !== "undefined") {
+    return poll;
+  }
+};
 
 /* Data.prototype.joinGame = function(pollId, nameId) {
   polls:{
