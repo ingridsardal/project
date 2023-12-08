@@ -18,16 +18,15 @@ Data.prototype.getUILabels = function (lang = "en") {
   return JSON.parse(labels);
 }
 
-Data.prototype.createPoll = function(pollId, lang="en") {
-  if (typeof this.polls[pollId] === "undefined") {
+Data.prototype.createPoll = function(pollId, lang="en", rounds) {
+ // if (typeof this.polls[pollId] === "") {
     let poll = {};
     poll.lang = lang;  
-    poll.questions = [];
-    poll.answers = [];
-    poll.currentQuestion = 0;              
+    poll.rounds = rounds;
+    poll.categories = [];
     this.polls[pollId] = poll;
-    console.log("poll created", pollId, poll);
-  }
+    console.log("poll created", pollId, poll, rounds);
+//  }
   return this.polls[pollId];
 }
 
@@ -86,6 +85,21 @@ Data.prototype.getAnswers = function(pollId) {
   }
   return {}
 }
+
+// Data vi gjort själva:
+
+/* Data.prototype.joinGame = function(pollId, nameId) {
+  polls:{
+    pollId:{
+          participants:[],
+          pollName:”Name”
+     }
+} 
+
+  return this.polls[pollId];
+} */
+
+
 export { Data };
 
 

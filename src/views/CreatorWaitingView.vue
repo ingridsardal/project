@@ -46,9 +46,6 @@ const pathArray = window.location.pathname.split('/');
 // Get the last part of the path
 const gameId = pathArray[pathArray.length - 1];
 
-console.log('GameID:', gameId);
-
-
 export default {
  name: 'ParticipateView',
  components: {

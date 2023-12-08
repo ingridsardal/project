@@ -56,8 +56,8 @@
   </div> <br>
 
   <div class="antalomgångar">
-    <label for="omgångar">{{uiLabels.NumberOfRounds}}</label>
-    <select id="omgångar" v-model="omgångar" style="overflow-y: auto;">
+    <label for="rounds">{{uiLabels.NumberOfRounds}}</label>
+    <select id="rounds" v-model="rounds" style="overflow-y: auto;">
                 <option>0</option>
                 <option>1</option>
                 <option>2</option>
@@ -139,9 +139,10 @@ export default {
     return {
       lang: localStorage.getItem("lang") || "en",
       pollId: "",
-      omgångar: "0",
+      rounds: "0",
       data: {},
       uiLabels: {},
+      categories: []
     }
   },
   created: function () {
@@ -155,6 +156,7 @@ export default {
     )
     socket.on("pollCreated", (data) =>
       this.data = data)
+
   },
   methods: {
     switchLanguage: function() {
@@ -168,8 +170,9 @@ export default {
         socket.emit("switchLanguage", this.lang)
       },
     createPoll: function () {
+      console.log("CreatorView", rounds)
       this.pollId = Math.floor(1000 + Math.random() * 9000)
-      socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
+      socket.emit("createPoll", {pollId: this.pollId, lang: this.lang, rounds: this.rounds})
     },
     addQuestion: function () {
       socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers } )
@@ -210,7 +213,7 @@ header {
   margin-right: 1.5%;
 }
 
-#omgångar {
+#rounds {
   transform: scale(1.3); /* Adjust the scale factor for larger or smaller checkboxes */
   cursor: pointer;
 }
