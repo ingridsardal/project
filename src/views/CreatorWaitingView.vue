@@ -5,7 +5,7 @@
 <br>
 
 <p id = "shareCode">
-    Dela koden med dina vänner! 
+    Dela koden med dina vänner!  {{ rounds }}
 </p>
 
  <footer>
@@ -61,8 +61,9 @@ export default {
        a: []
      },
      submittedAnswers: {},
-     pollId: null,
-     gameId: null
+     pollId: "",
+     gameId: "",
+     rounds: "0"
    }
  },
 
@@ -82,7 +83,13 @@ export default {
     socket.on('createPoll', (pollId) => {
       this.pollId = pollId;
       this.gameId = pollId;
+      this.rounds = rounds;
     });
+
+    socket.emit('startGame', (gameId));
+      socket.on('getInfo', (rounds) => {
+        this.rounds = rounds
+      })
   },
 
 

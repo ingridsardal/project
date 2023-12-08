@@ -87,6 +87,11 @@ Data.prototype.getAnswers = function(pollId) {
 }
 
 // Data vi gjort själva:
+Data.prototype.startGame = function(pollId) {
+  const poll = this.polls[pollId];
+  rounds = poll.rounds;
+  return rounds
+}
 
 /* Data.prototype.joinGame = function(pollId, nameId) {
   polls:{
