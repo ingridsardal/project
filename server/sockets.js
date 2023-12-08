@@ -51,7 +51,7 @@ function sockets(io, socket, data) {
    }); */
 
    socket.on('startGame', function(d){;
-    socket.emit('getInfo', data.startGame(d.gameId))
+    socket.emit('getInfo', data.startGame(d.pollId))
    }); 
 }
 

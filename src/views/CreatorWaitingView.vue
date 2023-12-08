@@ -1,6 +1,6 @@
 <template>
     <header>
-        <h2> Spelkod: {{ gameId }}</h2>
+        <h2> Spelkod: {{ pollId }}</h2>
     </header>
 <br>
 
@@ -59,31 +59,16 @@ export default {
      },
      submittedAnswers: {},
      pollId: "",
-     gameId: "",
      rounds: "0",
      categories: []
    }
  },
 
- beforeRouteEnter(to, from, next) {
-    next(vm => {
-      vm.updateGameId();
-    });
-  },
-
-  beforeRouteUpdate(to, from, next) {
-    this.updateGameId();
-    next();
-  },
-
  created: function () {
     // Listen for the pollId event
-    socket.on('createPoll', (pollId) => {
-      this.pollId = pollId;
-      this.gameId = pollId;
-    });
+    this.pollId = this.$route.params.id;
 
-    socket.emit('startGame', (this.gameId));
+    socket.emit('startGame', (this.pollId));
   
     socket.on('getInfo', (poll) => {
         this.rounds = poll.rounds;
@@ -92,12 +77,6 @@ export default {
 
 
  methods: {
-  updateGameId() {
-      // Extract the path from the URL
-      const pathArray = this.$route.path.split('/');
-      // Get the last part of the path
-      this.gameId = pathArray[pathArray.length - 1];
-    },
   
    submitAnswer: function (answer) {
      socket.emit("submitAnswer", {pollId: this.pollId, answer: answer})
