@@ -15,6 +15,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
 
 Data.prototype.getUILabels = function (lang = "en") {
   const labels = readFileSync("./server/data/labels-" + lang + ".json");
+  console.log('UiLabels');
   return JSON.parse(labels);
 }
 
