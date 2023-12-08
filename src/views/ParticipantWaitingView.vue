@@ -17,6 +17,12 @@
  <!-- 
 <div id="waitingButton">Väntar på spelledaren...</div>
  -->
+
+ <router-link v-bind:to="'/participantlivescore/'">
+        <button id="next" v-on:click="joinButton">           <!-- måste skapa en write poll id number så att det funkar-->
+          {{uiLabels.joinGame}}
+        Victors knapp till nästa sida</button>
+    </router-link>
  
  <footer>
  <nav>

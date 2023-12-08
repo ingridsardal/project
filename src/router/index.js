@@ -51,7 +51,12 @@ const router = createRouter({
       path: '/participantgame/',
       name: 'ParticipantGameView',
       component: () => import('../views/ParticipantGameView.vue')
-    }
+    },
+    {
+      path: '/participantlivescore/',
+      name: 'ParticipantLiveScoreView',
+      component: () => import('../views/ParticipantLiveScoreView.vue')
+    },
 
 /*
     {
@@ -62,11 +67,7 @@ const router = createRouter({
 
     
 
-    {
-      path: '/participantlivescore/',
-      name: 'ParticipantLiveScoreView',
-      component: () => import('../views/ParticipantLiveScoreView.vue')
-    },
+
     
     {
       path: '/participantleaderboard/',
