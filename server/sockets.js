@@ -48,10 +48,11 @@ function sockets(io, socket, data) {
    socket.on('joinGame', function(d){;
     data.joinGame(d.pollId, d.nameId)
    });
-
+   
+/*
    socket.on('startGame', function(d){;
     socket.emit('getInfo', data.startGame(d.pollId))
-   });
+   }); */
 }
 
 export { sockets };
