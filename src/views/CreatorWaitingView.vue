@@ -16,9 +16,6 @@
     <button id= "tillbakaButton" v-on:click="tillbaka">Tillbaka </button>      <!-- göra så att man kan justera språk-->
     </router-link>
  </ResponsiveNav>
-
- <button id="langButton" v-on:click="switchLanguage" :class="{ 'english': lang === 'en', 'swedish': lang === 'sv' }"></button>  
-
  <ResponsiveNav v-bind:hideNav="hideNav">
     <router-link v-bind:to="'/creatorgame/'">
     <button id= "startaSpelButton" v-on:click="startaSpel">Starta spel </button>      <!-- göra så att man kan justera språk-->
@@ -141,21 +138,5 @@ export default {
     text-shadow: rgb(255, 183, 0) 1px 0 10px;
     font-size: 50px; 
     }
-  #langButton{
-  height: 80px;
-  width: 12em;
-  margin: 25px;
-  position: absolute;
-  bottom: 0;
-  left:13em;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.english {
-    background-image: url('../../public/img/Flag_of_Sweden.png'); 
-  }
-  .swedish {
-    background-image: url('../../public/img/englishFlag.jpg'); 
-  }
+
 </style>

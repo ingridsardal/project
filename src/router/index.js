@@ -74,7 +74,7 @@ const router = createRouter({
         {
       path: '/result/',
       name: 'ResultView',
-      component: () => import('../views/ParticipantLeaderBoardView.vue')
+      component: () => import('../views/ResultView.vue')
     }
   */
   ]

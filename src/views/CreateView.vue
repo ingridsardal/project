@@ -80,9 +80,6 @@
       <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
     </router-link>
     </ResponsiveNav>
-
-    <button id="langButton" v-on:click="switchLanguage" :class="{ 'english': lang === 'en', 'swedish': lang === 'sv' }"></button>  
-
     <ResponsiveNav v-bind:hideNav="hideNav">
     <router-link v-bind:to="'/creatorwaiting/'+pollId">
     <button id= "skapaButton" v-on:click="createPoll">Skapa Spel </button>      <!-- göra så att man kan justera språk-->
@@ -159,16 +156,6 @@ export default {
 
   },
   methods: {
-    switchLanguage: function() {
-        if (this.lang === "en") {
-          this.lang = "sv"
-        }
-        else {
-          this.lang = "en"
-        }
-        localStorage.setItem("lang", this.lang);
-        socket.emit("switchLanguage", this.lang)
-      },
     createPoll: function () {
       console.log("CreatorView", rounds)
       this.pollId = Math.floor(1000 + Math.random() * 9000)
@@ -259,24 +246,7 @@ header {
   bottom: 0;
   left: 0;
 }
-#langButton{
-  height: 80px;
-  width: 12em;
-  margin: 25px;
-  position: absolute;
-  bottom: 0;
-  left:13em;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.english {
 
-    background-image: url('../../public/img/Flag_of_Sweden.png'); 
-  }
-  .swedish {
-    background-image: url('../../public/img/englishFlag.jpg');  
-  }
 
 button:hover {
     background-color: grey;
