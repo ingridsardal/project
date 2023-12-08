@@ -9,50 +9,50 @@
     </h3>
 
     <div class="grid-container">
-    <div class="grid-item">
-      <input type="checkbox" id="Städer" name="items" onclick="toggleCheckbox(this)" checked>
-      <label for="Städer">{{uiLabels.städer}}</label>
-    </div>
+  <div class="grid-item">
+    <input type="checkbox" id="Städer" value="Städer" v-model="checkedItems">
+    <label for="Städer">{{uiLabels.städer}}</label>
+  </div>
 
     <div class="grid-item">
-      <input type="checkbox" id="Länder" name="items" onclick="toggleCheckbox(this)">
+      <input type="checkbox" id="Länder" value="Länder" v-model="checkedItems">
       <label for="Länder">{{uiLabels.länder}}</label>
     </div>
 
     <div class="grid-item">
-      <input type="checkbox" id="Floder" name="items" onclick="toggleCheckbox(this)">
+      <input type="checkbox" id="Floder"  value="Floder" v-model="checkedItems">
       <label for="Floder">{{uiLabels.floder}}</label>
     </div>
 
     <div class="grid-item">
-      <input type="checkbox" id="Maträtter" name="items" onclick="toggleCheckbox(this)">
+      <input type="checkbox" id="Maträtter"  value="Maträtter" v-model="checkedItems">
       <label for="Maträtter">{{uiLabels.maträtter}}</label>
     </div>
 
     <div class="grid-item">
-      <input type="checkbox" id="Frukter" name="items" onclick="toggleCheckbox(this)">
+      <input type="checkbox" id="Frukter"  value="Frukter" v-model="checkedItems">
       <label for="Frukter">{{uiLabels.frukter}}</label>
     </div>
 
     <div class="grid-item">
-      <input type="checkbox" id="Bilmärken" name="items" onclick="toggleCheckbox(this)">
+      <input type="checkbox" id="Bilmärken"  value="Bilmärken" v-model="checkedItems">
       <label for="Bilmärken">{{uiLabels.bilmärken}}</label>
     </div>
 
     <div class="grid-item">
-      <input type="checkbox" id="Kändisar" name="items" onclick="toggleCheckbox(this)">
+      <input type="checkbox" id="Kändisar"  value="Kändisar" v-model="checkedItems">
       <label for="Kändisar">{{uiLabels.kändisar}}</label>
     </div>
 
     <div class="grid-item">
-      <input type="checkbox" id="Klädmärken" name="items" onclick="toggleCheckbox(this)">
+      <input type="checkbox" id="Klädmärken"  value="Klädmärken" v-model="checkedItems">
       <label for="Klädmärken">{{uiLabels.klädmärken}}</label>
     </div>
 
     <div class="grid-item">
-      <input type="checkbox" id="Sevärdheter" name="items" onclick="toggleCheckbox(this)">
-      <label for="Sevärdheter">{{uiLabels.sevärdheter}}</label>
-    </div>
+    <input type="checkbox" id="Sevärdheter" value="Sevärdheter" v-model="checkedItems">
+    <label for="Sevärdheter">{{uiLabels.sevärdheter}}</label>
+  </div>
   </div> <br>
 
   <div class="antalomgångar">
@@ -139,7 +139,7 @@ export default {
       rounds: "0",
       data: {},
       uiLabels: {},
-      categories: []
+      checkedItems: []
     }
   },
   created: function () {
@@ -159,8 +159,8 @@ export default {
     createPoll: function () {
       console.log("CreatorView")
       this.pollId = Math.floor(1000 + Math.random() * 9000)
+      console.log(this.checkedItems);
       socket.emit("createPoll", {pollId: this.pollId, lang: this.lang, rounds: this.rounds})
-      console.log("CreatorView igen")
     },
     addQuestion: function () {
       socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers } )

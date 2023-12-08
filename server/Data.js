@@ -15,21 +15,21 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
 
 Data.prototype.getUILabels = function (lang = "en") {
   const labels = readFileSync("./server/data/labels-" + lang + ".json");
-  console.log('UiLabels');
+console.log('UiLabels');
   return JSON.parse(labels);
 }
 
 Data.prototype.createPoll = function(pollId, lang="en", rounds) {
   if (typeof this.polls[pollId] === "undefined") {
     let poll = {};
-    poll.lang = lang;
+    poll.lang = lang;  
     poll.rounds = rounds;
     poll.categories = [];
     this.polls[pollId] = poll;
     console.log("poll created ");
   }
   return this.polls[pollId];
-}
+  }
 
 Data.prototype.addQuestion = function(pollId, q) {
   const poll = this.polls[pollId];
@@ -88,10 +88,10 @@ Data.prototype.getAnswers = function(pollId) {
 }
 
 // Data vi gjort själva:
-  Data.prototype.startGame = function(pollId) {
+Data.prototype.startGame = function(pollId) {
   const poll = this.polls[pollId];
   if (typeof poll !== "undefined") {
-    return poll;
+  return poll;
   }
 };
 
