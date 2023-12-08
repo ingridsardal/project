@@ -87,7 +87,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 #shareCode {
     text-align: center;

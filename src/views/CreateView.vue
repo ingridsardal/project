@@ -186,7 +186,7 @@ function toggleCheckbox(checkbox) {
 
 </script>
 
-<style>
+<style scoped>
 header {
   color: orange;
 }

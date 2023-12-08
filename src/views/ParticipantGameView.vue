@@ -35,7 +35,7 @@
     <button id="lockAnswers" class="lockButton">Lås in svar!</button>
   </template>
   
-  <style>
+  <style scoped>
   #round {
     color: rgb(249, 192, 86);
   }
