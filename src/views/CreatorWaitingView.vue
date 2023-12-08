@@ -20,7 +20,7 @@
  <button id="langButton" v-on:click="switchLanguage" :class="{ 'english': lang === 'en', 'swedish': lang === 'sv' }"></button>  
 
  <ResponsiveNav v-bind:hideNav="hideNav">
-    <router-link v-bind:to="'/gamecreator/'">
+    <router-link v-bind:to="'/creatorgame/'">
     <button id= "startaSpelButton" v-on:click="startaSpel">Starta spel </button>      <!-- göra så att man kan justera språk-->
     </router-link>
  </ResponsiveNav>
