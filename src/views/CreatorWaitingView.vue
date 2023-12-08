@@ -67,7 +67,7 @@ export default {
  created: function () {
     this.pollId = this.$route.params.id;
 
-    socket.emit('startGame', (this.pollId));
+    socket.emit('startGame', {pollId: this.pollId});
   
     socket.on('getInfo', (poll) => {
         this.rounds = poll.rounds;

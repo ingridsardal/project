@@ -139,7 +139,7 @@ export default {
       rounds: "0",
       data: {},
       uiLabels: {},
-      categories: "hej"
+      categories: []
     }
   },
   created: function () {
