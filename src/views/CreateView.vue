@@ -73,21 +73,12 @@
   </div> <br>
 </body>
   <footer>
-    
-    <nav>
-  <ResponsiveNav v-bind:hideNav="hideNav">
     <router-link v-bind:to="'/'">
       <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
     </router-link>
-    </ResponsiveNav>
-    <ResponsiveNav v-bind:hideNav="hideNav">
     <router-link v-bind:to="'/creatorwaiting/'+pollId">
     <button id= "skapaButton" v-on:click="createPoll">Skapa Spel </button>      <!-- göra så att man kan justera språk-->
     </router-link>
- </ResponsiveNav>
-
-  </nav>
-  
   </footer>
 
 
@@ -123,7 +114,7 @@
     <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
   </div>
   -->
-  <p v-if="randomNumber">Generated Number: {{ randomNumber }}</p>
+  <!--<p v-if="randomNumber">Generated Number: {{ randomNumber }}</p>-->
 </template>
 
 <script>

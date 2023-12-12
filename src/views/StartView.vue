@@ -80,9 +80,7 @@
         socket.emit("switchLanguage", this.lang)
       },
       aboutFunction: function() {
-        console.log("aboutfunc");
-        let information=JSON.stringify(uiLabels.aboutInfo)
-        alert(uiLabels.about)
+        alert(this.uiLabels.aboutInfo)
       },
       FAQFunction: function() {
         alert("är du 18? I hope")
