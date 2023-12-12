@@ -1,12 +1,12 @@
 <template>
     <div class="centered-content">
   <header>
-        <h1> Skapa ditt eget spel! </h1>
+        <h1> {{uiLabels.createOwnGame}} </h1>
   </header>
 
   <body>
         <h3 style="font-weight: normal;">
-          Välj en eller flera kategorier:
+          {{uiLabels.chooseCategory}}:
         </h3>
 
     <div class="grid-container">
@@ -79,7 +79,7 @@
       <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
     </router-link>
     <router-link v-bind:to="'/creatorwaiting/'+pollId">
-    <button id= "skapaButton" v-on:click="createPoll">Skapa Spel </button>      <!-- göra så att man kan justera språk-->
+    <button id= "skapaButton" v-on:click="createPoll">{{uiLabels.createGame}}</button>      <!-- göra så att man kan justera språk-->
     </router-link>
   </footer>
     </div>
