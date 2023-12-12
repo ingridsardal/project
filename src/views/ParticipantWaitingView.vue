@@ -18,9 +18,8 @@
 </p>
 
 
-    <router-link v-bind:to="'/participantgame/'">
-    <button id= "tillfälligPG" v-on:click="tillfälligPG">Tillfällig PG </button>      <!-- göra så att man kan justera språk-->
-    </router-link>
+    
+    <button id= "tillfälligPG">{{uiLabels.waitInfo}} </button>      <!-- göra så att man kan justera språk-->
 
 
  <!-- 
