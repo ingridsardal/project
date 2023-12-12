@@ -5,7 +5,7 @@
            v-on:click="toggleNav">
       </div>
       <div class="logo">
-        <img src="/img/sun logo.png">
+        <img src="/img/sunlogo.png">
       </div>
     </header>
 
@@ -119,6 +119,7 @@
     border: 2px solid rgba(249, 192, 86, 0.6); /* Lägg till en border med lite mörkare orange */
     cursor: pointer;
     font-size: 4.
+    font-
   }
     .logo {
       text-transform: uppercase;
