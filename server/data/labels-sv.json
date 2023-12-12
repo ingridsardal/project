@@ -1,6 +1,11 @@
 {
 	"joinGame": "Joina spel",
-	"createGame": "Skapa Spel",
+	"createGame": "Skapa spel",
+	"startGame": "Starta spel",
+	"gameCode": "Spelkod",
+	"shareCode": "Dela koden med dina vänner",
+
+	"players": "Spelare",
 
 	"changeLanguage": "Change to English",
 	"about": "Om oss",

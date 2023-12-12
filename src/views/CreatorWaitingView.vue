@@ -1,15 +1,15 @@
 <template>
     <header>
-        <h2> Spelkod: {{ pollId }}</h2>
+        <h2> {{uiLabels.gameCode}}: {{ pollId }}</h2>
     </header>
 <br>
 
 <p id = "shareCode">
-    Dela koden med dina vänner!
+    {{uiLabels.shareCode}}!
 </p>
 
 <p>
-    Spelare:
+    {{uiLabels.players}}:
     <ul>
         <li v-for="player in players">
           {{ player.nameId }}
@@ -19,10 +19,10 @@
 
  <footer>
     <router-link v-bind:to="'/create/'">
-    <button id= "tillbakaButton" v-on:click="tillbaka">Tillbaka </button>      <!-- göra så att man kan justera språk-->
+    <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
     </router-link>
     <router-link v-bind:to="'/creatorgame/'">
-    <button id= "startaSpelButton" v-on:click="startaSpel">Starta spel </button>      <!-- göra så att man kan justera språk-->
+    <button id= "startaSpelButton" v-on:click="startaSpel">{{uiLabels.startGame}}</button>      <!-- göra så att man kan justera språk-->
     </router-link>
 </footer>
 
@@ -62,6 +62,7 @@ export default {
      pollId: "",
      rounds: "0",
      categories: [],
+     uiLabels: {},
      players: []
    }
  },
@@ -69,7 +70,7 @@ export default {
  created: function () {
     // Listen for the pollId event
     this.pollId = this.$route.params.id;
-
+    socket.emit("pageLoaded", this.lang);
     socket.emit('startGame', {pollId: this.pollId});
   
     socket.on('getInfo', (poll) => {
@@ -80,7 +81,10 @@ export default {
     
     socket.on('playersUpdate', (players) => {
         this.players = players;
-      })
+      }),
+      socket.on("init", (labels) => {
+      this.uiLabels = labels
+    })
       
   },
 
