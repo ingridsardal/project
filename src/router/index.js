@@ -42,13 +42,13 @@ const router = createRouter({
     },
     
     {
-      path: '/creatorgame/',
+      path: '/creatorgame/:id',
       name: 'CreatorGameView',
       component: () => import('../views/CreatorGameView.vue')
     },
 
     {
-      path: '/participantgame/',
+      path: '/participantgame/:id',
       name: 'ParticipantGameView',
       component: () => import('../views/ParticipantGameView.vue')
     },

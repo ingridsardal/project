@@ -66,7 +66,7 @@
       socket.on("init", (labels) => {
         this.uiLabels = labels
       })
-      
+
     },
 
     methods: {

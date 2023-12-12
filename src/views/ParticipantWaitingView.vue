@@ -79,11 +79,19 @@ export default {
    socket.on("init", (labels) => {
      this.uiLabels = labels
    })
+
+   socket.emit('joinSocket', {pollId: this.pollId})
+
   socket.emit("joinGame", {pollId: this.pollId, nameId: this.nameId})
 
   socket.on("playersUpdate", players => {
         this.players = players
       })
+
+  socket.on('startGameForAll', () => {
+    console.log("start for all participants participantwaitingview")
+    this.$router.push('/participantgame/' + this.pollId);
+  })
    
  },
 

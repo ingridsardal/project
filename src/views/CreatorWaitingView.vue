@@ -21,9 +21,7 @@
     <router-link v-bind:to="'/create/'">
     <button id= "tillbakaButton" v-on:click="tillbaka">Tillbaka </button>      <!-- göra så att man kan justera språk-->
     </router-link>
-    <router-link v-bind:to="'/creatorgame/'">
     <button id= "startaSpelButton" v-on:click="startaSpel">Starta spel </button>      <!-- göra så att man kan justera språk-->
-    </router-link>
 </footer>
 
 
@@ -33,6 +31,7 @@
 // @ is an alias to /src
 import QuestionComponent from '@/components/QuestionComponent.vue';
 import io from 'socket.io-client';
+import { ssrContextKey } from 'vue';
 const socket = io("localhost:3000");
 
 // Get the full URL
@@ -67,10 +66,11 @@ export default {
  },
 
  created: function () {
-    // Listen for the pollId event
     this.pollId = this.$route.params.id;
 
     socket.emit('startGame', {pollId: this.pollId});
+
+    socket.emit('joinSocket', {pollId: this.pollId})
   
     socket.on('getInfo', (poll) => {
         this.rounds = poll.rounds;
@@ -79,9 +79,14 @@ export default {
       })
     
     socket.on('playersUpdate', (players) => {
+      console.log("playersUpdate creatorwaitingview")
         this.players = players;
       })
-      
+    
+    socket.on('startGameForAll', () => {
+        console.log("start for all participants creatorwaitingview")
+        this.$router.push('/creatorgame/' + this.pollId);
+      })
   },
 
 
@@ -90,8 +95,9 @@ export default {
      socket.emit("submitAnswer", {pollId: this.pollId, answer: answer})
    },
    startaSpel: function () {
-    socket.emit("startForAll", {pollId: this.pollId})
- }
+    console.log("starta spel creatorwaitingview")
+    socket.emit('startForAll', {pollId: this.pollId});
+ } 
 }
 }
 </script>
