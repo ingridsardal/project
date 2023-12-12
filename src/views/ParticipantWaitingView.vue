@@ -1,27 +1,18 @@
 <template>
     <header>
-        <h2 id = "gamecode"> Spelkod: {{ pollId }}</h2>
+        <h2 id = "gamecode"> {{uiLabels.gameCode}}: {{ pollId }}</h2>
     </header>
 <br>
 
 <p id = "shareCode">
-    Dela koden med dina vänner! 
+    {{uiLabels.shareCode}}! 
 </p>
 
 <p>
-    Spelare:
+    {{uiLabels.players}}:
     <ul>
         <li v-for="player in players">
-          {{ player.nameId }} <br>
-        </li>
-    </ul>
-</p>
-
-<p>
-    Spelare:
-    <ul>
-        <li v-for="player in players">
-          {{ player.nameId }} <br>
+          {{ player.nameId }} 
         </li>
     </ul>
 </p>
@@ -44,7 +35,7 @@
  
  <footer>
     <router-link v-bind:to="'/participate/'">
-    <button id= "tillbakaButton" v-on:click="tillbaka">Tillbaka </button>      <!-- göra så att man kan justera språk-->
+    <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
     </router-link>
 </footer>
 
