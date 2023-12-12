@@ -59,7 +59,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
   h2 {
     position: absolute;
     top: 0;
