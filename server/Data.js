@@ -15,16 +15,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
 
 Data.prototype.getUILabels = function (lang = "en") {
   const labels = readFileSync("./server/data/labels-" + lang + ".json");
-console.log('UiLabels');
   return JSON.parse(labels);
 }
 
-Data.prototype.createPoll = function(pollId, lang="en", rounds) {
+Data.prototype.createPoll = function(pollId, lang="en", rounds, categories) {
   if (typeof this.polls[pollId] === "undefined") {
     let poll = {};
     poll.lang = lang;  
     poll.rounds = rounds;
-    poll.categories = [];
+    poll.categories = categories;
+    poll.players = [];
     this.polls[pollId] = poll;
     console.log("poll created ");
   }
@@ -95,17 +95,26 @@ Data.prototype.startGame = function(pollId) {
   }
 };
 
-/* Data.prototype.joinGame = function(pollId, nameId) {
-  polls:{
-    pollId:{
-          participants:[],
-          pollName:”Name”
-     }
-} 
+Data.prototype.joinGame = function(pollId, nameId) {
+  const poll = this.polls[pollId];
+  if (typeof poll !== "undefined") {
+    let player = {
+      nameId: nameId,
+      answers: []
+    };
+    poll.players.push(player);
+    console.log("player joined", player.nameId);
+  }
+};
 
-  return this.polls[pollId];
-} */
-
+Data.prototype.getPlayers = function (pollId) {
+  const poll = this.polls[pollId];
+  if (typeof poll !== "undefined") {
+    console.log("Updated players");
+    return poll.players;
+  }
+  return [];
+};
 
 export { Data };
 

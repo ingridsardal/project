@@ -2,20 +2,18 @@ function sockets(io, socket, data) {
   socket.emit('init', data.getUILabels());
   
   socket.on('pageLoaded', function (lang) {
-    console.log('Page loaded');
     socket.emit('init', data.getUILabels(lang));
   });
 
   socket.on('switchLanguage', function(lang) {
-    console.log('Byt språk');
     socket.emit('init', data.getUILabels(lang));
   });
 
   socket.on('createPoll', function(d) {
-    console.log("Vi är i socket");
-    data.createPoll(d.pollId, d.lang, d.rounds);
+    data.createPoll(d.pollId, d.lang, d.rounds, d.categories);
   });
 
+  /*
   socket.on('addQuestion', function(d) {
     data.addQuestion(d.pollId, {q: d.q, a: d.a});
     socket.emit('dataUpdate', data.getAnswers(d.pollId));
@@ -28,19 +26,21 @@ function sockets(io, socket, data) {
 
   socket.on('joinPoll', function(pollId) {
     socket.join(pollId);
-    socket.emit('newQuestion', data.getQuestion(pollId));
+    //socket.emit('newQuestion', data.getQuestion(pollId));
     socket.emit('dataUpdate', data.getAnswers(pollId));
   });
 
+  
   socket.on('runQuestion', function(d) {
-    io.to(d.pollId).emit('newQuestion', data.getQuestion(d.pollId, d.questionNumber));
-    io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId));
+    //io.to(d.pollId).emit('newQuestion', data.getQuestion(d.pollId, d.questionNumber));
+    //io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId));
   });
 
+/*
   socket.on('submitAnswer', function(d) {
     data.submitAnswer(d.pollId, d.answer);
     io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId));
-  });
+  });*/
 
   socket.on('resetAll', () => {
     data = new Data();
@@ -48,13 +48,20 @@ function sockets(io, socket, data) {
   });
 
   // Här lägger vi till egna sockets
-   /* socket.on('joinGame', function(d){;
+  socket.on('joinGame', function(d){;
+    socket.join(d.pollId);
     data.joinGame(d.pollId, d.nameId)
-   }); */
+    io.to(d.pollId).emit('playersUpdate', data.getPlayers(d.pollId));
+   });
 
    socket.on('startGame', function(d){;
+    socket.join(d.pollId);
     socket.emit('getInfo', data.startGame(d.pollId));
    }); 
+
+   socket.on('startForAll', function(pollId){;
+    io.to(pollId).emit('startForAll');
+   });
 }
 
 export { sockets };
