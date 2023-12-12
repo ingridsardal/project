@@ -100,7 +100,9 @@ Data.prototype.joinGame = function(pollId, nameId) {
   if (typeof poll !== "undefined") {
     let player = {
       nameId: nameId,
-      answers: []
+      answers: [],
+      points: 0,
+      avatar: "",
     };
     poll.players.push(player);
     console.log("player joined", player.nameId);
@@ -115,6 +117,7 @@ Data.prototype.getPlayers = function (pollId) {
   }
   return [];
 };
+
 
 export { Data };
 

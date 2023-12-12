@@ -30,7 +30,7 @@ const router = createRouter({
       component: () => import('../views/ParticipateView.vue')
     }, 
     {
-      path: '/participantwaiting/:id',
+      path: '/participantwaiting/:id/:name',
       name: 'ParticipantWaitingView',
       component: () => import('../views/ParticipantWaitingView.vue')
     },
@@ -48,7 +48,7 @@ const router = createRouter({
     },
 
     {
-      path: '/participantgame/:id',
+      path: '/participantgame/:id/:name',
       name: 'ParticipantGameView',
       component: () => import('../views/ParticipantGameView.vue')
     },

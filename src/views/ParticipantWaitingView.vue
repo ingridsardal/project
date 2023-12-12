@@ -63,12 +63,14 @@ export default {
      },
      pollId: "inactive poll",
      submittedAnswers: {},
-     nameId: "",
-     players: []
+     players: [],
+     name: ""
    }
  },
  created: function () {
    this.pollId = this.$route.params.id
+   this.name = this.$route.params.name
+
    socket.on("newQuestion", q =>
      this.question = q
    )
@@ -90,7 +92,7 @@ export default {
 
   socket.on('startGameForAll', () => {
     console.log("start for all participants participantwaitingview")
-    this.$router.push('/participantgame/' + this.pollId);
+    this.$router.push('/participantgame/' + this.pollId + '/' + this.name);
   })
    
  },
