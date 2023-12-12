@@ -21,7 +21,7 @@
     <router-link v-bind:to="'/create/'">
     <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
     </router-link>
-    <button id= "startaSpelButton" v-on:click="startaSpel">Starta spel </button>      <!-- göra så att man kan justera språk-->
+    <button id= "startaSpelButton" v-on:click="startaSpel">{{uiLabels.startGame}} </button>      <!-- göra så att man kan justera språk-->
 </footer>
 
 
@@ -88,6 +88,10 @@ export default {
         console.log("start for all participants creatorwaitingview")
         this.$router.push('/creatorgame/' + this.pollId);
       })
+
+    socket.on("init", (labels) => {
+     this.uiLabels = labels
+   })
   },
 
 
