@@ -32,7 +32,13 @@
       </div>
     </div>
     
-    <button id="lockAnswers" class="lockButton">Lås in svar!</button>
+    <!--<button id="lockAnswers" class="lockButton">Lås in svar!</button>-->
+
+    <router-link v-bind:to="'/participantlivescore/'">
+        <button id="lockAnswers" class="lockButton" v-on:click="">           <!-- måste skapa en write poll id number så att det funkar-->
+          Lås in svar!</button>
+    </router-link>
+
   </template>
   
   <style scoped>
