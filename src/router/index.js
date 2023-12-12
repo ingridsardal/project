@@ -64,10 +64,6 @@ const router = createRouter({
       name: 'CreatorLeaderboardView',
       component: () => import('../views/CreatorLeaderboardView.vue')
     },
-
-    
-
-
     
     {
       path: '/participantleaderboard/',
