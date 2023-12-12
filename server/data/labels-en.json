@@ -1,6 +1,11 @@
 {
 	"joinGame": "Join game",
 	"createGame": "Create Game",
+	"startGame": "Start Game",
+	"gameCode": "Game code",
+	"shareCode": "Share the code with your friends",
+
+	"players": "Players",
 
 	"changeLanguage": "Byt till svenska",
 	"about": "About",

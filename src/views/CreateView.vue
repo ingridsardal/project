@@ -79,7 +79,7 @@
       <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
     </router-link>
     <router-link v-bind:to="'/creatorwaiting/'+pollId">
-    <button id= "skapaButton" v-on:click="createPoll">Skapa Spel </button>      <!-- göra så att man kan justera språk-->
+    <button id= "skapaButton" v-on:click="createPoll">{{uiLabels.createGame}}</button>      <!-- göra så att man kan justera språk-->
     </router-link>
   </footer>
     </div>
