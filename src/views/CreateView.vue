@@ -1,63 +1,64 @@
 <template>
+    <div class="centered-content">
   <header>
-    <h1> Skapa ditt eget spel! </h1>
+        <h1> Skapa ditt eget spel! </h1>
   </header>
 
   <body>
-    <h3 style="font-weight: normal;">
-      Välj en eller flera kategorier:
-    </h3>
+        <h3 style="font-weight: normal;">
+          Välj en eller flera kategorier:
+        </h3>
 
     <div class="grid-container">
-  <div class="grid-item">
-    <input type="checkbox" id="Städer" value="Städer" v-model="checkedItems">
-    <label for="Städer">{{uiLabels.städer}}</label>
-  </div>
+      <div class="grid-item">
+      <input type="checkbox" id="Städer" value="Städer" v-model="checkedItems">
+      <label for="Städer">{{uiLabels.städer}}</label>
+      </div>
 
-    <div class="grid-item">
-      <input type="checkbox" id="Länder" value="Länder" v-model="checkedItems">
-      <label for="Länder">{{uiLabels.länder}}</label>
-    </div>
+      <div class="grid-item">
+        <input type="checkbox" id="Länder" value="Länder" v-model="checkedItems">
+        <label for="Länder">{{uiLabels.länder}}</label>
+      </div>
 
-    <div class="grid-item">
-      <input type="checkbox" id="Floder"  value="Floder" v-model="checkedItems">
-      <label for="Floder">{{uiLabels.floder}}</label>
-    </div>
+      <div class="grid-item">
+        <input type="checkbox" id="Floder"  value="Floder" v-model="checkedItems">
+        <label for="Floder">{{uiLabels.floder}}</label>
+      </div>
 
-    <div class="grid-item">
-      <input type="checkbox" id="Maträtter"  value="Maträtter" v-model="checkedItems">
-      <label for="Maträtter">{{uiLabels.maträtter}}</label>
-    </div>
+      <div class="grid-item">
+        <input type="checkbox" id="Maträtter"  value="Maträtter" v-model="checkedItems">
+        <label for="Maträtter">{{uiLabels.maträtter}}</label>
+      </div>
 
-    <div class="grid-item">
-      <input type="checkbox" id="Frukter"  value="Frukter" v-model="checkedItems">
-      <label for="Frukter">{{uiLabels.frukter}}</label>
-    </div>
+      <div class="grid-item">
+        <input type="checkbox" id="Frukter"  value="Frukter" v-model="checkedItems">
+        <label for="Frukter">{{uiLabels.frukter}}</label>
+      </div>
 
-    <div class="grid-item">
-      <input type="checkbox" id="Bilmärken"  value="Bilmärken" v-model="checkedItems">
-      <label for="Bilmärken">{{uiLabels.bilmärken}}</label>
-    </div>
+      <div class="grid-item">
+        <input type="checkbox" id="Bilmärken"  value="Bilmärken" v-model="checkedItems">
+        <label for="Bilmärken">{{uiLabels.bilmärken}}</label>
+      </div>
 
-    <div class="grid-item">
-      <input type="checkbox" id="Kändisar"  value="Kändisar" v-model="checkedItems">
-      <label for="Kändisar">{{uiLabels.kändisar}}</label>
-    </div>
+      <div class="grid-item">
+        <input type="checkbox" id="Kändisar"  value="Kändisar" v-model="checkedItems">
+        <label for="Kändisar">{{uiLabels.kändisar}}</label>
+      </div>
 
-    <div class="grid-item">
-      <input type="checkbox" id="Klädmärken"  value="Klädmärken" v-model="checkedItems">
-      <label for="Klädmärken">{{uiLabels.klädmärken}}</label>
-    </div>
+      <div class="grid-item">
+        <input type="checkbox" id="Klädmärken"  value="Klädmärken" v-model="checkedItems">
+        <label for="Klädmärken">{{uiLabels.klädmärken}}</label>
+      </div>
 
-    <div class="grid-item">
-    <input type="checkbox" id="Sevärdheter" value="Sevärdheter" v-model="checkedItems">
-    <label for="Sevärdheter">{{uiLabels.sevärdheter}}</label>
-  </div>
-  </div> <br>
+      <div class="grid-item">
+      <input type="checkbox" id="Sevärdheter" value="Sevärdheter" v-model="checkedItems">
+      <label for="Sevärdheter">{{uiLabels.sevärdheter}}</label>
+      </div>
+    </div> 
 
-  <div class="antalomgångar">
-    <label for="rounds">{{uiLabels.NumberOfRounds}}</label>
-    <select id="rounds" v-model="rounds" style="overflow-y: auto;">
+    <div class="antalomgångar">
+      <label for="rounds">{{uiLabels.NumberOfRounds}}</label>
+      <select id="rounds" v-model="rounds" style="overflow-y: auto;">
                 <option>0</option>
                 <option>1</option>
                 <option>2</option>
@@ -70,16 +71,30 @@
                 <option>9</option>
                 <option>10</option>
             </select>
-  </div> <br>
-</body>
+    </div>
+  </body>
+
   <footer>
-    <router-link v-bind:to="'/'">
+      <router-link v-bind:to="'/'">
       <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
     </router-link>
     <router-link v-bind:to="'/creatorwaiting/'+pollId">
     <button id= "skapaButton" v-on:click="createPoll">Skapa Spel </button>      <!-- göra så att man kan justera språk-->
     </router-link>
   </footer>
+    </div>
+  </template>
+
+   <!--<style>
+  .centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  </style>-->
+
+
 
 
 
@@ -115,8 +130,6 @@
   </div>
   -->
   <!--<p v-if="randomNumber">Generated Number: {{ randomNumber }}</p>-->
-</template>
-
 <script>
 import io from 'socket.io-client';
 const socket = io("localhost:3000");
@@ -186,6 +199,7 @@ header {
   margin-top: 2%;
   margin-right: 15%;
   transform: scale(1.2); /* Adjust the scale factor for larger or smaller checkboxes */
+  padding:20px;
 }
 
 .antalomgångar label {
@@ -202,7 +216,7 @@ header {
       grid-template-columns: repeat(3, 1fr);
       grid-row-gap: 60%;
       grid-column-gap: 25%;
-      margin: 5% 30% 5% 30%;
+      margin: 100px 30% 100px 30%;
     }
 
     .grid-item {
