@@ -5,20 +5,14 @@
            v-on:click="toggleNav">
       </div>
       <div class="logo">
-        <img src="/img/logo.png">
-        Stad Land Flod  
-        <img src="../assets/logo.svg">
+        <img src="/img/sun logo.png">
       </div>
     </header>
+
+    <div class = "container">
+
     <h1>{{ uiLabels["sales-pitch"] }}</h1>
     <h2>{{ uiLabels.subHeading }}</h2>
-  
-  <!--
-   <label>
-      Write poll id: 
-      <input type="text" v-model="id">
-    </label>
--->
   
     <router-link to="/create/">
         <button id="createButton">
@@ -33,7 +27,8 @@
           {{uiLabels.joinGame}}
         </button>
     </router-link>
-  
+  </div>
+
   </body>
   <footer>
   <ResponsiveNav v-bind:hideNav="hideNav">
@@ -94,11 +89,37 @@
   </script>
   <style scoped>
     header {
-      background-color: gray;
+      background-color: rgb(255, 255, 255);
       width: 100%;
       display: grid;
       grid-template-columns: 2em auto;
     }
+
+    .container {
+      background-color: rgb(249, 192, 86);
+      border-radius: 10px;
+      padding: 50px;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50%; /* Ändra storleken till 50% av sidan */
+      max-width: 700px;
+      color: white;
+    }
+
+  #participateButton,
+  #createButton {
+    height: 100px;
+    width: 100%;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: white;
+    color: rgb(249, 192, 86);
+    border: 2px solid rgba(249, 192, 86, 0.6); /* Lägg till en border med lite mörkare orange */
+    cursor: pointer;
+    font-size: 4.
+  }
     .logo {
       text-transform: uppercase;
       letter-spacing: 0.25em;
@@ -107,9 +128,9 @@
       padding-top:0.2em;
     }
     .logo img {
-      height:2.5rem;
+      height:200px;
       vertical-align: bottom;
-      margin-right: 0.5rem; 
+      margin-right: 0.7rem; 
     }
     .hamburger {
       color:white;
@@ -124,7 +145,7 @@
       cursor: pointer;
       font-size: 1.5rem;
     }
-    #participateButton {
+   /* #participateButton {
       height: 100px;
       width: 33%;
       margin:19px;
@@ -134,6 +155,9 @@
       width: 33%;
       margin:19px;
     }
+
+    */
+
     body {
     min-height: 90vh;
   }
@@ -165,9 +189,11 @@
     }
     .hamburger::before {
       content: "☰";
+      color: rgb(249, 192, 86); 
     }
     .close::before {
       content: "✕";
+      color: rgb(249, 192, 86);
     }
     .hide {
       left:-12em;
