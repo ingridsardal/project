@@ -17,8 +17,8 @@
               <li v-for="(answer, category) in player.answers" :key="category">
 
                 <div class="answerContainer">
-                  <label class="answerLabel" :for="category">{{ category }} : {{ answer }}</label>
                   <input type="checkbox" :id="category" :value="category" v-model="player.categories">
+                  <label class="answerLabel" :for="category">{{ category }} : {{ answer }}</label>
                 </div>
 
               </li>
