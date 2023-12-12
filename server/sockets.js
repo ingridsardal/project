@@ -49,18 +49,22 @@ function sockets(io, socket, data) {
 
   // Här lägger vi till egna sockets
   socket.on('joinGame', function(d){;
-    socket.join(d.pollId);
     data.joinGame(d.pollId, d.nameId)
     io.to(d.pollId).emit('playersUpdate', data.getPlayers(d.pollId));
    });
 
-   socket.on('startGame', function(d){;
+   socket.on('joinSocket', function(d){;
     socket.join(d.pollId);
+  });
+
+   socket.on('startGame', function(d){;
+    console.log("start game")
     socket.emit('getInfo', data.startGame(d.pollId));
    }); 
 
-   socket.on('startForAll', function(pollId){;
-    io.to(pollId).emit('startForAll');
+   socket.on('startForAll', function(d){;
+    console.log("start for all", d.pollId)
+    io.to(d.pollId).emit('startGameForAll');
    });
 }
 

@@ -1,40 +1,40 @@
 <template>
     <header>
-        <h2 id = "gamecode"> Spelkod: {{ pollId }}</h2>
+        <h2 id = "gamecode"> {{uiLabels.gameCode}}: {{ pollId }}</h2>
     </header>
 <br>
 
 <p id = "shareCode">
-    Dela koden med dina vänner! 
+    {{uiLabels.shareCode}}! 
 </p>
 
 <p>
-    Spelare:
+    {{uiLabels.players}}:
     <ul>
         <li v-for="player in players">
-          {{ player.nameId }} <br>
+          {{ player.nameId }} 
         </li>
     </ul>
 </p>
 
-    <router-link v-bind:to="'/participantgame/'">
-    <button id= "tillfälligPG" v-on:click="tillfälligPG">Tillfällig PG </button>      <!-- göra så att man kan justera språk-->
-    </router-link>
+
+    
+    <button id= "tillfälligPG">{{uiLabels.waitInfo}} </button>      <!-- göra så att man kan justera språk-->
 
 
  <!-- 
 <div id="waitingButton">Väntar på spelledaren...</div>
  -->
-
+<!--
  <router-link v-bind:to="'/participantlivescore/'">
-        <button id="next" v-on:click="joinButton">           <!-- måste skapa en write poll id number så att det funkar-->
+        <button id="next" v-on:click="joinButton">            måste skapa en write poll id number så att det funkar
           {{uiLabels.joinGame}}
         Victors knapp till nästa sida</button>
-    </router-link>
+    </router-link>-->
  
  <footer>
     <router-link v-bind:to="'/participate/'">
-    <button id= "tillbakaButton" v-on:click="tillbaka">Tillbaka </button>      <!-- göra så att man kan justera språk-->
+    <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
     </router-link>
 </footer>
 
@@ -79,11 +79,19 @@ export default {
    socket.on("init", (labels) => {
      this.uiLabels = labels
    })
+
+   socket.emit('joinSocket', {pollId: this.pollId})
+
   socket.emit("joinGame", {pollId: this.pollId, nameId: this.nameId})
 
   socket.on("playersUpdate", players => {
         this.players = players
       })
+
+  socket.on('startGameForAll', () => {
+    console.log("start for all participants participantwaitingview")
+    this.$router.push('/participantgame/' + this.pollId);
+  })
    
  },
 

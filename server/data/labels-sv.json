@@ -1,6 +1,15 @@
 {
 	"joinGame": "Joina spel",
-	"createGame": "Skapa Spel",
+	"createGame": "Skapa spel",
+	"createOwnGame": "Skapa ditt eget spel",
+	"startGame": "Starta spel",
+	"gameCode": "Spelkod",
+	"shareCode": "Dela koden med dina vänner",
+	"chooseCategory": "Välj en eller flera kategorier",
+	"waitInfo": "Vänta på att spelledaren startar spelet...",
+
+	"players": "Spelare",
+	"name": "Namn",
 
 	"changeLanguage": "Change to English",
 	"about": "Om oss",

@@ -6,12 +6,12 @@
 
         <label>
       <br>
-      Write poll id: 
+      Poll id: 
       <input type="text" v-model="pollId">
     </label>
     <br>
     <label>
-      Name: 
+      {{uiLabels.name}}: 
       <input type="text" v-model="nameId">
     </label>
    <br>
@@ -66,7 +66,7 @@
       socket.on("init", (labels) => {
         this.uiLabels = labels
       })
-      
+
     },
 
     methods: {
