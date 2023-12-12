@@ -18,20 +18,12 @@
 </p>
 
  <footer>
- <nav>
-
-<ResponsiveNav v-bind:hideNav="hideNav">
     <router-link v-bind:to="'/create/'">
     <button id= "tillbakaButton" v-on:click="tillbaka">Tillbaka </button>      <!-- göra så att man kan justera språk-->
     </router-link>
- </ResponsiveNav>
- <ResponsiveNav v-bind:hideNav="hideNav">
     <router-link v-bind:to="'/creatorgame/'">
     <button id= "startaSpelButton" v-on:click="startaSpel">Starta spel </button>      <!-- göra så att man kan justera språk-->
     </router-link>
- </ResponsiveNav>
-
-</nav>
 </footer>
 
 

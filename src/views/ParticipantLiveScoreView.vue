@@ -17,6 +17,7 @@
         </div>
       </div>
     </section>
+    <div><img id="hamster" src="../../public/img/Hamster.gif" alt="Animated GIF" /></div>
 
     <br />
     <hr>
@@ -34,7 +35,13 @@ export default {
         { id: 4, name: 'Pimon', answers: { city: 'Berlin', country: 'Germany', animal: 'Giraffe' } },
         { id: 5, name: 'Dimon', answers: { city: 'Sydney', country: 'Australia', animal: 'Kangaroo' } },
       ],
+      animatedPlayer: null,
     };
+  },
+  methods: {
+    startAnimation(playerId) {
+      this.animatedPlayer = playerId;
+    },
   },
 };
 </script>
@@ -53,11 +60,36 @@ export default {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  transition: transform 1s ease-in-out;
 }
 
-h1 { 
-    color: rgb(203, 60, 50);
-    text-shadow: rgb(255, 0, 0) 1px 0 10px;
-    font-size: 50px; 
+.player-item:hover {
+  transform: scale(1.4);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  color: rgb(203, 60, 50);
+  text-shadow: rgb(255, 0, 0) 1px 0 10px;
+  font-size: 50px;
+  opacity: 0;
+  animation: fadeIn 4s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.title {
+  margin: 0;
+}
+#hamster{
+  height: 100px;
+  length: 100px;
 }
 </style>

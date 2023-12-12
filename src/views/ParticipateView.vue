@@ -21,16 +21,10 @@
         </button>
     </router-link>
     </div>
-
     <footer>
-    <nav>
-  <ResponsiveNav v-bind:hideNav="hideNav">
-
     <router-link v-bind:to="'/'">
       <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}}  </button>      <!-- göra så att man kan justera språk-->
     </router-link>
-    </ResponsiveNav>
-  </nav>
   </footer>
 
 

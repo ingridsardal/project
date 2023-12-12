@@ -80,7 +80,7 @@
         socket.emit("switchLanguage", this.lang)
       },
       aboutFunction: function() {
-        alert("message to ya sir!")
+        alert(this.uiLabels.aboutInfo)
       },
       FAQFunction: function() {
         alert("är du 18? I hope")

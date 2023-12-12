@@ -1,12 +1,13 @@
 <template>
+    <div class="centered-content">
   <header>
-    <h1> Skapa ditt eget spel! </h1>
+        <h1> Skapa ditt eget spel! </h1>
   </header>
 
   <body>
-    <h3 style="font-weight: normal;">
-      Välj en eller flera kategorier:
-    </h3>
+        <h3 style="font-weight: normal;">
+          Välj en eller flera kategorier:
+        </h3>
 
     <div class="grid-container">
   <div class="grid-item">
@@ -55,9 +56,9 @@
   </div>
   </div> <br>
 
-  <div class="antalomgångar">
-    <label for="rounds">{{uiLabels.NumberOfRounds}}</label>
-    <select id="rounds" v-model="rounds" style="overflow-y: auto;">
+    <div class="antalomgångar">
+      <label for="rounds">{{uiLabels.NumberOfRounds}}</label>
+      <select id="rounds" v-model="rounds" style="overflow-y: auto;">
                 <option>0</option>
                 <option>1</option>
                 <option>2</option>
@@ -70,25 +71,30 @@
                 <option>9</option>
                 <option>10</option>
             </select>
-  </div> <br>
-</body>
+    </div>
+  </body>
+
   <footer>
-    
-    <nav>
-  <ResponsiveNav v-bind:hideNav="hideNav">
-    <router-link v-bind:to="'/'">
+      <router-link v-bind:to="'/'">
       <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
     </router-link>
-    </ResponsiveNav>
-    <ResponsiveNav v-bind:hideNav="hideNav">
     <router-link v-bind:to="'/creatorwaiting/'+pollId">
     <button id= "skapaButton" v-on:click="createPoll">Skapa Spel </button>      <!-- göra så att man kan justera språk-->
     </router-link>
- </ResponsiveNav>
-
-  </nav>
-  
   </footer>
+    </div>
+  </template>
+
+   <!--<style>
+  .centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  </style>-->
+
+
 
 
 
@@ -123,9 +129,7 @@
     <router-link v-bind:to="'/result/'+pollId">Check result</router-link>
   </div>
   -->
-  <p v-if="randomNumber">Generated Number: {{ randomNumber }}</p>
-</template>
-
+  <!--<p v-if="randomNumber">Generated Number: {{ randomNumber }}</p>-->
 <script>
 import io from 'socket.io-client';
 const socket = io("localhost:3000");
@@ -186,6 +190,7 @@ header {
   margin-top: 2%;
   margin-right: 15%;
   transform: scale(1.2); /* Adjust the scale factor for larger or smaller checkboxes */
+  padding:20px;
 }
 
 .antalomgångar label {
@@ -202,7 +207,7 @@ header {
       grid-template-columns: repeat(3, 1fr);
       grid-row-gap: 60%;
       grid-column-gap: 25%;
-      margin: 5% 30% 5% 30%;
+      margin: 100px 30% 100px 30%;
     }
 
     .grid-item {

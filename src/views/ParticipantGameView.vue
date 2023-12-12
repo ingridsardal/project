@@ -1,7 +1,7 @@
 <template>
 
     <header id="round">
-      <h1> Omgång {{ roundNumber }} <span>{{ currentLetter }}</span> </h1>
+      <h1> Omgång {{ "roundNumber" }} <span>{{ "A" }}</span> </h1>
     </header>
 
     <h3 id="infoText"> 

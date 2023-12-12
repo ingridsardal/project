@@ -17,11 +17,20 @@
     </ul>
 </p>
 
-<ResponsiveNav v-bind:hideNav="hideNav">
+<p>
+    Spelare:
+    <ul>
+        <li v-for="player in players">
+          {{ player.nameId }} <br>
+        </li>
+    </ul>
+</p>
+
+
     <router-link v-bind:to="'/participantgame/'">
     <button id= "tillfälligPG" v-on:click="tillfälligPG">Tillfällig PG </button>      <!-- göra så att man kan justera språk-->
     </router-link>
- </ResponsiveNav>
+
 
  <!-- 
 <div id="waitingButton">Väntar på spelledaren...</div>
@@ -34,15 +43,9 @@
     </router-link>
  
  <footer>
- <nav>
-
-<ResponsiveNav v-bind:hideNav="hideNav">
     <router-link v-bind:to="'/participate/'">
     <button id= "tillbakaButton" v-on:click="tillbaka">Tillbaka </button>      <!-- göra så att man kan justera språk-->
     </router-link>
- </ResponsiveNav>
-
-</nav>
 </footer>
 
 
