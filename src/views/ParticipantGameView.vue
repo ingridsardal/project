@@ -1,7 +1,7 @@
 <template>
 
     <header id="round">
-      <h1> Omgång {{ "roundNumber" }} <span>{{ "A" }}</span> </h1>
+      <h1> Omgång {{ roundNumber }} <span>{{ "A" }}</span> </h1>
     </header>
 
     <h3 id="infoText"> 
@@ -62,7 +62,8 @@ export default {
      submittedAnswers: {},
      players: [],
      name: "",
-     categories: []
+     categories: [],
+     roundNumber: 0,
    }
  },
  created: function () {
@@ -85,6 +86,7 @@ export default {
     console.log(poll.categories)
      this.rounds = poll.rounds;
      this.categories = poll.categories;
+     this.roundNumber = poll.roundNumber;
    })
    
  },
