@@ -119,7 +119,7 @@ h1 {
 }
 #hamster {
   height: 100px;
-  length: 100px;
+  width: 100px;
 }
 h2 { 
   color: rgb(249, 192, 86);
