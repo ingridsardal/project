@@ -7,6 +7,19 @@
       <h3>Var du för snabb?</h3>
     </div>
 
+    <div class="wrapper"> 
+      <div class="content">
+        <!-- Textrutan för att skriva in valfri bokstav -->
+        <input v-model="inputLetter" placeholder="Välj bokstav för nästa omgång" />
+      </div>
+
+      <footer> 
+        <router-link v-bind:to="'/creatorgame/'">
+          <button id="startRound" v-on:click="startRound"> Starta nästa omgång </button>
+        </router-link>
+      </footer>
+    </div>
+
     <table>
       <thead>
         <tr>
@@ -15,9 +28,10 @@
           <th>Poäng</th>
         </tr>
       </thead>
+
       <tbody>
-        <!-- Loop through your data here and create rows for each player -->
-        <tr v-for="(player, index) in players" :key="player.id">
+        <!-- Loop through your sorted data here and create rows for each player -->
+        <tr v-for="(player, index) in sortedPlayers" :key="player.id">
           <td>{{ player.name }}</td>
           <td>{{ index + 1 }}</td>
           <td>{{ player.points }}</td>
@@ -25,11 +39,6 @@
       </tbody>
     </table>
 
-    <div class="image">
-      <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA0L2pvYjY4NC0xOTQtcF8xLnBuZw.png" alt="Hand Image">
-    </div>
-
-    <!-- Additional div for the message -->
     <div class="message">
       <p>{{ lastPlacePlayer.name }} ligger supermega sist...</p>
     </div>
@@ -42,24 +51,39 @@ export default {
     return {
       players: [
         { id: 1, name: 'John', points: 15, answers: {} },
-        { id: 2, name: 'Anna', points: 10 },
-        { id: 3, name: 'Simon', points: 12 },
+        { id: 2, name: 'Anna', points: 13 },
+        { id: 3, name: 'Simon', points: 7 },
         { id: 4, name: 'pimon', points: 8 },
-        { id: 5, name: 'dimon', points: 5 },
+        { id: 5, name: 'dimon', points: 17 },
       ],
+      inputLetter: this.generateRandomLetter(), // Förinställd random bokstav
     };
   },
   computed: {
+    sortedPlayers() {
+      return this.players.slice().sort((a, b) => b.points - a.points);
+    },
     lastPlacePlayer() {
-      return this.players.reduce((prev, current) =>
-        prev.points < current.points ? prev : current
-      );
+      return this.sortedPlayers[this.sortedPlayers.length - 1];
+    },
+  },
+  methods: {
+    startRound() {
+      console.log('Startar nästa omgång med bokstaven:', this.inputLetter);
+    },
+    generateRandomLetter() {
+      const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      const randomIndex = Math.floor(Math.random() * alphabet.length);
+      return alphabet[randomIndex];
     },
   },
 };
 </script>
 
+
 <style scoped>
+
+
   h2 {
     position: absolute;
     top: 0;
@@ -119,7 +143,6 @@ export default {
     bottom:0; /* Säkerställ proportionell höjd */
   }
 
-  
 
   #apa {
     background-color: blue;
@@ -130,6 +153,33 @@ export default {
     justify-content: center;
     height: 100vh;
   }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .content input {
+    height: 140px;
+    width: 120px;
+    margin: 5px;
+    background-color: blue;
+    border: none;
+    font-size: 140px; /* Ändra textstorlek här */
+  }
+
+  #startRound {
+    background-color: rgb(113, 255, 113);
+    height: 80px;
+    width: auto;
+    margin: 5px;
+  }
 </style>
+
 
     
