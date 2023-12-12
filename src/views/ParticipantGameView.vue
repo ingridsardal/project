@@ -15,15 +15,12 @@
           Kategorier:
         </h2>
 
-        <p>
-          Kategori 1 (variabel)
-          <br>
-          Kategori 2 (variabel)
-          <br>
-          Kategori 3 (variabel)
-          <br>
-          ...
-        </p>
+        <ul>
+            <li v-for="category in categories">
+              {{ category }} 
+            </li>
+        </ul>
+
       </div>
 
       <div class="letterInfo">
@@ -42,7 +39,62 @@
   </template>
 
 <script>
+// @ is an alias to /src
+import QuestionComponent from '@/components/QuestionComponent.vue';
+import io from 'socket.io-client';
+const socket = io("localhost:3000");
 
+export default {
+ name: 'ParticipateView',
+ components: {
+   QuestionComponent
+ },
+ data: function () {
+   return {
+   lang: localStorage.getItem("lang") || "en",
+   data: {},
+   uiLabels: {},
+     question: {
+       q: "",
+       a: []
+     },
+     pollId: "inactive poll",
+     submittedAnswers: {},
+     players: [],
+     name: "",
+     categories: []
+   }
+ },
+ created: function () {
+   this.pollId = this.$route.params.id
+   this.name = this.$route.params.name
+
+   socket.on("dataUpdate", answers =>
+     this.submittedAnswers = answers
+   )
+ socket.emit("pageLoaded", this.lang);
+   socket.on("init", (labels) => {
+     this.uiLabels = labels
+   })
+
+   socket.emit('joinSocket', {pollId: this.pollId})
+
+   socket.emit('startGame', {pollId: this.pollId})
+
+   socket.on('getInfo', (poll) => {
+    console.log(poll.categories)
+     this.rounds = poll.rounds;
+     this.categories = poll.categories;
+   })
+   
+ },
+
+ methods: {
+   submitAnswer: function (answer) {
+     socket.emit("submitAnswer", {pollId: this.pollId, answer: answer})
+   }
+ }
+}
 
 
 </script>
