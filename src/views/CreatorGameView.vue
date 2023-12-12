@@ -4,9 +4,9 @@
   sedan klickar på vidare, då skickas alla till en leaderboard
 </div>
 
-<ResponsiveNav>
+
     <router-link v-bind:to="'/creatorleaderboard/'">
     <button id= "Tillfällig" v-on:click="">Tillfällig knapp som göra att man kommer till Creator scoreboard </button>      <!-- göra så att man kan justera språk-->
     </router-link>
- </ResponsiveNav>
+ 
 </template>
