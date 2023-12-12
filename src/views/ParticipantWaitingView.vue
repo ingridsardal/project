@@ -12,20 +12,21 @@
     Spelare:
     <ul>
         <li v-for="player in players">
-<<<<<<< HEAD
-          {{ player.nameId }} 
-=======
-          {{ player.nameId }}
->>>>>>> dd87e57b96c4e3146242b006fb8ef0333ef0979e
+          {{ player.nameId }} <br>
         </li>
     </ul>
 </p>
 
-<<<<<<< HEAD
+<p>
+    Spelare:
+    <ul>
+        <li v-for="player in players">
+          {{ player.nameId }} <br>
+        </li>
+    </ul>
+</p>
 
 
-=======
->>>>>>> dd87e57b96c4e3146242b006fb8ef0333ef0979e
     <router-link v-bind:to="'/participantgame/'">
     <button id= "tillfälligPG" v-on:click="tillfälligPG">Tillfällig PG </button>      <!-- göra så att man kan justera språk-->
     </router-link>
