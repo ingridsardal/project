@@ -12,7 +12,7 @@
     Spelare:
     <ul>
         <li v-for="player in players">
-          {{ player.nameId }} <br>
+          {{ player.nameId }}
         </li>
     </ul>
 </p>
