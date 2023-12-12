@@ -10,51 +10,51 @@
         </h3>
 
     <div class="grid-container">
-      <div class="grid-item">
-      <input type="checkbox" id="Städer" value="Städer" v-model="checkedItems">
-      <label for="Städer">{{uiLabels.städer}}</label>
-      </div>
+  <div class="grid-item">
+    <input type="checkbox" id="Städer" value="Städer" v-model="categories">
+    <label for="Städer">{{uiLabels.städer}}</label>
+  </div>
 
-      <div class="grid-item">
-        <input type="checkbox" id="Länder" value="Länder" v-model="checkedItems">
-        <label for="Länder">{{uiLabels.länder}}</label>
-      </div>
+    <div class="grid-item">
+      <input type="checkbox" id="Länder" value="Länder" v-model="categories">
+      <label for="Länder">{{uiLabels.länder}}</label>
+    </div>
 
-      <div class="grid-item">
-        <input type="checkbox" id="Floder"  value="Floder" v-model="checkedItems">
-        <label for="Floder">{{uiLabels.floder}}</label>
-      </div>
+    <div class="grid-item">
+      <input type="checkbox" id="Floder"  value="Floder" v-model="categories">
+      <label for="Floder">{{uiLabels.floder}}</label>
+    </div>
 
-      <div class="grid-item">
-        <input type="checkbox" id="Maträtter"  value="Maträtter" v-model="checkedItems">
-        <label for="Maträtter">{{uiLabels.maträtter}}</label>
-      </div>
+    <div class="grid-item">
+      <input type="checkbox" id="Maträtter"  value="Maträtter" v-model="categories">
+      <label for="Maträtter">{{uiLabels.maträtter}}</label>
+    </div>
 
-      <div class="grid-item">
-        <input type="checkbox" id="Frukter"  value="Frukter" v-model="checkedItems">
-        <label for="Frukter">{{uiLabels.frukter}}</label>
-      </div>
+    <div class="grid-item">
+      <input type="checkbox" id="Frukter"  value="Frukter" v-model="categories">
+      <label for="Frukter">{{uiLabels.frukter}}</label>
+    </div>
 
-      <div class="grid-item">
-        <input type="checkbox" id="Bilmärken"  value="Bilmärken" v-model="checkedItems">
-        <label for="Bilmärken">{{uiLabels.bilmärken}}</label>
-      </div>
+    <div class="grid-item">
+      <input type="checkbox" id="Bilmärken"  value="Bilmärken" v-model="categories">
+      <label for="Bilmärken">{{uiLabels.bilmärken}}</label>
+    </div>
 
-      <div class="grid-item">
-        <input type="checkbox" id="Kändisar"  value="Kändisar" v-model="checkedItems">
-        <label for="Kändisar">{{uiLabels.kändisar}}</label>
-      </div>
+    <div class="grid-item">
+      <input type="checkbox" id="Kändisar"  value="Kändisar" v-model="categories">
+      <label for="Kändisar">{{uiLabels.kändisar}}</label>
+    </div>
 
-      <div class="grid-item">
-        <input type="checkbox" id="Klädmärken"  value="Klädmärken" v-model="checkedItems">
-        <label for="Klädmärken">{{uiLabels.klädmärken}}</label>
-      </div>
+    <div class="grid-item">
+      <input type="checkbox" id="Klädmärken"  value="Klädmärken" v-model="categories">
+      <label for="Klädmärken">{{uiLabels.klädmärken}}</label>
+    </div>
 
-      <div class="grid-item">
-      <input type="checkbox" id="Sevärdheter" value="Sevärdheter" v-model="checkedItems">
-      <label for="Sevärdheter">{{uiLabels.sevärdheter}}</label>
-      </div>
-    </div> 
+    <div class="grid-item">
+    <input type="checkbox" id="Sevärdheter" value="Sevärdheter" v-model="categories">
+    <label for="Sevärdheter">{{uiLabels.sevärdheter}}</label>
+  </div>
+  </div> <br>
 
     <div class="antalomgångar">
       <label for="rounds">{{uiLabels.NumberOfRounds}}</label>
@@ -143,7 +143,7 @@ export default {
       rounds: "0",
       data: {},
       uiLabels: {},
-      checkedItems: []
+      categories: []
     }
   },
   created: function () {
@@ -163,8 +163,8 @@ export default {
     createPoll: function () {
       console.log("CreatorView")
       this.pollId = Math.floor(1000 + Math.random() * 9000)
-      console.log(this.checkedItems);
-      socket.emit("createPoll", {pollId: this.pollId, lang: this.lang, rounds: this.rounds})
+      console.log(this.categories);
+      socket.emit("createPoll", {pollId: this.pollId, lang: this.lang, rounds: this.rounds, categories: this.categories})
     },
     addQuestion: function () {
       socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers } )
@@ -175,17 +175,8 @@ export default {
     runQuestion: function () {
       socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
     }
- //   skapaButton: function () {
-      // Generate a random 4-digit number
- //     this.randomNumber = Math.floor(1000 + Math.random() * 9000);
- //     console.log(this.randomNumber)
- //   }
     
   }
-}
-function toggleCheckbox(checkbox) {
-  // Toggle the checked state of the clicked checkbox
-  checkbox.checked = !checkbox.checked;
 }
 
 </script>

@@ -5,7 +5,16 @@
 <br>
 
 <p id = "shareCode">
-    Dela koden med dina vänner!  {{ rounds }}
+    Dela koden med dina vänner!
+</p>
+
+<p>
+    Spelare:
+    <ul>
+        <li v-for="player in players">
+          {{ player.nameId }} <br>
+        </li>
+    </ul>
 </p>
 
  <footer>
@@ -52,7 +61,8 @@ export default {
      submittedAnswers: {},
      pollId: "",
      rounds: "0",
-     categories: []
+     categories: [],
+     players: []
    }
  },
 
@@ -64,17 +74,25 @@ export default {
   
     socket.on('getInfo', (poll) => {
         this.rounds = poll.rounds;
+        this.categories = poll.categories;
+        this.players = poll.players;
       })
-
+    
+    socket.on('playersUpdate', (players) => {
+        this.players = players;
+      })
+      
   },
 
 
  methods: {
-  
    submitAnswer: function (answer) {
      socket.emit("submitAnswer", {pollId: this.pollId, answer: answer})
-   }
+   },
+   startaSpel: function () {
+    socket.emit("startForAll", {pollId: this.pollId})
  }
+}
 }
 </script>
 
@@ -111,5 +129,13 @@ export default {
     text-shadow: rgb(255, 183, 0) 1px 0 10px;
     font-size: 50px; 
     }
+  
+  ul {
+    list-style: none;
+  }
+
+  li {
+    font-size: 20px;
+  }
 
 </style>

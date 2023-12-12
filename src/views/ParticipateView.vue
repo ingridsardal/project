@@ -52,18 +52,16 @@
         },
         pollId: "inactive poll",
         submittedAnswers: {},
-        nameId: ""
+        nameId: "",
+        players: []
       }
     },
     created: function () {
       this.pollId = this.$route.params.id
-      socket.emit('joinPoll', this.pollId)
-      socket.on("newQuestion", q =>
-        this.question = q
-      )
       socket.on("dataUpdate", answers =>
         this.submittedAnswers = answers
       )
+
     socket.emit("pageLoaded", this.lang);
       socket.on("init", (labels) => {
         this.uiLabels = labels
@@ -72,9 +70,6 @@
     },
 
     methods: {
-      submitAnswer: function (answer) {
-        socket.emit("submitAnswer", {pollId: this.pollId, answer: answer})
-      },
       joinButton: function () {
       socket.emit("joinGame", {pollId: this.pollId, nameId: this.nameId})
     }

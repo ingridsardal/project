@@ -8,6 +8,14 @@
     Dela koden med dina vänner! 
 </p>
 
+<p>
+    Spelare:
+    <ul>
+        <li v-for="player in players">
+          {{ player.nameId }} <br>
+        </li>
+    </ul>
+</p>
 
     <router-link v-bind:to="'/participantgame/'">
     <button id= "tillfälligPG" v-on:click="tillfälligPG">Tillfällig PG </button>      <!-- göra så att man kan justera språk-->
@@ -54,12 +62,13 @@ export default {
        a: []
      },
      pollId: "inactive poll",
-     submittedAnswers: {}
+     submittedAnswers: {},
+     nameId: "",
+     players: []
    }
  },
  created: function () {
    this.pollId = this.$route.params.id
-   socket.emit('joinPoll', this.pollId)
    socket.on("newQuestion", q =>
      this.question = q
    )
@@ -70,6 +79,11 @@ export default {
    socket.on("init", (labels) => {
      this.uiLabels = labels
    })
+  socket.emit("joinGame", {pollId: this.pollId, nameId: this.nameId})
+
+  socket.on("playersUpdate", players => {
+        this.players = players
+      })
    
  },
 
@@ -134,4 +148,11 @@ export default {
     text-shadow: rgb(255, 183, 0) 1px 0 10px;
     font-size: 50px; 
     }
+
+  ul {
+    list-style: none;
+  }
+  li {
+    font-size: 20px;
+  }
 </style>
