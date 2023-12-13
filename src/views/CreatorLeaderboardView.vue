@@ -1,4 +1,3 @@
-
 <template>
   <body id="apa">
     <header>
@@ -11,7 +10,7 @@
     </div>
 
     <footer>
-      <router-link v-bind:to="'/creatorgame/'">
+      <router-link v-bind:to="'/creatorgame/'+id">
         <button id="startRound" v-on:click="startRound"> Starta nästa omgång </button>
       </router-link>
     </footer>
@@ -35,8 +34,12 @@
       </tbody>
     </table>
 
-    <div class="message" :class="{ 'super-mega-last': isSuperMegaLastPlace }">
-      <p>Notera! {{ lastPlacePlayer.name }} ligger {{ isSuperMegaLastPlace ? 'supermega sist!' : 'sist...' }}</p>
+    <div class="message" :class="{ 'super-mega-last': isSuperMegaLastPlace, 'krossar-alla': isKrossarAlla }">
+      <p>
+        <span v-if="isKrossarAlla">{{ firstPlacePlayer.name }} fullständigt KROSSAR alla!!!!</span>
+        <span v-else-if="isSuperMegaLastPlace">{{ lastPlacePlayer.name }} ligger supermega sist!</span>
+        <span v-else>Notera! {{ lastPlacePlayer.name }} ligger sist...</span>
+      </p>
     </div>
 
     <div class="nextRound">
@@ -50,13 +53,12 @@ export default {
   data() {
     return {
       players: [
-        { id: 1, name: 'John', points: 23, answers: {} },
-        { id: 2, name: 'Anna', points: 22 },
-        { id: 3, name: 'Simon', points: 0 },
+        { id: 1, name: 'John', points: 25, answers: {} },
+        { id: 2, name: 'Anna', points: 20 },
+        { id: 3, name: 'Simon', points: 10 },
         { id: 4, name: 'pimon', points: 11 },
-        { id: 5, name: 'dimon', points: 24 },
-        
-        
+        { id: 5, name: 'dimon', points: 0 },
+        { id: 5, name: 'DunkarDavid"', points: 10 },
       ],
       inputLetter: this.generateRandomLetter(), // Förinställd random bokstav
     };
@@ -68,10 +70,18 @@ export default {
     lastPlacePlayer() {
       return this.sortedPlayers[this.sortedPlayers.length - 1];
     },
+    firstPlacePlayer() {
+      return this.sortedPlayers[0];
+    },
     isSuperMegaLastPlace() {
       const lastPlacePoints = this.lastPlacePlayer.points;
       const secondLastPlacePoints = this.sortedPlayers[this.sortedPlayers.length - 2].points;
-      return lastPlacePoints - secondLastPlacePoints >= 10;
+      return secondLastPlacePoints - lastPlacePoints >= 7;
+    },
+    isKrossarAlla() {
+      const firstPlacePoints = this.sortedPlayers[0].points;
+      const secondPlacePoints = this.sortedPlayers[1].points;
+      return firstPlacePoints - secondPlacePoints >= 5;
     },
   },
   methods: {
@@ -84,8 +94,7 @@ export default {
       return alphabet[randomIndex];
     },
     filterInput() {
-      // Filtrera inmatningen för att endast tillåta bokstäver
-      this.inputLetter = this.inputLetter.replace(/[^a-zA-Z]/g, '');
+      this.inputLetter = this.inputLetter.replace(/[^a-zA-ZåäöÅÄÖ]/g, '');
     },
   },
 };
@@ -188,6 +197,20 @@ export default {
   animation: holdVisible 1s ease-in-out;
 }
 
+.message.super-mega-last {
+    color: red; 
+    text-shadow: rgb(184, 0, 0) 1px 0 10px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.message.krossar-alla {
+  color: rgb(19, 209, 19);
+  text-shadow: rgb(21, 174, 21) 1px 0 7px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
   .nextRound {
     color: black;
     font-size: 45px;
@@ -256,10 +279,6 @@ export default {
   cursor: pointer;
 }
 
-.message.super-mega-last {
-    color: red; /* Justera färgen eller andra stilar för 'super-mega-last' här */
-    font-weight: bold;
-}
 
 </style>
 
