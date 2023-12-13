@@ -25,9 +25,35 @@
 </template>
 
 <script>
+// @ is an alias to /src
+import QuestionComponent from '@/components/QuestionComponent.vue';
+import io from 'socket.io-client';
+import { ssrContextKey } from 'vue';
+const socket = io("localhost:3000");
+
+// Get the full URL
+const currentURL = window.location.href;
+
+// Extract the path from the URL
+const pathArray = window.location.pathname.split('/');
+
+// Get the last part of the path
+const gameId = pathArray[pathArray.length - 1];
 export default {
   data() {
     return {
+      lang: localStorage.getItem("lang") || "en",
+   data: {},
+   uiLabels: {},
+     question: {
+       q: "",
+       a: []
+     },
+     submittedAnswers: {},
+     pollId: "",
+     rounds: "0",
+     categories: [],
+     uiLabels: {},
       players: [
         { id: 1, name: 'John', answers: { city: 'New York', country: 'USA', animal: 'Lion' } },
         { id: 2, name: 'Anna', answers: { city: 'Paris', country: 'France', animal: 'Elephant' } },
@@ -38,10 +64,22 @@ export default {
       animatedPlayer: null,
     };
   },
+  created: function () {
+    this.pollId = this.$route.params.id;
+    this.name = this.$route.params.name
+    socket.emit("pageLoaded", this.lang);
+
+    socket.on('submitAnswer', (players) => {
+      console.log("svar mottaget")
+        this.players = players;
+      })
+  },
+
   methods: {
     startAnimation(playerId) {
       this.animatedPlayer = playerId;
     },
+    
   },
 };
 </script>

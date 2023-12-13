@@ -15,9 +15,9 @@
           Kategorier:
         </h2>
 
-        <ul>
-            <li v-for="category in categories">
-              {{ category }} 
+        <ul style="list-style: none;">
+            <li v-for="(category,ans) in categories" :key="ans">
+              {{ category }}:   <input v-model="submittedAnswers[ans]" :placeholder="category">
             </li>
         </ul>
 
@@ -32,7 +32,7 @@
     <!--<button id="lockAnswers" class="lockButton">Lås in svar!</button>-->
 
     <router-link v-bind:to="'/participantlivescore/'">
-        <button id="lockAnswers" class="lockButton" v-on:click="">           <!-- måste skapa en write poll id number så att det funkar-->
+        <button id="lockAnswers" class="lockButton" v-on:click="submitAnswer">      <!-- måste skapa en write poll id number så att det funkar-->
           Lås in svar!</button>
     </router-link>
 
@@ -71,7 +71,8 @@ export default {
    this.name = this.$route.params.name
 
    socket.on("dataUpdate", answers =>
-     this.submittedAnswers = answers
+     this.submittedAnswers = answers,
+      console.log(this.submittedAnswers)
    )
  socket.emit("pageLoaded", this.lang);
    socket.on("init", (labels) => {
@@ -92,8 +93,8 @@ export default {
  },
 
  methods: {
-   submitAnswer: function (answer) {
-     socket.emit("submitAnswer", {pollId: this.pollId, answer: answer})
+   submitAnswer: function () {
+     socket.emit("submitAnswer", {pollId: this.pollId, answer: this.submittedAnswers})
    }
  }
 }
