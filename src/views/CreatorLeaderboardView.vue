@@ -58,7 +58,6 @@ export default {
         { id: 3, name: 'Simon', points: 10 },
         { id: 4, name: 'pimon', points: 11 },
         { id: 5, name: 'dimon', points: 0 },
-        { id: 5, name: 'DunkarDavid"', points: 10 },
       ],
       inputLetter: this.generateRandomLetter(), // Förinställd random bokstav
     };

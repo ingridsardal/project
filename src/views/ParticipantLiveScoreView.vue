@@ -4,6 +4,11 @@
       <h1>Game leader is casting the mantle of judgment upon you</h1>
     </header>
 
+    <router-link v-bind:to="'/participantleaderboard/'">
+        <button id="Tillfällig" v-on:click="">Tillfällig knapp som gör att man kommer till Participant Leaderboard </button>
+      </router-link>
+
+
     <section id="Section1">
       <div class="wrapper">
         <div v-for="player in players" :key="player.id" class="player-item">
