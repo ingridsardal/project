@@ -7,7 +7,9 @@
 <p id = "shareCode">
     {{uiLabels.shareCode}}!
 </p>
-
+<p> 
+{{roundCounter}}
+</p>
 <p>
     {{uiLabels.players}}:
     <ul>
@@ -60,6 +62,7 @@ export default {
      submittedAnswers: {},
      pollId: "",
      rounds: "0",
+     roundCounter: "0",
      categories: [],
      uiLabels: {},
      players: []
@@ -77,6 +80,7 @@ export default {
         this.rounds = poll.rounds;
         this.categories = poll.categories;
         this.players = poll.players;
+        this.roundCounter=poll.roundCounter;
       })
     
     socket.on('playersUpdate', (players) => {

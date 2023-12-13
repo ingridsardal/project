@@ -72,6 +72,14 @@
                 <option>10</option>
             </select>
     </div>
+
+    <div class="content">
+      <button id= "generateRandomLetter" v-on:click="generateRandomLetter">Lock In Letter</button>
+      <!-- Textrutan för att skriva in valfri bokstav -->
+      <input v-model="inputLetter" placeholder="" maxlength="1" @input="filterInput" />
+      {{randomLetter}}
+    </div>
+
   </body>
 
   <footer>
@@ -141,9 +149,11 @@ export default {
       lang: localStorage.getItem("lang") || "en",
       pollId: "",
       rounds: "0",
+      roundCounter:0,
       data: {},
       uiLabels: {},
-      categories: []
+      categories: [],
+      randomLetter: "",
     }
   },
   created: function () {
@@ -161,10 +171,11 @@ export default {
   },
   methods: {
     createPoll: function () {
+      this.roundCounter=this.roundCounter+1
       console.log("CreatorView")
       this.pollId = Math.floor(1000 + Math.random() * 9000)
       console.log(this.categories);
-      socket.emit("createPoll", {pollId: this.pollId, lang: this.lang, rounds: this.rounds, categories: this.categories})
+      socket.emit("createPoll", {pollId: this.pollId, lang: this.lang, rounds: this.rounds, categories: this.categories, roundCounter:this.roundCounter})
     },
     addQuestion: function () {
       socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers } )
@@ -174,8 +185,21 @@ export default {
     },
     runQuestion: function () {
       socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
-    }
+    },
+    filterInput() {
+      this.inputLetter = this.inputLetter.replace(/[^a-zA-ZåäöÅÄÖ]/g, '');
+    },
+    generateRandomLetter() {
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
     
+    // Use the inputLetter value if it's not empty, otherwise generate a random letter
+    if (this.inputLetter && /^[a-zA-ZåäöÅÄÖ]$/.test(this.inputLetter)) {
+      this.randomLetter = this.inputLetter.toUpperCase();
+    } else {
+      const randomIndex = Math.floor(Math.random() * alphabet.length);
+      this.randomLetter = alphabet[randomIndex];
+    }
+  },
   }
 }
 

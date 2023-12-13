@@ -58,8 +58,10 @@ export default {
         { id: 5, name: 'Dimon', answers: { city: 'Sydney', country: 'Australia', animal: 'Kangaroo' }, categories: [] },
       ],
       animatedPlayer: null,
+      roundCounter: 0,
     };
   },
+
   methods: {
     startAnimation(playerId) {
       this.animatedPlayer = playerId;
