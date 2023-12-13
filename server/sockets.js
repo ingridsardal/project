@@ -53,6 +53,10 @@ function sockets(io, socket, data) {
     io.to(d.pollId).emit('playersUpdate', data.getPlayers(d.pollId));
    });
 
+   socket.on('getPlayers', function(d){;
+    io.to(d.pollId).emit('playersUpdate', data.getPlayers(d.pollId));
+   });
+
    socket.on('joinSocket', function(d){;
     socket.join(d.pollId);
   });
@@ -70,6 +74,7 @@ function sockets(io, socket, data) {
    socket.on('submitTheAnswers', function(d){;
     console.log("submit answers", d)
     data.submitAnswer(d.pollId, d.answer, d.name)
+    socket.emit('getInfo', data.startGame(d.pollId));
    });
 }
 

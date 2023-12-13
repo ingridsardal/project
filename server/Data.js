@@ -65,7 +65,6 @@ Data.prototype.submitAnswer = function(pollId, answer, name) {
     const playerIndex = poll.players.findIndex(player => player.nameId === name);
     if (playerIndex !== -1) {
       const player = poll.players[playerIndex];
-      console.log("player", player);
       player.answers.push(answer);
       console.log("answers looks like ", player.answers);
     }
@@ -86,14 +85,17 @@ Data.prototype.getAnswers = function(pollId) {
 // Data vi gjort själva:
 Data.prototype.startGame = function(pollId) {
   const poll = this.polls[pollId];
+  console.log("game started", poll);
   if (typeof poll !== "undefined") {
-  return poll;
+    console.log("Game started");
+    return poll;
   }
+  console.log("Game not started", typeof poll);
 };
 
 Data.prototype.joinGame = function(pollId, nameId) {
   const poll = this.polls[pollId];
-  if (typeof poll !== "undefined") {
+  if (typeof poll !== "undefined", nameId !== "undefined") {
     let player = {
       nameId: nameId,
       answers: [],
