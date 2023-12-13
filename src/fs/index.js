@@ -47,7 +47,6 @@ const router = createRouter({
       component: () => import('../views/CreatorGameView.vue')
     },
 
-<<<<<<< HEAD
     {
       path: '/creatorleaderboard/',
       name: 'CreatorLeaderbordView',
@@ -62,8 +61,6 @@ const router = createRouter({
       component: () => import('../views/CreatorLeaderboardView.vue')
     },
 
-=======
->>>>>>> cfde450b909718bf6b56c7cbc8fcfb60eaefc06c
     {
       path: '/participantgame/',
       name: 'ParticipantGameView',

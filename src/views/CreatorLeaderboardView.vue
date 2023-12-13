@@ -1,24 +1,20 @@
+
 <template>
   <body id="apa">
     <header>
-      <h2>ScOrEBoaRD</h2>
+      <h1>SCOREBOARD</h1>
     </header>
-    <div>
-      <h3>Var du för snabb?</h3>
+
+    <div class="content">
+      <!-- Textrutan för att skriva in valfri bokstav -->
+      <input v-model="inputLetter" placeholder="" maxlength="1" @input="filterInput" />
     </div>
 
-    <div class="wrapper"> 
-      <div class="content">
-        <!-- Textrutan för att skriva in valfri bokstav -->
-        <input v-model="inputLetter" placeholder="Välj bokstav för nästa omgång" />
-      </div>
-
-      <footer> 
-        <router-link v-bind:to="'/creatorgame/'">
-          <button id="startRound" v-on:click="startRound"> Starta nästa omgång </button>
-        </router-link>
-      </footer>
-    </div>
+    <footer>
+      <router-link v-bind:to="'/creatorgame/'">
+        <button id="startRound" v-on:click="startRound"> Starta nästa omgång </button>
+      </router-link>
+    </footer>
 
     <table>
       <thead>
@@ -39,8 +35,12 @@
       </tbody>
     </table>
 
-    <div class="message">
-      <p>{{ lastPlacePlayer.name }} ligger supermega sist...</p>
+    <div class="message" :class="{ 'super-mega-last': isSuperMegaLastPlace }">
+      <p>Notera! {{ lastPlacePlayer.name }} ligger {{ isSuperMegaLastPlace ? 'supermega sist!' : 'sist...' }}</p>
+    </div>
+
+    <div class="nextRound">
+      <p>Välj bokstav för nästa omgång:</p>
     </div>
   </body>
 </template>
@@ -50,11 +50,13 @@ export default {
   data() {
     return {
       players: [
-        { id: 1, name: 'John', points: 15, answers: {} },
-        { id: 2, name: 'Anna', points: 13 },
-        { id: 3, name: 'Simon', points: 7 },
-        { id: 4, name: 'pimon', points: 8 },
-        { id: 5, name: 'dimon', points: 17 },
+        { id: 1, name: 'John', points: 23, answers: {} },
+        { id: 2, name: 'Anna', points: 22 },
+        { id: 3, name: 'Simon', points: 0 },
+        { id: 4, name: 'pimon', points: 11 },
+        { id: 5, name: 'dimon', points: 24 },
+        
+        
       ],
       inputLetter: this.generateRandomLetter(), // Förinställd random bokstav
     };
@@ -66,6 +68,11 @@ export default {
     lastPlacePlayer() {
       return this.sortedPlayers[this.sortedPlayers.length - 1];
     },
+    isSuperMegaLastPlace() {
+      const lastPlacePoints = this.lastPlacePlayer.points;
+      const secondLastPlacePoints = this.sortedPlayers[this.sortedPlayers.length - 2].points;
+      return lastPlacePoints - secondLastPlacePoints >= 10;
+    },
   },
   methods: {
     startRound() {
@@ -76,22 +83,24 @@ export default {
       const randomIndex = Math.floor(Math.random() * alphabet.length);
       return alphabet[randomIndex];
     },
+    filterInput() {
+      // Filtrera inmatningen för att endast tillåta bokstäver
+      this.inputLetter = this.inputLetter.replace(/[^a-zA-Z]/g, '');
+    },
   },
 };
 </script>
 
-
 <style scoped>
-
-
-  h2 {
+  h1 {
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
     color: rgb(249, 192, 86);
     text-shadow: rgb(255, 183, 0) 1px 0 10px;
-    font-size: 50px;
+    font-size: 100px;
+    margin-top: 10px;
   }
 
   h3 {
@@ -106,9 +115,11 @@ export default {
     width: 50%;
     border-collapse: collapse;
     margin-top: 1px;
-    background-color: rgb(249, 192, 86);
     color: white;
     position: absolute;
+    transform : scale(1.2);
+    margin-top: 25px;
+    
   }
 
   th, td {
@@ -118,21 +129,75 @@ export default {
   }
 
   th {
-    color: white;
+    color: black;
+    background-color: white;
+  }
+
+  tbody tr:nth-child(1) {
+    background-color: gold; /* Set background color for the first row */
+  }
+
+  tbody tr:nth-child(2) {
+    background-color: silver; /* Set background color for the second row */
+  }
+
+  tbody tr:nth-child(3) {
+    background-color:#cd7f32; /* Set background color for the third row */
+  }
+
+  tbody tr:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
+    background-color: darkred; /* Set background color for the rest of the rows */
   }
 
   .message {
-    color: white;
-    font-size: 40px;
+    color: black;
+    font-size: 30px;
     text-align: center;
-    margin-top: 150px;
-    padding: 20px;
-    border: 2px solid black;
+    margin-top: 120px; /* Uppdaterad margin för att anpassa positionen */
+    padding: 10px;
     position: absolute;
-    top: 500px;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
-    background-color: orange;
+    font-style: italic;
+    opacity: 0; /* Gör meddelandet osynligt från början */
+  animation: fadeIn 2s ease-in forwards; /* Använd en fadeIn-animation med 2 sekunders varaktighet och stanna kvar på slutet (forwards) */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Lägg till en ny animation för att hålla meddelandet synligt */
+@keyframes holdVisible {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Använd holdVisible-animationen efter fadeIn är klar */
+.message.animationend {
+  animation: holdVisible 1s ease-in-out;
+}
+
+  .nextRound {
+    color: black;
+    font-size: 45px;
+    right: 400px;
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    font-style: italic; 
+
+
   }
 
   .image img {
@@ -145,7 +210,7 @@ export default {
 
 
   #apa {
-    background-color: blue;
+
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -154,31 +219,48 @@ export default {
     height: 100vh;
   }
 
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-end;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-  }
+  
 
   .content input {
-    height: 140px;
-    width: 120px;
-    margin: 5px;
-    background-color: blue;
     border: none;
-    font-size: 140px; /* Ändra textstorlek här */
-  }
+    position: absolute;
+    bottom: 0;
+    right: 250px; 
+    height: 140px;
+    width: 140px;
+    border: none;
+    font-size: 115px; 
+    color: rgb(249, 192, 86);
+    text-shadow: rgb(255, 183, 0) 1px 0 10px;  
+    text-transform: uppercase; 
+    opacity: 0.7; /* Delvis genomskinlig från början */
+    transition: opacity 0.3s ease, border-color 0.3s ease;
+    outline: none;
+}
+
+.content:hover input {
+  opacity: 1;
+  border-color: rgb(249, 192, 86);
+  outline: none;
+}
+
 
   #startRound {
-    background-color: rgb(113, 255, 113);
-    height: 80px;
-    width: auto;
-    margin: 5px;
-  }
+  background-color: rgb(113, 255, 113);
+  height: 80px;
+  width: 12em;
+  margin: 25px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.message.super-mega-last {
+    color: red; /* Justera färgen eller andra stilar för 'super-mega-last' här */
+    font-weight: bold;
+}
+
 </style>
 
 
