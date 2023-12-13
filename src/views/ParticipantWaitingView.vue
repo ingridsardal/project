@@ -10,7 +10,7 @@
 
 <p>
     {{uiLabels.players}}:
-    <ul>
+    <ul> 
         <li v-for="player in players">
           {{ player.nameId }} 
         </li>
@@ -84,7 +84,7 @@ export default {
 
    socket.emit('joinSocket', {pollId: this.pollId})
 
-  socket.emit("joinGame", {pollId: this.pollId, nameId: this.nameId})
+   socket.emit('getPlayers', {pollId: this.pollId})
 
   socket.on("playersUpdate", players => {
         this.players = players

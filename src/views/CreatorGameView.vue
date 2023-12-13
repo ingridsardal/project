@@ -11,22 +11,22 @@
         <div class="wrapper">
 
           <div v-for="player in players" :key="player.id" class="player-item">
-            <h2>{{ player.name }}</h2>
+            <h2>{{ player.answers }} hej </h2>
 
             <ul>
-              <li v-for="(answer, category) in player.answers" :key="category">
+              <li v-for="(answer) in answers" :key="categories">
 
                 <div class="answerContainer">
                   <input type="checkbox" :id="category" :value="category" v-model="player.categories">
-                  <label class="answerLabel" :for="category">{{ category }} : {{ answer }}</label>
+                  <label class="answerLabel" :for="categories">{{categories }} : {{ answer }}</label>
                 </div>
 
               </li>
             </ul>
-
+          <!--
             <div>
               <p>Correct Answers: {{ getCorrectAnswersCount(player) }}</p>
-            </div>
+            </div>-->
 
           </div>
 
@@ -47,9 +47,14 @@
 </template>
 
 <script>
+import QuestionComponent from '@/components/QuestionComponent.vue';
+import io from 'socket.io-client';
+const socket = io("localhost:3000");
+
 export default {
   data() {
     return {
+<<<<<<< HEAD
       players: [
         { id: 1, name: 'John', answers: { city: 'New York', country: 'USA', animal: 'Lion' }, categories: [] },
         { id: 2, name: 'Anna', answers: { city: 'Paris', country: 'France', animal: 'Elephant' }, categories: [] },
@@ -62,13 +67,42 @@ export default {
     };
   },
 
+=======
+      lang: localStorage.getItem("lang") || "en",
+      data: {},
+      uiLabels: {},
+      pollId: "inactive poll",
+      players: [],
+      categories: [],
+      roundNumber: 0,
+      answers: "",
+    };
+  },
+
+
+  created() {
+    this.pollId = this.$route.params.id;
+
+    socket.emit('startGame', {pollId: this.pollId});
+
+    socket.on('getInfo', (poll) => {
+    console.log("getinfo", poll.players)
+     this.rounds = poll.rounds;
+     this.categories = poll.categories;
+     this.roundNumber = poll.roundNumber;
+     this.players = poll.players;
+   })
+  },
+
+>>>>>>> 6e66ef8c9d9bc0a19844bb1578674ddd81a1ad62
   methods: {
     startAnimation(playerId) {
       this.animatedPlayer = playerId;
     },
+    /*
     getCorrectAnswersCount(player) {
-      return Object.keys(player.categories).filter(category => player.categories[category]).length; /*från chatten*/
-    },
+      return Object.keys(player.categories).filter(category => player.categories[category]).length; från chatten
+    },*/
   },
 };
 </script>

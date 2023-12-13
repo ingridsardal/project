@@ -73,11 +73,6 @@ export default {
     this.pollId = this.$route.params.id;
     this.name = this.$route.params.name
     socket.emit("pageLoaded", this.lang);
-
-    socket.on('submitAnswer', (players) => {
-      console.log("svar mottaget")
-        this.players = players;
-      })
   },
 
   methods: {
