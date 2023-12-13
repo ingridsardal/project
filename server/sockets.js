@@ -58,13 +58,18 @@ function sockets(io, socket, data) {
   });
 
    socket.on('startGame', function(d){;
-    console.log("start game")
+    console.log("updateGameInfo")
     socket.emit('getInfo', data.startGame(d.pollId));
    }); 
 
    socket.on('startForAll', function(d){;
     console.log("start for all", d.pollId)
     io.to(d.pollId).emit('startGameForAll');
+   });
+
+   socket.on('submitTheAnswers', function(d){;
+    console.log("submit answers", d)
+    data.submitAnswer(d.pollId, d.answer, d.name)
    });
 }
 

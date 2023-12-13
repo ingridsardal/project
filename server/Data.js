@@ -59,21 +59,16 @@ Data.prototype.getQuestion = function(pollId, qId=null) {
   return []
 }
 
-Data.prototype.submitAnswer = function(pollId, answer) {
+Data.prototype.submitAnswer = function(pollId, answer, name) {
   const poll = this.polls[pollId];
-  console.log("answer submitted for ", pollId, answer);
   if (typeof poll !== 'undefined') {
-    let answers = poll.answers[poll.currentQuestion];
-    if (typeof answers !== 'object') {
-      answers = {};
-      answers[answer] = 1;
-      poll.answers.push(answers);
+    const playerIndex = poll.players.findIndex(player => player.nameId === name);
+    if (playerIndex !== -1) {
+      const player = poll.players[playerIndex];
+      console.log("player", player);
+      player.answers.push(answer);
+      console.log("answers looks like ", player.answers);
     }
-    else if (typeof answers[answer] === 'undefined')
-      answers[answer] = 1;
-    else
-      answers[answer] += 1
-    console.log("answers looks like ", answers, typeof answers);
   }
 }
 

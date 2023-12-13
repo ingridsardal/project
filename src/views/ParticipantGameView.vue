@@ -1,7 +1,7 @@
 <template>
 
     <header id="round">
-      <h1> Omgång {{ roundNumber }} <span>{{ "A" }}</span> </h1>
+      <h1> Omgång {{ roundNumber }} </h1>
     </header>
 
     <h3 id="infoText"> 
@@ -32,7 +32,7 @@
     <!--<button id="lockAnswers" class="lockButton">Lås in svar!</button>-->
 
     <router-link v-bind:to="'/participantlivescore/'">
-        <button id="lockAnswers" class="lockButton" v-on:click="submitAnswer">      <!-- måste skapa en write poll id number så att det funkar-->
+        <button id="lockAnswers" class="lockButton" v-on:click="submitTheAnswers">      <!-- måste skapa en write poll id number så att det funkar-->
           Lås in svar!</button>
     </router-link>
 
@@ -64,6 +64,7 @@ export default {
      name: "",
      categories: [],
      roundNumber: 0,
+
    }
  },
  created: function () {
@@ -93,8 +94,9 @@ export default {
  },
 
  methods: {
-   submitAnswer: function () {
-     socket.emit("submitAnswer", {pollId: this.pollId, answer: this.submittedAnswers})
+   submitTheAnswers: function () {
+     console.log("submitTheAnswers", this.submittedAnswers)
+     socket.emit("submitTheAnswers", {pollId: this.pollId, answer: this.submittedAnswers, name: this.name})
    }
  }
 }
