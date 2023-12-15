@@ -33,7 +33,6 @@ Data.prototype.createPoll = function(pollId, lang="en", rounds, categories, roun
   }
   return this.polls[pollId];
   }
-
   /*
   Data.prototype.roundCount = function(roundCounter) {{
       let poll = {};
@@ -138,13 +137,8 @@ Data.prototype.getPlayers = function (pollId) {
 
 
 
-Data.prototype.startRound = function(pollId, selectedLetter) {
-  const poll = this.polls[pollId];
-  if (typeof poll !== "undefined") {
-    console.log("Round started");
-    poll.selectedLetter = selectedLetter;
-  }   
-}
+
+
 
 export { Data };
 
