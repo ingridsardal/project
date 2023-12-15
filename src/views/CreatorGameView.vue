@@ -14,19 +14,14 @@
     <h2>{{ player.nameId }} </h2>
 
     <ul>
-  <li v-for="(category, index) in categories" :key="index">
-    <div class="answerContainer">
-      <div class="answerLabel">{{ category }}:</div>
-      <div>{{ Object.values(player.answers[0])[index] }}</div>
-    </div>
-  </li>
-</ul>
-
-
-          <!--
-            <div>
-              <p>Correct Answers: {{ getCorrectAnswersCount(player) }}</p>
-            </div>-->
+      <li v-for="(category, index) in categories" :key="index">
+        <div class="answerContainer">
+          <input type="checkbox">
+          <div class="answerLabel">{{ category }}:</div>
+          <div>{{ Object.values(player.answers[0])[index] }}</div>
+        </div>
+      </li>
+    </ul>
 
           </div>
 
@@ -89,10 +84,6 @@ export default {
     startAnimation(playerId) {
       this.animatedPlayer = playerId;
     },
-    /*
-    getCorrectAnswersCount(player) {
-      return Object.keys(player.categories).filter(category => player.categories[category]).length; från chatten
-    },*/
   },
 };
 </script>
