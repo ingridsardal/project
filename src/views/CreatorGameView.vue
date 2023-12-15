@@ -16,6 +16,7 @@
   <ul>
     <li v-for="index in categories.length" :key="index">
       <div class="answerContainer">
+        <input type="checkbox">
         <div class="answerLabel">{{ categories[index-1], console.log(index-1)}}:</div>
         <div v-if="isAnswered">{{ Object.values(player.answers[0])[index-1] }}</div>
       </div>
