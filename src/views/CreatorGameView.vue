@@ -80,9 +80,6 @@ export default {
         ...player,
         checkedAnswers: new Array(poll.categories.length).fill(false),
       }));
-     for(let i = 0; i < this.categories.length; i++) {
-       this.players.answers[i] = "";
-     }
    })
    socket.on('getAnswers', (players) => {
      this.players = players;
