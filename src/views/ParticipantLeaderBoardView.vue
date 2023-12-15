@@ -3,7 +3,7 @@
       <header>
         <h1>SCOREBOARD</h1>
       </header>
-      
+
       <table>
         <thead>
           <tr>

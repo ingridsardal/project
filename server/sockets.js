@@ -13,6 +13,10 @@ function sockets(io, socket, data) {
     data.createPoll(d.pollId, d.lang, d.rounds, d.categories, d.roundCounter);
   });
 
+  socket.on('startRound', function(d) {
+    data.startRound(d.pollId, d.selectedLetter);
+  });
+
   /*
   socket.on('addQuestion', function(d) {
     data.addQuestion(d.pollId, {q: d.q, a: d.a});

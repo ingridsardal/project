@@ -27,11 +27,13 @@ Data.prototype.createPoll = function(pollId, lang="en", rounds, categories, roun
     poll.categories = categories;
     poll.players = [];
     poll.roundNumber = 1;
+    poll.selectedLetter = "";
     this.polls[pollId] = poll;
     console.log("poll created ");
   }
   return this.polls[pollId];
   }
+
   /*
   Data.prototype.roundCount = function(roundCounter) {{
       let poll = {};
@@ -134,6 +136,13 @@ Data.prototype.getPlayers = function (pollId) {
   return [];
 };
 
+Data.prototype.startRound = function(pollId, selectedLetter) {
+  const poll = this.polls[pollId];
+  if (typeof poll !== "undefined") {
+    console.log("Round started");
+    poll.selectedLetter = selectedLetter;
+  }   
+}
 
 export { Data };
 
