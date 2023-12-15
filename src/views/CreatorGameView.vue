@@ -11,23 +11,20 @@
         <div class="wrapper">
 
           <div v-for="player in players" :key="player.id" class="player-item">
-    <h2>{{ player.nameId }} </h2>
+            <h2>{{ player.nameId }} </h2>
 
-    <ul>
-  <li v-for="(category, index) in categories" :key="index">
-    <div class="answerContainer">
-      <div class="answerLabel">{{ category }}:</div>
-      <div>{{ Object.values(player.answers[0])[index] }}</div>
-    </div>
-  </li>
-</ul>
-
-
-          <!--
+  <ul>
+    <li v-for="index in categories.length" :key="index">
+      <div class="answerContainer">
+        <div class="answerLabel">{{ categories[index-1], console.log(index-1)}}:</div>
+        <div v-if="isAnswered">{{ Object.values(player.answers[0])[index-1] }}</div>
+      </div>
+    </li>
+  </ul>
+  <!--
             <div>
-              <p>Correct Answers: {{ getCorrectAnswersCount(player) }}</p>
+              <p>Correct Answers: {{ getCheckedAnswersCount(player) }}</p>
             </div>-->
-
           </div>
 
         </div>
@@ -58,10 +55,11 @@ export default {
       data: {},
       uiLabels: {},
       pollId: "inactive poll",
-      players: [],
+      players: {},
       categories: [],
       roundNumber: 0,
       answers: "",
+      isAnswered: false,
     };
   },
 
@@ -78,10 +76,14 @@ export default {
      this.rounds = poll.rounds;
      this.categories = poll.categories;
      this.roundNumber = poll.roundNumber;
-     this.players = poll.players;
+     this.players = poll.players.map(player => ({
+        ...player,
+        checkedAnswers: new Array(poll.categories.length).fill(false),
+      }));
    })
    socket.on('getAnswers', (players) => {
      this.players = players;
+     this.isAnswered = true;
    })
   },
 
@@ -89,10 +91,10 @@ export default {
     startAnimation(playerId) {
       this.animatedPlayer = playerId;
     },
-    /*
-    getCorrectAnswersCount(player) {
-      return Object.keys(player.categories).filter(category => player.categories[category]).length; från chatten
-    },*/
+
+    getCheckedAnswersCount(player) {
+      return player.checkedAnswers.filter(checked => checked).length;
+    },
   },
 };
 </script>
