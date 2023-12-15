@@ -17,7 +17,7 @@
     <li v-for="index in categories.length" :key="index">
       <div class="answerContainer">
         <div class="answerLabel">{{ categories[index-1], console.log(index-1)}}:</div>
-        <div>{{ Object.values(player.answers)[index-1] }}</div>
+        <div v-if="isAnswered">{{ Object.values(player.answers[0])[index-1] }}</div>
       </div>
     </li>
   </ul>
@@ -59,6 +59,7 @@ export default {
       categories: [],
       roundNumber: 0,
       answers: "",
+      isAnswered: false,
     };
   },
 
@@ -82,6 +83,7 @@ export default {
    })
    socket.on('getAnswers', (players) => {
      this.players = players;
+     this.isAnswered = true;
    })
   },
 
