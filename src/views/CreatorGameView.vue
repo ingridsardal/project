@@ -14,10 +14,10 @@
     <h2>{{ player.nameId }} </h2>
 
   <ul>
-    <li v-for="(answer, index) in Object.values(player.answers)" :key="index">
+    <li v-for="index in categories.length" :key="index">
       <div class="answerContainer">
-        <div class="answerLabel">{{ categories[index], console.log(index)}}:</div>
-        <div>{{ answer[index] }}</div>
+        <div class="answerLabel">{{ categories[index-1], console.log(index-1)}}:</div>
+        <div>{{ Object.values(player.answers)[index-1] }}</div>
       </div>
     </li>
   </ul>
@@ -57,7 +57,7 @@ export default {
       data: {},
       uiLabels: {},
       pollId: "inactive poll",
-      players: {},
+      players: [],
       categories: [],
       roundNumber: 0,
       answers: "",
