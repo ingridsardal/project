@@ -21,10 +21,10 @@
       </div>
     </li>
   </ul>
-
+  <!--
             <div>
               <p>Correct Answers: {{ getCheckedAnswersCount(player) }}</p>
-            </div>
+            </div>-->
           </div>
 
         </div>
