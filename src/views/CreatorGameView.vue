@@ -11,18 +11,21 @@
         <div class="wrapper">
 
           <div v-for="player in players" :key="player.id" class="player-item">
-    <h2>{{ player.nameId }} </h2>
+            <h2>{{ player.nameId }} </h2>
 
-    <ul>
-      <li v-for="(category, index) in categories" :key="index">
-        <div class="answerContainer">
-          <input type="checkbox">
-          <div class="answerLabel">{{ category }}:</div>
-          <div>{{ Object.values(player.answers[0])[index] }}</div>
-        </div>
-      </li>
-    </ul>
+            <ul>
+              <li v-for="(category, index) in categories" :key="index">
+                <div class="answerContainer">
+                  <input type="checkbox" v-model="player.checkedAnswers[index]">
+                  <div class="answerLabel">{{ category }}:</div>
+                  <div>{{ Object.values(player.answers[0])[index] }}</div>
+                </div>
+              </li>
+            </ul>
 
+            <div>
+              <p>Correct Answers: {{ getCheckedAnswersCount(player) }}</p>
+            </div>
           </div>
 
         </div>
@@ -73,7 +76,10 @@ export default {
      this.rounds = poll.rounds;
      this.categories = poll.categories;
      this.roundNumber = poll.roundNumber;
-     this.players = poll.players;
+     this.players = poll.players.map(player => ({
+        ...player,
+        checkedAnswers: new Array(poll.categories.length).fill(false),
+      }));
    })
    socket.on('getAnswers', (players) => {
      this.players = players;
@@ -83,6 +89,10 @@ export default {
   methods: {
     startAnimation(playerId) {
       this.animatedPlayer = playerId;
+    },
+
+    getCheckedAnswersCount(player) {
+      return player.checkedAnswers.filter(checked => checked).length;
     },
   },
 };
