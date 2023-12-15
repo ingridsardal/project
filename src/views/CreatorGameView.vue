@@ -13,15 +13,14 @@
           <div v-for="player in players" :key="player.id" class="player-item">
             <h2>{{ player.nameId }} </h2>
 
-            <ul>
-              <li v-for="(category, index) in categories" :key="index">
-                <div class="answerContainer">
-                  <input type="checkbox" v-model="player.checkedAnswers[index]">
-                  <div class="answerLabel">{{ category }}:</div>
-                  <div>{{ Object.values(player.answers[0])[index] }}</div>
-                </div>
-              </li>
-            </ul>
+  <ul>
+    <li v-for="index in categories.length" :key="index">
+      <div class="answerContainer">
+        <div class="answerLabel">{{ categories[index-1], console.log(index-1)}}:</div>
+        <div>{{ Object.values(player.answers)[index-1] }}</div>
+      </div>
+    </li>
+  </ul>
 
             <div>
               <p>Correct Answers: {{ getCheckedAnswersCount(player) }}</p>
@@ -56,7 +55,7 @@ export default {
       data: {},
       uiLabels: {},
       pollId: "inactive poll",
-      players: [],
+      players: {},
       categories: [],
       roundNumber: 0,
       answers: "",
