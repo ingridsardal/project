@@ -7,9 +7,6 @@
 <p id = "shareCode">
     {{uiLabels.shareCode}}!
 </p>
-<p> 
-{{roundCounter}}
-</p>
 <p>
     {{uiLabels.players}}:
     <ul>

@@ -106,7 +106,13 @@ Data.prototype.startGame = function(pollId) {
 
 Data.prototype.joinGame = function(pollId, nameId) {
   const poll = this.polls[pollId];
-  if (typeof poll !== "undefined", nameId !== "undefined") {
+  console.log("joingame", poll)
+  if (typeof poll !== "undefined") {
+  for (let i = 0; i < poll.players.length; i++) {
+    if (poll.players[i].nameId === nameId) {
+      return false;
+    }
+  }
     let player = {
       nameId: nameId,
       answers: [],
@@ -115,7 +121,8 @@ Data.prototype.joinGame = function(pollId, nameId) {
     };
     poll.players.push(player);
     console.log("player joined", player.nameId);
-  }
+    return true
+}
 };
 
 Data.prototype.getPlayers = function (pollId) {

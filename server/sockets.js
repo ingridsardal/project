@@ -49,7 +49,7 @@ function sockets(io, socket, data) {
 
   // Här lägger vi till egna sockets
   socket.on('joinGame', function(d){;
-    data.joinGame(d.pollId, d.nameId)
+    socket.emit('isTaken', data.joinGame(d.pollId, d.nameId))
     io.to(d.pollId).emit('playersUpdate', data.getPlayers(d.pollId));
    });
 
@@ -74,8 +74,10 @@ function sockets(io, socket, data) {
    socket.on('submitTheAnswers', function(d){;
     console.log("submit answers", d)
     data.submitAnswer(d.pollId, d.answer, d.name)
-    socket.emit('getInfo', data.startGame(d.pollId));
+    io.to(d.pollId).emit('getAnswers', data.getPlayers(d.pollId));
    });
+
+   
 }
 
 export { sockets };

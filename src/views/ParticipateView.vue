@@ -15,11 +15,9 @@
       <input type="text" v-model="nameId">
     </label>
    <br>
-    <router-link v-bind:to="'/participantwaiting/'+pollId + '/' + nameId">
         <button id="joinButton" v-on:click="joinButton">           <!-- måste skapa en write poll id number så att det funkar-->
           {{uiLabels.joinGame}}
         </button>
-    </router-link>
     </div>
     <footer>
     <router-link v-bind:to="'/'">
@@ -65,6 +63,14 @@
     socket.emit("pageLoaded", this.lang);
       socket.on("init", (labels) => {
         this.uiLabels = labels
+      })
+
+      socket.on("isTaken", (isTaken) => {
+        if (!isTaken) {
+          alert("Name is taken or invalid poll id")
+        } else {
+          this.$router.push("/participantwaiting/" + this.pollId + '/' + this.nameId)
+        }
       })
 
     },

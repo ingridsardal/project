@@ -11,18 +11,17 @@
         <div class="wrapper">
 
           <div v-for="player in players" :key="player.id" class="player-item">
-            <h2>{{ player.answers }} hej </h2>
+    <h2>{{ player.nameId }} </h2>
 
-            <ul>
-              <li v-for="(answer) in answers" :key="categories">
+  <ul>
+    <li v-for="(answer, index) in Object.values(player.answers)" :key="index">
+      <div class="answerContainer">
+        <div class="answerLabel">{{ categories[index], console.log(index)}}:</div>
+        <div>{{ answer[index] }}</div>
+      </div>
+    </li>
+  </ul>
 
-                <div class="answerContainer">
-                  <input type="checkbox" :id="category" :value="category" v-model="player.categories">
-                  <label class="answerLabel" :for="categories">{{categories }} : {{ answer }}</label>
-                </div>
-
-              </li>
-            </ul>
           <!--
             <div>
               <p>Correct Answers: {{ getCorrectAnswersCount(player) }}</p>
@@ -54,25 +53,11 @@ const socket = io("localhost:3000");
 export default {
   data() {
     return {
-<<<<<<< HEAD
-      players: [
-        { id: 1, name: 'John', answers: { city: 'New York', country: 'USA', animal: 'Lion' }, categories: [] },
-        { id: 2, name: 'Anna', answers: { city: 'Paris', country: 'France', animal: 'Elephant' }, categories: [] },
-        { id: 3, name: 'Simon', answers: { city: 'Tokyo', country: 'Japan', animal: 'Panda' }, categories: [] },
-        { id: 4, name: 'Pimon', answers: { city: 'Berlin', country: 'Germany', animal: 'Giraffe' }, categories: [] },
-        { id: 5, name: 'Dimon', answers: { city: 'Sydney', country: 'Australia', animal: 'Kangaroo' }, categories: [] },
-      ],
-      animatedPlayer: null,
-      roundCounter: 0,
-    };
-  },
-
-=======
       lang: localStorage.getItem("lang") || "en",
       data: {},
       uiLabels: {},
       pollId: "inactive poll",
-      players: [],
+      players: {},
       categories: [],
       roundNumber: 0,
       answers: "",
@@ -85,6 +70,8 @@ export default {
 
     socket.emit('startGame', {pollId: this.pollId});
 
+    socket.emit('joinSocket', {pollId: this.pollId})
+
     socket.on('getInfo', (poll) => {
     console.log("getinfo", poll.players)
      this.rounds = poll.rounds;
@@ -92,9 +79,11 @@ export default {
      this.roundNumber = poll.roundNumber;
      this.players = poll.players;
    })
+   socket.on('getAnswers', (players) => {
+     this.players = players;
+   })
   },
 
->>>>>>> 6e66ef8c9d9bc0a19844bb1578674ddd81a1ad62
   methods: {
     startAnimation(playerId) {
       this.animatedPlayer = playerId;
