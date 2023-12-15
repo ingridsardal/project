@@ -49,6 +49,8 @@
 </template>
 
 <script>
+import { Socket } from 'socket.io-client';
+
 export default {
   data() {
     return {
@@ -60,6 +62,7 @@ export default {
         { id: 5, name: 'dimon', points: 0 },
       ],
       inputLetter: this.generateRandomLetter(), // Förinställd random bokstav
+      selectedLetter: '',
     };
   },
   computed: {
@@ -81,11 +84,14 @@ export default {
       const firstPlacePoints = this.sortedPlayers[0].points;
       const secondPlacePoints = this.sortedPlayers[1].points;
       return firstPlacePoints - secondPlacePoints >= 5;
+
     },
   },
   methods: {
     startRound() {
-      console.log('Startar nästa omgång med bokstaven:', this.inputLetter);
+      this.selectedLetter = this.inputLetter;
+      console.log('Startar nästa omgång med bokstaven:', this.selectedLetter);
+      Socket.emit('startRound',{selectedLetter: this.selectedLetter})
     },
     generateRandomLetter() {
       const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';

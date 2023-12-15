@@ -24,8 +24,8 @@
       </div>
 
       <div class="letterInfo">
-        <h2>Bokstav:</h2>
-        <p>Här kan du skriva information om vilken bokstav som gäller för rundan.</p>
+        <h2>Bokstav: {{ this.selectedLetter }}</h2>
+        
       </div>
     </div>
     
@@ -64,6 +64,7 @@ export default {
      name: "",
      categories: [],
      roundNumber: 0,
+     selectedLetter:'',
 
    }
  },
@@ -89,6 +90,7 @@ export default {
      this.rounds = poll.rounds;
      this.categories = poll.categories;
      this.roundNumber = poll.roundNumber;
+     this.selectedLetter = poll.selectedLetter;
    })
    
  },
