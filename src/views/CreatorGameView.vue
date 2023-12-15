@@ -14,11 +14,10 @@
             <h2>{{ player.nameId }} </h2>
 
   <ul>
-    <li v-for="index in categories.length" :key="index">
+    <li v-for="(answer, category) in player.answers[0]" :key="index">
       <div class="answerContainer">
         <input type="checkbox">
-        <div class="answerLabel">{{ categories[index-1], console.log(index-1)}}:</div>
-        <div v-if="isAnswered">{{ Object.values(player.answers[0])[index-1] }}</div>
+        <div class="answerLabel"> {{ category }}: {{ answer }} </div>
       </div>
     </li>
   </ul>
@@ -56,7 +55,7 @@ export default {
       data: {},
       uiLabels: {},
       pollId: "inactive poll",
-      players: {},
+      players: [],
       categories: [],
       roundNumber: 0,
       answers: "",
@@ -81,6 +80,9 @@ export default {
         ...player,
         checkedAnswers: new Array(poll.categories.length).fill(false),
       }));
+     for(let i = 0; i < this.categories.length; i++) {
+       this.players.answers[i] = "";
+     }
    })
    socket.on('getAnswers', (players) => {
      this.players = players;
