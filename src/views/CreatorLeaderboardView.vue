@@ -91,7 +91,7 @@ export default {
     startRound() {
       this.selectedLetter = this.inputLetter;
       console.log('Startar nästa omgång med bokstaven:', this.selectedLetter);
-      Socket.emit('startRound',{selectedLetter: this.selectedLetter})
+      socket.emit('startRound',{selectedLetter: this.selectedLetter})
     },
     generateRandomLetter() {
       const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -224,8 +224,6 @@ export default {
     bottom: 0;
     padding: 10px;
     font-style: italic; 
-
-
   }
 
   .image img {

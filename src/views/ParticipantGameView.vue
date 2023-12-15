@@ -24,7 +24,7 @@
       </div>
 
       <div class="letterInfo">
-        <h2>Bokstav: {{ this.selectedLetter }}</h2>
+        <h2>Bokstav: {{ this.firstSelectedLetter }}</h2>
         
       </div>
     </div>
@@ -65,6 +65,7 @@ export default {
      categories: [],
      roundNumber: 0,
      selectedLetter:'',
+     firstSelectedLetter: '',
 
    }
  },
@@ -91,6 +92,7 @@ export default {
      this.categories = poll.categories;
      this.roundNumber = poll.roundNumber;
      this.selectedLetter = poll.selectedLetter;
+     this.firstSelectedLetter = poll.selectedLetter;
    })
    
  },
@@ -121,6 +123,8 @@ export default {
   .categories {
     flex-basis: 50%;
   }
+
+  
   
   .letterInfo {
     flex-basis: 45%;

@@ -4,6 +4,15 @@
         <h1> {{uiLabels.createOwnGame}} </h1>
   </header>
 
+  <div class="textWindow">
+      <!-- Textrutan för att skriva in valfri bokstav -->
+      <input v-model="inputLetter" placeholder="" maxlength="1" @input="filterInput" />
+    </div>
+
+    <div class="firstRoundLetter">
+      <p>Välj bokstav för första omgången:</p>
+    </div>
+
   <body>
         <h3 style="font-weight: normal;">
           {{uiLabels.chooseCategory}}:
@@ -73,12 +82,15 @@
             </select>
     </div>
 
-    <div class="content">
+      <!-- 
+      <div class="content">
       <button id= "generateRandomLetter" v-on:click="generateRandomLetter">Lock In Letter</button>
-      <!-- Textrutan för att skriva in valfri bokstav -->
+      
       <input v-model="inputLetter" placeholder="" maxlength="1" @input="filterInput" />
       {{randomLetter}}
-    </div>
+    </div> 
+    -->
+    
 
   </body>
 
@@ -154,6 +166,8 @@ export default {
       uiLabels: {},
       categories: [],
       randomLetter: "",
+      inputLetter: this.generateRandomLetter(),
+      firstSelectedLetter: "",
     }
   },
   created: function () {
@@ -175,7 +189,9 @@ export default {
       console.log("CreatorView")
       this.pollId = Math.floor(1000 + Math.random() * 9000)
       console.log(this.categories);
-      socket.emit("createPoll", {pollId: this.pollId, lang: this.lang, rounds: this.rounds, categories: this.categories, roundCounter:this.roundCounter})
+      this.firstSelectedLetter = this.inputLetter;
+      console.log('Startar nästa omgång med bokstaven:', this.firstSelectedLetter);
+      socket.emit("createPoll", {pollId: this.pollId, lang: this.lang, rounds: this.rounds, categories: this.categories, roundCounter:this.roundCounter,firstSelectedLetter: this.firstSelectedLetter})
     },
     addQuestion: function () {
       socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers } )
@@ -191,14 +207,9 @@ export default {
     },
     generateRandomLetter() {
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
-    
-    // Use the inputLetter value if it's not empty, otherwise generate a random letter
-    if (this.inputLetter && /^[a-zA-ZåäöÅÄÖ]$/.test(this.inputLetter)) {
-      this.randomLetter = this.inputLetter.toUpperCase();
-    } else {
-      const randomIndex = Math.floor(Math.random() * alphabet.length);
-      this.randomLetter = alphabet[randomIndex];
-    }
+    const randomIndex = Math.floor(Math.random() * alphabet.length);
+    return alphabet[randomIndex];
+  
   },
   }
 }
@@ -273,6 +284,39 @@ button:hover {
     background-color: grey;
     cursor: pointer;
 }
+
+.textWindow input {
+    border: none;
+    position: absolute;
+    bottom: 0;
+    right: 250px; 
+    height: 140px;
+    width: 140px;
+    border: none;
+    font-size: 115px; 
+    color: rgb(249, 192, 86);
+    text-shadow: rgb(255, 183, 0) 1px 0 10px;  
+    text-transform: uppercase; 
+    opacity: 0.7; /* Delvis genomskinlig från början */
+    transition: opacity 0.3s ease, border-color 0.3s ease;
+    outline: none;
+}
+
+.textWindow:hover input {
+  opacity: 1;
+  border-color: rgb(249, 192, 86);
+  outline: none;
+}
+
+.firstRoundLetter {
+    color: black;
+    font-size: 45px;
+    right: 400px;
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    font-style: italic; 
+  }
 
 
 /*

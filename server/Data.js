@@ -18,7 +18,7 @@ Data.prototype.getUILabels = function (lang = "en") {
   return JSON.parse(labels);
 }
 
-Data.prototype.createPoll = function(pollId, lang="en", rounds, categories, roundCounter) {
+Data.prototype.createPoll = function(pollId, lang="en", rounds, categories, roundCounter, firstSelectedLetter) {
   if (typeof this.polls[pollId] === "undefined") {
     let poll = {};
     poll.lang = lang;  
@@ -27,7 +27,7 @@ Data.prototype.createPoll = function(pollId, lang="en", rounds, categories, roun
     poll.categories = categories;
     poll.players = [];
     poll.roundNumber = 1;
-    poll.selectedLetter = "";
+    poll.selectedLetter = firstSelectedLetter;
     this.polls[pollId] = poll;
     console.log("poll created ");
   }
@@ -135,6 +135,8 @@ Data.prototype.getPlayers = function (pollId) {
   }
   return [];
 };
+
+
 
 Data.prototype.startRound = function(pollId, selectedLetter) {
   const poll = this.polls[pollId];

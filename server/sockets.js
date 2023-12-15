@@ -10,7 +10,7 @@ function sockets(io, socket, data) {
   });
 
   socket.on('createPoll', function(d) {
-    data.createPoll(d.pollId, d.lang, d.rounds, d.categories, d.roundCounter);
+    data.createPoll(d.pollId, d.lang, d.rounds, d.categories, d.roundCounter, d.firstSelectedLetter);
   });
 
   socket.on('startRound', function(d) {
