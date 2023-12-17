@@ -81,6 +81,11 @@ function sockets(io, socket, data) {
     io.to(d.pollId).emit('getAnswers', data.getPlayers(d.pollId));
    });
 
+   socket.on("giveScore", function(d){  
+    console.log("give score", d)
+    data.giveScore(d.pollId, d.players)
+   });
+
    
 }
 

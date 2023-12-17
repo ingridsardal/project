@@ -53,14 +53,14 @@ const router = createRouter({
       component: () => import('../views/ParticipantGameView.vue')
     },
     {
-      path: '/participantlivescore/',
+      path: '/participantlivescore/:id',
       name: 'ParticipantLiveScoreView',
       component: () => import('../views/ParticipantLiveScoreView.vue')
     },
 
 
     {
-      path: '/creatorleaderboard/',
+      path: '/creatorleaderboard/:id',
       name: 'CreatorLeaderboardView',
       component: () => import('../views/CreatorLeaderboardView.vue')
     },

@@ -10,9 +10,7 @@
     </div>
 
     <footer>
-      <router-link v-bind:to="'/creatorgame/'+id">
         <button id="startRound" v-on:click="startRound"> Starta nästa omgång </button>
-      </router-link>
     </footer>
 
     <table>
@@ -27,20 +25,21 @@
       <tbody>
         <!-- Loop through your sorted data here and create rows for each player -->
         <tr v-for="(player, index) in sortedPlayers" :key="player.id">
-          <td>{{ player.name }}</td>
+          <td>{{ player.nameId }}</td>
           <td>{{ index + 1 }}</td>
           <td>{{ player.points }}</td>
         </tr>
       </tbody>
     </table>
 
+        <!--
     <div class="message" :class="{ 'super-mega-last': isSuperMegaLastPlace, 'krossar-alla': isKrossarAlla }">
       <p>
         <span v-if="isKrossarAlla">{{ firstPlacePlayer.name }} fullständigt KROSSAR alla!!!!</span>
         <span v-else-if="isSuperMegaLastPlace">{{ lastPlacePlayer.name }} ligger supermega sist!</span>
-        <span v-else>Notera! {{ lastPlacePlayer.name }} ligger sist...</span>
+        <span v-else>Notera! {{ lastPlacePlayer.name }} ligger sist...</span> 
       </p>
-    </div>
+    </div>-->
 
     <div class="nextRound">
       <p>Välj bokstav för nästa omgång:</p>
@@ -49,7 +48,8 @@
 </template>
 
 <script>
-import { Socket } from 'socket.io-client';
+import io from 'socket.io-client';
+const socket = io("localhost:3000");
 
 export default {
   data() {
@@ -61,10 +61,31 @@ export default {
         { id: 4, name: 'pimon', points: 11 },
         { id: 5, name: 'dimon', points: 0 },
       ],
+      lang: localStorage.getItem("lang") || "en",
+      data: {},
+      uiLabels: {},
+      pollId: "inactive poll",
       inputLetter: this.generateRandomLetter(), // Förinställd random bokstav
       selectedLetter: '',
     };
   },
+
+  created() {
+    this.pollId = this.$route.params.id;
+
+    socket.emit('startGame', {pollId: this.pollId});
+
+    socket.emit('joinSocket', {pollId: this.pollId});
+
+    socket.on('getInfo', (poll) => {
+      console.log(poll)
+      this.players = poll.players;
+      console.log(this.players1)
+
+    });
+
+  },
+
   computed: {
     sortedPlayers() {
       return this.players.slice().sort((a, b) => b.points - a.points);
@@ -92,6 +113,7 @@ export default {
       this.selectedLetter = this.inputLetter;
       console.log('Startar nästa omgång med bokstaven:', this.selectedLetter);
       socket.emit('startRound',{selectedLetter: this.selectedLetter})
+      this.$router.push('/creatorgame/'+pollId);
     },
     generateRandomLetter() {
       const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
