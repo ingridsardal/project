@@ -74,6 +74,7 @@ export default {
      this.players = poll.players
    })
    socket.on('getAnswers', (players) => {
+      console.log("getAnswers", players)
      this.players = players;
      this.isAnswered = true;
    })

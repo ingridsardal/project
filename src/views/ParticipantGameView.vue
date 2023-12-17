@@ -26,16 +26,17 @@
 
       <div class="letterInfo">
         <h2>Bokstav: {{ this.firstSelectedLetter }}</h2>
-        
+      </div>
+      <div v-if="gotFirstAnswer">
+       {{ startCountdown() }}
+        <p>{{ countdown }}</p>
       </div>
     </div>
     
     <!--<button id="lockAnswers" class="lockButton">Lås in svar!</button>-->
 
-    <router-link v-bind:to="'/participantlivescore/' + pollId">
         <button id="lockAnswers" class="lockButton" v-on:click="submitTheAnswers">      <!-- måste skapa en write poll id number så att det funkar-->
           Lås in svar!</button>
-    </router-link>
 
   </template>
 
@@ -43,6 +44,7 @@
 // @ is an alias to /src
 import QuestionComponent from '@/components/QuestionComponent.vue';
 import io from 'socket.io-client';
+import { useRouter } from 'vue-router';
 const socket = io("localhost:3000");
 
 export default {
@@ -67,7 +69,8 @@ export default {
      roundNumber: 0,
      selectedLetter:'',
      firstSelectedLetter: '',
-
+     gotFirstAnswer: false,
+     countdown: 8,
    }
  },
  created: function () {
@@ -95,6 +98,10 @@ export default {
      this.selectedLetter = poll.selectedLetter;
      this.firstSelectedLetter = poll.selectedLetter;
    })
+
+   socket.on('getAnswers', (players) => {
+      this.gotFirstAnswer = true;
+   })
    
  },
 
@@ -102,9 +109,19 @@ export default {
    submitTheAnswers: function () {
      console.log("submitTheAnswers", this.submittedAnswers)
      socket.emit("submitTheAnswers", {pollId: this.pollId, answer: this.submittedAnswers, name: this.name})
-   }
- }
-}
+     this.$router.push('/participantlivescore/' + this.pollId);
+   },
+ startCountdown() {
+      if (this.countdown > 0) {
+        setTimeout(() => {
+          this.countdown--;
+        }, 1000);
+      } else {
+        this.submitTheAnswers();
+      }
+    },
+  },
+};
 
 
 </script>
