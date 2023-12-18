@@ -10,7 +10,7 @@
     </div>
 
     <div class="firstRoundLetter">
-      <p>Välj bokstav för första omgången:</p>
+      <p>{{uiLabels.firstRoundLetter}}</p>
     </div>
 
   <body>
@@ -309,7 +309,7 @@ button:hover {
 
 .firstRoundLetter {
     color: black;
-    font-size: 45px;
+    font-size: 30px;
     right: 400px;
     position: absolute;
     bottom: 0;
