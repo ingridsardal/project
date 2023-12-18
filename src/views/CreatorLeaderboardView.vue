@@ -312,6 +312,3 @@ export default {
 
 
 </style>
-
-
-    

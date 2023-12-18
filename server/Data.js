@@ -95,7 +95,7 @@ Data.prototype.getAnswers = function(pollId) {
 }
 
 // Data vi gjort själva:
-Data.prototype.startGame = function(pollId) {
+Data.prototype.startGame = function(pollId, selectedLetter) {
   const poll = this.polls[pollId];
   console.log("game started", poll);
   if (typeof poll !== "undefined") {

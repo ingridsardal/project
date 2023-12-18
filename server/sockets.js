@@ -14,7 +14,7 @@ function sockets(io, socket, data) {
   });
 
   socket.on('startRound', function(d) {
-    data.startRound(d.pollId, d.selectedLetter);
+    data.startGame(d.pollId, d.selectedLetter);
     io.to(d.pollId).emit('moveToNextRound');
 
   });
