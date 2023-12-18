@@ -1,7 +1,7 @@
 <template>
 
     <header id="round">
-      <h1> Omgång {{ roundNumber }} </h1>
+      <h1> {{ uiLabels.round }} {{ roundNumber }} </h1>
     </header>
 
     <h3 id="infoText"> 
@@ -35,7 +35,7 @@
     <!--<button id="lockAnswers" class="lockButton">Lås in svar!</button>-->
 
         <button id="lockAnswers" class="lockButton" v-on:click="submitTheAnswers">      <!-- måste skapa en write poll id number så att det funkar-->
-          {{uiLabels.lock-answer}}</button>
+          {{uiLabels.lockAnswer}}</button>
 
   </template>
 
