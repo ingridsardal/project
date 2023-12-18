@@ -4,13 +4,13 @@
       <h1>SCOREBOARD {{ roundCounter }}</h1>
     </header>
 
-    <div class="content">
+    <div class="content" v-if="showContent">
       <!-- Textrutan för att skriva in valfri bokstav -->
       <input v-model="inputLetter" placeholder="" maxlength="1" @input="filterInput" />
     </div>
 
     <footer>
-        <button id="startRound" v-on:click="startRound"> Starta nästa omgång </button>
+        <button id="startRound" v-on:click="startRound"> {{ buttonText }}</button>
     </footer>
 
     <table>
@@ -41,7 +41,7 @@
       </p>
     </div>-->
 
-    <div class="nextRound">
+    <div class="nextRound" v-if="showContent">
       <p>Välj bokstav för nästa omgång:</p>
     </div>
   </body>
@@ -63,6 +63,8 @@ export default {
       selectedLetter: '',
       roundCounter: 0,
       rounds: 0,
+      buttonText: "Starta nästa omgång",
+      showContent: true
     };
   },
 
@@ -102,8 +104,19 @@ export default {
       const secondPlacePoints = this.sortedPlayers[1].points;
       return firstPlacePoints - secondPlacePoints >= 5;
 
-    },
+    }
   },
+
+    watch: {
+    // Övervaka förändringar i roundCounter
+    roundCounter(newVal) {
+      if (newVal >= this.rounds) {
+        this.buttonText = 'Gå till resultat';
+        this.showContent = false;
+        }
+      },
+    },
+
   methods: {
     startRound() {
       this.roundCounter=this.roundCounter+1;
@@ -112,6 +125,8 @@ export default {
       console.log('Startar nästa omgång med bokstaven:', this.selectedLetter);
       if (this.roundCounter > this.rounds) {
         console.log("last round")
+        socket.emit('moveToResult', {pollId: this.pollId})
+        console.log("move players to result")
         this.$router.push('/result/' + this.pollId);
       }
       else {
@@ -311,5 +326,12 @@ export default {
   cursor: pointer;
 }
 
+.content input {
+  display: block;
+}
+
+.content input[hidden] {
+  display: none;
+}
 
 </style>

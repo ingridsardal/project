@@ -77,9 +77,15 @@ function sockets(io, socket, data) {
     console.log("start for all", d.pollId)
     io.to(d.pollId).emit('startGameForAll');
    });
+   
    socket.on('moveToScoreboard', function(d){;
     console.log("sending players to scoreboard", d.pollId)
     io.to(d.pollId).emit('movingAllToScoreboard');
+   });
+
+   socket.on('moveToResult', function(d){;
+    console.log("sending players to resultview", d.pollId)
+    io.to(d.pollId).emit('movingAllToResult');
    });
 
    socket.on('submitTheAnswers', function(d){;
