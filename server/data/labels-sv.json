@@ -30,13 +30,18 @@
 	"klädmärken":"Klädmärken",
 	"sevärdheter":"Sevärdheter",
 
+	"letter":"Bokstav: ",
+    "categories":"Kategorier: ",
+    "round": "Omgång ",
+    "infotext": "Nu ska du skriva en sak under varje kategori som börjar på den angivna bokstaven. Lycka till king!",
+	"lockAnswer": "Lås in svar!",
 
+	"giveScore": "Dags att rätta!",
+	"markScore": "Markera de svar som är korrekta:",
 
-	"sales-pitch": "Svar. Helt. Enkelt.",
-	"subHeading": "Ett enkelt enkätverktyg",
+	"sales-pitch": "Kreativt. Roligt. Familjärt.",
+	"subHeading": "Webb-versionen av ett älskat spel!",
 	"invite": "Bjud in deltagare med den här länken:",
-	
-
 
 	"question": "Fråga",
 	"headerJoinGame": "Gå med i ett spel!"

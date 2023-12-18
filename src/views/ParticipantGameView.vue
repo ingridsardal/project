@@ -1,30 +1,30 @@
 <template>
 
     <header id="round">
-      <h1> Omgång {{ roundNumber }} </h1>
+      <h1> {{ uiLabels.round }} {{ roundNumber }} </h1>
     </header>
 
     <h3 id="infoText"> 
-        Nu ska du skriva en sak under varje kategori som börjar på den angivna bokstaven. Lycka till king!  
+      {{uiLabels.infotext}}
     </h3>
 
     <div class="contentWrapper">
       <div class="categories">
 
         <h2>
-          Kategorier:
+          {{ uiLabels.categories }}
         </h2>
 
         <ul style="list-style: none;">
             <li v-for="(category,ans) in categories" :key="ans">
-              {{ category }}:   <input v-model="submittedAnswers[category]" :placeholder="category">
+              {{ uiLabels[category] }}:   <input v-model="submittedAnswers[category]" :placeholder="uiLabels[category]">
             </li>
         </ul>
 
       </div>
 
       <div class="letterInfo">
-        <h2>Bokstav: {{ this.firstSelectedLetter }}</h2>
+        <h2>{{uiLabels.letter}} {{ this.firstSelectedLetter }}</h2>
       </div>
       <div class="countdown" v-if="gotFirstAnswer">
        {{ startCountdown() }}
@@ -35,7 +35,7 @@
     <!--<button id="lockAnswers" class="lockButton">Lås in svar!</button>-->
 
         <button id="lockAnswers" class="lockButton" v-on:click="submitTheAnswers">      <!-- måste skapa en write poll id number så att det funkar-->
-          Lås in svar!</button>
+          {{uiLabels.lockAnswer}}</button>
 
   </template>
 
