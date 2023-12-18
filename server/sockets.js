@@ -91,6 +91,7 @@ function sockets(io, socket, data) {
     console.log("give score", d)
     data.giveScore(d.pollId, d.players)
    });
+   
 
    
 }

@@ -83,7 +83,7 @@ export default {
 
     socket.on('moveToNextRound', () => {
     console.log("moved players to next round")
-    this.$router.push('/creatorgame/' + pollId);
+    this.$router.push('/creatorgame/' + this.pollId);
   })
 
   },
@@ -112,12 +112,13 @@ export default {
   },
   methods: {
     startRound() {
-      this.roundCounter=this.roundCounter+1
-      console.log(this.roundCounter);
+      this.roundCounter=this.roundCounter+1;
+      console.log("hello round counter" + this.roundCounter);
 /*här ska finna en ifsats som skciakr off till resultviw om vi är på sista rundan*/
       this.selectedLetter = this.inputLetter;
       console.log('Startar nästa omgång med bokstaven:', this.selectedLetter);
       socket.emit('startRound',{pollId:this.pollId, selectedLetter: this.selectedLetter})
+      /*socket.emit('addRoundCount',{roundCounter:this.roundCounter})*/
       /*this.$router.push('/creatorgame/'+pollId);*/
     },
     generateRandomLetter() {
