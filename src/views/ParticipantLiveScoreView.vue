@@ -3,28 +3,28 @@
     <header>
       <h1>Game leader is casting the mantle of judgment upon you</h1>
     </header>
+    <body>
+      <section id="Section1">
+          <div class="wrapper">
 
-    <router-link v-bind:to="'/participantleaderboard/'">
-        <button id="Tillfällig" v-on:click="">Tillfällig knapp som gör att man kommer till Participant Leaderboard </button>
-      </router-link>
+            <div v-for="player in players" :key="player.id" class="player-item">
+              <h2>{{ player.nameId }} </h2>
 
-
-    <section id="Section1">
-      <div class="wrapper">
-        <div v-for="player in players" :key="player.id" class="player-item">
-          <h2>{{ player.name }}</h2>
-          <p>Player ID: {{ player.id }}</p>
           <ul>
-            <li v-for="(answer, category) in player.answers" :key="category">
-              <strong>{{ category }}:</strong> {{ answer }}
+            <li v-for="(answer, category) in player.answers[0]" :key="category">
+              <div class="answerContainer">
+                <div class="answerLabel"> {{ category }}: {{ answer }} </div>
+              </div>
             </li>
           </ul>
-        </div>
-      </div>
-    </section>
-    <div><img id="hamster" src="../../public/img/Hamster.gif" alt="Animated GIF" /></div>
+            </div>
 
-    <br />
+          </div>
+        </section>
+
+      <div><img id="hamster" src="../../public/img/Hamster.gif" alt="Animated GIF" /></div>
+    </body>
+
     <hr>
   </div>
 </template>
@@ -35,51 +35,67 @@ import QuestionComponent from '@/components/QuestionComponent.vue';
 import io from 'socket.io-client';
 import { ssrContextKey } from 'vue';
 const socket = io("localhost:3000");
-
-// Get the full URL
-const currentURL = window.location.href;
-
-// Extract the path from the URL
-const pathArray = window.location.pathname.split('/');
-
-// Get the last part of the path
-const gameId = pathArray[pathArray.length - 1];
 export default {
   data() {
     return {
       lang: localStorage.getItem("lang") || "en",
-   data: {},
-   uiLabels: {},
-     question: {
-       q: "",
-       a: []
-     },
-     submittedAnswers: {},
-     pollId: "",
-     rounds: "0",
-     categories: [],
-     uiLabels: {},
-      players: [
-        { id: 1, name: 'John', answers: { city: 'New York', country: 'USA', animal: 'Lion' } },
-        { id: 2, name: 'Anna', answers: { city: 'Paris', country: 'France', animal: 'Elephant' } },
-        { id: 3, name: 'Simon', answers: { city: 'Tokyo', country: 'Japan', animal: 'Panda' } },
-        { id: 4, name: 'Pimon', answers: { city: 'Berlin', country: 'Germany', animal: 'Giraffe' } },
-        { id: 5, name: 'Dimon', answers: { city: 'Sydney', country: 'Australia', animal: 'Kangaroo' } },
-      ],
-      animatedPlayer: null,
+      data: {},
+      uiLabels: {},
+      pollId: "inactive poll",
+      players: [],
+      categories: [],
+      roundNumber: 0,
+      checkedAnswers: {},
     };
   },
-  created: function () {
+  created() {
     this.pollId = this.$route.params.id;
-    this.name = this.$route.params.name
-    socket.emit("pageLoaded", this.lang);
+
+    socket.emit('startGame', {pollId: this.pollId});
+
+    socket.emit('joinSocket', {pollId: this.pollId})
+
+    socket.on('getInfo', (poll) => {
+    console.log("getinfo", poll.players)
+     this.rounds = poll.rounds;
+     this.categories = poll.categories;
+     this.roundNumber = poll.roundNumber;
+     this.players = poll.players
+   })
+   socket.on('getAnswers', (players) => {
+      console.log("getAnswers", players)
+     this.players = players;
+     this.isAnswered = true;
+   })
   },
 
   methods: {
     startAnimation(playerId) {
       this.animatedPlayer = playerId;
     },
-    
+
+    handleCheckboxChange(playerName, answer, event) {
+    // Initialize this player's checked answers object if it doesn't exist yet
+    if (!this.checkedAnswers[playerName]) {
+      this.checkedAnswers = { ...this.checkedAnswers, [playerName]: {} };
+    }
+
+    // Update the checked state of this answer for this player
+    this.checkedAnswers = {
+      ...this.checkedAnswers,
+      [playerName]: { ...this.checkedAnswers[playerName], [answer]: event.target.checked },
+    };
+  },
+    giveScore() {
+    // Update each player's points with the count from checkedAnswers
+    this.players.forEach(player => {
+      if (this.checkedAnswers[player.nameId]) {
+        player.points = Object.values(this.checkedAnswers[player.nameId]).filter(checked => checked).length;
+      }
+    });
+      console.log("giveScore", this.players, this.checkedAnswers)
+      socket.emit('giveScore', {pollId: this.pollId, players: this.players})
+    }
   },
 };
 </script>
@@ -122,12 +138,11 @@ h1 {
     opacity: 1;
   }
 }
-
-.title {
-  margin: 0;
-}
 #hamster{
   height: 100px;
-  length: 100px;
+  width: 100px;
+}
+ul {
+  list-style: none;
 }
 </style>
