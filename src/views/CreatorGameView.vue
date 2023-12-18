@@ -83,6 +83,10 @@ export default {
     console.log("moved players to scorebaord")
     this.$router.push('/creatorleaderboard/' + this.pollId);
   })
+    socket.emit("pageLoaded", this.lang);
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+    })
   },
 
   methods: {
