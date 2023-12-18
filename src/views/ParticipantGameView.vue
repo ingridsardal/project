@@ -108,7 +108,7 @@ export default {
    submitTheAnswers: function () {
      console.log("submitTheAnswers", this.submittedAnswers)
      socket.emit("submitTheAnswers", {pollId: this.pollId, answer: this.submittedAnswers, name: this.name})
-     this.$router.push('/participantlivescore/' + this.pollId);
+     this.$router.push('/participantlivescore/' + this.pollId +'/'+ this.name);
    },
  startCountdown() {
       if (this.countdown > 0) {

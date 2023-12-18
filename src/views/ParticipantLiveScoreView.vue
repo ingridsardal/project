@@ -9,9 +9,10 @@
 
             <div v-for="player in players" :key="player.id" class="player-item">
               <h2>{{ player.nameId }} </h2>
+              {{ player.answers }}
 
           <ul>
-            <li v-for="(answer, category) in player.answers[0]" :key="category">
+            <li v-for="(answer, category) in player.answers[0]" :key="category"> <!--Istället för nolla så ska det vara roundnumber-->
               <div class="answerContainer">
                 <div class="answerLabel"> {{ category }}: {{ answer }} </div>
               </div>
@@ -70,7 +71,7 @@ export default {
    })
    socket.on('movingAllToScoreboard', () => {
     console.log("moved players to scorebaord")
-    this.$router.push('/participantleaderboard/');
+    this.$router.push('/participantleaderboard/'+ this.pollId +'/'+ this.name);
   })
   },
 
