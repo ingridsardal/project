@@ -2,6 +2,8 @@
   <div>
     <header>
       <h1>Game leader is casting the mantle of judgment upon you</h1>
+      <br/>
+      <h1>round {{ roundCounter }}</h1>
     </header>
     <body>
       <section id="Section1">
@@ -12,7 +14,7 @@
               {{ player.answers }}
 
           <ul>
-            <li v-for="(answer, category) in player.answers[0]" :key="category"> <!--Istället för nolla så ska det vara roundnumber-->
+            <li v-for="(answer, category) in player.answers[roundCounter]" :key="category"> <!--Istället för nolla så ska det vara roundnumber-->
               <div class="answerContainer">
                 <div class="answerLabel"> {{ category }}: {{ answer }} </div>
               </div>
@@ -45,7 +47,7 @@ export default {
       pollId: "inactive poll",
       players: [],
       categories: [],
-      roundNumber: 0,
+      roundCounter: 0,
       checkedAnswers: {},
     };
   },
