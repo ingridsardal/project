@@ -10,7 +10,9 @@
     </div>
 
     <footer>
+      <router-link v-bind:to="'/creatorgame/'+ pollId">
         <button id="startRound" v-on:click="startRound"> Starta nästa omgång </button>
+      </router-link>
     </footer>
 
     <table>
@@ -113,7 +115,7 @@ export default {
       this.selectedLetter = this.inputLetter;
       console.log('Startar nästa omgång med bokstaven:', this.selectedLetter);
       socket.emit('startRound',{selectedLetter: this.selectedLetter})
-      this.$router.push('/creatorgame/'+pollId);
+      /*this.$router.push('/creatorgame/'+pollId);*/
     },
     generateRandomLetter() {
       const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
