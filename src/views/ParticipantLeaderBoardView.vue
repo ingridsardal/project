@@ -1,7 +1,7 @@
 <template>
   <body id="apa">
     <header>
-      <h1>SCOREBOARD</h1>
+      <h1>SCOREBOARD {{ roundCounter }}</h1>
     </header>
 
 
@@ -51,6 +51,7 @@ export default {
       pollId: "inactive poll",
       inputLetter: this.generateRandomLetter(), // Förinställd random bokstav
       selectedLetter: '',
+      roundCounter: 0,
     };
   },
 
@@ -65,6 +66,7 @@ export default {
     socket.on('getInfo', (poll) => {
       console.log(poll)
       this.players = poll.players;
+      this.roundCounter = poll.roundCounter;
       console.log(this.players1)
     });
     socket.on('moveToNextRound', () => {

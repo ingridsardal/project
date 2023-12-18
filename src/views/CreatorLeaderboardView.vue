@@ -1,7 +1,7 @@
 <template>
   <body id="apa">
     <header>
-      <h1>SCOREBOARD</h1>
+      <h1>SCOREBOARD {{ roundCounter }}</h1>
     </header>
 
     <div class="content">
@@ -63,6 +63,7 @@ export default {
       pollId: "inactive poll",
       inputLetter: this.generateRandomLetter(), // Förinställd random bokstav
       selectedLetter: '',
+      roundCounter: 0,
     };
   },
 
@@ -76,6 +77,7 @@ export default {
     socket.on('getInfo', (poll) => {
       console.log(poll)
       this.players = poll.players;
+      this.roundCounter = poll.roundCounter;
       console.log(this.players1)
     });
 
@@ -110,6 +112,8 @@ export default {
   },
   methods: {
     startRound() {
+      this.roundCounter=this.roundCounter+1
+      console.log(this.roundCounter);
 /*här ska finna en ifsats som skciakr off till resultviw om vi är på sista rundan*/
       this.selectedLetter = this.inputLetter;
       console.log('Startar nästa omgång med bokstaven:', this.selectedLetter);

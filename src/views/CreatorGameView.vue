@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <h2> {{uiLabels.giveScore}} </h2>
+      <h2> {{uiLabels.giveScore}} round {{ roundCounter }} </h2>
     </header>
 
     <body>
@@ -53,7 +53,7 @@ export default {
       pollId: "inactive poll",
       players: [],
       categories: [],
-      roundNumber: 0,
+      roundCounter: 0,
       checkedAnswers: {},
     };
   },
@@ -71,7 +71,7 @@ export default {
     console.log("getinfo", poll.players)
      this.rounds = poll.rounds;
      this.categories = poll.categories;
-     this.roundNumber = poll.roundNumber;
+     this.roundCounter = poll.roundCounter;
      this.players = poll.players
    })
    socket.on('getAnswers', (players) => {

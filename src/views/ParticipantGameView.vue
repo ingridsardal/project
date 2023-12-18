@@ -1,7 +1,7 @@
 <template>
 
     <header id="round">
-      <h1> {{ uiLabels.round }} {{ roundNumber }} </h1>
+      <h1> {{ uiLabels.round }} {{ roundCounter }} </h1>
     </header>
 
     <h3 id="infoText"> 
@@ -65,7 +65,7 @@ export default {
      players: [],
      name: "",
      categories: [],
-     roundNumber: 0,
+     roundCounter: 0,
      selectedLetter:'',
      firstSelectedLetter: '',
      gotFirstAnswer: false,
@@ -93,7 +93,7 @@ export default {
     console.log(poll.categories)
      this.rounds = poll.rounds;
      this.categories = poll.categories;
-     this.roundNumber = poll.roundNumber;
+     this.roundCounter = poll.roundCounter;
      this.selectedLetter = poll.selectedLetter;
      this.firstSelectedLetter = poll.selectedLetter;
    })

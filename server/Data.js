@@ -26,7 +26,6 @@ Data.prototype.createPoll = function(pollId, lang="en", rounds, categories, roun
     poll.roundCounter = roundCounter;
     poll.categories = categories;
     poll.players = [];
-    poll.roundNumber = 1;
     poll.selectedLetter = firstSelectedLetter;
     this.polls[pollId] = poll;
     console.log("poll created ");

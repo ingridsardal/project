@@ -161,7 +161,7 @@ export default {
       lang: localStorage.getItem("lang") || "en",
       pollId: "",
       rounds: "3",
-      roundCounter:0,
+      roundCounter:1,
       data: {},
       uiLabels: {},
       categories: [],
@@ -185,7 +185,6 @@ export default {
   },
   methods: {
     createPoll: function () {
-      this.roundCounter=this.roundCounter+1
       console.log("CreatorView")
       this.pollId = Math.floor(1000 + Math.random() * 9000)
       console.log(this.categories);
