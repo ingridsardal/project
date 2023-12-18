@@ -44,13 +44,7 @@ const socket = io("localhost:3000");
 export default {
   data() {
     return {
-      players: [
-        { id: 1, name: 'John', points: 25, answers: {} },
-        { id: 2, name: 'Anna', points: 20 },
-        { id: 3, name: 'Simon', points: 10 },
-        { id: 4, name: 'pimon', points: 11 },
-        { id: 5, name: 'dimon', points: 0 },
-      ],
+      players: [],
       lang: localStorage.getItem("lang") || "en",
       data: {},
       uiLabels: {},

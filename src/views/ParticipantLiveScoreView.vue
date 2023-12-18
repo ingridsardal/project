@@ -12,7 +12,7 @@
               {{ player.answers }}
 
           <ul>
-            <li v-for="(answer, category) in player.answers[0]" :key="category">
+            <li v-for="(answer, category) in player.answers[0]" :key="category"> <!--Istället för nolla så ska det vara roundnumber-->
               <div class="answerContainer">
                 <div class="answerLabel"> {{ category }}: {{ answer }} </div>
               </div>
