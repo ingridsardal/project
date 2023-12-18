@@ -17,7 +17,7 @@
 
         <ul style="list-style: none;">
             <li v-for="(category,ans) in categories" :key="ans">
-              {{ category }}:   <input v-model="submittedAnswers[category]" :placeholder="category">
+              {{ uiLabels[category] }}:   <input v-model="submittedAnswers[category]" :placeholder="uiLabels[category]">
             </li>
         </ul>
 
