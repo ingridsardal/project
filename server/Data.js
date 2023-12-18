@@ -18,7 +18,7 @@ Data.prototype.getUILabels = function (lang = "en") {
   return JSON.parse(labels);
 }
 
-Data.prototype.createPoll = function(pollId, lang="en", rounds, categories, roundCounter) {
+Data.prototype.createPoll = function(pollId, lang="en", rounds, categories, roundCounter, firstSelectedLetter) {
   if (typeof this.polls[pollId] === "undefined") {
     let poll = {};
     poll.lang = lang;  
@@ -27,6 +27,7 @@ Data.prototype.createPoll = function(pollId, lang="en", rounds, categories, roun
     poll.categories = categories;
     poll.players = [];
     poll.roundNumber = 1;
+    poll.selectedLetter = firstSelectedLetter;
     this.polls[pollId] = poll;
     console.log("poll created ");
   }
@@ -133,6 +134,21 @@ Data.prototype.getPlayers = function (pollId) {
   }
   return [];
 };
+
+Data.prototype.giveScore = function (pollId, players) {
+  const poll = this.polls[pollId];
+  if (typeof poll !== "undefined") {
+    for (let i = 0; i < players.length; i++) {
+      let player = poll.players.find((player) => player.nameId === players[i].nameId);
+      player.points += players[i].points;
+    }
+    console.log("score given");
+  }
+};
+
+
+
+
 
 
 export { Data };

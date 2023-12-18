@@ -14,17 +14,13 @@
             <h2>{{ player.nameId }} </h2>
 
   <ul>
-    <li v-for="(answer, category) in player.answers[0]" :key="index">
+    <li v-for="(answer, category) in player.answers[0]" :key="category">
       <div class="answerContainer">
-        <input type="checkbox">
+        <input type="checkbox" :checked="checkedAnswers[player.id] && checkedAnswers[player.id][answer]" @change="handleCheckboxChange(player.nameId, answer, $event)">
         <div class="answerLabel"> {{ category }}: {{ answer }} </div>
       </div>
     </li>
   </ul>
-  <!--
-            <div>
-              <p>Correct Answers: {{ getCheckedAnswersCount(player) }}</p>
-            </div>-->
           </div>
 
         </div>
@@ -35,8 +31,8 @@
       <hr>
     </body>
     <footer>
-      <router-link v-bind:to="'/creatorleaderboard/'">
-        <button id="Tillfällig" v-on:click="">Tillfällig knapp som gör att man kommer till Creator scoreboard </button>
+      <router-link v-bind:to="'/creatorleaderboard/' + pollId">
+        <button id="Tillfällig" v-on:click="giveScore">Tillfällig knapp som gör att man kommer till Creator scoreboard </button>
         <!-- göra så att man kan justera språk-->
       </router-link>
     </footer>
@@ -58,8 +54,7 @@ export default {
       players: [],
       categories: [],
       roundNumber: 0,
-      answers: "",
-      isAnswered: false,
+      checkedAnswers: {},
     };
   },
 
@@ -76,12 +71,10 @@ export default {
      this.rounds = poll.rounds;
      this.categories = poll.categories;
      this.roundNumber = poll.roundNumber;
-     this.players = poll.players.map(player => ({
-        ...player,
-        checkedAnswers: new Array(poll.categories.length).fill(false),
-      }));
+     this.players = poll.players
    })
    socket.on('getAnswers', (players) => {
+      console.log("getAnswers", players)
      this.players = players;
      this.isAnswered = true;
    })
@@ -92,9 +85,28 @@ export default {
       this.animatedPlayer = playerId;
     },
 
-    getCheckedAnswersCount(player) {
-      return player.checkedAnswers.filter(checked => checked).length;
-    },
+    handleCheckboxChange(playerName, answer, event) {
+    // Initialize this player's checked answers object if it doesn't exist yet
+    if (!this.checkedAnswers[playerName]) {
+      this.checkedAnswers = { ...this.checkedAnswers, [playerName]: {} };
+    }
+
+    // Update the checked state of this answer for this player
+    this.checkedAnswers = {
+      ...this.checkedAnswers,
+      [playerName]: { ...this.checkedAnswers[playerName], [answer]: event.target.checked },
+    };
+  },
+    giveScore() {
+    // Update each player's points with the count from checkedAnswers
+    this.players.forEach(player => {
+      if (this.checkedAnswers[player.nameId]) {
+        player.points = Object.values(this.checkedAnswers[player.nameId]).filter(checked => checked).length;
+      }
+    });
+      console.log("giveScore", this.players, this.checkedAnswers)
+      socket.emit('giveScore', {pollId: this.pollId, players: this.players})
+    }
   },
 };
 </script>

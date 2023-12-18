@@ -62,7 +62,9 @@ export default {
      roundCounter: "0",
      categories: [],
      uiLabels: {},
-     players: []
+     players: [],
+     firstSelectedLetter: "",
+     selectedLetter: ""
    }
  },
 
@@ -78,6 +80,8 @@ export default {
         this.categories = poll.categories;
         this.players = poll.players;
         this.roundCounter=poll.roundCounter;
+        this.firstSelectedLetter = poll.firstSelectedLetter;
+        this.selectedLetter = poll.selectedLetter;
       })
     
     socket.on('playersUpdate', (players) => {

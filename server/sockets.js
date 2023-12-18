@@ -10,7 +10,7 @@ function sockets(io, socket, data) {
   });
 
   socket.on('createPoll', function(d) {
-    data.createPoll(d.pollId, d.lang, d.rounds, d.categories, d.roundCounter);
+    data.createPoll(d.pollId, d.lang, d.rounds, d.categories, d.roundCounter, d.firstSelectedLetter);
   });
 
   socket.on('startRound', function(d) {
@@ -79,6 +79,11 @@ function sockets(io, socket, data) {
     console.log("submit answers", d)
     data.submitAnswer(d.pollId, d.answer, d.name)
     io.to(d.pollId).emit('getAnswers', data.getPlayers(d.pollId));
+   });
+
+   socket.on("giveScore", function(d){  
+    console.log("give score", d)
+    data.giveScore(d.pollId, d.players)
    });
 
    
