@@ -67,7 +67,7 @@ export default {
       console.log(poll)
       this.players = poll.players;
       this.roundCounter = poll.roundCounter;
-      console.log(this.players1)
+      console.log(this.roundCounter)
     });
     socket.on('moveToNextRound', () => {
     console.log("moved players to scorebaord")
@@ -102,7 +102,7 @@ export default {
     startRound() {
       this.selectedLetter = this.inputLetter;
       console.log('Startar nästa omgång med bokstaven:', this.selectedLetter);
-      socket.emit('startRound',{pollId:this.pollId,selectedLetter: this.selectedLetter, })
+      socket.emit('startRound',{pollId:this.pollId,selectedLetter: this.selectedLetter, roundCounter: this.roundCounter})
       /*this.$router.push('/creatorgame/'+pollId);*/
     },
     generateRandomLetter() {

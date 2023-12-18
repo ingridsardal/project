@@ -161,7 +161,6 @@ export default {
       lang: localStorage.getItem("lang") || "en",
       pollId: "",
       rounds: "3",
-      roundCounter:1,
       data: {},
       uiLabels: {},
       categories: [],
@@ -190,7 +189,7 @@ export default {
       console.log(this.categories);
       this.firstSelectedLetter = this.inputLetter;
       console.log('Startar nästa omgång med bokstaven:', this.firstSelectedLetter);
-      socket.emit("createPoll", {pollId: this.pollId, lang: this.lang, rounds: this.rounds, categories: this.categories, roundCounter:this.roundCounter,firstSelectedLetter: this.firstSelectedLetter})
+      socket.emit("createPoll", {pollId: this.pollId, lang: this.lang, rounds: this.rounds, categories: this.categories, firstSelectedLetter: this.firstSelectedLetter})
     },
     addQuestion: function () {
       socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers } )

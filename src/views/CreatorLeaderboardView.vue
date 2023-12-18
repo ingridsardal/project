@@ -10,9 +10,7 @@
     </div>
 
     <footer>
-      <router-link v-bind:to="'/creatorgame/'+ pollId">
         <button id="startRound" v-on:click="startRound"> Starta nästa omgång </button>
-      </router-link>
     </footer>
 
     <table>
@@ -64,6 +62,7 @@ export default {
       inputLetter: this.generateRandomLetter(), // Förinställd random bokstav
       selectedLetter: '',
       roundCounter: 0,
+      rounds: 0,
     };
   },
 
@@ -78,13 +77,8 @@ export default {
       console.log(poll)
       this.players = poll.players;
       this.roundCounter = poll.roundCounter;
-      console.log(this.players1)
+      this.rounds = poll.rounds;
     });
-
-    socket.on('moveToNextRound', () => {
-    console.log("moved players to next round")
-    this.$router.push('/creatorgame/' + this.pollId);
-  })
 
   },
 
@@ -113,11 +107,18 @@ export default {
   methods: {
     startRound() {
       this.roundCounter=this.roundCounter+1;
-      console.log("hello round counter" + this.roundCounter);
-/*här ska finna en ifsats som skciakr off till resultviw om vi är på sista rundan*/
+      console.log("hello round counter", this.roundCounter);
       this.selectedLetter = this.inputLetter;
       console.log('Startar nästa omgång med bokstaven:', this.selectedLetter);
-      socket.emit('startRound',{pollId:this.pollId, selectedLetter: this.selectedLetter})
+      if (this.roundCounter > this.rounds) {
+        console.log("last round")
+        this.$router.push('/result/' + this.pollId);
+      }
+      else {
+      socket.emit('startRound',{pollId:this.pollId, selectedLetter: this.selectedLetter, roundCounter: this.roundCounter})
+      console.log("moved players to next round")
+      this.$router.push('/creatorgame/' + this.pollId);
+      }
       /*socket.emit('addRoundCount',{roundCounter:this.roundCounter})*/
       /*this.$router.push('/creatorgame/'+pollId);*/
     },

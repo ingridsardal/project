@@ -14,7 +14,7 @@
             <h2>{{ player.nameId }} </h2>
 
   <ul>
-    <li v-for="(answer, category) in player.answers[0]" :key="category">
+    <li v-for="(answer, category) in player.answers[roundCounter-1]" :key="category">
       <div class="answerContainer">
         <input type="checkbox" :checked="checkedAnswers[player.id] && checkedAnswers[player.id][answer]" @change="handleCheckboxChange(player.nameId, answer, $event)">
         <div class="answerLabel"> {{ uiLabels[category] }}: {{ answer }} </div>

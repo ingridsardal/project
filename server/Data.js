@@ -18,12 +18,13 @@ Data.prototype.getUILabels = function (lang = "en") {
   return JSON.parse(labels);
 }
 
-Data.prototype.createPoll = function(pollId, lang="en", rounds, categories, roundCounter, firstSelectedLetter) {
+Data.prototype.createPoll = function(pollId, lang="en", rounds, categories, firstSelectedLetter) {
   if (typeof this.polls[pollId] === "undefined") {
     let poll = {};
     poll.lang = lang;  
     poll.rounds = rounds;
-    poll.roundCounter = roundCounter;
+    poll.roundCounter = 1;
+    console.log("creatpoll", poll.roundCounter)
     poll.categories = categories;
     poll.players = [];
     poll.selectedLetter = firstSelectedLetter;
@@ -94,11 +95,23 @@ Data.prototype.getAnswers = function(pollId) {
 }
 
 // Data vi gjort själva:
-Data.prototype.startGame = function(pollId, selectedLetter) {
+Data.prototype.startRound = function(pollId, selectedLetter, roundCounter) {
   const poll = this.polls[pollId];
-  console.log("game started", poll);
   if (typeof poll !== "undefined") {
     console.log("Game started");
+    poll.selectedLetter = selectedLetter;
+    poll.roundCounter = roundCounter;
+    console.log("game started", poll);
+    console.log("roundCounter", roundCounter)
+    return poll;
+  }
+  console.log("Game not started", typeof poll);
+};
+
+Data.prototype.startGame = function(pollId) {
+  const poll = this.polls[pollId];
+  if (typeof poll !== "undefined") {
+    console.log("game started", poll);
     return poll;
   }
   console.log("Game not started", typeof poll);

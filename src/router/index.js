@@ -71,13 +71,13 @@ const router = createRouter({
       name: 'ParticipantLeaderBoardView',
       component: () => import('../views/ParticipantLeaderBoardView.vue')
     },
-    /*
+    
         {
-      path: '/result/',
+      path: '/result/:id',
       name: 'ResultView',
       component: () => import('../views/ResultView.vue')
     }
-  */
+  
   ]
 })
 

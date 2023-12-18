@@ -110,17 +110,21 @@ export default {
      socket.emit("submitTheAnswers", {pollId: this.pollId, answer: this.submittedAnswers, name: this.name})
      this.$router.push('/participantlivescore/' + this.pollId +'/'+ this.name);
    },
- startCountdown() {
-      if (this.countdown > 0) {
-        setTimeout(() => {
+   startCountdown() {
+    // Only start the countdown if it's not already running
+    if (!this.intervalId) {
+      this.intervalId = setInterval(() => {
+        if (this.countdown > 0) {
           this.countdown--;
-        }, 1000);
-      } else {
-        this.submitTheAnswers();
-      }
-    },
+        } else {
+          clearInterval(this.intervalId);
+          this.submitTheAnswers();
+        }
+      }, 1000);
+    }
   },
-};
+}
+}
 
 
 </script>

@@ -10,11 +10,12 @@ function sockets(io, socket, data) {
   });
 
   socket.on('createPoll', function(d) {
-    data.createPoll(d.pollId, d.lang, d.rounds, d.categories, d.roundCounter, d.firstSelectedLetter);
+    data.createPoll(d.pollId, d.lang, d.rounds, d.categories, d.firstSelectedLetter);
   });
 
   socket.on('startRound', function(d) {
-    data.startGame(d.pollId, d.selectedLetter);
+    console.log("sockets", d.roundCounter)
+    data.startRound(d.pollId, d.selectedLetter, d.roundCounter);
     io.to(d.pollId).emit('moveToNextRound');
 
   });
