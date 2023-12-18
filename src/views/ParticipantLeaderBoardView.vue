@@ -47,6 +47,8 @@
         ],
       };
     },
+
+    
     computed: {
       sortedPlayers() {
         return this.players.slice().sort((a, b) => b.points - a.points);

@@ -83,8 +83,12 @@ export default {
       console.log(poll)
       this.players = poll.players;
       console.log(this.players1)
-
     });
+
+    socket.on('moveToNextRound', () => {
+    console.log("moved players to next round")
+    this.$router.push('/creatorgame/' + pollId);
+  })
 
   },
 
@@ -114,7 +118,7 @@ export default {
     startRound() {
       this.selectedLetter = this.inputLetter;
       console.log('Startar nästa omgång med bokstaven:', this.selectedLetter);
-      socket.emit('startRound',{selectedLetter: this.selectedLetter})
+      socket.emit('startRound',{pollId:this.pollId, selectedLetter: this.selectedLetter})
       /*this.$router.push('/creatorgame/'+pollId);*/
     },
     generateRandomLetter() {
