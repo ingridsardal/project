@@ -73,6 +73,10 @@ export default {
     console.log("moved players to scorebaord")
     this.$router.push('/participantleaderboard/'+ this.pollId +'/'+ this.name);
   })
+    socket.on('movingAllToResult', () => {
+    console.log("moved players to result")
+    this.$router.push('/result/' + this.pollId);
+  })
   },
 
   methods: {

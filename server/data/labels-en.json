@@ -30,6 +30,8 @@
 	"klädmärken":"Clothing Brands",
 	"sevärdheter":"Tourist Attractions",
 
+	"firstRoundLetter": "Choose the letter for the first round: ",
+
 	"letter":"Letter: ",
     "categories":"Categories: ",
     "round": "Round ",
