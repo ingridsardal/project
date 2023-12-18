@@ -26,7 +26,7 @@
       <div class="letterInfo">
         <h2>Bokstav: {{ this.firstSelectedLetter }}</h2>
       </div>
-      <div v-if="gotFirstAnswer">
+      <div class="countdown" v-if="gotFirstAnswer">
        {{ startCountdown() }}
         <p>{{ countdown }}</p>
       </div>
@@ -168,5 +168,17 @@ export default {
 
 .lockButton:hover {
   background-color: #70e070;
+}
+.countdown {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.countdown p {
+  font-size: 7em; /* Adjust the font size as needed */
+  color: red;
 }
   </style>
