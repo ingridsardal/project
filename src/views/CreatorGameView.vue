@@ -31,10 +31,10 @@
       <hr>
     </body>
     <footer>
-      <router-link v-bind:to="'/creatorleaderboard/' + pollId">
-        <button id="Tillfällig" v-on:click="giveScore">Tillfällig knapp som gör att man kommer till Creator scoreboard </button>
+      <!--<router-link v-bind:to="'/creatorleaderboard/' + pollId">-->
+        <button id="Tillfällig" v-on:click="giveScoreANDScorebaordMove">Tillfällig knapp som gör att man kommer till Creator scoreboard </button>
         <!-- göra så att man kan justera språk-->
-      </router-link>
+      <!--</router-link>-->
     </footer>
   </div>
 </template>
@@ -78,6 +78,10 @@ export default {
      this.players = players;
      this.isAnswered = true;
    })
+   socket.on('movingAllToScoreboard', () => {
+    console.log("moved players to scorebaord")
+    this.$router.push('/creatorleaderboard/' + this.pollId);
+  })
   },
 
   methods: {
@@ -96,6 +100,13 @@ export default {
       ...this.checkedAnswers,
       [playerName]: { ...this.checkedAnswers[playerName], [answer]: event.target.checked },
     };
+  },
+
+
+  giveScoreANDScorebaordMove: function(){
+    this.giveScore();
+    console.log("skicka alla spelare till scoreboard")
+    socket.emit('moveToScoreboard', {pollId: this.pollId})
   },
     giveScore() {
     // Update each player's points with the count from checkedAnswers

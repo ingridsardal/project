@@ -50,6 +50,7 @@ export default {
   },
   created() {
     this.pollId = this.$route.params.id;
+    this.name = this.$route.params.name;
 
     socket.emit('startGame', {pollId: this.pollId});
 
@@ -67,6 +68,10 @@ export default {
      this.players = players;
      this.isAnswered = true;
    })
+   socket.on('movingAllToScoreboard', () => {
+    console.log("moved players to scorebaord")
+    this.$router.push('/participantleaderboard/');
+  })
   },
 
   methods: {
@@ -96,6 +101,7 @@ export default {
       console.log("giveScore", this.players, this.checkedAnswers)
       socket.emit('giveScore', {pollId: this.pollId, players: this.players})
     }
+  
   },
 };
 </script>
