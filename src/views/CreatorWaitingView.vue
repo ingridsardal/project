@@ -1,12 +1,10 @@
 <template>
     <header>
-        <h2> {{uiLabels.gameCode}}: {{ pollId }}</h2>
+        <h1> {{uiLabels.gameCode}}: {{ pollId }}</h1>
     </header>
 <br>
 
-<p id = "shareCode">
-    {{uiLabels.shareCode}}!
-</p>
+<h2> {{uiLabels.shareCode}}! </h2>
 <p>
     {{uiLabels.players}}:
     <ul>
@@ -145,11 +143,16 @@ export default {
   right: 0;
 }
 
- h2 { 
+h1 { 
     color:rgb(249, 192, 86);
     text-shadow: rgb(255, 183, 0) 1px 0 10px;
     font-size: 50px; 
     }
+
+h2{font-weight: normal;
+  text-align: center;
+    color:rgb(0, 0, 0);
+    font-size: 30px}
   
   ul {
     list-style: none;
