@@ -11,10 +11,8 @@
 
             <div v-for="player in players" :key="player.id" class="player-item">
               <h2>{{ player.nameId }} </h2>
-              {{ player.answers }}
-
           <ul>
-            <li v-for="(answer, category) in player.answers[roundCounter]" :key="category"> <!--Istället för nolla så ska det vara roundnumber-->
+            <li v-for="(answer, category) in player.answers[roundCounter-1]" :key="category"> <!--Istället för nolla så ska det vara roundnumber-->
               <div class="answerContainer">
                 <div class="answerLabel"> {{ category }}: {{ answer }} </div>
               </div>

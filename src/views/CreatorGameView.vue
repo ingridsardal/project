@@ -13,7 +13,6 @@
             <h2>{{ player.nameId }} </h2>
 
   <ul>
-    {{ player.answers }}
     <li v-for="(answer, category) in player.answers[roundCounter-1]" :key="category">
       <div class="answerContainer">
         <input type="checkbox" :checked="checkedAnswers[player.id] && checkedAnswers[player.id][answer]" @change="handleCheckboxChange(player.nameId, answer, $event)">
