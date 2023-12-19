@@ -7,6 +7,7 @@
 	"shareCode": "Dela koden med dina vänner",
 	"chooseCategory": "Välj en eller flera kategorier",
 	"waitInfo": "Vänta på att spelledaren startar spelet...",
+	"noCategories": "Välj minst en kategori för att fortsätta",
 
 	"players": "Spelare",
 	"name": "Namn",
@@ -43,6 +44,8 @@
 	"sales-pitch": "Kreativt. Roligt. Familjärt.",
 	"subHeading": "Webb-versionen av ett älskat spel!",
 	"invite": "Bjud in deltagare med den här länken:",
+	"roundNumber": "Omgång nummer ",
+	"showScoreboard": "Visa scoreboard",
 
 	"question": "Fråga",
 	"headerJoinGame": "Gå med i ett spel!",

@@ -183,7 +183,7 @@ export default {
   methods: {
     createPoll: function () {
       if (this.categories.length == 0) {
-        alert("Du måste välja minst en kategori!") //lägg till uilabel
+        alert(this.uiLabels.noCategories) //lägg till uilabel
         return
       }
       else {
