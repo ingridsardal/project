@@ -24,7 +24,7 @@
       </div>
 
       <div class="letterInfo">
-        <h2>{{uiLabels.letter}} {{ this.firstSelectedLetter }}</h2>
+        <h2>{{uiLabels.letter}} {{ this.firstSelectedLetter.toUpperCase() }}</h2>
       </div>
       <div class="countdown" v-if="gotFirstAnswer">
        {{ startCountdown() }}
