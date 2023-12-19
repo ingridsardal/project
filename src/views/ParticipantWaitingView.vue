@@ -1,12 +1,10 @@
 <template>
     <header>
-        <h2 id = "gamecode"> {{uiLabels.gameCode}}: {{ pollId }}</h2>
+        <h1> {{uiLabels.gameCode}}: {{ pollId }}</h1>
     </header>
 <br>
 
-<p id = "shareCode">
-    {{uiLabels.shareCode}}! 
-</p>
+<h3> {{uiLabels.shareCode}}! </h3>
 
 <p>
     {{uiLabels.players}}:
@@ -107,11 +105,16 @@ export default {
 
 <style scoped>
 
-#shareCode {
-    text-align: center;
-    color:rgb(0, 0, 0);
-    font-size: 30px
+h1 { 
+    color:rgb(249, 192, 86);
+    text-shadow: rgb(255, 183, 0) 1px 0 10px;
+    font-size: 50px; 
     }
+
+h3{font-weight: normal;
+  text-align: center;
+    color:rgb(0, 0, 0);
+    font-size: 30px}
 
 #tillbakaButton {
   background-color: rgb(255, 206, 114);
@@ -153,11 +156,7 @@ export default {
   border-radius: 5px;
 }
 
- #gamecode { 
-    color:rgb(249, 192, 86);
-    text-shadow: rgb(255, 183, 0) 1px 0 10px;
-    font-size: 50px; 
-    }
+
 
   ul {
     list-style: none;

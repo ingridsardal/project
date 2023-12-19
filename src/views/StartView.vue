@@ -33,8 +33,8 @@
   <footer>
   <ResponsiveNav v-bind:hideNav="hideNav">
       <button v-on:click="switchLanguage" :class="{ 'english': lang === 'en', 'swedish': lang === 'sv' }" ></button> 
-      <button v-on:click="aboutFunction"> {{uiLabels.about}} </button>   
-      <button v-on:click="FAQFunction"> {{uiLabels.faq}} </button>    
+      <button v-on:click="aboutFunction" id="navButtons"> {{uiLabels.about}} </button>   
+      <button v-on:click="FAQFunction" id="navButtons"> {{uiLabels.faq}} </button>    
     </ResponsiveNav>
   </footer>
   </template>
@@ -78,7 +78,7 @@
         alert(this.uiLabels.aboutInfo)
       },
       FAQFunction: function() {
-        alert("är du 18? I hope")
+        alert(this.uiLabels.aboutInfo)
       },
   
       toggleNav: function () {
@@ -94,11 +94,11 @@
       display: grid;
       grid-template-columns: 2em auto;
     }
-
+    
     .container {
       background-color: rgb(249, 192, 86);
       border-radius: 10px;
-      padding: 50px;
+      padding: 40px;
       position: absolute;
       top: 60%;
       left: 50%;
@@ -118,8 +118,7 @@
     color: rgb(249, 192, 86);
     border: 2px solid rgba(249, 192, 86, 0.6); /* Lägg till en border med lite mörkare orange */
     cursor: pointer;
-    font-size: 4.
-    font-
+    font-size: 20px;;
   }
     .logo {
       text-transform: uppercase;
@@ -180,7 +179,13 @@
     background-repeat: no-repeat;
     background-image: url('../../public/img/englishFlag.jpg');  
   }
+  #navButtons {
+    background-color: rgb(249, 192, 86);
+    cursor: pointer;
+    color: white;
+    font-size: 20px;;
   
+  }
   @media screen and (max-width:50em) {
     .logo {
       font-size: 5vw;

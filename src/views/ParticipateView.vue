@@ -83,6 +83,12 @@
   }
   </script>
    <style scoped>
+   h1 { 
+    color:rgb(249, 192, 86);
+    text-shadow: rgb(255, 183, 0) 1px 0 10px;
+    font-size: 50px; 
+    }
+h3{font-weight: bold;}
     #joinButton {
       height: 100px;
       width: 33%;
@@ -99,6 +105,5 @@
   bottom: 0;
   left: 0;
 }
-    h1 {color:rgb(249, 192, 86)}
 </style>
   

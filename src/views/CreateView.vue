@@ -14,7 +14,7 @@
     </div>
 
   <body>
-        <h3 style="font-weight: normal;">
+        <h3>
           {{uiLabels.chooseCategory}}:
         </h3>
 
@@ -223,6 +223,13 @@ export default {
 header {
   color: orange;
 }
+
+h1 { 
+    color:rgb(249, 192, 86);
+    text-shadow: rgb(255, 183, 0) 1px 0 10px;
+    font-size: 50px; 
+    }
+h3{font-weight: bold;}
 
 .antalomgångar {
   margin-top: 2%;
