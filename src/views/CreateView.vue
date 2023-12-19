@@ -168,7 +168,7 @@ export default {
     }
   },
   created: function () {
-    this.id = this.$route.params.id;
+    this.pollId = this.$route.params.id;
     socket.emit("pageLoaded", this.lang);
     socket.on("init", (labels) => {
       this.uiLabels = labels
@@ -193,7 +193,7 @@ export default {
       this.firstSelectedLetter = this.inputLetter;
       console.log('Startar nästa omgång med bokstaven:', this.firstSelectedLetter);
       socket.emit("createPoll", {pollId: this.pollId, lang: this.lang, rounds: this.rounds, categories: this.categories, firstSelectedLetter: this.firstSelectedLetter})
-      this.$router.push('/creatorwaiting/'+pollId)
+      this.$router.push('/creatorwaiting/'+this.pollId)
     }
     },
     addQuestion: function () {
