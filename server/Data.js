@@ -78,6 +78,7 @@ Data.prototype.submitAnswer = function(pollId, answer, name) {
     if (playerIndex !== -1) {
       const player = poll.players[playerIndex];
       player.answers.push(answer);
+      player.hasAnswered = true;
       console.log("answers looks like ", player.answers);
     }
   }
@@ -130,6 +131,7 @@ Data.prototype.joinGame = function(pollId, nameId) {
       nameId: nameId,
       answers: [],
       points: 0,
+      hasAnswered: false,
       avatar: "",
     };
     poll.players.push(player);
