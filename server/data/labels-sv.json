@@ -49,6 +49,19 @@
 
 	"question": "Fråga",
 	"headerJoinGame": "Gå med i ett spel!",
-	"anotherGame": "Starta ett nytt spel!"
+	"anotherGame": "Starta ett nytt spel!",
+
+	
+	"scoreboard": "SCOREBOARD RUNDA",
+	"scoreboardName": "Namn",
+	"scoreboardRanking": "Placering",
+	"scoreboardPoints": "Poäng",
+	"dominating": "Fullständigt krossar alla andra!!!",
+	"superMegaLast": "ÄR SUPERMEGA SIST",
+	"note": "Notera!",
+	"last": "är sist...",
+	"chooseLetter": "Välj bokstav för nästa omgång:",
+	"startNextRound": "Starta nästa omgång",
+	"goToResults": "Gå till resultat"
 
 }

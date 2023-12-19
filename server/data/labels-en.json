@@ -52,5 +52,16 @@
 	
 	"question": "Question",
 	"headerJoinGame": "Join a game!",
-	"anotherGame": "Start another game"
+	"anotherGame": "Start another game",
+	
+	
+	"scoreboard": "SCOREBOARD ROUND",
+	"scoreboardName": "Name",
+	"scoreboardRanking": "Ranking",
+	"scoreboardPoints": "Points",
+	"dominating": "Is completely crushing everyone else !!!",
+	"superMegaLast": "IS SUPERMEGA LAST",
+	"note": "Note!",
+	"last": "is last...",
+	"chooseLetter": "Choose letter for the next round:"
 }
