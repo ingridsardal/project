@@ -1,7 +1,7 @@
 <template>
   <body id="apa">
     <header>
-      <h1>SCOREBOARD {{ roundCounter }}</h1>
+      <h1>SCOREBOARD ROUND {{ roundCounter }}</h1>
     </header>
 
     <div class="content" v-if="showContent">
