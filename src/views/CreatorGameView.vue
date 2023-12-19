@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <h2> {{uiLabels.giveScore}} round {{ roundCounter }} letter {{  }}</h2>
+      <h2> {{uiLabels.giveScore}} round {{ roundCounter }} letter {{ selectedLetter.toUpperCase() }}</h2>
     </header>
     <body>
       <h3 style="font-weight: normal;">{{uiLabels.markScore}} </h3>
@@ -57,6 +57,7 @@ export default {
       roundCounter: 0,
       checkedAnswers: {},
       isChecked: false,
+      selectedLetter: "",
     };
   },
 
@@ -75,6 +76,8 @@ export default {
      this.categories = poll.categories;
      this.roundCounter = poll.roundCounter;
      this.players = poll.players
+     this.selectedLetter = poll.selectedLetter;
+     
    })
    socket.on('getAnswers', (players) => {
       console.log("getAnswers", players)
