@@ -14,6 +14,43 @@
       {{uiLabels.name}}: 
       <input type="text" v-model="nameId">
     </label>
+
+    <section>
+      <div class="wrapper">
+      <button class="avatars">
+      <img src="https://media.giphy.com/media/2wgTJVY171NU2547b8/giphy.gif" alt="Animated GIF">
+      </button>
+      <button class="avatars">
+      <img src="https://media.giphy.com/media/etKPlfE85HW8udMMDl/giphy.gif" alt="Animated GIF">
+      </button>
+      <button class="avatars">
+      <img src="https://media.giphy.com/media/ys3xvXRwsdjoYvYR3h/giphy.gif" alt="Animated GIF">
+      </button>
+      <button class="avatars">
+      <img src="https://media.giphy.com/media/3oKIPBYGLy6qk8bdrq/giphy.gif" alt="Animated GIF">
+      </button>
+      <button class="avatars">
+      <img src="https://media.giphy.com/media/TLPC9CGU0FriCc9Bql/giphy.gif" alt="Animated GIF">
+      </button>
+      <button class="avatars">
+      <img src="https://media.giphy.com/media/X1XORnJ6ErubS/giphy.gif" alt="Animated GIF">
+      </button>
+      <button class="avatars">
+      <img src="https://media.giphy.com/media/dioml5wsoBZYqJGqip/giphy.gif" alt="Animated GIF">
+      </button>
+      <button class="avatars">
+      <img src="https://media.giphy.com/media/Ii4jfLGmdmWWhcVTG3/giphy.gif" alt="Animated GIF">
+      </button>
+    </div>
+    <!--
+    <div id="selectedAvatar"> 
+      <p>Your Selected avatar</p>
+      <br/>
+      <img src="https://media.giphy.com/media/2wgTJVY171NU2547b8/giphy.gif" alt="Animated GIF">
+    </div>-->
+    </section>
+
+
    <br>
         <button id="joinButton" v-on:click="joinButton">           <!-- måste skapa en write poll id number så att det funkar-->
           {{uiLabels.joinGame}}
@@ -104,6 +141,27 @@ h3{font-weight: bold;}
   position: absolute;
   bottom: 0;
   left: 0;
+}
+
+section{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(10, 7%);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 10px;
+}
+.avatars {
+  width: 100%;
+}
+.avatars img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Optional: Adds rounded corners to avatars */
 }
 </style>
   

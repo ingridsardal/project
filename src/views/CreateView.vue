@@ -158,7 +158,7 @@ export default {
     return {
       lang: localStorage.getItem("lang") || "en",
       pollId: "",
-      rounds: "3",
+      rounds: "0",
       data: {},
       uiLabels: {},
       categories: [],
