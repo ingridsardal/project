@@ -184,12 +184,18 @@ export default {
   },
   methods: {
     createPoll: function () {
+      if (this.categories.length == 0) {
+        alert("Du måste välja minst en kategori!") //lägg till uilabel
+        return
+      }
+      else {
       console.log("CreatorView")
       this.pollId = Math.floor(1000 + Math.random() * 9000)
       console.log(this.categories);
       this.firstSelectedLetter = this.inputLetter;
       console.log('Startar nästa omgång med bokstaven:', this.firstSelectedLetter);
       socket.emit("createPoll", {pollId: this.pollId, lang: this.lang, rounds: this.rounds, categories: this.categories, firstSelectedLetter: this.firstSelectedLetter})
+    }
     },
     addQuestion: function () {
       socket.emit("addQuestion", {pollId: this.pollId, q: this.question, a: this.answers } )

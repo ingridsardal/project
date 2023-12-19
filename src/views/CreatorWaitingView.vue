@@ -105,8 +105,13 @@ export default {
      socket.emit("submitAnswer", {pollId: this.pollId, answer: answer})
    },
    startaSpel: function () {
+    if (this.players.length < 1) {
+      alert("Vänta på dina vänner!") //Fixa uilabels
+    } 
+    else {
     console.log("starta spel creatorwaitingview")
     socket.emit('startForAll', {pollId: this.pollId});
+    }
  } 
 }
 }
