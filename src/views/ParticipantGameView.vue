@@ -137,6 +137,22 @@ export default {
 
   
   <style scoped>
+
+h1 { 
+    color:rgb(249, 192, 86);
+    text-shadow: rgb(255, 183, 0) 1px 0 10px;
+    font-size: 50px; 
+    }
+
+
+
+  h2{font-weight: normal;
+  text-align: center;
+    color:rgb(0, 0, 0);
+    font-size: 30px}
+
+
+h3{font-weight: bold;}
   #round {
     color: rgb(249, 192, 86);
   }

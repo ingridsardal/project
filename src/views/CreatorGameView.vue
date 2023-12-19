@@ -1,17 +1,17 @@
 <template>
   <div>
     <header>
-      <h2> {{uiLabels.giveScore}} </h2>
-      <h3>{{uiLabels.roundNumber}} {{ roundCounter }}, {{uiLabels.letter}}{{ selectedLetter.toUpperCase() }}</h3>
+      <h1> {{uiLabels.giveScore}} </h1>
+      <h2  style="font-weight: bold;">{{uiLabels.roundNumber}} {{ roundCounter }}, {{uiLabels.letter}}{{ selectedLetter.toUpperCase() }}</h2>
     </header>
     <body>
-      <h3 style="font-weight: normal;">{{uiLabels.markScore}} </h3>
+      <h2>{{uiLabels.markScore}} </h2>
 
       <section id="Section1">
         <div class="wrapper">
 
           <div v-for="player in players" :key="player.id" class="player-item">
-            <h2>{{ player.nameId }} </h2>
+            <h1>{{ player.nameId }} </h1>
 
   <ul>
     <li v-for="(answer, category) in player.answers[roundCounter-1]" :key="category">
@@ -186,15 +186,16 @@ h1 {
   height: 100px;
   width: 100px;
 }
-h2 { 
+h1 { 
   color: rgb(249, 192, 86);
   text-shadow: rgb(255, 183, 0) 1px 0 10px;
   font-size: 50px; 
 }
-h3 { 
-  color: rgb(0, 0, 0);
-  font-size: 30px; 
-}
+h2{font-weight: normal;
+  text-align: center;
+    color:rgb(0, 0, 0);
+    font-size: 30px}
+
 
 #Tillfällig {
   background-color: rgb(113, 255, 113);
