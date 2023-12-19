@@ -1,16 +1,16 @@
 <template>
   <body id="apa">
     <header>
-      <h1>SCOREBOARD {{ roundCounter }}</h1>
+      <h1>{{uiLabels.scoreboard}} {{ roundCounter }}</h1>
     </header>
 
 
     <table>
       <thead>
         <tr>
-          <th>Namn</th>
-          <th>Placering</th>
-          <th>Poäng</th>
+          <th>{{uiLabels.scoreboardName}}</th>
+          <th>{{uiLabels.scoreboardRanking}}</th>
+          <th>{{uiLabels.scoreboardPoints}}</th>
         </tr>
       </thead>
 
@@ -24,15 +24,13 @@
       </tbody>
     </table>
 
-        <!--
-    <div class="message" :class="{ 'super-mega-last': isSuperMegaLastPlace, 'krossar-alla': isKrossarAlla }">
+    <div class="message" :class="{ 'super-mega-last': isSuperMegaLastPlace, 'krossar-alla': isDominating }">
       <p>
-        <span v-if="isKrossarAlla">{{ firstPlacePlayer.name }} fullständigt KROSSAR alla!!!!</span>
-        <span v-else-if="isSuperMegaLastPlace">{{ lastPlacePlayer.name }} ligger supermega sist!</span>
-        <span v-else>Notera! {{ lastPlacePlayer.name }} ligger sist...</span> 
+        <span v-if="isDominating">{{ firstPlacePlayer.nameId }} {{uiLabels.dominating}}</span>
+        <span v-else-if="isSuperMegaLastPlace">{{ lastPlacePlayer.nameId }} {{uiLabels.superMegaLast}}</span>
+        <span v-else>{{uiLabels.note}} {{ lastPlacePlayer.nameId }} {{uiLabels.last}}</span> 
       </p>
-    </div>-->
-
+    </div> 
 
   </body>
 </template>
@@ -56,6 +54,13 @@ export default {
   },
 
   created() {
+
+    socket.emit("pageLoaded", this.lang);
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+    
+    }),
+
     this.pollId = this.$route.params.id;
     this.name = this.$route.params.name;
 
@@ -78,25 +83,47 @@ export default {
 
   computed: {
     sortedPlayers() {
+      if (this.players.length >= 2) { 
       return this.players.slice().sort((a, b) => b.points - a.points);
+      }
+      else {
+        return [{ nameId: 'Player 1', points: 0 }];
+      }
     },
     lastPlacePlayer() {
-      return this.sortedPlayers[this.sortedPlayers.length - 1];
-    },
+      if (this.players.length >= 2) {
+      const lastIndex = this.sortedPlayers.length - 1;
+      console.log("sista spelaren är:", this.sortedPlayers[lastIndex]);
+      return this.sortedPlayers[lastIndex];
+    } else {
+      return { nameId: 'Player 1', points: 0 };
+    } 
+  },
     firstPlacePlayer() {
       return this.sortedPlayers[0];
     },
     isSuperMegaLastPlace() {
+      if (this.players.length >= 3) {
       const lastPlacePoints = this.lastPlacePlayer.points;
       const secondLastPlacePoints = this.sortedPlayers[this.sortedPlayers.length - 2].points;
       return secondLastPlacePoints - lastPlacePoints >= 7;
+      }
+      else {
+        return false;
+      }
     },
-    isKrossarAlla() {
+    isDominating() {
+      if (this.players.length >= 3) {
       const firstPlacePoints = this.sortedPlayers[0].points;
       const secondPlacePoints = this.sortedPlayers[1].points;
+      console.log("sorted players", this.sortedPlayers[0])
       return firstPlacePoints - secondPlacePoints >= 5;
+      }
+      else {
+        return false;
+      }
 
-    },
+    }
   },
   methods: {
     startRound() {
@@ -125,7 +152,7 @@ export default {
     transform: translateX(-50%);
     color: rgb(249, 192, 86);
     text-shadow: rgb(255, 183, 0) 1px 0 10px;
-    font-size: 100px;
+    font-size: 50px;
     margin-top: 10px;
   }
 
@@ -179,7 +206,7 @@ export default {
     color: black;
     font-size: 30px;
     text-align: center;
-    margin-top: 120px; /* Uppdaterad margin för att anpassa positionen */
+    margin-top: 60px; /* Uppdaterad margin för att anpassa positionen */
     padding: 10px;
     position: absolute;
     top: 0;
