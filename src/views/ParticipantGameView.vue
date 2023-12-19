@@ -70,6 +70,7 @@ export default {
      firstSelectedLetter: '',
      gotFirstAnswer: false,
      countdown: 8,
+     isSent: false,
    }
  },
  created: function () {
@@ -106,18 +107,19 @@ export default {
 
  methods: {
    submitTheAnswers: function () {
+     this.isSent = true;
      console.log("submitTheAnswers", this.submittedAnswers)
      socket.emit("submitTheAnswers", {pollId: this.pollId, answer: this.submittedAnswers, name: this.name})
      this.$router.push('/participantlivescore/' + this.pollId +'/'+ this.name);
    },
    startCountdown() {
     // Only start the countdown if it's not already running
-    if (!this.intervalId) {
+    if (!this.intervalId && !this.isSent) {
       this.intervalId = setInterval(() => {
         if (this.countdown > 0) {
           this.countdown--;
         } else {
-          clearInterval(this.intervalId);
+          clearInterval(this.intervalId, !this.isSent);
           this.submitTheAnswers();
         }
       }, 1000);
