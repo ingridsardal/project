@@ -63,7 +63,7 @@ export default {
     console.log("getinfo", poll.players)
      this.rounds = poll.rounds;
      this.categories = poll.categories;
-     this.roundNumber = poll.roundNumber;
+     this.roundCounter = poll.roundCounter;
      this.players = poll.players
    })
    socket.on('getAnswers', (players) => {
