@@ -96,7 +96,7 @@ function sockets(io, socket, data) {
 
    socket.on("giveScore", function(d){  
     console.log("give score", d)
-    data.giveScore(d.pollId, d.players)
+    data.giveScore(d.pollId, d.players, d.isChecked)
    });
    
 

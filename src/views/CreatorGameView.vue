@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <h2> {{uiLabels.giveScore}} round {{ roundCounter }} </h2>
+      <h2> {{uiLabels.giveScore}} round {{ roundCounter }} letter {{  }}</h2>
     </header>
     <body>
       <h3 style="font-weight: normal;">{{uiLabels.markScore}} </h3>
@@ -56,6 +56,7 @@ export default {
       categories: [],
       roundCounter: 0,
       checkedAnswers: {},
+      isChecked: false,
     };
   },
 
@@ -119,10 +120,15 @@ export default {
     this.players.forEach(player => {
       if (this.checkedAnswers[player.nameId]) {
         player.points = Object.values(this.checkedAnswers[player.nameId]).filter(checked => checked).length;
+      console.log(this.checkedAnswers, "poäng")
+      isChecked = true;
+
       }
     });
       console.log("giveScore", this.players, this.checkedAnswers)
-      socket.emit('giveScore', {pollId: this.pollId, players: this.players})
+      socket.emit('giveScore', {pollId: this.pollId, players: this.players, isChecked: this.isChecked})
+
+      
     }
   },
 };

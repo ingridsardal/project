@@ -147,9 +147,9 @@ Data.prototype.getPlayers = function (pollId) {
   return [];
 };
 
-Data.prototype.giveScore = function (pollId, players) {
+Data.prototype.giveScore = function (pollId, players, isChecked) {
   const poll = this.polls[pollId];
-  if (typeof poll !== "undefined") {
+  if (typeof poll !== "undefined" && isChecked) {
     for (let i = 0; i < players.length; i++) {
       let player = poll.players.find((player) => player.nameId === players[i].nameId);
       player.points += players[i].points;
