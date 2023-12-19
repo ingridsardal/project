@@ -86,28 +86,6 @@ export default {
       this.animatedPlayer = playerId;
     },
 
-    handleCheckboxChange(playerName, answer, event) {
-    // Initialize this player's checked answers object if it doesn't exist yet
-    if (!this.checkedAnswers[playerName]) {
-      this.checkedAnswers = { ...this.checkedAnswers, [playerName]: {} };
-    }
-
-    // Update the checked state of this answer for this player
-    this.checkedAnswers = {
-      ...this.checkedAnswers,
-      [playerName]: { ...this.checkedAnswers[playerName], [answer]: event.target.checked },
-    };
-  },
-    giveScore() {
-    // Update each player's points with the count from checkedAnswers
-    this.players.forEach(player => {
-      if (this.checkedAnswers[player.nameId]) {
-        player.points = Object.values(this.checkedAnswers[player.nameId]).filter(checked => checked).length;
-      }
-    });
-      console.log("giveScore", this.players, this.checkedAnswers)
-      socket.emit('giveScore', {pollId: this.pollId, players: this.players})
-    }
   
   },
 };

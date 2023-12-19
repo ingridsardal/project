@@ -121,7 +121,7 @@ export default {
       if (this.checkedAnswers[player.nameId]) {
         player.points = Object.values(this.checkedAnswers[player.nameId]).filter(checked => checked).length;
       console.log(this.checkedAnswers, "poäng")
-      isChecked = true;
+      this.isChecked = true;
 
       }
     });
