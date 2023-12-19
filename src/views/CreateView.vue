@@ -98,9 +98,7 @@
       <router-link v-bind:to="'/'">
       <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
     </router-link>
-    <router-link v-bind:to="'/creatorwaiting/'+pollId">
     <button id= "skapaButton" v-on:click="createPoll">{{uiLabels.createGame}}</button>      <!-- göra så att man kan justera språk-->
-    </router-link>
   </footer>
     </div>
   </template>
@@ -195,6 +193,7 @@ export default {
       this.firstSelectedLetter = this.inputLetter;
       console.log('Startar nästa omgång med bokstaven:', this.firstSelectedLetter);
       socket.emit("createPoll", {pollId: this.pollId, lang: this.lang, rounds: this.rounds, categories: this.categories, firstSelectedLetter: this.firstSelectedLetter})
+      this.$router.push('/creatorwaiting/'+pollId)
     }
     },
     addQuestion: function () {
