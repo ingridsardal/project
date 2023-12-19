@@ -1,7 +1,8 @@
 <template>
   <div>
     <header>
-      <h2> {{uiLabels.giveScore}} round {{ roundCounter }} letter {{ selectedLetter.toUpperCase() }}</h2>
+      <h2> {{uiLabels.giveScore}} </h2>
+      <h3>{{uiLabels.roundNumber}} {{ roundCounter }}, {{uiLabels.letter}}{{ selectedLetter.toUpperCase() }}</h3>
     </header>
     <body>
       <h3 style="font-weight: normal;">{{uiLabels.markScore}} </h3>
@@ -32,7 +33,7 @@
     </body>
     <footer>
       <!--<router-link v-bind:to="'/creatorleaderboard/' + pollId">-->
-        <button id="Tillfällig" v-on:click="giveScoreANDScorebaordMove">Tillfällig knapp som gör att man kommer till Creator scoreboard </button>
+        <button id="Tillfällig" v-on:click="giveScoreANDScorebaordMove">{{uiLabels.showScoreboard}}</button>
         <!-- göra så att man kan justera språk-->
       <!--</router-link>-->
     </footer>
@@ -190,6 +191,10 @@ h2 {
   color: rgb(249, 192, 86);
   text-shadow: rgb(255, 183, 0) 1px 0 10px;
   font-size: 50px; 
+}
+h3 { 
+  color: rgb(0, 0, 0);
+  font-size: 30px; 
 }
 
 #Tillfällig {

@@ -7,6 +7,7 @@
 	"shareCode": "Share the code with your friends",
 	"chooseCategory": "Choose one or multiple categories",
 	"waitInfo": "Waiting for the game leader to start the game...",
+	"noCategories": "You must choose at least one category to continue",
 
 	"players": "Players",
 	"name": "Name",
@@ -44,6 +45,10 @@
 	"sales-pitch": "Creative. Fun. Familiar.",
 	"subHeading": "The web-version of a loved game!",
 	"invite": "Invite participants with this link:",
+
+	"roundNumber": "Round number ",
+	"showScoreboard": "Show scoreboard",
+	
 	
 	"question": "Question",
 	"headerJoinGame": "Join a game!",
