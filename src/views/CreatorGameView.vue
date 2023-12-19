@@ -15,7 +15,7 @@
   <ul>
     <li v-for="(answer, category) in player.answers[roundCounter-1]" :key="category">
       <div class="answerContainer">
-        <input type="checkbox" :checked="checkedAnswers[player.id] && checkedAnswers[player.id][answer]" @change="handleCheckboxChange(player.nameId, answer, $event)">
+        <input type="checkbox" :checked="checkedAnswers[player.id] && checkedAnswers[player.id][answer]" @change="handleCheckboxChange(player.nameId, category, answer, $event)">
         <div class="answerLabel"> {{ uiLabels[category] }}: {{ answer }} </div>
       </div>
       
@@ -98,16 +98,15 @@ export default {
       this.animatedPlayer = playerId;
     },
 
-    handleCheckboxChange(playerName, answer, event) {
+    handleCheckboxChange(playerName, category, answer, event) {
     // Initialize this player's checked answers object if it doesn't exist yet
     if (!this.checkedAnswers[playerName]) {
       this.checkedAnswers = { ...this.checkedAnswers, [playerName]: {} };
     }
-
     // Update the checked state of this answer for this player
     this.checkedAnswers = {
       ...this.checkedAnswers,
-      [playerName]: { ...this.checkedAnswers[playerName], [answer]: event.target.checked },
+      [playerName]: { ...this.checkedAnswers[playerName], [answer+category]: event.target.checked },
     };
   },
 
