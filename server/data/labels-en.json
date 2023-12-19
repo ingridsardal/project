@@ -46,5 +46,6 @@
 	"invite": "Invite participants with this link:",
 	
 	"question": "Question",
-	"headerJoinGame": "Join a game!"
+	"headerJoinGame": "Join a game!",
+	"anotherGame": "Start another game"
 }

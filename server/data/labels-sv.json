@@ -45,5 +45,7 @@
 	"invite": "Bjud in deltagare med den här länken:",
 
 	"question": "Fråga",
-	"headerJoinGame": "Gå med i ett spel!"
+	"headerJoinGame": "Gå med i ett spel!",
+	"anotherGame": "Starta ett nytt spel!"
+
 }
