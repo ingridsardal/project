@@ -237,15 +237,20 @@ header {
 h1 { 
     color:rgb(249, 192, 86);
     text-shadow: rgb(255, 183, 0) 1px 0 10px;
-    font-size: 50px; 
+    font-size: 300%; 
     }
-h3{font-weight: bold;}
+
+h3 {font-weight: bold;
+    font-size: 150%;
+}
 
 .antalomgångar {
   margin-top: 2%;
   margin-right: 15%;
   transform: scale(1.2); /* Adjust the scale factor for larger or smaller checkboxes */
-  padding:20px;
+  padding: 5%;
+  text-align: center;
+  margin-left: 15%;
 }
 
 .antalomgångar label {
@@ -262,7 +267,7 @@ h3{font-weight: bold;}
       grid-template-columns: repeat(3, 1fr);
       grid-row-gap: 60%;
       grid-column-gap: 25%;
-      margin: 100px 30% 100px 30%;
+      margin: 7% 30% 7% 30%;
     }
 
     .grid-item {
@@ -276,14 +281,14 @@ h3{font-weight: bold;}
     }
 
     .grid-item label {
-      margin-right: 5px;
+      margin-right: 5%;
     }
 
   #skapaButton {
   background-color: rgb(113, 255, 113);
-  height: 80px;
+  height: 10%;
   width: 12em;
-  margin: 25px;
+  margin: 2%;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -291,9 +296,9 @@ h3{font-weight: bold;}
 
 #tillbakaButton {
   background-color: rgb(255, 206, 114);
-  height: 80px;
+  height: 10%;
   width: 12em;
-  margin: 25px;
+  margin: 2%;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -309,17 +314,27 @@ button:hover {
     border: none;
     position: absolute;
     bottom: 0;
-    right: 250px; 
+    right: 17%; 
     height: 140px;
     width: 140px;
     border: none;
-    font-size: 115px; 
+    font-size: 110px; 
     color: rgb(249, 192, 86);
     text-shadow: rgb(255, 183, 0) 1px 0 10px;  
     text-transform: uppercase; 
     opacity: 0.7; /* Delvis genomskinlig från början */
     transition: opacity 0.3s ease, border-color 0.3s ease;
     outline: none;
+}
+
+@media screen and (max-width: 768px) {
+  /* Justera stilen för mindre skärmstorlekar */
+  .textWindow input {
+    font-size: 80px; /* Justera storleken som passar bäst för mindre skärmar */
+    width: 20%; /* Anpassa bredden för mindre skärmar */
+  }
+
+  /* Eventuellt andra justeringar för mindre skärmar */
 }
 
 .textWindow:hover input {
@@ -330,11 +345,10 @@ button:hover {
 
 .firstRoundLetter {
     color: black;
-    font-size: 30px;
-    right: 400px;
+    font-size: 250%;
+    right: 30%;
     position: absolute;
     bottom: 0;
-    padding: 10px;
     font-style: italic; 
   }
 

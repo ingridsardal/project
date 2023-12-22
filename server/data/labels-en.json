@@ -43,7 +43,7 @@
 	"markScore": "Check the correct answers:",
 	
 	"sales-pitch": "Creative. Fun. Familiar.",
-	"subHeading": "The web-version of a loved game!",
+	"subHeading": "The web-version of a beloved game!",
 	"invite": "Invite participants with this link:",
 
 	"roundNumber": "Round number ",
@@ -64,7 +64,6 @@
 	"note": "Note!",
 	"last": "is last...",
 	"chooseLetter": "Choose letter for the next round:",
-	"gameId": "Game ID",
-	"liveScoreTile": "Game leader is casting the mantle of judgment upon you"
-
+	"startNextRound": "Start next round",
+	"goToResults": "Go to results"
 }

@@ -4,7 +4,7 @@
     </header>
 <br>
 
-<h2> {{uiLabels.shareCode}}! </h2>
+<h2 class="shareCode"> {{uiLabels.shareCode}}! </h2>
 <p>
     {{uiLabels.players}}:
     <ul>
@@ -117,17 +117,17 @@ export default {
 
 <style scoped>
 
-#shareCode {
+.shareCode {
     text-align: center;
     color:rgb(0, 0, 0);
-    font-size: 30px
+    font-size: 200%;
     }
 
 #tillbakaButton {
   background-color: rgb(255, 206, 114);
-  height: 80px;
+  height: 10%;
   width: 12em;
-  margin: 25px;
+  margin: 2%;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -135,9 +135,9 @@ export default {
 
 #startaSpelButton {
   background-color: rgb(113, 255, 113);
-  height: 80px;
+  height: 10%;
   width: 12em;
-  margin: 25px;
+  margin: 2%;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -146,20 +146,21 @@ export default {
 h1 { 
     color:rgb(249, 192, 86);
     text-shadow: rgb(255, 183, 0) 1px 0 10px;
-    font-size: 50px; 
+    font-size: 300%; 
     }
 
-h2{font-weight: normal;
+h2 {font-weight: normal;
   text-align: center;
     color:rgb(0, 0, 0);
-    font-size: 30px}
-  
+    font-size: 200%}
+
   ul {
     list-style: none;
   }
 
   li {
-    font-size: 20px;
+    font-size: 150%;
+    text-align: center;
   }
 
 </style>
