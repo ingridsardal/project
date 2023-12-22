@@ -1,5 +1,5 @@
 <template>
-  <body id="apa">
+  <body id="mainContent">
     <header>
       <h1>{{uiLabels.scoreboard}} {{ roundCounter }}</h1> 
     </header>
@@ -139,7 +139,7 @@ export default {
     // Övervaka förändringar i roundCounter
     roundCounter(newVal) {
       if (newVal >= this.rounds) {
-        this.buttonText = 'Gå till resultat';
+        this.buttonText = this.uiLabels.goToResult;
         this.showContent = false;
         }
       },
@@ -308,7 +308,7 @@ export default {
   }
 
 
-  #apa {
+  #mainContent {
 
     margin: 0;
     display: flex;
