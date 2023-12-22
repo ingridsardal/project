@@ -8,9 +8,9 @@
     <table>
       <thead>
         <tr>
-          <th>Namn</th>
-          <th>Placering</th>
-          <th>Poäng</th>
+          <th>{{uiLabels.scoreboardName}}</th>
+          <th>{{uiLabels.scoreboardRanking}}</th>
+          <th>{{uiLabels.scoreboardPoints}}</th>
         </tr>
       </thead>
 

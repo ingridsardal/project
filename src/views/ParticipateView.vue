@@ -6,7 +6,7 @@
 
         <label>
       <br>
-      Poll id: 
+      {{uiLabels.gameId}}: 
       <input type="text" v-model="pollId">
     </label>
     <br>

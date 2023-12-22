@@ -1,9 +1,9 @@
 <template>
   <div>
     <header>
-      <h1>Game leader is casting the mantle of judgment upon you</h1>
+      <h1>{{uiLabels.liveScoreTile}}</h1>
       <br/>
-      <h1>round {{ roundCounter }}</h1>
+      <h1>{{uiLabels.round}} {{ roundCounter }}</h1>
     </header>
     <body>
       <section id="Section1">
@@ -14,7 +14,7 @@
           <ul>
             <li v-for="(answer, category) in player.answers[roundCounter-1]" :key="category"> <!--Istället för nolla så ska det vara roundnumber-->
               <div class="answerContainer">
-                <div class="answerLabel"> {{ category }}: {{ answer }} </div>
+                <div class="answerLabel"> {{ uiLabels[category] }}: {{ answer }} </div>
               </div>
             </li>
           </ul>
@@ -47,11 +47,18 @@ export default {
       categories: [],
       roundCounter: 0,
       checkedAnswers: {},
+      uiLabels: {},
     };
   },
   created() {
     this.pollId = this.$route.params.id;
     this.name = this.$route.params.name;
+
+    socket.emit("pageLoaded", this.lang);
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+    
+    }),
 
     socket.emit('startGame', {pollId: this.pollId});
 

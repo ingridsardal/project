@@ -62,6 +62,8 @@
 	"last": "är sist...",
 	"chooseLetter": "Välj bokstav för nästa omgång:",
 	"startNextRound": "Starta nästa omgång",
-	"goToResults": "Gå till resultat"
+	"goToResults": "Gå till resultat",
+	"gameId": "Spel ID",
+	"liveScoreTile": "Spelledaren kastar domslutets mantel över dig"
 
 }
