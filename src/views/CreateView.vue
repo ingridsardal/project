@@ -68,7 +68,6 @@
     <div class="antalomgångar">
       <label for="rounds">{{uiLabels.NumberOfRounds}}</label>
       <select id="rounds" v-model="rounds" style="overflow-y: auto;">
-                <option>0</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -158,7 +157,7 @@ export default {
     return {
       lang: localStorage.getItem("lang") || "en",
       pollId: "",
-      rounds: "0",
+      rounds: "3",
       data: {},
       uiLabels: {},
       categories: [],
