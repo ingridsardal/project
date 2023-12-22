@@ -1,5 +1,5 @@
 <template>
-  <body id="mainContent">
+  <body id="apa">
     <header>
       <h1>{{uiLabels.scoreboard}} {{ roundCounter }}</h1> 
     </header>
@@ -32,7 +32,7 @@
       </tbody>
     </table>
 
-     <div class="message" :class="{ 'super-mega-last': isSuperMegaLastPlace, 'krossar-alla': isDominating }">
+     <div v-if="players.length > 1" class="message" :class="{ 'super-mega-last': isSuperMegaLastPlace, 'krossar-alla': isDominating }">
       <p>
         <span v-if="isDominating">{{ firstPlacePlayer.nameId }} {{uiLabels.dominating}}</span>
         <span v-else-if="isSuperMegaLastPlace">{{ lastPlacePlayer.nameId }} {{uiLabels.superMegaLast}}</span>
@@ -96,7 +96,7 @@ export default {
       return this.players.slice().sort((a, b) => b.points - a.points);
       }
       else {
-        return [{ nameId: 'Player 1', points: 0 }];
+        return this.players;
       }
     },
     lastPlacePlayer() {
@@ -139,7 +139,7 @@ export default {
     // Övervaka förändringar i roundCounter
     roundCounter(newVal) {
       if (newVal >= this.rounds) {
-        this.buttonText = this.uiLabels.goToResult;
+        this.buttonText = 'Gå till resultat';
         this.showContent = false;
         }
       },
@@ -308,7 +308,7 @@ export default {
   }
 
 
-  #mainContent {
+  #apa {
 
     margin: 0;
     display: flex;
