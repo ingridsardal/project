@@ -58,7 +58,7 @@ export default {
       data: {},
       uiLabels: {},
       pollId: "inactive poll",
-      inputLetter: this.generateRandomLetter(), // Förinställd random bokstav
+      inputLetter: this.shuffleRandomLetter(), // Förinställd random bokstav
       selectedLetter: '',
       roundCounter: 0,
       rounds: 0,
@@ -170,6 +170,20 @@ export default {
       const randomIndex = Math.floor(Math.random() * alphabet.length);
       return alphabet[randomIndex];
     },
+
+    shuffleRandomLetter() {
+      for (var i = 1; i < 500; i++) {
+      setTimeout(() => {
+        this.inputLetter = this.generateRandomLetter();
+      }, 100 );
+    }
+    for (var i = 1; i < 6; i++) {
+      setTimeout(() => {
+        this.inputLetter = this.generateRandomLetter();
+      }, 100 * i * i);
+    }
+  },
+
     filterInput() {
       this.inputLetter = this.inputLetter.replace(/[^a-zA-ZåäöÅÄÖ]/g, '');
     },

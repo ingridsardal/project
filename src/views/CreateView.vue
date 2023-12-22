@@ -162,7 +162,7 @@ export default {
       uiLabels: {},
       categories: [],
       randomLetter: "",
-      inputLetter: this.generateRandomLetter(),
+      inputLetter: this.shuffleRandomLetter(),
       firstSelectedLetter: "",
     }
   },
@@ -211,9 +211,20 @@ export default {
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
     const randomIndex = Math.floor(Math.random() * alphabet.length);
     return alphabet[randomIndex];
-  
   },
+    shuffleRandomLetter() {
+      for (var i = 1; i < 1000; i++) {
+      setTimeout(() => {
+        this.inputLetter = this.generateRandomLetter();
+      }, 100);
+    }
+    for (var i = 1; i < 6; i++) {
+      setTimeout(() => {
+        this.inputLetter = this.generateRandomLetter();
+      }, 100 * i * i);
+    }
   }
+}
 }
 
 </script>
