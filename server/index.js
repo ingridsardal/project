@@ -4,7 +4,7 @@ import { Server } from "socket.io";
 const httpServer = createServer();
 const io = new Server(httpServer, {
     cors: {
-      origin: "http://localhost:5173",
+      origin: "*", //change from http://localhost:5173 to * to allow all
       methods: ["GET"],
       credentials: true
   }

@@ -29,7 +29,7 @@
 import QuestionComponent from '@/components/QuestionComponent.vue';
 import io from 'socket.io-client';
 import { ssrContextKey } from 'vue';
-const socket = io("localhost:3000");
+const socket = io(sessionStorage.getItem("dataServer")); 
 
 // Get the full URL
 const currentURL = window.location.href;

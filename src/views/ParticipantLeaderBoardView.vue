@@ -37,7 +37,7 @@
 
 <script>
 import io from 'socket.io-client';
-const socket = io("localhost:3000");
+const socket = io(sessionStorage.getItem("dataServer")); 
 
 export default {
   data() {
@@ -87,7 +87,7 @@ export default {
       return this.players.slice().sort((a, b) => b.points - a.points);
       }
       else {
-        return [{ nameId: 'Player 1', points: 0 }];
+        return this.players;
       }
     },
     lastPlacePlayer() {
