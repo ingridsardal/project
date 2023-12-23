@@ -104,7 +104,7 @@ export default {
    },
    startaSpel: function () {
     if (this.players.length < 1) {
-      alert("Vänta på dina vänner!") //Fixa uilabels
+      alert(this.uiLabels.noPlayers) 
     } 
     else {
     console.log("starta spel creatorwaitingview")

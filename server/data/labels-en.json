@@ -8,6 +8,7 @@
 	"chooseCategory": "Choose one or multiple categories",
 	"waitInfo": "Waiting for the game leader to start the game...",
 	"noCategories": "You must choose at least one category to continue",
+	"noPlayers": "At least one player must join to start the game",
 
 	"players": "Players",
 	"name": "Name",
