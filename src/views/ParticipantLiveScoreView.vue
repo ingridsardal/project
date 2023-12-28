@@ -9,7 +9,12 @@
           <div class="wrapper">
 
             <div v-for="player in players" :key="player.id" class="player-item">
-              <h1>{{ player.nameId }} </h1>
+              <h1>
+                <div id="playerAvatar"> 
+                  {{ player.nameId }} 
+                  <img :src="player.avatar" alt="Animated GIF">
+                </div>
+              </h1>
           <ul>
             <li v-for="(answer, category) in player.answers[roundCounter-1]" :key="category"> <!--Istället för nolla så ska det vara roundnumber-->
               <div class="answerContainer">
@@ -141,5 +146,21 @@ h2{font-weight: bold;
 }
 ul {
   list-style: none;
+}
+#playerAvatar {
+  width: 15%; /* Adjust as needed */
+  height: 15%; /* Adjust as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid black; /* Adds a black border */
+  border-radius: 10px; /* Makes corners rounded */
+  padding: 10px;
+}
+
+#playerAvatar img {
+  width: 100%;
+  height: auto;
 }
 </style>

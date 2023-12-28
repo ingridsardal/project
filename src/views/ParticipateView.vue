@@ -15,40 +15,52 @@
       {{uiLabels.name}}: 
       <input type="text" v-model="nameId">
     </label>
+    <br>
+    <br>
+    <label>
+      {{uiLabels.selectAvatar}}: 
+    </label>
 
     <section>
       <div class="wrapper">
-      <button class="avatars">
-      <img src="https://media.giphy.com/media/2wgTJVY171NU2547b8/giphy.gif" alt="Animated GIF">
+      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/xT9IgM7SyNjzZBxvDG/giphy.gif'">
+      <img src="https://media.giphy.com/media/xT9IgM7SyNjzZBxvDG/giphy.gif" alt="Animated GIF">
       </button>
-      <button class="avatars">
+      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/etKPlfE85HW8udMMDl/giphy.gif'">
       <img src="https://media.giphy.com/media/etKPlfE85HW8udMMDl/giphy.gif" alt="Animated GIF">
       </button>
-      <button class="avatars">
-      <img src="https://media.giphy.com/media/ys3xvXRwsdjoYvYR3h/giphy.gif" alt="Animated GIF">
+      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/w0hpqElNgofh1bdUD3/giphy.gif'">
+      <img src="https://media.giphy.com/media/w0hpqElNgofh1bdUD3/giphy.gif" alt="Animated GIF">
       </button>
-      <button class="avatars">
+      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/u7e9QxCHnNzWxswBZJ/giphy.gif'">
+      <img src="https://media.giphy.com/media/u7e9QxCHnNzWxswBZJ/giphy.gif" alt="Animated GIF">
+      </button>
+      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/fkdMDbf18tqkamTnnZ/giphy.gif'">
+      <img src="https://media.giphy.com/media/fkdMDbf18tqkamTnnZ/giphy.gif" alt="Animated GIF">
+      </button>
+      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/l4FGFHiVod82HC2ly/giphy.gif'">
+      <img src="https://media.giphy.com/media/l4FGFHiVod82HC2ly/giphy.gif" alt="Animated GIF">
+      </button>
+      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/3oKIPhxtCqLe49VI08/giphy.gif'">
+      <img src="https://media.giphy.com/media/3oKIPhxtCqLe49VI08/giphy.gif" alt="Animated GIF">
+      </button>
+      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/3oKIPBYGLy6qk8bdrq/giphy.gif'">
       <img src="https://media.giphy.com/media/3oKIPBYGLy6qk8bdrq/giphy.gif" alt="Animated GIF">
       </button>
-      <button class="avatars">
-      <img src="https://media.giphy.com/media/TLPC9CGU0FriCc9Bql/giphy.gif" alt="Animated GIF">
+      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/3kMiS4AA4P4L2Z6TT7/giphy.gif'">
+      <img src="https://media.giphy.com/media/3kMiS4AA4P4L2Z6TT7/giphy.gif" alt="Animated GIF">
       </button>
-      <button class="avatars">
-      <img src="https://media.giphy.com/media/X1XORnJ6ErubS/giphy.gif" alt="Animated GIF">
+      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/ys3xvXRwsdjoYvYR3h/giphy.gif'">
+      <img src="https://media.giphy.com/media/ys3xvXRwsdjoYvYR3h/giphy.gif" alt="Animated GIF">
       </button>
-      <button class="avatars">
-      <img src="https://media.giphy.com/media/dioml5wsoBZYqJGqip/giphy.gif" alt="Animated GIF">
-      </button>
-      <button class="avatars">
-      <img src="https://media.giphy.com/media/Ii4jfLGmdmWWhcVTG3/giphy.gif" alt="Animated GIF">
-      </button>
-    </div>
-    <!--
-    <div id="selectedAvatar"> 
-      <p>Your Selected avatar</p>
-      <br/>
-      <img src="https://media.giphy.com/media/2wgTJVY171NU2547b8/giphy.gif" alt="Animated GIF">
-    </div>-->
+
+
+      </div>
+      <div id="selectedAvatar"> 
+        <p>{{uiLabels.selectedAvatar}}</p>
+        <br/>
+        <img :src="selectedGif" alt="Animated GIF">
+      </div>
     </section>
 
 
@@ -89,7 +101,8 @@
         pollId: "inactive poll",
         submittedAnswers: {},
         nameId: "",
-        players: []
+        players: [],
+        selectedGif: "https://media.giphy.com/media/aYKTYtCYb2ECSKfyal/giphy.gif"
       }
     },
     created: function () {
@@ -115,7 +128,7 @@
 
     methods: {
       joinButton: function () {
-      socket.emit("joinGame", {pollId: this.pollId, nameId: this.nameId})
+      socket.emit("joinGame", {pollId: this.pollId, nameId: this.nameId, avatar: this.selectedGif})
     }
     }
   }
@@ -158,25 +171,51 @@ h3{font-weight: bold;}
   background-color:rgb(254, 195, 86);
 }
 
-section{
+section {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center; /* Centers content horizontally */
   width: 100%;
   padding: 10px;
 }
+
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(10, 7%);
-  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(10, 1fr); /* Creates 10 equal-width columns */
   gap: 10px;
+  width: 80%; /* Adjust as needed */
+  margin: auto; /* Centers the wrapper */
+  padding-left: 50px; /* Adds 50px of padding to the left */
+  padding-right: 50px; /* Adds 50px of padding to the right */
+  margin-bottom: 20px; /* Space between the grid and the selected avatar */
 }
+
 .avatars {
+  border-radius: 8px; 
   width: 100%;
+  height: 100%;
 }
 .avatars img {
+  width: 70%;
+  height: auto;
+}
+
+#selectedAvatar {
+  width: 15%; /* Adjust as needed */
+  height: 15%; /* Adjust as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid black; /* Adds a black border */
+  border-radius: 10px; /* Makes corners rounded */
+  padding: 10px;
+}
+
+#selectedAvatar img {
   width: 100%;
   height: auto;
-  border-radius: 8px; /* Optional: Adds rounded corners to avatars */
 }
 </style>
   

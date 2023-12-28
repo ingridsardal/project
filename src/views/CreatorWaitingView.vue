@@ -9,7 +9,10 @@
     {{uiLabels.players}}:
     <ul>
         <li v-for="player in players">
-          {{ player.nameId }}
+          <div id="playerAvatar">
+            {{ player.nameId }}  
+            <img :src="player.avatar" alt="Animated GIF">
+          </div>
         </li>
     </ul>
 </p>
@@ -175,5 +178,21 @@ h2 {font-weight: normal;
     font-size: 150%;
     text-align: center;
   }
+  #playerAvatar {
+  width: 15%; /* Adjust as needed */
+  height: 15%; /* Adjust as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid black; /* Adds a black border */
+  border-radius: 10px; /* Makes corners rounded */
+  padding: 10px;
+}
+
+#playerAvatar img {
+  width: 100%;
+  height: auto;
+}
 
 </style>

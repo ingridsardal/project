@@ -66,5 +66,8 @@
 	"last": "is last...",
 	"chooseLetter": "Choose letter for the next round:",
 	"startNextRound": "Start next round",
-	"goToResults": "Go to results"
+	"goToResults": "Go to results",
+	"gameId": "Game ID",
+	"selectedAvatar": "Your Selected avatar",
+	"selectAvatar": "Click on a button to select an avatar"
 }

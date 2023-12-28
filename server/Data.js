@@ -118,7 +118,7 @@ Data.prototype.startGame = function(pollId) {
   console.log("Game not started", typeof poll);
 };
 
-Data.prototype.joinGame = function(pollId, nameId) {
+Data.prototype.joinGame = function(pollId, nameId, avatar) {
   const poll = this.polls[pollId];
   console.log("joingame", poll)
   if (typeof poll !== "undefined") {
@@ -134,6 +134,7 @@ Data.prototype.joinGame = function(pollId, nameId) {
       hasAnswered: false,
       avatar: "",
     };
+    player.avatar = avatar;
     poll.players.push(player);
     console.log("player joined", player.nameId);
     return true

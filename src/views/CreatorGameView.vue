@@ -11,7 +11,11 @@
         <div class="wrapper">
 
           <div v-for="player in players" :key="player.id" class="player-item">
-            <h1>{{ player.nameId }} </h1>
+            <h1>{{ player.nameId }} 
+              <div id="playerAvatar"> 
+                <img :src="player.avatar" alt="Animated GIF">
+              </div>
+            </h1>
 
   <ul>
     <li v-for="(answer, category) in player.answers[roundCounter-1]" :key="category">

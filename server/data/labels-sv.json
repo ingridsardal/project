@@ -65,6 +65,8 @@
 	"startNextRound": "Starta nästa omgång",
 	"goToResults": "Gå till resultat",
 	"gameId": "Spel ID",
-	"liveScoreTile": "Spelledaren kastar domslutets mantel över dig"
+	"liveScoreTile": "Spelledaren kastar domslutets mantel över dig",
+	"selectedAvatar": "Din Avatar",
+	"selectAvatar": "Klicka på en ikon för att välja din avatar"
 
 }

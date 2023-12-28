@@ -56,7 +56,7 @@ function sockets(io, socket, data) {
 
   // Här lägger vi till egna sockets
   socket.on('joinGame', function(d){;
-    socket.emit('isTaken', data.joinGame(d.pollId, d.nameId))
+    socket.emit('isTaken', data.joinGame(d.pollId, d.nameId, d.avatar))
     io.to(d.pollId).emit('playersUpdate', data.getPlayers(d.pollId));
    });
 
