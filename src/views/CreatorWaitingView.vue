@@ -5,17 +5,18 @@
 <br>
 
 <h2 class="shareCode"> {{uiLabels.shareCode}}! </h2>
-<p>
+
     {{uiLabels.players}}:
-    <ul>
-        <div v-for="player in players">
-          <div id="playerAvatar">
-            {{ player.nameId }}  
-            <img :src="player.avatar" alt="Animated GIF">
-          </div>
-        </div>
-    </ul>
-</p>
+<div class="wrapper">
+
+          <div v-for="player in players" :key="player.id" class="player-item">
+            <h1>{{ player.nameId }} 
+              <div id="playerAvatar"> 
+                <img :src="player.avatar" alt="Animated GIF" >
+              </div>
+            </h1>
+
+</div></div>
 
  <footer>
     <router-link v-bind:to="'/create/'">
@@ -119,6 +120,11 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Creates 10 equal-width columns */
+  
+}
 
 .shareCode {
     text-align: center;
@@ -179,8 +185,8 @@ h2 {font-weight: normal;
     text-align: center;
   }
   #playerAvatar {
-  width: 15%; /* Adjust as needed */
-  height: 15%; /* Adjust as needed */
+  width: 30%; /* Adjust as needed */
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -188,6 +194,8 @@ h2 {font-weight: normal;
   border: 2px solid black; /* Adds a black border */
   border-radius: 10px; /* Makes corners rounded */
   padding: 10px;
+  margin-left: 30%;
+  margin-top: 10px;
 }
 
 #playerAvatar img {
