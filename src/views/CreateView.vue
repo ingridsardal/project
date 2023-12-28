@@ -326,8 +326,8 @@ h3 {font-weight: bold;
     position: absolute;
     bottom: 0;
     right: 17%; 
-    height: 140px;
-    width: 140px;
+    height: 120px;
+    width: 110px;
     border: none;
     font-size: 110px; 
     color: rgb(249, 192, 86);
@@ -363,12 +363,13 @@ h3 {font-weight: bold;
     font-size: 50px; /* Justera storleken som passar bäst för mindre skärmar */
     left: 70%;
     margin-top: 100px;
+    height: 80px;
+    width: 80px;
   }
   .firstRoundLetter {
     font-size: 20px;
     right: 30%;
     position: absolute;
-    text-align: left;
     margin-left: 10px;
     bottom: 0;
    

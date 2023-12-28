@@ -23,33 +23,47 @@
 
     <section>
       <div class="wrapper">
-      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/xT9IgM7SyNjzZBxvDG/giphy.gif'">
+      <button class="avatars" :class="{'selected-avatar': selectedGif === 'https://media.giphy.com/media/xT9IgM7SyNjzZBxvDG/giphy.gif'}" 
+       @click="selectedGif = 'https://media.giphy.com/media/xT9IgM7SyNjzZBxvDG/giphy.gif'">
       <img src="https://media.giphy.com/media/xT9IgM7SyNjzZBxvDG/giphy.gif" alt="Animated GIF">
       </button>
-      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/etKPlfE85HW8udMMDl/giphy.gif'">
+      <button class="avatars" :class="{'selected-avatar': selectedGif === 'https://media.giphy.com/media/etKPlfE85HW8udMMDl/giphy.gif'}" 
+      @click="selectedGif = 'https://media.giphy.com/media/etKPlfE85HW8udMMDl/giphy.gif'">
       <img src="https://media.giphy.com/media/etKPlfE85HW8udMMDl/giphy.gif" alt="Animated GIF">
       </button>
-      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/w0hpqElNgofh1bdUD3/giphy.gif'">
+      <button class="avatars" :class="{'selected-avatar': selectedGif === 'https://media.giphy.com/media/w0hpqElNgofh1bdUD3/giphy.gif'}"
+      @click="selectedGif = 'https://media.giphy.com/media/w0hpqElNgofh1bdUD3/giphy.gif'">
       <img src="https://media.giphy.com/media/w0hpqElNgofh1bdUD3/giphy.gif" alt="Animated GIF">
       </button>
-      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/u7e9QxCHnNzWxswBZJ/giphy.gif'">
+      <button class="avatars" :class="{'selected-avatar': selectedGif === 'https://media.giphy.com/media/u7e9QxCHnNzWxswBZJ/giphy.gif'}"
+      @click="selectedGif = 'https://media.giphy.com/media/u7e9QxCHnNzWxswBZJ/giphy.gif'">
       <img src="https://media.giphy.com/media/u7e9QxCHnNzWxswBZJ/giphy.gif" alt="Animated GIF">
       </button>
-      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/fkdMDbf18tqkamTnnZ/giphy.gif'">
-      <img src="https://media.giphy.com/media/fkdMDbf18tqkamTnnZ/giphy.gif" alt="Animated GIF">
-      </button>
-      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/l4FGFHiVod82HC2ly/giphy.gif'">
-      <img src="https://media.giphy.com/media/l4FGFHiVod82HC2ly/giphy.gif" alt="Animated GIF">
-      </button>
-      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/3oKIPhxtCqLe49VI08/giphy.gif'">
-      <img src="https://media.giphy.com/media/3oKIPhxtCqLe49VI08/giphy.gif" alt="Animated GIF">
-      </button>
-      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/3oKIPBYGLy6qk8bdrq/giphy.gif'">
-      <img src="https://media.giphy.com/media/3oKIPBYGLy6qk8bdrq/giphy.gif" alt="Animated GIF">
-      </button>
-      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/3kMiS4AA4P4L2Z6TT7/giphy.gif'">
-      <img src="https://media.giphy.com/media/3kMiS4AA4P4L2Z6TT7/giphy.gif" alt="Animated GIF">
-      </button>
+      <button class="avatars" 
+        :class="{'selected-avatar': selectedGif === 'https://media.giphy.com/media/fkdMDbf18tqkamTnnZ/giphy.gif'}" 
+        @click="selectedGif = 'https://media.giphy.com/media/fkdMDbf18tqkamTnnZ/giphy.gif'">
+  <img src="https://media.giphy.com/media/fkdMDbf18tqkamTnnZ/giphy.gif" alt="Animated GIF">
+</button>
+<button class="avatars" 
+        :class="{'selected-avatar': selectedGif === 'https://media.giphy.com/media/l4FGFHiVod82HC2ly/giphy.gif'}" 
+        @click="selectedGif = 'https://media.giphy.com/media/l4FGFHiVod82HC2ly/giphy.gif'">
+  <img src="https://media.giphy.com/media/l4FGFHiVod82HC2ly/giphy.gif" alt="Animated GIF">
+</button>
+<button class="avatars" 
+        :class="{'selected-avatar': selectedGif === 'https://media.giphy.com/media/3oKIPhxtCqLe49VI08/giphy.gif'}" 
+        @click="selectedGif = 'https://media.giphy.com/media/3oKIPhxtCqLe49VI08/giphy.gif'">
+  <img src="https://media.giphy.com/media/3oKIPhxtCqLe49VI08/giphy.gif" alt="Animated GIF">
+</button>
+<button class="avatars" 
+        :class="{'selected-avatar': selectedGif === 'https://media.giphy.com/media/3oKIPBYGLy6qk8bdrq/giphy.gif'}" 
+        @click="selectedGif = 'https://media.giphy.com/media/3oKIPBYGLy6qk8bdrq/giphy.gif'">
+  <img src="https://media.giphy.com/media/3oKIPBYGLy6qk8bdrq/giphy.gif" alt="Animated GIF">
+</button>
+<button class="avatars" 
+        :class="{'selected-avatar': selectedGif === 'https://media.giphy.com/media/3kMiS4AA4P4L2Z6TT7/giphy.gif'}" 
+        @click="selectedGif = 'https://media.giphy.com/media/3kMiS4AA4P4L2Z6TT7/giphy.gif'">
+  <img src="https://media.giphy.com/media/3kMiS4AA4P4L2Z6TT7/giphy.gif" alt="Animated GIF">
+</button>
       <!--<button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/ys3xvXRwsdjoYvYR3h/giphy.gif'">
       <img src="https://media.giphy.com/media/ys3xvXRwsdjoYvYR3h/giphy.gif" alt="Animated GIF">
       </button>-->
@@ -57,11 +71,12 @@
 
       </div>
     </section>
+    <!--
       <div id="selectedAvatar"> 
         <p>{{uiLabels.selectedAvatar}}</p>
         <br/>
         <img :src="selectedGif" alt="Animated GIF">
-      </div>
+      </div>-->
 
 
 
@@ -143,7 +158,9 @@
 h3{
   font-weight: bold;
 }
-    
+.selected-avatar {
+  border: 3px solid green;
+}   
 #joinButton {
       height: 80px;
       width: 12em;
@@ -189,9 +206,9 @@ section {
 
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(10, 1fr); /* Creates 10 equal-width columns */
+  grid-template-columns: repeat(3, 1fr); /* Creates 10 equal-width columns */
   gap: 10px;
-  width: 80%; /* Adjust as needed */
+  width: 40%; /* Adjust as needed */
   margin: auto; /* Centers the wrapper */
   padding-left: 50px; /* Adds 50px of padding to the left */
   padding-right: 50px; /* Adds 50px of padding to the right */
@@ -235,7 +252,9 @@ section {
   width: 10em;}
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Creates 10 equal-width columns */}
+  grid-template-columns: repeat(3, 1fr); /* Creates 10 equal-width columns */
+  width: 80%;
+  margin-left: -4%; /* Centers the wrapper */}
   .avatars img {
   width: 80%;
   height: auto;
