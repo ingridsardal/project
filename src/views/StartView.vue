@@ -115,12 +115,13 @@
     height: 100px;
     width: 100%;
     margin: 10px;
+    margin-left: 0px;
     border-radius: 10px;
     background-color: white;
     color: rgb(249, 192, 86);
     border: 2px solid rgba(249, 192, 86, 0.6); /* Lägg till en border med lite mörkare orange */
     cursor: pointer;
-    font-size: 20px;;
+    font-size: 20px;
   }
   #participateButton:hover, #createButton:hover {
     background-color:rgba(209, 136, 0, 0.761);
@@ -136,7 +137,7 @@
     .logo img {
       height:200px;
       vertical-align: bottom;
-      margin-right: 0.7rem; 
+      margin-left:-30px;
     }
     .hamburger {
       color:white;
@@ -203,6 +204,12 @@
     color: white;
   } 
   @media screen and (max-width:50em) {
+
+    #participateButton,
+  #createButton {
+    height: 80px;
+    width: 100%;
+  }
     .logo {
       font-size: 5vw;
       display: flex;
@@ -220,5 +227,18 @@
     .hide {
       left:-12em;
     }
+
+    .container {
+      top: 67%;
+      padding-top:10px;
+      padding-bottom: 15px;
+    }
+    h1{
+      font-size: 28px;
+    }
+    h2{font-size: 20px;}
+  
   }
+
+
   </style>
