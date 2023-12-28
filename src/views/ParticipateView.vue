@@ -50,18 +50,19 @@
       <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/3kMiS4AA4P4L2Z6TT7/giphy.gif'">
       <img src="https://media.giphy.com/media/3kMiS4AA4P4L2Z6TT7/giphy.gif" alt="Animated GIF">
       </button>
-      <button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/ys3xvXRwsdjoYvYR3h/giphy.gif'">
+      <!--<button class="avatars" @click="selectedGif = 'https://media.giphy.com/media/ys3xvXRwsdjoYvYR3h/giphy.gif'">
       <img src="https://media.giphy.com/media/ys3xvXRwsdjoYvYR3h/giphy.gif" alt="Animated GIF">
-      </button>
+      </button>-->
 
 
       </div>
+    </section>
       <div id="selectedAvatar"> 
         <p>{{uiLabels.selectedAvatar}}</p>
         <br/>
         <img :src="selectedGif" alt="Animated GIF">
       </div>
-    </section>
+
 
 
    <br>
@@ -139,12 +140,18 @@
     text-shadow: rgb(255, 183, 0) 1px 0 10px;
     font-size: 50px; 
     }
-h3{font-weight: bold;}
-    #joinButton {
-      height: 100px;
-      width: 33%;
-      margin:19px;
-      font-size: 30px;
+h3{
+  font-weight: bold;
+}
+    
+#joinButton {
+      height: 80px;
+      width: 12em;
+      margin: 25px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+
       background-color: lightgreen;
       border-radius: 10px;
       border: none;
@@ -188,7 +195,8 @@ section {
   margin: auto; /* Centers the wrapper */
   padding-left: 50px; /* Adds 50px of padding to the left */
   padding-right: 50px; /* Adds 50px of padding to the right */
-  margin-bottom: 20px; /* Space between the grid and the selected avatar */
+  margin-bottom: 40px; /* Space between the grid and the selected avatar */
+  height: 10px;
 }
 
 .avatars {
@@ -197,7 +205,7 @@ section {
   height: 100%;
 }
 .avatars img {
-  width: 70%;
+  width: 80%;
   height: auto;
 }
 
@@ -211,11 +219,28 @@ section {
   border: 2px solid black; /* Adds a black border */
   border-radius: 10px; /* Makes corners rounded */
   padding: 10px;
+  margin-left:40%;
+  margin-top:5%;
+
 }
 
 #selectedAvatar img {
   width: 100%;
   height: auto;
 }
+@media screen and (max-width:50em) {
+  h1{font-size: 40px;}
+#joinButton, #tillbakaButton{  
+  height: 80px;
+  width: 10em;}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 10 equal-width columns */}
+  .avatars img {
+  width: 80%;
+  height: auto;
+}
+#selectedAvatar {  margin-top: 45%; }
+  }
 </style>
   
