@@ -182,12 +182,16 @@ h3{font-weight: bold;}
 
   .lockButton {
   background-color: rgb(113, 255, 113);
+
+  height: 80px;
+  width: 12em;
+  margin: 25px;
   position: absolute;
-  bottom: 10px;
-  right: 10px;
-  padding: 10px 20px;
+  bottom: 0;
+  right: 0;
+
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
 }
 

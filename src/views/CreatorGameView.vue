@@ -29,11 +29,11 @@
       <div><img id="hamster" src="../../public/img/Hamster.gif" alt="Animated GIF" /></div>
 
       <br />
-      <hr>
+
     </body>
     <footer>
       <!--<router-link v-bind:to="'/creatorleaderboard/' + pollId">-->
-        <button id="Tillfällig" v-on:click="giveScore">{{uiLabels.showScoreboard}}</button>
+        <button id="showScoreboardButton" v-on:click="giveScore">{{uiLabels.showScoreboard}}</button>
         <!-- göra så att man kan justera språk-->
       <!--</router-link>-->
     </footer>
@@ -197,7 +197,7 @@ h2{font-weight: normal;
     font-size: 30px}
 
 
-#Tillfällig {
+#showScoreboardButton {
   background-color: rgb(113, 255, 113);
   height: 80px;
   width: 12em;
@@ -205,8 +205,13 @@ h2{font-weight: normal;
   position: absolute;
   bottom: 0;
   right: 0;
+  border: none;
+  border-radius: 10px;
 }
 
+#showScoreboardButton:hover {
+  background-color: #70e070;
+}
 ul {
   list-style: none;
 }

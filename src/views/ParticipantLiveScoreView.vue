@@ -2,15 +2,14 @@
   <div>
     <header>
       <h1>{{uiLabels.liveScoreTile}}</h1>
-      <br/>
-      <h1>{{uiLabels.round}} {{ roundCounter }}</h1>
+      <h2>{{uiLabels.roundNumber}} {{ roundCounter }}</h2>
     </header>
     <body>
       <section id="Section1">
           <div class="wrapper">
 
             <div v-for="player in players" :key="player.id" class="player-item">
-              <h2>{{ player.nameId }} </h2>
+              <h1>{{ player.nameId }} </h1>
           <ul>
             <li v-for="(answer, category) in player.answers[roundCounter-1]" :key="category"> <!--Istället för nolla så ska det vara roundnumber-->
               <div class="answerContainer">
@@ -22,11 +21,9 @@
 
           </div>
         </section>
-
+<br><br>
       <div><img id="hamster" src="../../public/img/Hamster.gif" alt="Animated GIF" /></div>
     </body>
-
-    <hr>
   </div>
 </template>
 
@@ -119,12 +116,16 @@ export default {
 }
 
 h1 {
-  color: rgb(203, 60, 50);
-  text-shadow: rgb(255, 0, 0) 1px 0 10px;
-  font-size: 50px;
-  opacity: 0;
-  animation: fadeIn 4s forwards;
+  color: rgb(249, 192, 86);
+  text-shadow: rgb(255, 183, 0) 1px 0 10px;
+  font-size: 50px; 
+  /*opacity: 0;
+  animation: fadeIn 4s forwards;*/
 }
+h2{font-weight: bold;
+  text-align: center;
+    color:rgb(0, 0, 0);
+    font-size: 30px}
 
 @keyframes fadeIn {
   from {

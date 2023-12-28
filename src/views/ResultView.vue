@@ -285,9 +285,12 @@ export default {
   position: absolute;
   bottom: 0;
   right: 0;
-  cursor: pointer;
+  border: none;
+  border-radius: 10px;
 }
-
+#startRound:hover {
+  background-color: #70e070;
+}
 
 </style>
 

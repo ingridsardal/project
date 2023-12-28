@@ -1,7 +1,7 @@
 <template>
   <body id="apa">
     <header>
-      <h1>{{uiLabels.scoreboard}} {{ roundCounter }}</h1>
+      <h1>{{uiLabels.scoreboard}} {{ uiLabels.round.toUpperCase() }} {{ roundCounter }}</h1>
     </header>
 
 
@@ -28,7 +28,7 @@
       <p>
         <span v-if="isDominating">{{ firstPlacePlayer.nameId }} {{uiLabels.dominating}}</span>
         <span v-else-if="isSuperMegaLastPlace">{{ lastPlacePlayer.nameId }} {{uiLabels.superMegaLast}}</span>
-        <span v-else>{{uiLabels.note}} {{ lastPlacePlayer.nameId }} {{uiLabels.last}}</span> 
+        <span v-else>{{uiLabels.note}} {{ lastPlacePlayer.nameId }} {{uiLabels.last}}</span> <!--lastPlacePlayer funkar ej-->
       </p>
     </div> 
 
@@ -94,6 +94,7 @@ export default {
       if (this.players.length >= 2) {
       const lastIndex = this.sortedPlayers.length - 1;
       console.log("sista spelaren är:", this.sortedPlayers[lastIndex]);
+      console.log("alt 2 sista spelarens poäng är:", this.players[-1].points)
       return this.sortedPlayers[lastIndex];
     } else {
       return { nameId: 'Player 1', points: 0 };

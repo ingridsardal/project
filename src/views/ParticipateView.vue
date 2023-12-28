@@ -10,6 +10,7 @@
       <input type="text" v-model="pollId">
     </label>
     <br>
+    <br>
     <label>
       {{uiLabels.name}}: 
       <input type="text" v-model="nameId">
@@ -132,6 +133,12 @@ h3{font-weight: bold;}
       margin:19px;
       font-size: 30px;
       background-color: lightgreen;
+      border-radius: 10px;
+      border: none;
+      cursor:pointer;
+    }
+    #joinButton:hover {
+      background-color: #70e070;;
     }
     #tillbakaButton {
   background-color: rgb(255, 206, 114);
@@ -141,6 +148,14 @@ h3{font-weight: bold;}
   position: absolute;
   bottom: 0;
   left: 0;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+
+#tillbakaButton:hover {
+  background-color:rgb(254, 195, 86);
 }
 
 section{

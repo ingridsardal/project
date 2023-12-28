@@ -20,7 +20,7 @@
 
 	"backButton":"Tillbaka",
 
-	"NumberOfRounds":"Antal Omgångar",
+	"NumberOfRounds":"Antal omgångar",
 
 	"städer":"Städer",
 	"länder":"Länder",
@@ -53,7 +53,7 @@
 	"anotherGame": "Starta ett nytt spel!",
 
 	
-	"scoreboard": "SCOREBOARD RUNDA",
+	"scoreboard": "SCOREBOARD ",
 	"scoreboardName": "Namn",
 	"scoreboardRanking": "Placering",
 	"scoreboardPoints": "Poäng",

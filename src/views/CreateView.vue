@@ -292,7 +292,12 @@ h3 {font-weight: bold;
   position: absolute;
   bottom: 0;
   right: 0;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
 }
+#skapaButton:hover {
+  background-color: #70e070;}
 
 #tillbakaButton {
   background-color: rgb(255, 206, 114);
@@ -302,12 +307,14 @@ h3 {font-weight: bold;
   position: absolute;
   bottom: 0;
   left: 0;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
 }
 
 
-button:hover {
-    background-color: grey;
-    cursor: pointer;
+#tillbakaButton:hover {
+  background-color:rgb(254, 195, 86);
 }
 
 .textWindow input {

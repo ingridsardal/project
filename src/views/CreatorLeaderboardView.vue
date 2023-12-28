@@ -1,7 +1,7 @@
 <template>
   <body id="apa">
     <header>
-      <h1>{{uiLabels.scoreboard}} {{ roundCounter }}</h1> 
+      <h1>{{uiLabels.scoreboard}} {{uiLabels.round.toUpperCase()}} {{ roundCounter }}</h1>
     </header>
 
     <div class="content" v-if="showContent">
@@ -366,7 +366,12 @@ export default {
   position: absolute;
   bottom: 0;
   right: 0;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
+}
+#startRound:hover {
+  background-color: #70e070;
 }
 
 .content input {

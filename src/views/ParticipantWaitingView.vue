@@ -17,7 +17,7 @@
 
 
     
-    <button id= "tillfälligPG">{{uiLabels.waitInfo}} </button>      <!-- göra så att man kan justera språk-->
+    <button id= "waitButton">{{uiLabels.waitInfo}} </button>      <!-- göra så att man kan justera språk-->
 
 
  <!-- 
@@ -117,16 +117,25 @@ h3 {font-weight: normal;
     font-size: 200%;
     }
 
-#tillbakaButton {
+
+    #tillbakaButton {
   background-color: rgb(255, 206, 114);
-  height: 10% ;
+  height: 10%;
   width: 12em;
   margin: 2%;
   position: absolute;
   bottom: 0;
   left: 0;
-  
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
 }
+
+
+#tillbakaButton:hover {
+  background-color:rgb(254, 195, 86);
+}
+
 
 /*
 #waitingButton {
@@ -146,7 +155,7 @@ h3 {font-weight: normal;
 }
 */
 
-#tillfälligPG {
+#waitButton {
   background-color: rgb(255, 206, 114);
   height: 10%;
   width: 12em;
@@ -154,6 +163,8 @@ h3 {font-weight: normal;
   position: absolute;
   bottom: 0;
   right: 0;
+  border-radius: 10px;
+  border:none;
 }
 
 

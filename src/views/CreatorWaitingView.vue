@@ -123,7 +123,7 @@ export default {
     font-size: 200%;
     }
 
-#tillbakaButton {
+  #tillbakaButton {
   background-color: rgb(255, 206, 114);
   height: 10%;
   width: 12em;
@@ -131,6 +131,14 @@ export default {
   position: absolute;
   bottom: 0;
   left: 0;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+
+#tillbakaButton:hover {
+  background-color:rgb(254, 195, 86);
 }
 
 #startaSpelButton {
@@ -141,8 +149,13 @@ export default {
   position: absolute;
   bottom: 0;
   right: 0;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
 }
-
+#startaSpelButton:hover {
+  background-color: #70e070;;
+}
 h1 { 
     color:rgb(249, 192, 86);
     text-shadow: rgb(255, 183, 0) 1px 0 10px;

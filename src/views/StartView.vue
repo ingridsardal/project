@@ -115,12 +115,16 @@
     height: 100px;
     width: 100%;
     margin: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: white;
     color: rgb(249, 192, 86);
     border: 2px solid rgba(249, 192, 86, 0.6); /* Lägg till en border med lite mörkare orange */
     cursor: pointer;
     font-size: 20px;;
+  }
+  #participateButton:hover, #createButton:hover {
+    background-color:rgba(209, 136, 0, 0.761);
+    color: white;
   }
     .logo {
       text-transform: uppercase;
@@ -172,22 +176,32 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    cursor: pointer;
     background-image: url('../../public/img/Flag_of_Sweden.png');  
+  }
+  .english:hover, .swedish:hover{
+    opacity: 0.85;
   }
   
   .swedish {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    cursor: pointer;
     background-image: url('../../public/img/englishFlag.jpg');  
   }
   #navButtons {
     background-color: rgb(249, 192, 86);
     cursor: pointer;
     color: white;
-    font-size: 20px;;
+    font-size: 20px;
+    
   
   }
+  #navButtons:hover {
+    background-color:rgba(209, 136, 0, 0.761);
+    color: white;
+  } 
   @media screen and (max-width:50em) {
     .logo {
       font-size: 5vw;
