@@ -54,10 +54,10 @@
     <label for="sevärdheter">{{uiLabels.sevärdheter}}</label>
   </div>
   </div> 
-<br><br>
+<br>
 
-    <div class="antalomgångar">
-      <label for="rounds">{{uiLabels.NumberOfRounds}} </label>
+    <div class="numberOfRounds">
+      <label for="rounds">{{uiLabels.NumberOfRounds}}   </label>
       <select id="rounds" v-model="rounds" style="overflow-y: auto;">
                 <option>1</option>
                 <option>2</option>
@@ -271,6 +271,7 @@ h3 {font-weight: bold;
       grid-row-gap: 60%;
       grid-column-gap: 25%;
       margin: 7% 30% 7% 30%;
+      ;
     }
 
     .grid-item {
@@ -335,12 +336,14 @@ h3 {font-weight: bold;
     opacity: 0.7; /* Delvis genomskinlig från början */
     transition: opacity 0.3s ease, border-color 0.3s ease;
     outline: none;
+    margin-bottom: 90px;
 }
 
 .textWindow:hover input {
   opacity: 1;
   border-color: rgb(249, 192, 86);
   outline: none;
+  
 }
 
 .firstRoundLetter {
@@ -350,21 +353,38 @@ h3 {font-weight: bold;
     position: absolute;
     bottom: 0;
     font-style: italic; 
+    margin-bottom: 100px;
   }
 
 
 @media screen and (max-width: 768px) {
   /* Justera stilen för mindre skärmstorlekar */
   .textWindow input {
-    font-size: 80px; /* Justera storleken som passar bäst för mindre skärmar */
-    width: 20%; /* Anpassa bredden för mindre skärmar */
+    font-size: 50px; /* Justera storleken som passar bäst för mindre skärmar */
+    left: 70%;
+    margin-top: 100px;
   }
   .firstRoundLetter {
-    font-size: 30px;
+    font-size: 20px;
     right: 30%;
     position: absolute;
+    text-align: left;
+    margin-left: 10px;
     bottom: 0;
    
+  }
+  .numberOfRounds {
+    margin-top:40px;
+    
+  }
+  .grid-container{
+    font-size: 13px;
+    margin-left: 15%;
+    margin-bottom:40px;
+  }
+  .grid-item{
+    margin-right: -30px;
+    margin-bottom: -10px;
   }
 
   /* Eventuellt andra justeringar för mindre skärmar */
