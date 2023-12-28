@@ -10,11 +10,12 @@
 <div class="wrapper">
 
           <div v-for="player in players" :key="player.id" class="player-item">
-            <h1>{{ player.nameId }} 
+            
               <div id="playerAvatar"> 
+                <h1>{{ player.nameId }}  </h1>
                 <img :src="player.avatar" alt="Animated GIF" >
               </div>
-            </h1>
+           
 
 </div></div>
 
