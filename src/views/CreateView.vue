@@ -4,21 +4,11 @@
         <h1> {{uiLabels.createOwnGame}} </h1>
   </header>
 
-  <div class="textWindow">
-      <!-- Textrutan för att skriva in valfri bokstav -->
-      <input v-model="inputLetter" placeholder="" maxlength="1" @input="filterInput" />
-    </div>
-
-    <div class="firstRoundLetter">
-      <p>{{uiLabels.firstRoundLetter}}</p>
-    </div>
-
   <body>
-        <h3>
-          {{uiLabels.chooseCategory}}:
-        </h3>
+        <h3>{{uiLabels.chooseCategory}}: </h3>
 
     <div class="grid-container">
+
   <div class="grid-item">
     <input type="checkbox" id="städer" value="städer" v-model="categories">
     <label for="städer">{{uiLabels.städer}}</label>
@@ -63,10 +53,11 @@
     <input type="checkbox" id="sevärdheter" value="sevärdheter" v-model="categories">
     <label for="sevärdheter">{{uiLabels.sevärdheter}}</label>
   </div>
-  </div> <br>
+  </div> 
+<br><br>
 
     <div class="antalomgångar">
-      <label for="rounds">{{uiLabels.NumberOfRounds}}</label>
+      <label for="rounds">{{uiLabels.NumberOfRounds}} </label>
       <select id="rounds" v-model="rounds" style="overflow-y: auto;">
                 <option>1</option>
                 <option>2</option>
@@ -80,6 +71,18 @@
                 <option>10</option>
             </select>
     </div>
+
+    <div class="firstRoundLetter">
+      <p>{{uiLabels.firstRoundLetter}}</p>
+    </div>
+
+     <div class="textWindow">
+      <!-- Textrutan för att skriva in valfri bokstav -->
+      <input v-model="inputLetter" placeholder="" maxlength="1" @input="filterInput" />
+    </div>
+
+  
+
 
       <!-- 
       <div class="content">
@@ -334,16 +337,6 @@ h3 {font-weight: bold;
     outline: none;
 }
 
-@media screen and (max-width: 768px) {
-  /* Justera stilen för mindre skärmstorlekar */
-  .textWindow input {
-    font-size: 80px; /* Justera storleken som passar bäst för mindre skärmar */
-    width: 20%; /* Anpassa bredden för mindre skärmar */
-  }
-
-  /* Eventuellt andra justeringar för mindre skärmar */
-}
-
 .textWindow:hover input {
   opacity: 1;
   border-color: rgb(249, 192, 86);
@@ -352,12 +345,30 @@ h3 {font-weight: bold;
 
 .firstRoundLetter {
     color: black;
-    font-size: 250%;
+    font-size: 40px;
     right: 30%;
     position: absolute;
     bottom: 0;
     font-style: italic; 
   }
+
+
+@media screen and (max-width: 768px) {
+  /* Justera stilen för mindre skärmstorlekar */
+  .textWindow input {
+    font-size: 80px; /* Justera storleken som passar bäst för mindre skärmar */
+    width: 20%; /* Anpassa bredden för mindre skärmar */
+  }
+  .firstRoundLetter {
+    font-size: 30px;
+    right: 30%;
+    position: absolute;
+    bottom: 0;
+   
+  }
+
+  /* Eventuellt andra justeringar för mindre skärmar */
+}
 
 
 /*
