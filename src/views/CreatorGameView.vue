@@ -13,7 +13,7 @@
           <div v-for="player in players" :key="player.id" class="player-item">
             <h1>{{ player.nameId }} 
               <div id="playerAvatar"> 
-                <img :src="player.avatar" alt="Animated GIF">
+                <img :src="player.avatar" alt="Animated GIF" >
               </div>
             </h1>
 
@@ -155,6 +155,9 @@ export default {
   border: 1px solid #ccc;
   border-radius: 5px;
   transition: transform 1s ease-in-out;
+}
+#playerAvatar img{
+  width:150px;
 }
 
 .answerContainer {

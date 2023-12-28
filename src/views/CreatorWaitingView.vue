@@ -8,12 +8,12 @@
 <p>
     {{uiLabels.players}}:
     <ul>
-        <li v-for="player in players">
+        <div v-for="player in players">
           <div id="playerAvatar">
             {{ player.nameId }}  
             <img :src="player.avatar" alt="Animated GIF">
           </div>
-        </li>
+        </div>
     </ul>
 </p>
 

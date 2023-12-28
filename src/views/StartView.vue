@@ -133,6 +133,8 @@
       font-size: 2.5rem;
       color: white;
       padding-top:0.2em;
+      position: relative; /* Required for z-index to work */
+      z-index: 0; /* Any number less than the z-index of .hamburger */
     }
     .logo img {
       height:200px;
@@ -151,6 +153,8 @@
       height: 2rem;
       cursor: pointer;
       font-size: 1.5rem;
+      position: relative; /* Required for z-index to work */
+      z-index: 1; /* Any number greater than the z-index of .logo */
     }
    /* #participateButton {
       height: 100px;
@@ -218,6 +222,7 @@
     }
     .hamburger::before {
       content: "☰";
+      font-size: 46px;
       color: rgb(249, 192, 86); 
     }
     .close::before {
