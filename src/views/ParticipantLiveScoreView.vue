@@ -2,7 +2,7 @@
   <div>
     <header>
       <h1>{{uiLabels.liveScoreTile}}</h1>
-      <h2>{{uiLabels.roundNumber}} {{ roundCounter }}</h2>
+      <h2>{{uiLabels.liveScoreText}} {{ roundCounter }}</h2>
     </header>
     <body>
       <section id="Section1">
@@ -22,8 +22,10 @@
             </li>
           </ul>
             </div>
-
           </div>
+
+          <button id= "waitButton">{{uiLabels.waitInfoLiveScore}} </button> 
+
         </section>
 <br><br>
       <div><img id="hamster" src="../../public/img/Hamster.gif" alt="Animated GIF" /></div>
@@ -33,7 +35,6 @@
 
 <script>
 // @ is an alias to /src
-import QuestionComponent from '@/components/QuestionComponent.vue';
 import io from 'socket.io-client';
 import { ssrContextKey } from 'vue';
 const socket = io(sessionStorage.getItem("dataServer")); 
@@ -114,10 +115,12 @@ export default {
   transition: transform 1s ease-in-out;
 }
 
+/* Kanske lite för mycket animation?
 .player-item:hover {
   transform: scale(1.4);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
+*/
 
 h1 {
   color: rgb(249, 192, 86);
@@ -161,7 +164,17 @@ ul {
   padding: 10px;*/
 }
 
-
+#waitButton {
+  background-color: rgb(255, 206, 114);
+  height: 10%;
+  width: 12em;
+  margin: 2%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: 10px;
+  border:none;
+}
 
 #playerAvatar img {
   width:150px;
