@@ -20,6 +20,8 @@
 
 	"backButton":"Go Back",
 
+	"waitInfoLiveScore": "Waiting for the game leader to correct...",
+
 	"NumberOfRounds":"Number of Rounds    ",
 
 	"cities":"Cities",
@@ -47,6 +49,7 @@
 	"subHeading": "The web-version of a beloved game!",
 	"invite": "Invite participants with this link:",
 
+	"liveScoreText": "Your answers have been submitted and are being corrected!",
 	"roundNumber": "Round number ",
 	"showScoreboard": "Show scoreboard",
 	

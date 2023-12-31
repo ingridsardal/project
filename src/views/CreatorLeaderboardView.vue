@@ -1,7 +1,7 @@
 <template>
   <body id="apa">
     <header>
-      <h1>{{uiLabels.scoreboard}} {{uiLabels.round.toUpperCase()}} {{ roundCounter }}</h1>
+      <h1>{{uiLabels.scoreboard}} {{uilabelRound.toUpperCase()}} {{ roundCounter }}</h1>
     </header>
 
     <div class="content" v-if="showContent">
@@ -63,7 +63,8 @@ export default {
       roundCounter: 0,
       rounds: 0,
       buttonText:"",
-      showContent: true
+      showContent: true,
+      uilabelRound: ""
       
     };
   },
@@ -73,6 +74,7 @@ export default {
     socket.on("init", (labels) => {
       this.uiLabels = labels
       this.buttonText = this.uiLabels.startNextRound;
+      this.uilabelRound = this.uiLabels.round;
     }),
 
     this.pollId = this.$route.params.id;

@@ -1,7 +1,7 @@
 <template>
   <body id="apa">
     <header>
-      <h1>{{uiLabels.scoreboard}} {{ uiLabels.round.toUpperCase() }} {{ roundCounter }}</h1>
+      <h1>{{uiLabels.scoreboard}} {{ uiLabels.round }} {{ roundCounter }}</h1>
     </header>
 
 
@@ -47,8 +47,6 @@ export default {
       data: {},
       uiLabels: {},
       pollId: "inactive poll",
-      inputLetter: this.generateRandomLetter(), // Förinställd random bokstav
-      selectedLetter: '',
       roundCounter: 0,
     };
   },
@@ -60,7 +58,6 @@ export default {
       this.uiLabels = labels
     
     }),
-
     this.pollId = this.$route.params.id;
     this.name = this.$route.params.name;
 
@@ -91,13 +88,13 @@ export default {
       }
     },
     lastPlacePlayer() {
-      if (this.players.length >= 2) {
+      if (this.players.length > 1) {
       const lastIndex = this.sortedPlayers.length - 1;
       console.log("sista spelaren är:", this.sortedPlayers[lastIndex]);
-      console.log("alt 2 sista spelarens poäng är:", this.players[-1].points)
+     // console.log("alt 2 sista spelarens poäng är:", this.players[-1].points)
       return this.sortedPlayers[lastIndex];
     } else {
-      return { nameId: 'Player 1', points: 0 };
+      return this.players;
     } 
   },
     firstPlacePlayer() {
@@ -127,20 +124,6 @@ export default {
     }
   },
   methods: {
-    startRound() {
-      this.selectedLetter = this.inputLetter;
-      console.log('Startar nästa omgång med bokstaven:', this.selectedLetter);
-      socket.emit('startRound',{pollId:this.pollId,selectedLetter: this.selectedLetter, roundCounter: this.roundCounter})
-      /*this.$router.push('/creatorgame/'+pollId);*/
-    },
-    generateRandomLetter() {
-      const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      const randomIndex = Math.floor(Math.random() * alphabet.length);
-      return alphabet[randomIndex];
-    },
-    filterInput() {
-      this.inputLetter = this.inputLetter.replace(/[^a-zA-ZåäöÅÄÖ]/g, '');
-    },
   },
 };
 </script>

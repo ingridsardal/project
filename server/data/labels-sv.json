@@ -18,6 +18,8 @@
 	"aboutInfo": "gegegegeeegege",
 	"faq":"FAQ",
 
+	"waitInfoLiveScore": "Vänta på att spelledaren rättar..",
+
 	"backButton":"Tillbaka",
 
 	"NumberOfRounds":"Antal omgångar    ",
@@ -38,6 +40,8 @@
     "round": "Omgång ",
     "infotext": "Nu ska du skriva en sak under varje kategori som börjar på den angivna bokstaven. Lycka till king!",
 	"lockAnswer": "Lås in svar!",
+
+	"liveScoreText": "Dina svar har skickats in och rättas av spelledaren!",
 
 	"giveScore": "Dags att rätta!",
 	"markScore": "Markera de svar som är korrekta:",
