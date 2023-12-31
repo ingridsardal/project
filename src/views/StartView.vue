@@ -5,7 +5,7 @@
            v-on:click="toggleNav">
       </div>
       <div class="logo">
-        <img src="/img/sunlogo.png">
+        <img src="/img/logo.gif">
       </div>
     </header>
 
@@ -95,6 +95,7 @@
       width: 100%;
       display: grid;
       grid-template-columns: 2em auto;
+      margin-bottom: 20px;
     }
     
     .container {
@@ -137,9 +138,10 @@
       z-index: 0; /* Any number less than the z-index of .hamburger */
     }
     .logo img {
-      height:200px;
+      height:400px;
       vertical-align: bottom;
       margin-left:-30px;
+      padding-bottom: 20px;
     }
     .hamburger {
       color:white;
@@ -209,7 +211,7 @@
   } 
   @media screen and (max-width:50em) {
 
-    #participateButton,
+  #participateButton,
   #createButton {
     height: 80px;
     width: 100%;
@@ -235,7 +237,7 @@
 
     .container {
       top: 67%;
-      padding-top:10px;
+      padding-top:100px;
       padding-bottom: 15px;
     }
     h1{

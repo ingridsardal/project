@@ -22,15 +22,15 @@
 
 	"NumberOfRounds":"Number of Rounds    ",
 
-	"städer":"Cities",
-	"länder":"Countries",
-	"floder":"Rivers",
-	"maträtter":"Dishes",
-	"frukter":"Fruits",
-	"bilmärken":"Car Brands",
-	"kändisar":"Celebrities",
-	"klädmärken":"Clothing Brands",
-	"sevärdheter":"Tourist Attractions",
+	"cities":"Cities",
+	"countries":"Countries",
+	"rivers":"Rivers",
+	"dishes":"Dishes",
+	"fruits":"Fruits",
+	"carBrands":"Car Brands",
+	"celebrities":"Celebrities",
+	"clothingBrands":"Clothing Brands",
+	"touristAttractions":"Tourist Attractions",
 
 	"firstRoundLetter": "Choose the letter for the first round: ",
 

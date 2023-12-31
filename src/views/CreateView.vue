@@ -10,48 +10,48 @@
     <div class="grid-container">
 
   <div class="grid-item">
-    <input type="checkbox" id="städer" value="städer" v-model="categories">
-    <label for="städer">{{uiLabels.städer}}</label>
+    <input type="checkbox" id="cities" value="cities" v-model="categories">
+    <label for="cities">{{uiLabels.cities}}</label>
   </div>
 
     <div class="grid-item">
-      <input type="checkbox" id="länder" value="länder" v-model="categories">
-      <label for="länder">{{uiLabels.länder}}</label>
+      <input type="checkbox" id="countries" value="countries" v-model="categories">
+      <label for="countries">{{uiLabels.countries}}</label>
     </div>
 
     <div class="grid-item">
-      <input type="checkbox" id="floder"  value="floder" v-model="categories">
-      <label for="floder">{{uiLabels.floder}}</label>
+      <input type="checkbox" id="rivers"  value="rivers" v-model="categories">
+      <label for="rivers">{{uiLabels.rivers}}</label>
     </div>
 
     <div class="grid-item">
-      <input type="checkbox" id="maträtter"  value="maträtter" v-model="categories">
-      <label for="maträtter">{{uiLabels.maträtter}}</label>
+      <input type="checkbox" id="dishes"  value="dishes" v-model="categories">
+      <label for="dishes">{{uiLabels.dishes}}</label>
     </div>
 
     <div class="grid-item">
-      <input type="checkbox" id="frukter"  value="frukter" v-model="categories">
-      <label for="frukter">{{uiLabels.frukter}}</label>
+      <input type="checkbox" id="fruits"  value="fruits" v-model="categories">
+      <label for="fruits">{{uiLabels.fruits}}</label>
     </div>
 
     <div class="grid-item">
-      <input type="checkbox" id="bilmärken"  value="bilmärken" v-model="categories">
-      <label for="bilmärken">{{uiLabels.bilmärken}}</label>
+      <input type="checkbox" id="carBrands"  value="carBrands" v-model="categories">
+      <label for="carBrands">{{uiLabels.carBrands}}</label>
     </div>
 
     <div class="grid-item">
-      <input type="checkbox" id="kändisar"  value="kändisar" v-model="categories">
-      <label for="kändisar">{{uiLabels.kändisar}}</label>
+      <input type="checkbox" id="celebrities"  value="celebrities" v-model="categories">
+      <label for="celebrities">{{uiLabels.celebrities}}</label>
     </div>
 
     <div class="grid-item">
-      <input type="checkbox" id="klädmärken"  value="klädmärken" v-model="categories">
-      <label for="klädmärken">{{uiLabels.klädmärken}}</label>
+      <input type="checkbox" id="clothingBrands"  value="clothingBrands" v-model="categories">
+      <label for="clothingBrands">{{uiLabels.clothingBrands}}</label>
     </div>
 
     <div class="grid-item">
-    <input type="checkbox" id="sevärdheter" value="sevärdheter" v-model="categories">
-    <label for="sevärdheter">{{uiLabels.sevärdheter}}</label>
+    <input type="checkbox" id="touristAttractions" value="touristAttractions" v-model="categories">
+    <label for="touristAttractions">{{uiLabels.touristAttractions}}</label>
   </div>
   </div> 
 <br>
