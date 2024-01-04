@@ -2,20 +2,20 @@
   <div>
     <header>
       <h1> {{uiLabels.giveScore}} </h1>
-      <h2  style="font-weight: bold;">{{uiLabels.roundNumber}} {{ roundCounter }}, {{uiLabels.letter}}{{ selectedLetter.toUpperCase() }}</h2>
+      <h3  style="font-weight: bold;">{{uiLabels.roundNumber}} {{ roundCounter }}, {{uiLabels.letter}}{{ selectedLetter.toUpperCase() }}</h3>
     </header>
     <body>
-      <h2>{{uiLabels.markScore}} </h2>
+      <h3>{{uiLabels.markScore}} </h3>
 
       <section id="Section1">
         <div class="wrapper">
 
           <div v-for="player in players" :key="player.id" class="player-item">
-            <h1>{{ player.nameId }} 
+            <h2>{{ player.nameId }} 
               <div id="playerAvatar"> 
                 <img :src="player.avatar" alt="Animated GIF" >
               </div>
-            </h1>
+            </h2>
 
   <ul>
     <li v-for="(answer, category) in player.answers[roundCounter-1]" :key="category">
@@ -152,9 +152,10 @@ export default {
   flex: 0 0 30%; /* Adjust width as needed */
   margin: 10px;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 2px solid black; /* Adds a black border */
+  border-radius: 10px; /* Makes corners rounded */
   transition: transform 1s ease-in-out;
+
 }
 #playerAvatar img{
   width:150px;
@@ -168,14 +169,14 @@ export default {
 .answerLabel {
   margin-right: 10px;
 }
-
+/*
 h1 {
   color: rgb(203, 60, 50);
   text-shadow: rgb(255, 0, 0) 1px 0 10px;
   font-size: 50px;
   opacity: 0;
   animation: fadeIn 4s forwards;
-}
+}*/
 
 @keyframes fadeIn {
   from {
@@ -198,7 +199,12 @@ h1 {
   text-shadow: rgb(255, 183, 0) 1px 0 10px;
   font-size: 50px; 
 }
-h2{font-weight: normal;
+h2{font-weight: bold;
+  text-align: center;
+    color:rgb(255, 183, 0);
+    font-size: 200%}
+
+h3{font-weight: normal;
   text-align: center;
     color:rgb(0, 0, 0);
     font-size: 30px}

@@ -12,7 +12,7 @@
 <div v-for="player in players" :key="player.id" class="player-item">
   
     <div id="playerAvatar"> 
-      <h1>{{ player.nameId }} </h1>
+      <h2>{{ player.nameId }} </h2>
       <img :src="player.avatar" alt="Animated GIF" >
     </div>
   
@@ -122,6 +122,11 @@ h3 {font-weight: normal;
     font-size: 200%;
     }
 
+    h2 {font-weight: bold;
+  text-align: center;
+    color:rgb(255, 183, 0);
+    font-size: 200%}
+
     .wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Creates 10 equal-width columns */
@@ -195,7 +200,7 @@ h3 {font-weight: normal;
   flex-direction: column;
   border: 2px solid black; /* Adds a black border */
   border-radius: 10px; /* Makes corners rounded */
-  padding: 10px;
+  padding: 20px;
   margin-left: 30%;
   margin-top: 10px;
 }
@@ -203,5 +208,21 @@ h3 {font-weight: normal;
 #playerAvatar img {
   width: 100%;
   height: auto;
+}
+
+@media screen and (max-width:50em) {
+
+  .wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 10 equal-width columns */
+  
+}
+
+  h2 {font-weight: bold;
+  text-align: center;
+    color:rgb(255, 183, 0);
+    font-size: 20px}
+
+
 }
 </style>
