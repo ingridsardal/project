@@ -3,7 +3,7 @@
     <header>
         <h1> {{uiLabels.gameCode}}: {{ pollId }}</h1>
     </header>
-<h2 class="shareCode"> {{uiLabels.shareCode}}! </h2>
+<h3 class="shareCode"> {{uiLabels.shareCode}}! </h3>
 
 
 <div class="wrapper">
@@ -11,7 +11,7 @@
           <div v-for="player in players" :key="player.id" class="player-item">
             
               <div id="playerAvatar"> 
-                <h3>{{ player.nameId }}  </h3>
+                <h2>{{ player.nameId }}  </h2>
                 <img :src="player.avatar" alt="Animated GIF" >
               </div>
            
@@ -126,11 +126,6 @@ export default {
   
 }
 
-.shareCode {
-    text-align: center;
-    color:rgb(0, 0, 0);
-    font-size: 200%;
-    }
 
   #tillbakaButton {
   background-color: rgb(255, 206, 114);
@@ -171,13 +166,13 @@ h1 {
     font-size: 300%; 
     }
 
-h2 {font-weight: normal;
+h3 {font-weight: normal;
   text-align: center;
     color:rgb(0, 0, 0);
     font-size: 200%;
     }
 
-    h3 {font-weight: bold;
+    h2 {font-weight: bold;
   text-align: center;
     color:rgb(255, 183, 0);
     font-size: 20px}
@@ -218,17 +213,17 @@ grid-template-columns: repeat(3, 1fr); /* Creates 10 equal-width columns */
 
 }
 
-
 #playerAvatar{margin-left: 10%;
   height: 120px;
   margin-right: -40px;
 }
-h1{font-weight:150%;}
+h1{font-size:200%;}
 
   h2 {font-weight: bold;
   text-align: center;
     color:rgb(255, 183, 0);
     font-size: 14px}
+
     h3{font-size: 120%;}
 
 }

@@ -404,4 +404,7 @@ export default {
   display: none;
 }
 
+.message{ font-size: 20px;
+margin-top: 25%;}
+
 </style>
