@@ -5,7 +5,7 @@
            v-on:click="toggleNav">
       </div>
       <div class="logo">
-        <img src="/img/sunlogo.png">
+        <img src="/img/logo.gif">
       </div>
     </header>
 
