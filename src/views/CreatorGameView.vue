@@ -30,12 +30,13 @@
 
         </div>
       </section>
-      <div><img id="hamster" src="../../public/img/Hamster.gif" alt="Animated GIF" /></div>
+      <!--<div><img id="hamster" src="../../public/img/Hamster.gif" alt="Animated GIF" /></div>
 
       <br />
-
+-->
     </body>
     <footer>
+
       <!--<router-link v-bind:to="'/creatorleaderboard/' + pollId">-->
         <button id="showScoreboardButton" v-on:click="giveScore">{{uiLabels.showScoreboard}}</button>
         <!-- göra så att man kan justera språk-->
@@ -214,9 +215,9 @@ h3{font-weight: normal;
   height: 80px;
   width: 12em;
   margin: 25px;
-  position: fixed;
-  bottom: 0;
-  right: 0;
+  position: static;
+  margin-left:88%;
+
   border: none;
   border-radius: 10px;
 }

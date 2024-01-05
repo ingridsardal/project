@@ -1,8 +1,7 @@
 <template>
   <div>
     <header>
-      <h1>{{uiLabels.liveScoreTile}}</h1>
-      <h3>{{uiLabels.liveScoreText}} {{ roundCounter }}</h3>
+      <h1>{{uiLabels.liveScoreText}}</h1>
     </header>
     <body>
       <section id="Section1">
@@ -27,8 +26,8 @@
           <button id= "waitButton">{{uiLabels.waitInfoLiveScore}} </button> 
 
         </section>
-<br><br>
-      <div><img id="hamster" src="../../public/img/Hamster.gif" alt="Animated GIF" /></div>
+
+      <!--<div><img id="hamster" src="../../public/img/Hamster.gif" alt="Animated GIF" /></div>-->
     </body>
   </div>
 </template>
@@ -104,14 +103,15 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around; /* Adjust as needed */
+
 }
 
 .player-item {
   flex: 0 0 30%; /* Adjust width as needed */
   margin: 10px;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 2px solid black; /* Adds a black border */
+  border-radius: 10px; /* Makes corners rounded */
   transition: transform 1s ease-in-out;
 }
 
@@ -125,7 +125,7 @@ export default {
 h1 {
   color: rgb(249, 192, 86);
   text-shadow: rgb(255, 183, 0) 1px 0 10px;
-  font-size: 50px; 
+  font-size: 40px; 
   /*opacity: 0;
   animation: fadeIn 4s forwards;*/
 }    
@@ -157,9 +157,9 @@ h3{font-weight: bold;
 ul {
   list-style: none;
 }
-
+  /*  
 #playerAvatar {
-  /*
+
   width: 15%; 
   height: 15%; 
   display: flex;
@@ -168,17 +168,16 @@ ul {
   flex-direction: column;
   border: 2px solid black; 
   border-radius: 10px; 
-  padding: 10px;*/
-}
-#playerAvatar img{
-  width:150px;
-}
+  padding: 10px;
+}*/
+
 #waitButton {
   background-color: rgb(255, 206, 114);
+  opacity: 0.8;
   height: 10%;
   width: 12em;
   margin: 2%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   border-radius: 10px;
@@ -188,5 +187,9 @@ ul {
 #playerAvatar img {
   width:150px;
   height: auto;
+}
+
+@media screen and (max-width:50em) {
+  h1{font-size: 25px;}
 }
 </style>
