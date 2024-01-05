@@ -330,7 +330,7 @@ export default {
   .shuffleButton {
   position: absolute;
   bottom: 0;
-  right: 220px; 
+  right: 210px; 
   margin-bottom: 25px;
   cursor: pointer;
 }
