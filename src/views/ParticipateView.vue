@@ -12,8 +12,8 @@
     <br>
     <br>
     <label>
-      {{uiLabels.name}}: 
-      <input type="text" v-model="nameId">
+        {{uiLabels.name}}: 
+        <input type="text" v-model="nameId" maxlength="8">
     </label>
     <br>
     <br>

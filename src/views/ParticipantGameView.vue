@@ -11,20 +11,18 @@
     <div class="contentWrapper">
       <div class="categories">
 
-        <h2>
-          {{ uiLabels.categories }}
-        </h2>
+        <h2>{{ uiLabels.categories }} </h2>
 
         <ul style="list-style: none;">
             <li v-for="(category,ans) in categories" :key="ans">
-              {{ uiLabels[category] }}:   <input v-model="submittedAnswers[category]" :placeholder="uiLabels[category]">
+              {{ uiLabels[category] }}:  <br> <input v-model="submittedAnswers[category]" :placeholder="uiLabels[category]">
             </li>
         </ul>
 
       </div>
-
+      
       <div class="letterInfo">
-        <h2>{{uiLabels.letter}} {{ this.firstSelectedLetter.toUpperCase() }}</h2>
+        <h2>{{uiLabels.letter}} </h2> <h1>{{ this.firstSelectedLetter.toUpperCase() }}</h1>
       </div>
       <div class="countdown" v-if="gotFirstAnswer">
        {{ startCountdown() }}
@@ -173,9 +171,11 @@ h3{font-weight: bold;}
   }
   
   .letterInfo h2 {
-    margin-top: 0;
+    margin-top: 23px;
   }
-
+ .letterInfo h2 {
+    margin-top: 23px;
+  }
   #infoText {
     font-size: 15px;
   }

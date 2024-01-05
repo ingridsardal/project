@@ -2,17 +2,15 @@
     <header>
         <h1> {{uiLabels.gameCode}}: {{ pollId }}</h1>
     </header>
-<br>
 
 <h3> {{uiLabels.shareCode}}! </h3>
 
-    {{uiLabels.players}}:
     <div class="wrapper">
 
 <div v-for="player in players" :key="player.id" class="player-item">
   
     <div id="playerAvatar"> 
-      <h1>{{ player.nameId }} </h1>
+      <h2>{{ player.nameId }} </h2>
       <img :src="player.avatar" alt="Animated GIF" >
     </div>
   
@@ -122,6 +120,11 @@ h3 {font-weight: normal;
     font-size: 200%;
     }
 
+    h2 {font-weight: bold;
+  text-align: center;
+    color:rgb(255, 183, 0);
+    font-size: 20px}
+
     .wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Creates 10 equal-width columns */
@@ -132,7 +135,7 @@ h3 {font-weight: normal;
   height: 10%;
   width: 12em;
   margin: 2%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   border-radius: 10px;
@@ -169,7 +172,7 @@ h3 {font-weight: normal;
   height: 10%;
   width: 12em;
   margin: 2%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   border-radius: 10px;
@@ -187,21 +190,42 @@ h3 {font-weight: normal;
   }
   #playerAvatar {
   width: 30%; /* Adjust as needed */
-
-   
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   border: 2px solid black; /* Adds a black border */
   border-radius: 10px; /* Makes corners rounded */
-  padding: 10px;
+  padding: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
   margin-left: 30%;
   margin-top: 10px;
 }
 
 #playerAvatar img {
   width: 100%;
-  height: auto;
+  height: 100%;
+}
+
+@media screen and (max-width:50em) {
+
+  .wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 10 equal-width columns */
+  
+}
+#playerAvatar{margin-left: 10%;
+  height: 120px;
+  margin-right: -40px;
+}
+h1{font-weight:150%;}
+
+  h2 {font-weight: bold;
+  text-align: center;
+    color:rgb(255, 183, 0);
+    font-size: 14px}
+    h3{font-size: 120%;}
 }
 </style>

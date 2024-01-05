@@ -24,7 +24,7 @@
       </tbody>
     </table>
 
-    <div class="message" :class="{ 'super-mega-last': isSuperMegaLastPlace, 'krossar-alla': isDominating }">
+    <div class="message" :class="{ 'super-mega-last': isSuperMegaLastPlace, 'krossar-alla': isDominating }"> <br>
       <p>
         <span v-if="isDominating">{{ firstPlacePlayer.nameId }} {{uiLabels.dominating}}</span>
         <span v-else-if="isSuperMegaLastPlace">{{ lastPlacePlayer.nameId }} {{uiLabels.superMegaLast}}</span>
