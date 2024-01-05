@@ -333,7 +333,7 @@ h3 {font-weight: bold;
     border: none;
     position: absolute;
     bottom: 0;
-    right: 17%; 
+    right: 20%; 
     height: 120px;
     width: 110px;
     border: none;
@@ -344,14 +344,13 @@ h3 {font-weight: bold;
     opacity: 0.7; /* Delvis genomskinlig från början */
     transition: opacity 0.3s ease, border-color 0.3s ease;
     outline: none;
-    margin-bottom: 90px;
 }
 .shuffleButton {
   position: absolute;
   bottom: 0;
-  right: 12%; 
-  margin-bottom: 100px;
+  right: 15%; 
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .image-crop {
@@ -376,7 +375,6 @@ h3 {font-weight: bold;
     position: absolute;
     bottom: 0;
     font-style: italic; 
-    margin-bottom: 100px;
   }
 
 
