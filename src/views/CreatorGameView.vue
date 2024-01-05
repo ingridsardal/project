@@ -155,7 +155,6 @@ export default {
   border: 2px solid black; /* Adds a black border */
   border-radius: 10px; /* Makes corners rounded */
   transition: transform 1s ease-in-out;
-
 }
 #playerAvatar img{
   width:150px;
@@ -215,7 +214,7 @@ h3{font-weight: normal;
   height: 80px;
   width: 12em;
   margin: 25px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   border: none;

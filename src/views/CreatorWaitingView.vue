@@ -1,4 +1,5 @@
 <template>
+  <body>
     <header>
         <h1> {{uiLabels.gameCode}}: {{ pollId }}</h1>
     </header>
@@ -16,7 +17,7 @@
            
 
 </div></div>
-
+</body>
  <footer>
     <router-link v-bind:to="'/create/'">
     <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
