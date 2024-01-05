@@ -1,6 +1,7 @@
 <template>
   <body class="background">
     <header>
+   <br>
         <h1> {{uiLabels.gameCode}}: {{ pollId }}</h1>
     </header>
 <h3 class="shareCode"> {{uiLabels.shareCode}}! </h3>
@@ -121,12 +122,17 @@ export default {
 
 <style scoped>
 
+body {
+  margin-top: -32px;
+  padding: 0;
+}
+
 .background {
   /* Stilen för att göra bilden till bakgrund på hela sidan */
   background-image: url('/img/bluebg.png'); 
   background-size: cover !important; /* Anpassar storleken på bilden så att den täcker hela sidan */
   background-position: center; /* Centrerar bakgrundsbilden på sidan */
-  height: 100vh; /* Gör elementet lika högt som fönstret (hela sidan) */
+  height: 110vh; /* Gör elementet lika högt som fönstret (hela sidan) */
   top: 0;
 }
 .wrapper {
@@ -216,6 +222,11 @@ h3 {font-weight: normal;
 }
 @media screen and (max-width:50em) {
 
+  body {
+  margin-top: -22px;
+  padding: 0;
+}
+
 .wrapper {
 display: grid;
 grid-template-columns: repeat(3, 1fr); /* Creates 10 equal-width columns */
@@ -236,4 +247,6 @@ h1{font-size:200%;}
     h3{font-size: 120%;}
 
 }
+
+
 </style>
