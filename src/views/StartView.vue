@@ -21,7 +21,6 @@
     </router-link>
   
   <br>
-  
     <router-link v-bind:to="'/participate/'">
         <button id="participateButton">          
           {{uiLabels.joinGame}}
@@ -42,8 +41,8 @@
   <script>
   import ResponsiveNav from '@/components/ResponsiveNav.vue';
   import io from 'socket.io-client';
-  //sessionStorage.setItem("dataServer", "192.168.1.119:3000"); //Ingrids (change to your own ip adress)
-  sessionStorage.setItem("dataServer", "localhost:3000");
+  sessionStorage.setItem("dataServer", "172.20.10.2:3000"); //Ingrids (change to your own ip adress)
+  //sessionStorage.setItem("dataServer", "localhost:3000");
   const socket = io(sessionStorage.getItem("dataServer")); 
   
   export default {
@@ -65,6 +64,7 @@
         this.uiLabels = labels
       })
     },
+
     methods: {
       switchLanguage: function() {
         if (this.lang === "en") {
@@ -89,26 +89,33 @@
     }
   }
   </script>
+
   <style scoped>
+
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+    
+    body {font-family: 'Open Sans', sans-serif;}
+  
     header {
       background-color: rgb(255, 255, 255);
-      width: 100%;
+      height: 0;
       display: grid;
-      grid-template-columns: 2em auto;
-      margin-bottom: 20px;
+      grid-template-columns: 0em auto;
     }
     
     .container {
       background-color: rgb(249, 192, 86);
       border-radius: 10px;
       padding: 40px;
+      /* Ta bort absolut positionering */
       position: absolute;
-      top: 60%;
+      top: 65%;
       left: 50%;
-      transform: translate(-50%, -50%);
-      width: 50%; /* Ändra storleken till 50% av sidan */
+      transform: translate(-50%, -50%); 
+      width: 50%; /* Använd procentuell bredd */
       max-width: 700px;
       color: white;
+      /*margin: 0 auto; /*Centrera horisontellt */
     }
 
   #participateButton,
@@ -122,8 +129,10 @@
     color: rgb(249, 192, 86);
     border: 2px solid rgba(249, 192, 86, 0.6); /* Lägg till en border med lite mörkare orange */
     cursor: pointer;
-    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
   }
+  
   #participateButton:hover, #createButton:hover {
     background-color:rgba(209, 136, 0, 0.761);
     color: white;
@@ -133,15 +142,23 @@
       letter-spacing: 0.25em;
       font-size: 2.5rem;
       color: white;
-      padding-top:0.2em;
+      /*padding-top: 0.1em;*/
       position: relative; /* Required for z-index to work */
       z-index: 0; /* Any number less than the z-index of .hamburger */
     }
     .logo img {
-      height:400px;
-      vertical-align: bottom;
+      max-width: 20%;
+      /*vertical-align: bottom;*/
       margin-left:-30px;
-      padding-bottom: 20px;
+      margin-bottom: -20%;
+
+    /*.logo {
+      font-size: 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }*/
+
     }
     .hamburger {
       color:white;
@@ -149,12 +166,11 @@
       display: flex;
       align-items: center;
       justify-content: left;
-      padding:0.5rem;
-      top:0;
-      left:0;
+      padding: 0.5rem;
+      top: 0;
+      left: 0;
       height: 2rem;
       cursor: pointer;
-      font-size: 1.5rem;
       position: relative; /* Required for z-index to work */
       z-index: 1; /* Any number greater than the z-index of .logo */
     }
@@ -175,8 +191,8 @@
     min-height: 90vh;
   }
   footer {
-    margin-top: auto; /* This pushes the footer to the bottom */
-    padding: 20px;
+    margin-top: 5%; /* This pushes the footer to the bottom */
+    padding: 1%;
     text-align: center;
   }
   .english {
@@ -201,17 +217,24 @@
     background-color: rgb(249, 192, 86);
     cursor: pointer;
     color: white;
-    font-size: 20px;
-    
-  
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    background-color: rgb(249, 192, 86);
+    color: white; 
+    border: 2px solid rgba(255, 226, 173, 0.6); /* Lägg till en border med lite mörkare orange */
+    cursor: pointer;
+    box-shadow: none;
+ 
   }
+
+
   #navButtons:hover {
     background-color:rgba(209, 136, 0, 0.761);
     color: white;
   } 
   @media screen and (max-width:50em) {
 
-  #participateButton,
+    #participateButton,
   #createButton {
     height: 80px;
     width: 100%;
@@ -237,7 +260,7 @@
 
     .container {
       top: 67%;
-      padding-top:100px;
+      padding-top:10px;
       padding-bottom: 15px;
     }
     h1{
@@ -245,7 +268,14 @@
     }
     h2{font-size: 20px;}
   
+    .logo img {
+      max-width: 67%;
+      vertical-align: bottom;
+      margin-left: 0%;
+
   }
+  }
+
 
 
   </style>
