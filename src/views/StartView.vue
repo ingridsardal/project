@@ -2,7 +2,7 @@
   <body>
     <header>
       <div v-bind:class="['hamburger', {'close': !hideNav}]" 
-           v-on:click="toggleNav" ref="hamburgerMenu">
+           v-on:click="toggleNav">
       </div>
       <div class="logo">
         <img src="/img/logo.gif">
@@ -41,8 +41,8 @@
   <script>
   import ResponsiveNav from '@/components/ResponsiveNav.vue';
   import io from 'socket.io-client';
-  sessionStorage.setItem("dataServer", "localhost:3000"); //Ingrids (change to your own ip adress)
-  //sessionStorage.setItem("dataServer", "localhost:3000");
+  //sessionStorage.setItem("dataServer", "172.20.10.5:3000"); //Ingrids (change to your own ip adress)
+  sessionStorage.setItem("dataServer", "localhost:3000");
   const socket = io(sessionStorage.getItem("dataServer")); 
   
   export default {
@@ -82,24 +82,12 @@
       FAQFunction: function() {
         alert(this.uiLabels.aboutInfo)
       },
-      closeMenu(event) {
-    if (!this.$refs.hamburgerMenu.contains(event.target)) {
-      this.hideNav = true;
-    }
-  },
+  
       toggleNav: function () {
         this.hideNav = ! this.hideNav;
       }
-    },
-    mounted() {
-  window.addEventListener('click', this.closeMenu);
-},
-
-beforeDestroy() {
-  window.removeEventListener('click', this.closeMenu);
-}
+    }
   }
-  
   </script>
 
   <style scoped>
@@ -121,12 +109,14 @@ beforeDestroy() {
       padding: 40px;
       /* Ta bort absolut positionering */
       position: absolute;
-      top: 65%;
+      top: 55%;
       left: 50%;
       transform: translate(-50%, -50%); 
       width: 50%; /* Använd procentuell bredd */
       max-width: 700px;
       color: white;
+
+
       /*margin: 0 auto; /*Centrera horisontellt */
     }
 
@@ -157,6 +147,8 @@ beforeDestroy() {
       /*padding-top: 0.1em;*/
       position: relative; /* Required for z-index to work */
       z-index: 0; /* Any number less than the z-index of .hamburger */
+      margin-top: -5%;
+      margin-bottom: -5%;
     }
     .logo img {
       max-width: 20%;
@@ -203,7 +195,7 @@ beforeDestroy() {
     min-height: 90vh;
   }
   footer {
-    margin-top: 5%; /* This pushes the footer to the bottom */
+    margin-bottom: 0%; /* This pushes the footer to the bottom */
     padding: 1%;
     text-align: center;
   }
@@ -236,6 +228,7 @@ beforeDestroy() {
     border: 2px solid rgba(255, 226, 173, 0.6); /* Lägg till en border med lite mörkare orange */
     cursor: pointer;
     box-shadow: none;
+   
  
   }
 
@@ -274,6 +267,7 @@ beforeDestroy() {
       top: 67%;
       padding-top:10px;
       padding-bottom: 15px;
+
     }
     h1{
       font-size: 28px;
