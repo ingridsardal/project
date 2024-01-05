@@ -2,11 +2,9 @@
     <header>
         <h1> {{uiLabels.gameCode}}: {{ pollId }}</h1>
     </header>
-<br>
-
 <h2 class="shareCode"> {{uiLabels.shareCode}}! </h2>
 
-    {{uiLabels.players}}:
+
 <div class="wrapper">
 
           <div v-for="player in players" :key="player.id" class="player-item">
@@ -138,7 +136,7 @@ export default {
   height: 10%;
   width: 12em;
   margin: 2%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   border-radius: 10px;
@@ -156,7 +154,7 @@ export default {
   height: 10%;
   width: 12em;
   margin: 2%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   border-radius: 10px;
@@ -175,13 +173,13 @@ h1 {
 h2 {font-weight: normal;
   text-align: center;
     color:rgb(0, 0, 0);
-    font-size: 200%}
+    font-size: 200%;
+    }
 
-
-h3 {font-weight: bold;
+    h3 {font-weight: bold;
   text-align: center;
     color:rgb(255, 183, 0);
-    font-size: 200%}
+    font-size: 20px}
 
   ul {
     list-style: none;
@@ -192,8 +190,8 @@ h3 {font-weight: bold;
     text-align: center;
   }
   #playerAvatar {
-  width: 30%; /* Adjust as needed */
-  
+    width: 30%; /* Adjust as needed */
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -201,6 +199,8 @@ h3 {font-weight: bold;
   border: 2px solid black; /* Adds a black border */
   border-radius: 10px; /* Makes corners rounded */
   padding: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
   margin-left: 30%;
   margin-top: 10px;
 }
@@ -217,11 +217,18 @@ grid-template-columns: repeat(3, 1fr); /* Creates 10 equal-width columns */
 
 }
 
-h3 {font-weight: bold;
-text-align: center;
-  color:rgb(255, 183, 0);
-  font-size: 20px}
 
+#playerAvatar{margin-left: 10%;
+  height: 120px;
+  margin-right: -40px;
+}
+h1{font-weight:150%;}
+
+  h2 {font-weight: bold;
+  text-align: center;
+    color:rgb(255, 183, 0);
+    font-size: 14px}
+    h3{font-size: 120%;}
 
 }
 </style>
