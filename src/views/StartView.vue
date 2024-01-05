@@ -2,7 +2,7 @@
   <body>
     <header>
       <div v-bind:class="['hamburger', {'close': !hideNav}]" 
-           v-on:click="toggleNav">
+           v-on:click="toggleNav" ref="hamburgerMenu">
       </div>
       <div class="logo">
         <img src="/img/logo.gif">
@@ -41,7 +41,7 @@
   <script>
   import ResponsiveNav from '@/components/ResponsiveNav.vue';
   import io from 'socket.io-client';
-  //sessionStorage.setItem("dataServer", "172.20.10.5:3000"); //Ingrids (change to your own ip adress)
+  //sessionStorage.setItem("dataServer", "localhost:3000"); //Ingrids (change to your own ip adress)
   sessionStorage.setItem("dataServer", "localhost:3000");
   const socket = io(sessionStorage.getItem("dataServer")); 
   
@@ -82,11 +82,22 @@
       FAQFunction: function() {
         alert(this.uiLabels.aboutInfo)
       },
-  
+      closeMenu(event) {
+        if (this.$refs.hamburgerMenu && !this.$refs.hamburgerMenu.contains(event.target)) {
+        this.hideNav = true;
+  }
+  },
       toggleNav: function () {
         this.hideNav = ! this.hideNav;
       }
-    }
+    },
+    mounted() {
+  window.addEventListener('click', this.closeMenu);
+},
+
+beforeDestroy() {
+  window.removeEventListener('click', this.closeMenu);
+}
   }
   </script>
 

@@ -1,10 +1,10 @@
 <template>
+    <body class="background">
     <div class="centered-content">
   <header>
         <h1> {{uiLabels.createOwnGame}} </h1>
   </header>
 
-  <body>
         <h3>{{uiLabels.chooseCategory}}: </h3>
 
     <div class="grid-container">
@@ -71,19 +71,20 @@
                 <option>10</option>
             </select>
     </div>
+    <div class="container">
+      <div class="firstRoundLetter">
+        <p>{{uiLabels.firstRoundLetter}}</p>
+      </div>
 
-    <div class="firstRoundLetter">
-      <p>{{uiLabels.firstRoundLetter}}</p>
-    </div>
+      <div class="textWindow">
+        <!-- Textrutan för att skriva in valfri bokstav -->
+        <input v-model="inputLetter" placeholder="" maxlength="1" @input="filterInput" />
+      </div>
 
-     <div class="textWindow">
-      <!-- Textrutan för att skriva in valfri bokstav -->
-      <input v-model="inputLetter" placeholder="" maxlength="1" @input="filterInput" />
-    </div>
-
-    <div class="shuffleButton" @click="shuffleRandomLetter">
-    <div class="image-crop"></div>
-    </div>
+      <div class="shuffleButton" @click="shuffleRandomLetter">
+      <div class="image-crop"></div>
+      </div>
+  </div>
 
 
       <!-- 
@@ -96,16 +97,19 @@
     -->
     
 
-  </body>
+ 
 
   <footer>
       <router-link v-bind:to="'/'">
-      <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
+      <button id= "goBackButton" v-on:click="goBack">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
     </router-link>
-    <button id= "skapaButton" v-on:click="createPoll">{{uiLabels.createGame}}</button>      <!-- göra så att man kan justera språk-->
+    <button id= "createButton" v-on:click="createPoll">{{uiLabels.createGame}}</button>      <!-- göra så att man kan justera språk-->
   </footer>
+
     </div>
+  </body>
   </template>
+  
 
    <!--<style>
   .centered-content {
@@ -235,8 +239,26 @@ export default {
 </script>
 
 <style scoped>
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+    
+body,header,footer {font-family: 'Open Sans', sans-serif;}
+
 header {
   color: orange;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+.background {
+  /* Stilen för att göra bilden till bakgrund på hela sidan */
+  background-image: url('/img/bluebg.png'); 
+  background-size: cover !important; /* Anpassar storleken på bilden så att den täcker hela sidan */
+  background-position: center; /* Centrerar bakgrundsbilden på sidan */
+  height: 100vh; /* Gör elementet lika högt som fönstret (hela sidan) */
+  top: -100;
 }
 
 h1 { 
@@ -249,7 +271,7 @@ h3 {font-weight: bold;
     font-size: 150%;
 }
 
-.antalomgångar {
+.numberOfRounds {
   margin-top: 2%;
   margin-right: 15%;
   transform: scale(1.2); /* Adjust the scale factor for larger or smaller checkboxes */
@@ -258,7 +280,7 @@ h3 {font-weight: bold;
   margin-left: 15%;
 }
 
-.antalomgångar label {
+.numberOfRounds label {
   margin-right: 1.5%;
 }
 
@@ -290,7 +312,7 @@ h3 {font-weight: bold;
       margin-right: 5%;
     }
 
-  #skapaButton {
+  #createButton {
   background-color: rgb(113, 255, 113);
   height: 10%;
   width: 12em;
@@ -302,10 +324,10 @@ h3 {font-weight: bold;
   border: none;
   cursor: pointer;
 }
-#skapaButton:hover {
+#createButton:hover {
   background-color: #70e070;}
 
-#tillbakaButton {
+#goBackButton {
   background-color: rgb(255, 206, 114);
   height: 10%;
   width: 12em;
@@ -319,7 +341,7 @@ h3 {font-weight: bold;
 }
 
 
-#tillbakaButton:hover {
+#goBackButton:hover {
   background-color:rgb(254, 195, 86);
 }
 
@@ -327,7 +349,7 @@ h3 {font-weight: bold;
     border: none;
     position: absolute;
     bottom: 0;
-    right: 17%; 
+    right: 20%; 
     height: 120px;
     width: 110px;
     border: none;
@@ -338,14 +360,13 @@ h3 {font-weight: bold;
     opacity: 0.7; /* Delvis genomskinlig från början */
     transition: opacity 0.3s ease, border-color 0.3s ease;
     outline: none;
-    margin-bottom: 90px;
 }
 .shuffleButton {
   position: absolute;
   bottom: 0;
-  right: 12%; 
-  margin-bottom: 100px;
+  right: 15%; 
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .image-crop {
@@ -370,7 +391,6 @@ h3 {font-weight: bold;
     position: absolute;
     bottom: 0;
     font-style: italic; 
-    margin-bottom: 100px;
   }
 
 
@@ -378,9 +398,9 @@ h3 {font-weight: bold;
   /* Justera stilen för mindre skärmstorlekar */
   .textWindow input {
     font-size: 50px; /* Justera storleken som passar bäst för mindre skärmar */
-    left: 70%;
+    left: 68%;
     margin-top: 100px;
-    height: 80px;
+    height: 6%;
     width: 80px;
   }
   .image-crop {
@@ -390,10 +410,10 @@ h3 {font-weight: bold;
     width: 50px;
   }
   .firstRoundLetter {
-    font-size: 20px;
+    font-size: 14px;
     right: 30%;
     position: absolute;
-    margin-left: 10px;
+    margin-left: 1px;
     bottom: 0;
    
   }
@@ -410,6 +430,30 @@ h3 {font-weight: bold;
     margin-right: -30px;
     margin-bottom: -10px;
   }
+
+  .numberOfRounds {
+  margin-top: 2%;
+  margin-right: 15%;
+  transform: scale(1.2); /* Adjust the scale factor for larger or smaller checkboxes */
+  padding: 5%;
+  text-align: center;
+  margin-left: 15%;
+}
+
+.numberOfRounds label {
+  margin-right: 1.5%;
+}
+
+.shuffleButton {
+  position: absolute;
+  bottom: 0;
+  right: 5%; 
+  margin-bottom: 100px;
+  cursor: pointer;
+  width: 10%;
+}
+
+
 
   /* Eventuellt andra justeringar för mindre skärmar */
 }

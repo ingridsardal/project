@@ -403,6 +403,7 @@ export default {
   display: none;
 }
 
+<<<<<<< HEAD
 @media screen and (max-width:50em) {
 
   .message {
@@ -435,5 +436,9 @@ export default {
 
 
 }
+=======
+.message{ font-size: 20px;
+margin-top: 25%;}
+>>>>>>> cca03f15f77b4c151fd75a349416a061d762ed47
 
 </style>

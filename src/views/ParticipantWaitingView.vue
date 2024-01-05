@@ -221,7 +221,7 @@
     height: 120px;
     margin-right: -40px;
   }
-  h1{font-weight:150%;}
+  h1{font-size:200%;}
   
     h2 {font-weight: bold;
     text-align: center;
