@@ -1,10 +1,10 @@
 <template>
+    <body class="background">
     <div class="centered-content">
   <header>
         <h1> {{uiLabels.createOwnGame}} </h1>
   </header>
 
-  <body>
         <h3>{{uiLabels.chooseCategory}}: </h3>
 
     <div class="grid-container">
@@ -97,7 +97,7 @@
     -->
     
 
-  </body>
+ 
 
   <footer>
       <router-link v-bind:to="'/'">
@@ -105,8 +105,11 @@
     </router-link>
     <button id= "createButton" v-on:click="createPoll">{{uiLabels.createGame}}</button>      <!-- göra så att man kan justera språk-->
   </footer>
+
     </div>
+  </body>
   </template>
+  
 
    <!--<style>
   .centered-content {
@@ -243,6 +246,19 @@ body,header,footer {font-family: 'Open Sans', sans-serif;}
 
 header {
   color: orange;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+.background {
+  /* Stilen för att göra bilden till bakgrund på hela sidan */
+  background-image: url('/img/bluebg.png'); 
+  background-size: cover !important; /* Anpassar storleken på bilden så att den täcker hela sidan */
+  background-position: center; /* Centrerar bakgrundsbilden på sidan */
+  height: 100vh; /* Gör elementet lika högt som fönstret (hela sidan) */
+  top: -100;
 }
 
 h1 { 
