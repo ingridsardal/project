@@ -1,5 +1,5 @@
 <template>
-       <div>
+       <div class="background">
         <h1>
           {{ uiLabels.headerJoinGame }}
         </h1>
@@ -78,8 +78,6 @@
         <img :src="selectedGif" alt="Animated GIF">
       </div>-->
 
-
-
    <br>
         <button id="joinButton" v-on:click="joinButton">           <!-- måste skapa en write poll id number så att det funkar-->
           {{uiLabels.joinGame}}
@@ -149,6 +147,7 @@
     }
   }
   </script>
+
    <style scoped>
    h1 { 
     color:rgb(249, 192, 86);
@@ -160,7 +159,16 @@ h3{
 }
 .selected-avatar {
   border: 3px solid green;
-}   
+} 
+
+.background {
+  /* Stilen för att göra bilden till bakgrund på hela sidan */
+  background-image: url('/img/bluebg.png'); 
+  background-size: cover; /* Anpassar storleken på bilden så att den täcker hela sidan */
+  background-position: center; /* Centrerar bakgrundsbilden på sidan */
+  height: 100vh; /* Gör elementet lika högt som fönstret (hela sidan) */
+  top: 0;
+}
 #joinButton {
       height: 80px;
       width: 12em;
