@@ -258,7 +258,7 @@ body {
   background-size: cover !important; /* Anpassar storleken på bilden så att den täcker hela sidan */
   background-position: center; /* Centrerar bakgrundsbilden på sidan */
   height: 100vh; /* Gör elementet lika högt som fönstret (hela sidan) */
-  top: -100;
+  margin-top: -33px;
 }
 
 h1 { 
