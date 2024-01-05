@@ -9,6 +9,10 @@
       <input v-model="inputLetter" placeholder="" maxlength="1" @input="filterInput" />
     </div>
 
+    <div class="shuffleButton" @click="shuffleRandomLetter">
+    <div class="image-crop"></div>
+    </div>
+
     <footer>
         <button id="startRound" v-on:click="startRound"> {{buttonText}}</button>
     </footer>
@@ -322,6 +326,22 @@ export default {
     right: 125px;
     bottom:0; /* Säkerställ proportionell höjd */
   }
+
+  .shuffleButton {
+  position: absolute;
+  bottom: 0;
+  right: 220px; 
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+.image-crop {
+  width: 75px;  /* Adjust as needed */
+  height: 75px;  /* Adjust as needed */
+  background-image: url('../../public/img/shuffledice.png');
+  background-position: center;  /* Adjust as needed */
+  background-size: cover;  /* Adjust as needed */
+}
 
 
   #apa {

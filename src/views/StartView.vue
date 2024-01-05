@@ -42,7 +42,7 @@
   <script>
   import ResponsiveNav from '@/components/ResponsiveNav.vue';
   import io from 'socket.io-client';
-  sessionStorage.setItem("dataServer", "130.243.228.182:3000"); //eduroam blåsenhus
+  sessionStorage.setItem("dataServer", "localhost:3000"); //eduroam blåsenhus
   //sessionStorage.setItem("dataServer", "100.122.19.225:3000"); //Ingrids (change to your own ip adress)
   //sessionStorage.setItem("dataServer", "localhost:3000");
   const socket = io(sessionStorage.getItem("dataServer")); 
