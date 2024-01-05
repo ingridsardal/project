@@ -83,9 +83,9 @@
         alert(this.uiLabels.aboutInfo)
       },
       closeMenu(event) {
-    if (!this.$refs.hamburgerMenu.contains(event.target)) {
-      this.hideNav = true;
-    }
+        if (this.$refs.hamburgerMenu && !this.$refs.hamburgerMenu.contains(event.target)) {
+        this.hideNav = true;
+  }
   },
       toggleNav: function () {
         this.hideNav = ! this.hideNav;
