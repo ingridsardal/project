@@ -36,7 +36,7 @@
       </tbody>
     </table>
 
-     <div v-if="players.length > 1" class="message" :class="{ 'super-mega-last': isSuperMegaLastPlace, 'krossar-alla': isDominating }">
+     <div v-if="players.length > 1" class="message" :class="{ 'super-mega-last': isSuperMegaLastPlace, 'dominating': isDominating }">
       <p>
         <span v-if="isDominating">{{ firstPlacePlayer.nameId }} {{uiLabels.dominating}}</span>
         <span v-else-if="isSuperMegaLastPlace">{{ lastPlacePlayer.nameId }} {{uiLabels.superMegaLast}}</span>
@@ -257,26 +257,25 @@ export default {
   }
 
   .message {
-    color: black;
-    font-size: 30px;
-    text-align: center;
-    margin-top: 60px; /* Uppdaterad margin för att anpassa positionen */
-    padding: 10px;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    font-style: italic;
-    opacity: 0; /* Gör meddelandet osynligt från början */
-  animation: fadeIn 2s ease-in forwards; /* Använd en fadeIn-animation med 2 sekunders varaktighet och stanna kvar på slutet (forwards) */
+  color: black;
+  text-shadow: rgb(184, 0, 0) 1px 0 10px;
+  font-size: 120px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-style: italic;
+  opacity: 0; /* Gör meddelandet osynligt från början */
+  animation: fadeIn 7s ease-out forwards; /* Använd en fadeIn-animation med 2 sekunders varaktighet och stanna kvar på slutet (forwards) */
 }
+
 
 @keyframes fadeIn {
   from {
-    opacity: 0;
+    opacity: 1;
   }
   to {
-    opacity: 1;
+    opacity: 0;
   }
 }
 
@@ -302,7 +301,7 @@ export default {
     font-size: 30px;
 }
 
-.message.krossar-alla {
+.message.dominating{
   color: rgb(19, 209, 19);
   text-shadow: rgb(21, 174, 21) 1px 0 7px;
   font-size: 30px;
@@ -402,6 +401,39 @@ export default {
 
 .content input[hidden] {
   display: none;
+}
+
+@media screen and (max-width:50em) {
+
+  .message {
+  color: black;
+  text-shadow: rgb(184, 0, 0) 1px 0 10px;
+  font-size: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-style: italic;
+  opacity: 0; /* Gör meddelandet osynligt från början */
+  animation: fadeIn 7s ease-out forwards; /* Använd en fadeIn-animation med 2 sekunders varaktighet och stanna kvar på slutet (forwards) */
+}
+
+.message.super-mega-last {
+    color: red; 
+    text-shadow: rgb(184, 0, 0) 1px 0 10px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.message.dominating{
+  color: rgb(19, 209, 19);
+  text-shadow: rgb(21, 174, 21) 1px 0 7px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+
+
 }
 
 </style>
