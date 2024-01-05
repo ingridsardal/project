@@ -1,6 +1,6 @@
 <template>
-    <body class="background">
-    <div class="centered-content">
+  <body class="background">
+    <!--<div class="centered-content">-->
   <header>
         <h1> {{uiLabels.createOwnGame}} </h1>
   </header>
@@ -95,10 +95,11 @@
       {{randomLetter}}
     </div> 
     -->
-    
+  
 
- 
-
+   <!-- </div>-->
+  </body>
+  
   <footer>
       <router-link v-bind:to="'/'">
       <button id= "goBackButton" v-on:click="goBack">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
@@ -106,8 +107,7 @@
     <button id= "createButton" v-on:click="createPoll">{{uiLabels.createGame}}</button>      <!-- göra så att man kan justera språk-->
   </footer>
 
-    </div>
-  </body>
+
   </template>
   
 
@@ -244,14 +244,14 @@ export default {
     
 body,header,footer {font-family: 'Open Sans', sans-serif;}
 
+body {
+  margin: -32px;
+  padding: 0;
+}
 header {
   color: orange;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-}
 .background {
   /* Stilen för att göra bilden till bakgrund på hela sidan */
   background-image: url('/img/bluebg.png'); 
@@ -353,13 +353,14 @@ h3 {font-weight: bold;
     height: 120px;
     width: 110px;
     border: none;
-    font-size: 110px; 
+    font-size: 100px; 
     color: rgb(249, 192, 86);
     text-shadow: rgb(255, 183, 0) 1px 0 10px;  
     text-transform: uppercase; 
-    opacity: 0.7; /* Delvis genomskinlig från början */
-    transition: opacity 0.3s ease, border-color 0.3s ease;
+    /*opacity: 0.1; Delvis genomskinlig från början */
+    /*transition: opacity 0.3s ease, border-color 0.3s ease;*/
     outline: none;
+    background-color: rgba(0, 0, 0, 0)
 }
 .shuffleButton {
   position: absolute;
@@ -372,13 +373,13 @@ h3 {font-weight: bold;
 .image-crop {
   width: 75px;  /* Adjust as needed */
   height: 75px;  /* Adjust as needed */
-  background-image: url('../../public/img/shuffledice.png');
+  background-image: url('../../public/img/dice2.png');
   background-position: center;  /* Adjust as needed */
   background-size: cover;  /* Adjust as needed */
 }
 
 .textWindow:hover input {
-  opacity: 1;
+
   border-color: rgb(249, 192, 86);
   outline: none;
   
@@ -501,4 +502,3 @@ left:-12em;
 */
 
 </style>
-

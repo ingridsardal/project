@@ -1,5 +1,5 @@
 <template>
-  <body>
+  <body class="background">
     <header>
         <h1> {{uiLabels.gameCode}}: {{ pollId }}</h1>
     </header>
@@ -120,6 +120,15 @@ export default {
 </script>
 
 <style scoped>
+
+.background {
+  /* Stilen för att göra bilden till bakgrund på hela sidan */
+  background-image: url('/img/bluebg.png'); 
+  background-size: cover !important; /* Anpassar storleken på bilden så att den täcker hela sidan */
+  background-position: center; /* Centrerar bakgrundsbilden på sidan */
+  height: 100vh; /* Gör elementet lika högt som fönstret (hela sidan) */
+  top: 0;
+}
 .wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Creates 10 equal-width columns */
