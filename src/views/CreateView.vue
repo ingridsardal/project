@@ -81,7 +81,9 @@
       <input v-model="inputLetter" placeholder="" maxlength="1" @input="filterInput" />
     </div>
 
-  
+    <div class="shuffleButton" @click="shuffleRandomLetter">
+    <div class="image-crop"></div>
+    </div>
 
 
       <!-- 
@@ -338,6 +340,21 @@ h3 {font-weight: bold;
     outline: none;
     margin-bottom: 90px;
 }
+.shuffleButton {
+  position: absolute;
+  bottom: 0;
+  right: 12%; 
+  margin-bottom: 100px;
+  cursor: pointer;
+}
+
+.image-crop {
+  width: 75px;  /* Adjust as needed */
+  height: 75px;  /* Adjust as needed */
+  background-image: url('../../public/img/shuffledice.png');
+  background-position: center;  /* Adjust as needed */
+  background-size: cover;  /* Adjust as needed */
+}
 
 .textWindow:hover input {
   opacity: 1;
@@ -365,6 +382,12 @@ h3 {font-weight: bold;
     margin-top: 100px;
     height: 80px;
     width: 80px;
+  }
+  .image-crop {
+    left: 80%;
+    margin-top: 100px;
+    height: 50px;
+    width: 50px;
   }
   .firstRoundLetter {
     font-size: 20px;
