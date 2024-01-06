@@ -132,8 +132,9 @@ export default {
       socket.emit('moveToScoreboard', {pollId: this.pollId})
       }
       else {
-        alert("Alla spelare har inte svarat än") //uilabel
+        alert(this.uiLabels.everyoneHasNotAnswered);
       }
+      
 
       
     }
@@ -150,8 +151,10 @@ export default {
   background-size: cover !important; /* Anpassar storleken på bilden så att den täcker hela sidan */
   background-position: center; /* Centrerar bakgrundsbilden på sidan */
   height: 100vh; /* Gör elementet lika högt som fönstret (hela sidan) */
-  top: 0;
+  margin-top: -34px;
+  
 }
+footer{ background: #84d4e1;}
 .wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -165,10 +168,12 @@ export default {
   border: 2px solid black; /* Adds a black border */
   border-radius: 10px; /* Makes corners rounded */
   transition: transform 1s ease-in-out;
+  background-color: rgb(240, 248, 255,0.6);
 }
 #playerAvatar img{
   width:150px;
 }
+
 
 .answerContainer {
   display: flex;

@@ -213,7 +213,7 @@
     padding-right: 30px;
     margin-left: 30%;
     margin-top: 10px;
-    background-color: rgb(240, 248, 255,0.4);
+    background-color: rgb(240, 248, 255,0.6);
   }
   
   #playerAvatar img {
