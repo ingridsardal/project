@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <body class="background">
     <header>
       <h1>{{uiLabels.liveScoreText}}</h1>
     </header>
-    <body>
+    
       <section id="Section1">
           <div class="wrapper">
 
@@ -29,7 +29,6 @@
 
       <!--<div><img id="hamster" src="../../public/img/Hamster.gif" alt="Animated GIF" /></div>-->
     </body>
-  </div>
 </template>
 
 <script>
@@ -99,6 +98,15 @@ export default {
 
 <style scoped>
 /* Add your styles here */
+
+.background {
+  /* Stilen för att göra bilden till bakgrund på hela sidan */
+  background-image: url('/img/bluebg.png'); 
+  background-size: cover; /* Anpassar storleken på bilden så att den täcker hela sidan */
+  background-position: center; /* Centrerar bakgrundsbilden på sidan */
+  height: 105vh; /* Gör elementet lika högt som fönstret (hela sidan) */
+  margin-top:-27px;
+}
 .wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -113,6 +121,7 @@ export default {
   border: 2px solid black; /* Adds a black border */
   border-radius: 10px; /* Makes corners rounded */
   transition: transform 1s ease-in-out;
+  background-color: rgb(240, 248, 255,0.6);
 }
 
 /* Kanske lite för mycket animation?
@@ -192,4 +201,5 @@ ul {
 @media screen and (max-width:50em) {
   h1{font-size: 25px;}
 }
+.background{margin-top:-17px}
 </style>
