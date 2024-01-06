@@ -132,8 +132,9 @@ export default {
       socket.emit('moveToScoreboard', {pollId: this.pollId})
       }
       else {
-        alert("Alla spelare har inte svarat än") //uilabel
+        alert(this.uiLabels.everyoneHasNotAnswered);
       }
+      
 
       
     }
