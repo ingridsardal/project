@@ -1,5 +1,10 @@
 <template>
+  <div v-if="!readyToStart" class="cover">
+    <h1 class="startNum" >{{ waitToStartNum }}</h1>
 
+  </div>
+
+  <div v-else>
     <header id="round">
       <h1> {{ uiLabels.round }} {{ roundCounter }} </h1>
     </header>
@@ -29,6 +34,7 @@
         <p>{{ countdown }}</p>
       </div>
     </div>
+  </div>
     
     <!--<button id="lockAnswers" class="lockButton">Lås in svar!</button>-->
 
@@ -69,11 +75,16 @@ export default {
      gotFirstAnswer: false,
      countdown: 8,
      isSent: false,
+     waitToStartNum: 3,
+     waitToStartNumHolder: null,
+     readyToStart: false,
    }
  },
  created: function () {
    this.pollId = this.$route.params.id
    this.name = this.$route.params.name
+   
+   this.waitToStart();
 
    socket.on("dataUpdate", answers =>
      this.submittedAnswers = answers,
@@ -100,7 +111,6 @@ export default {
    socket.on('getAnswers', (players) => {
       this.gotFirstAnswer = true;
    })
-   
  },
 
  methods: {
@@ -126,6 +136,16 @@ export default {
       }, 1000);
     }
   },
+  waitToStart() {
+  this.waitToStartNumHolder = setInterval(() => {
+    if (this.waitToStartNum > 0) {
+      this.waitToStartNum--;
+    } else {
+      clearInterval(this.waitToStartNumHolder);
+      this.readyToStart = true;
+    }
+  }, 1000);
+},
 }
 }
 
@@ -142,7 +162,28 @@ h1 {
     font-size: 50px; 
     }
 
+.cover{
+  background-color: rgb(249, 192, 86);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.startNum{
+  font-size: 10em;
+  color: rgb(255, 255, 255);
+  text-shadow: rgb(255, 183, 0) 1px 0 10px;
+}
+
+  #infoText {
+    font-size: 15px;
+}
 
   h2{font-weight: normal;
   text-align: center;

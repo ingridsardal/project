@@ -1,10 +1,10 @@
 <template>
   <div>
+    <body class="background">
     <header>
       <h1> {{uiLabels.giveScore}} </h1>
       <h3  style="font-weight: bold;">{{uiLabels.roundNumber}} {{ roundCounter }}, {{uiLabels.letter}}{{ selectedLetter.toUpperCase() }}</h3>
     </header>
-    <body>
       <h3>{{uiLabels.markScore}} </h3>
 
       <section id="Section1">
@@ -143,6 +143,15 @@ export default {
 
 <style scoped>
 /* Add your styles here */
+
+.background {
+  /* Stilen för att göra bilden till bakgrund på hela sidan */
+  background-image: url('/img/bluebg.png'); 
+  background-size: cover !important; /* Anpassar storleken på bilden så att den täcker hela sidan */
+  background-position: center; /* Centrerar bakgrundsbilden på sidan */
+  height: 100vh; /* Gör elementet lika högt som fönstret (hela sidan) */
+  top: 0;
+}
 .wrapper {
   display: flex;
   flex-wrap: wrap;
