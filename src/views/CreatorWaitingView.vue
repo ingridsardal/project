@@ -133,7 +133,7 @@ body {
   background-size: cover !important; /* Anpassar storleken på bilden så att den täcker hela sidan */
   background-position: center; /* Centrerar bakgrundsbilden på sidan */
   height: 110vh; /* Gör elementet lika högt som fönstret (hela sidan) */
-  top: 0;
+  
 }
 .wrapper {
   display: grid;
@@ -214,6 +214,7 @@ h3 {font-weight: normal;
   padding-right: 30px;
   margin-left: 30%;
   margin-top: 10px;
+  background-color: rgb(240, 248, 255,0.4);
 }
 
 #playerAvatar img {

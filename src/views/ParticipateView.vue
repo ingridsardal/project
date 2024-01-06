@@ -166,8 +166,8 @@ h3{
   background-image: url('/img/bluebg.png'); 
   background-size: cover; /* Anpassar storleken på bilden så att den täcker hela sidan */
   background-position: center; /* Centrerar bakgrundsbilden på sidan */
-  height: 100vh; /* Gör elementet lika högt som fönstret (hela sidan) */
-  top: 0;
+  height: 110vh; /* Gör elementet lika högt som fönstret (hela sidan) */
+  margin-top: -34px
 }
 #joinButton {
       height: 80px;

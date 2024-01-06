@@ -1,5 +1,5 @@
 <template>
-  <body>
+  <body class="background">
       <header>
           <h1> {{uiLabels.gameCode}}: {{ pollId }}</h1>
       </header>
@@ -15,11 +15,8 @@
         <img :src="player.avatar" alt="Animated GIF" >
       </div>
     
-  
+
   </div></div>
-  
-  
-  
       
       <button id= "waitButton">{{uiLabels.waitInfo}} </button>      <!-- göra så att man kan justera språk-->
   
@@ -33,15 +30,15 @@
             {{uiLabels.joinGame}}
           Victors knapp till nästa sida</button>
       </router-link>-->
-   
+     
+  </body>
+  
    <footer>
       <router-link v-bind:to="'/participate/'">
       <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
       </router-link>
   </footer>
-  
-  </body>
-  
+
   </template>
   
   <script>
@@ -109,6 +106,19 @@
   </script>
   
   <style scoped>
+
+
+
+.background {
+  /* Stilen för att göra bilden till bakgrund på hela sidan */
+  background-image: url('/img/bluebg.png'); 
+  background-size: cover; /* Anpassar storleken på bilden så att den täcker hela sidan */
+  background-position: center; /* Centrerar bakgrundsbilden på sidan */
+  height: 110vh; /* Gör elementet lika högt som fönstret (hela sidan) */
+  top: 0;
+  margin-top:-32px;
+}
+
   h1 { 
       color:rgb(249, 192, 86);
       text-shadow: rgb(255, 183, 0) 1px 0 10px;
