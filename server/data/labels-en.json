@@ -68,5 +68,7 @@
 	"chooseLetter": "Choose letter for the next round:",
 	"startNextRound": "Start next round",
 	"goToResults": "Go to results",
-	"everyoneHasNotAnswered": "Everyone has not answered yet!"
+	"everyoneHasNotAnswered": "Everyone has not answered yet!",
+	"selectAvatar": "Click on an icon to choose your avatar",
+	"gameId": "Game ID"
 }
