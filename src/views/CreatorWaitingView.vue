@@ -1,32 +1,33 @@
 <template>
   <body class="background">
     <header>
-   <br>
-        <h1> {{uiLabels.gameCode}}: {{ pollId }}</h1>
+      <br>
+      <h1> {{ uiLabels.gameCode }}: {{ pollId }}</h1>
     </header>
-<h3 class="shareCode"> {{uiLabels.shareCode}}! </h3>
+    <h3 class="shareCode"> {{ uiLabels.shareCode }}! </h3>
 
 
-<div class="wrapper">
+    <div class="wrapper">
 
-          <div v-for="player in players" :key="player.id" class="player-item">
-            
-              <div id="playerAvatar"> 
-                <h2>{{ player.nameId }}  </h2>
-                <img :src="player.avatar" alt="Animated GIF" >
-              </div>
-           
+      <div v-for="player in players" :key="player.id" class="player-item">
 
-</div></div>
-</body>
- <footer>
+        <div id="playerAvatar">
+          <h2>{{ player.nameId }} </h2>
+          <img :src="player.avatar" alt="Animated GIF">
+        </div>
+
+
+      </div>
+    </div>
+  </body>
+  <footer>
     <router-link v-bind:to="'/create/'">
-    <button id= "tillbakaButton" v-on:click="tillbaka">{{uiLabels.backButton}} </button>      <!-- göra så att man kan justera språk-->
+      <button id="goBackButton" v-on:click="goBack">{{ uiLabels.backButton }} </button>
+      <!-- göra så att man kan justera språk-->
     </router-link>
-    <button id= "startaSpelButton" v-on:click="startaSpel">{{uiLabels.startGame}} </button>      <!-- göra så att man kan justera språk-->
-</footer>
-
-
+    <button id="startGameButton" v-on:click="startGame">{{ uiLabels.startGame }} </button>
+    <!-- göra så att man kan justera språk-->
+  </footer>
 </template>
 
 <script>
@@ -34,7 +35,7 @@
 import QuestionComponent from '@/components/QuestionComponent.vue';
 import io from 'socket.io-client';
 import { ssrContextKey } from 'vue';
-const socket = io(sessionStorage.getItem("dataServer")); 
+const socket = io(sessionStorage.getItem("dataServer"));
 
 // Get the full URL
 const currentURL = window.location.href;
@@ -46,103 +47,110 @@ const pathArray = window.location.pathname.split('/');
 const gameId = pathArray[pathArray.length - 1];
 
 export default {
- name: 'ParticipateView',
- components: {
-   QuestionComponent
- },
- data: function () {
-   return {
-   lang: localStorage.getItem("lang") || "en",
-   data: {},
-   uiLabels: {},
-     question: {
-       q: "",
-       a: []
-     },
-     submittedAnswers: {},
-     pollId: "",
-     rounds: "0",
-     roundCounter: "0",
-     categories: [],
-     uiLabels: {},
-     players: [],
-     firstSelectedLetter: "",
-     selectedLetter: ""
-   }
- },
+  name: 'ParticipateView',
+  components: {
+    QuestionComponent
+  },
+  data: function () {
+    return {
+      lang: localStorage.getItem("lang") || "en",
+      data: {},
+      uiLabels: {},
+      question: {
+        q: "",
+        a: []
+      },
+      submittedAnswers: {},
+      pollId: "",
+      rounds: "0",
+      roundCounter: "0",
+      categories: [],
+      uiLabels: {},
+      players: [],
+      firstSelectedLetter: "",
+      selectedLetter: ""
+    }
+  },
 
- created: function () {
+  created: function () {
     this.pollId = this.$route.params.id;
     socket.emit("pageLoaded", this.lang);
-    socket.emit('startGame', {pollId: this.pollId});
+    socket.emit('startGame', { pollId: this.pollId });
 
-    socket.emit('joinSocket', {pollId: this.pollId})
-  
+    socket.emit('joinSocket', { pollId: this.pollId })
+
     socket.on('getInfo', (poll) => {
-        this.rounds = poll.rounds;
-        this.categories = poll.categories;
-        this.players = poll.players;
-        this.roundCounter=poll.roundCounter;
-        this.firstSelectedLetter = poll.firstSelectedLetter;
-        this.selectedLetter = poll.selectedLetter;
-      })
-    
+      this.rounds = poll.rounds;
+      this.categories = poll.categories;
+      this.players = poll.players;
+      this.roundCounter = poll.roundCounter;
+      this.firstSelectedLetter = poll.firstSelectedLetter;
+      this.selectedLetter = poll.selectedLetter;
+    })
+
     socket.on('playersUpdate', (players) => {
       console.log("playersUpdate creatorwaitingview")
-        this.players = players;
-      })
-    
+      this.players = players;
+    })
+
     socket.on('startGameForAll', () => {
-        console.log("start for all participants creatorwaitingview")
-        this.$router.push('/creatorgame/' + this.pollId);
-      })
+      console.log("start for all participants creatorwaitingview")
+      this.$router.push('/creatorgame/' + this.pollId);
+    })
 
     socket.on("init", (labels) => {
-     this.uiLabels = labels
-   })
+      this.uiLabels = labels
+    })
   },
 
 
- methods: {
-   submitAnswer: function (answer) {
-     socket.emit("submitAnswer", {pollId: this.pollId, answer: answer})
-   },
-   startaSpel: function () {
-    if (this.players.length < 1) {
-      alert(this.uiLabels.noPlayers) 
-    } 
-    else {
-    console.log("starta spel creatorwaitingview")
-    socket.emit('startForAll', {pollId: this.pollId});
+  methods: {
+    submitAnswer: function (answer) {
+      socket.emit("submitAnswer", { pollId: this.pollId, answer: answer })
+    },
+    startGame: function () {
+      if (this.players.length < 1) {
+        alert(this.uiLabels.noPlayers)
+      }
+      else {
+        console.log("starta spel creatorwaitingview")
+        socket.emit('startForAll', { pollId: this.pollId });
+      }
     }
- } 
-}
+  }
 }
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
 
 body {
   margin-top: -32px;
   padding: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .background {
   /* Stilen för att göra bilden till bakgrund på hela sidan */
-  background-image: url('/img/bluebg.png'); 
-  background-size: cover !important; /* Anpassar storleken på bilden så att den täcker hela sidan */
-  background-position: center; /* Centrerar bakgrundsbilden på sidan */
-  height: 110vh; /* Gör elementet lika högt som fönstret (hela sidan) */
-  
+  background-image: url('/img/bluebg.png');
+  background-size: cover !important;
+  /* Anpassar storleken på bilden så att den täcker hela sidan */
+  background-position: center;
+  /* Centrerar bakgrundsbilden på sidan */
+  height: 110vh;
+  /* Gör elementet lika högt som fönstret (hela sidan) */
+
 }
+
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Creates 10 equal-width columns */
-  
+  grid-template-columns: repeat(4, 1fr);
+  /* Creates 10 equal-width columns */
+
 }
 
 
-  #tillbakaButton {
+#goBackButton {
   background-color: rgb(255, 206, 114);
   height: 10%;
   width: 12em;
@@ -153,14 +161,15 @@ body {
   border-radius: 10px;
   border: none;
   cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
 }
 
 
-#tillbakaButton:hover {
-  background-color:rgb(254, 195, 86);
+#goBackButton:hover {
+  background-color: rgb(254, 195, 86);
 }
 
-#startaSpelButton {
+#startGameButton {
   background-color: rgb(113, 255, 113);
   height: 10%;
   width: 12em;
@@ -171,83 +180,101 @@ body {
   border-radius: 10px;
   border: none;
   cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
 }
-#startaSpelButton:hover {
-  background-color: #70e070;;
+
+#startGameButton:hover {
+  background-color: #70e070;
+  ;
 }
-h1 { 
-    color:rgb(249, 192, 86);
-    text-shadow: rgb(255, 183, 0) 1px 0 10px;
-    font-size: 300%; 
-    }
 
-h3 {font-weight: normal;
+h1 {
+  color: rgb(249, 192, 86);
+  text-shadow: rgb(255, 183, 0) 1px 0 10px;
+  font-size: 300%;
+}
+
+h3 {
+  font-weight: normal;
   text-align: center;
-    color:rgb(0, 0, 0);
-    font-size: 200%;
-    }
+  color: rgb(0, 0, 0);
+  font-size: 200%;
+}
 
-    h2 {font-weight: bold;
+h2 {
+  font-weight: bold;
   text-align: center;
-    color:rgb(255, 183, 0);
-    font-size: 20px}
+  color: rgb(255, 183, 0);
+  font-size: 20px
+}
 
-  ul {
-    list-style: none;
-  }
+ul {
+  list-style: none;
+}
 
-  li {
-    font-size: 150%;
-    text-align: center;
-  }
-  #playerAvatar {
-    width: 30%; /* Adjust as needed */
+li {
+  font-size: 150%;
+  text-align: center;
+}
+
+#playerAvatar {
+  width: 30%;
+  /* Adjust as needed */
   height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 2px solid black; /* Adds a black border */
-  border-radius: 10px; /* Makes corners rounded */
+  border: 2px solid black;
+  /* Adds a black border */
+  border-radius: 10px;
+  /* Makes corners rounded */
   padding: 20px;
   padding-left: 30px;
   padding-right: 30px;
   margin-left: 30%;
   margin-top: 10px;
-  background-color: rgb(240, 248, 255,0.6);
+  background-color: rgb(240, 248, 255, 0.6);
 }
 
 #playerAvatar img {
   width: 100%;
   height: auto;
 }
+
 @media screen and (max-width:50em) {
 
   body {
-  margin-top: -22px;
-  padding: 0;
-}
+    margin-top: -22px;
+    padding: 0;
+  }
 
-.wrapper {
-display: grid;
-grid-template-columns: repeat(3, 1fr); /* Creates 10 equal-width columns */
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Creates 10 equal-width columns */
 
-}
+  }
 
-#playerAvatar{margin-left: 10%;
-  height: 120px;
-  margin-right: -40px;
-}
-h1{font-size:200%;}
+  #playerAvatar {
+    margin-left: 10%;
+    height: 120px;
+    margin-right: -40px;
+  }
 
-  h2 {font-weight: bold;
-  text-align: center;
-    color:rgb(255, 183, 0);
-    font-size: 14px}
+  h1 {
+    font-size: 200%;
+  }
 
-    h3{font-size: 120%;}
+  h2 {
+    font-weight: bold;
+    text-align: center;
+    color: rgb(255, 183, 0);
+    font-size: 14px
+  }
 
-}
+  h3 {
+    font-size: 120%;
+  }
 
-
-</style>
+}</style>

@@ -1,152 +1,155 @@
 <template>
-  <div v-if="!readyToStart" class="cover">
-    <h1 class="startNum" >{{ waitToStartNum }}</h1>
+  <body>
+    <div v-if="!readyToStart" class="cover">
+      <h1 class="startNum">{{ waitToStartNum }}</h1>
+    </div>
 
-  </div>
+    <div v-else>
+      <header id="round">
+        <h1> {{ uiLabels.round }} {{ roundCounter }} </h1>
+      </header>
 
-  <div v-else>
-    <header id="round">
-      <h1> {{ uiLabels.round }} {{ roundCounter }} </h1>
-    </header>
+      <h3 id="infoText">
+        {{ uiLabels.infotext }}
+      </h3>
 
-    <h3 id="infoText"> 
-      {{uiLabels.infotext}}
-    </h3>
+      <div class="contentWrapper">
+        <div class="categories">
 
-    <div class="contentWrapper">
-      <div class="categories">
+          <h2>{{ uiLabels.categories }} </h2>
 
-        <h2>{{ uiLabels.categories }} </h2>
-
-        <ul style="list-style: none;">
-            <li v-for="(category,ans) in categories" :key="ans">
-              {{ uiLabels[category] }}:  <br> <input v-model="submittedAnswers[category]" :placeholder="uiLabels[category]">
+          <ul style="list-style: none;">
+            <li v-for="(category, ans) in categories" :key="ans">
+              {{ uiLabels[category] }}: <br> <input v-model="submittedAnswers[category]"
+                :placeholder="uiLabels[category]">
             </li>
-        </ul>
+          </ul>
 
-      </div>
-      
-      <div class="letterInfo">
-        <h2>{{uiLabels.letter}} </h2> <h1>{{ this.firstSelectedLetter.toUpperCase() }}</h1>
-      </div>
-      <div class="countdown" v-if="gotFirstAnswer">
-       {{ startCountdown() }}
-        <p>{{ countdown }}</p>
+        </div>
+
+        <div class="letterInfo">
+          <h2>{{ uiLabels.letter }} </h2>
+          <h1>{{ this.firstSelectedLetter.toUpperCase() }}</h1>
+        </div>
+        <div class="countdown" v-if="gotFirstAnswer">
+          {{ startCountdown() }}
+          <p>{{ countdown }}</p>
+        </div>
       </div>
     </div>
-  </div>
-    
+
     <!--<button id="lockAnswers" class="lockButton">Lås in svar!</button>-->
 
-        <button id="lockAnswers" class="lockButton" v-on:click="submitTheAnswers">      <!-- måste skapa en write poll id number så att det funkar-->
-          {{uiLabels.lockAnswer}}</button>
-
-  </template>
+    <button id="lockAnswers" class="lockButton" v-on:click="submitTheAnswers">
+      <!-- måste skapa en write poll id number så att det funkar-->
+      {{ uiLabels.lockAnswer }}</button>
+  </body>
+</template>
 
 <script>
 // @ is an alias to /src
 import QuestionComponent from '@/components/QuestionComponent.vue';
 import io from 'socket.io-client';
 import { useRouter } from 'vue-router';
-const socket = io(sessionStorage.getItem("dataServer")); 
+const socket = io(sessionStorage.getItem("dataServer"));
 
 export default {
- name: 'ParticipateView',
- components: {
-   QuestionComponent
- },
- data: function () {
-   return {
-   lang: localStorage.getItem("lang") || "en",
-   data: {},
-   uiLabels: {},
-     question: {
-       q: "",
-       a: []
-     },
-     pollId: "inactive poll",
-     submittedAnswers: {},
-     players: [],
-     name: "",
-     categories: [],
-     roundCounter: 0,
-     selectedLetter:'',
-     firstSelectedLetter: '',
-     gotFirstAnswer: false,
-     countdown: 8,
-     isSent: false,
-     waitToStartNum: 3,
-     waitToStartNumHolder: null,
-     readyToStart: false,
-   }
- },
- created: function () {
-   this.pollId = this.$route.params.id
-   this.name = this.$route.params.name
-   
-   this.waitToStart();
-
-   socket.on("dataUpdate", answers =>
-     this.submittedAnswers = answers,
-      console.log(this.submittedAnswers)
-   )
- socket.emit("pageLoaded", this.lang);
-   socket.on("init", (labels) => {
-     this.uiLabels = labels
-   })
-
-   socket.emit('joinSocket', {pollId: this.pollId})
-
-   socket.emit('startGame', {pollId: this.pollId})
-
-   socket.on('getInfo', (poll) => {
-    console.log(poll.categories)
-     this.rounds = poll.rounds;
-     this.categories = poll.categories;
-     this.roundCounter = poll.roundCounter;
-     this.selectedLetter = poll.selectedLetter;
-     this.firstSelectedLetter = poll.selectedLetter;
-   })
-
-   socket.on('getAnswers', (players) => {
-      this.gotFirstAnswer = true;
-   })
- },
-
- methods: {
-   submitTheAnswers: function () {
-    if (!this.isSent) {
-     console.log("submitTheAnswers", this.submittedAnswers)
-     socket.emit("submitTheAnswers", {pollId: this.pollId, answer: this.submittedAnswers, name: this.name})
-     this.$router.push('/participantlivescore/' + this.pollId +'/'+ this.name);
-     this.isSent = true;
-    }
-    return
-   },
-   startCountdown() {
-    // Only start the countdown if it's not already running
-    if (!this.intervalId) {
-      this.intervalId = setInterval(() => {
-        if (this.countdown > 0) {
-          this.countdown--;
-        } else {
-          clearInterval(this.intervalId);
-          this.submitTheAnswers();
-        }
-      }, 1000);
+  name: 'ParticipateView',
+  components: {
+    QuestionComponent
+  },
+  data: function () {
+    return {
+      lang: localStorage.getItem("lang") || "en",
+      data: {},
+      uiLabels: {},
+      question: {
+        q: "",
+        a: []
+      },
+      pollId: "inactive poll",
+      submittedAnswers: {},
+      players: [],
+      name: "",
+      categories: [],
+      roundCounter: 0,
+      selectedLetter: '',
+      firstSelectedLetter: '',
+      gotFirstAnswer: false,
+      countdown: 8,
+      isSent: false,
+      waitToStartNum: 3,
+      waitToStartNumHolder: null,
+      readyToStart: false,
     }
   },
-  waitToStart() {
-  this.waitToStartNumHolder = setInterval(() => {
-    if (this.waitToStartNum > 0) {
-      this.waitToStartNum--;
-    } else {
-      clearInterval(this.waitToStartNumHolder);
-      this.readyToStart = true;
-    }
-  }, 1000);
-},
-}
+  created: function () {
+    this.pollId = this.$route.params.id
+    this.name = this.$route.params.name
+
+    this.waitToStart();
+
+    socket.on("dataUpdate", answers =>
+      this.submittedAnswers = answers,
+      console.log(this.submittedAnswers)
+    )
+    socket.emit("pageLoaded", this.lang);
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+    })
+
+    socket.emit('joinSocket', { pollId: this.pollId })
+
+    socket.emit('startGame', { pollId: this.pollId })
+
+    socket.on('getInfo', (poll) => {
+      console.log(poll.categories)
+      this.rounds = poll.rounds;
+      this.categories = poll.categories;
+      this.roundCounter = poll.roundCounter;
+      this.selectedLetter = poll.selectedLetter;
+      this.firstSelectedLetter = poll.selectedLetter;
+    })
+
+    socket.on('getAnswers', (players) => {
+      this.gotFirstAnswer = true;
+    })
+  },
+
+  methods: {
+    submitTheAnswers: function () {
+      if (!this.isSent) {
+        console.log("submitTheAnswers", this.submittedAnswers)
+        socket.emit("submitTheAnswers", { pollId: this.pollId, answer: this.submittedAnswers, name: this.name })
+        this.$router.push('/participantlivescore/' + this.pollId + '/' + this.name);
+        this.isSent = true;
+      }
+      return
+    },
+    startCountdown() {
+      // Only start the countdown if it's not already running
+      if (!this.intervalId) {
+        this.intervalId = setInterval(() => {
+          if (this.countdown > 0) {
+            this.countdown--;
+          } else {
+            clearInterval(this.intervalId);
+            this.submitTheAnswers();
+          }
+        }, 1000);
+      }
+    },
+    waitToStart() {
+      this.waitToStartNumHolder = setInterval(() => {
+        if (this.waitToStartNum > 0) {
+          this.waitToStartNum--;
+        } else {
+          clearInterval(this.waitToStartNumHolder);
+          this.readyToStart = true;
+        }
+      }, 1000);
+    },
+  }
 }
 
 
@@ -154,15 +157,20 @@ export default {
 
 
   
-  <style scoped>
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
 
-h1 { 
-    color:rgb(249, 192, 86);
-    text-shadow: rgb(255, 183, 0) 1px 0 10px;
-    font-size: 50px; 
-    }
+body {
+  font-family: 'Open Sans', sans-serif;
+}
 
-.cover{
+h1 {
+  color: rgb(249, 192, 86);
+  text-shadow: rgb(255, 183, 0) 1px 0 10px;
+  font-size: 50px;
+}
+
+.cover {
   background-color: rgb(249, 192, 86);
   height: 100vh;
   width: 100vw;
@@ -175,53 +183,60 @@ h1 {
   align-items: center;
 }
 
-.startNum{
+.startNum {
   font-size: 10em;
   color: rgb(255, 255, 255);
   text-shadow: rgb(255, 183, 0) 1px 0 10px;
 }
 
-  #infoText {
-    font-size: 15px;
+#infoText {
+  font-size: 15px;
 }
 
-  h2{font-weight: normal;
+h2 {
+  font-weight: normal;
   text-align: center;
-    color:rgb(0, 0, 0);
-    font-size: 30px}
+  color: rgb(0, 0, 0);
+  font-size: 30px
+}
 
 
-h3{font-weight: bold;}
-  #round {
-    color: rgb(249, 192, 86);
-  }
-  
-  .contentWrapper {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .categories {
-    flex-basis: 50%;
-  }
+h3 {
+  font-weight: bold;
+}
 
-  
-  
-  .letterInfo {
-    flex-basis: 45%;
-  }
-  
-  .letterInfo h2 {
-    margin-top: 23px;
-  }
- .letterInfo h2 {
-    margin-top: 23px;
-  }
-  #infoText {
-    font-size: 15px;
-  }
+#round {
+  color: rgb(249, 192, 86);
+}
 
-  .lockButton {
+.contentWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.categories {
+  flex-basis: 50%;
+}
+
+
+
+.letterInfo {
+  flex-basis: 45%;
+}
+
+.letterInfo h2 {
+  margin-top: 23px;
+}
+
+.letterInfo h2 {
+  margin-top: 23px;
+}
+
+#infoText {
+  font-size: 15px;
+}
+
+.lockButton {
   background-color: rgb(113, 255, 113);
 
   height: 80px;
@@ -234,21 +249,26 @@ h3{font-weight: bold;}
   border: none;
   border-radius: 10px;
   cursor: pointer;
+
+  font-family: 'Open Sans', sans-serif;
 }
 
 .lockButton:hover {
   background-color: #70e070;
 }
+
 .countdown {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+
 }
 
 .countdown p {
-  font-size: 7em; /* Adjust the font size as needed */
+  font-size: 7em;
+  /* Adjust the font size as needed */
   color: red;
 }
-  </style>
+</style>
