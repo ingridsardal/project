@@ -10,7 +10,7 @@
     </div>
 
     <div class="shuffleButton" @click="shuffleRandomLetter">
-      <div class="image-crop"></div>
+      <div class="image-crop" v-if="showContent"></div>
     </div>
 
     <footer>
@@ -369,7 +369,7 @@ tbody tr:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
   /* Adjust as needed */
   height: 75px;
   /* Adjust as needed */
-  background-image: url('../../public/img/shuffledice.png');
+  background-image: url('../../public/img/dice2.png');
   background-position: center;
   /* Adjust as needed */
   background-size: cover;
@@ -401,14 +401,15 @@ tbody tr:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
   color: rgb(249, 192, 86);
   text-shadow: rgb(255, 183, 0) 1px 0 10px;
   text-transform: uppercase;
-  opacity: 0.7;
-  /* Delvis genomskinlig från början */
+/*  opacity: 0.7;
+  Delvis genomskinlig från början */
   transition: opacity 0.3s ease, border-color 0.3s ease;
   outline: none;
+  background-color: rgba(0, 0, 0, 0)
 }
 
 .content:hover input {
-  opacity: 1;
+ /* opacity: 1;*/
   border-color: rgb(249, 192, 86);
   outline: none;
 }

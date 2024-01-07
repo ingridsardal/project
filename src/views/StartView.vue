@@ -33,7 +33,7 @@
   <ResponsiveNav v-bind:hideNav="hideNav">
       <button v-on:click="switchLanguage" :class="{ 'english': lang === 'en', 'swedish': lang === 'sv' }" ></button> 
       <button v-on:click="aboutFunction" id="navButtons"> {{uiLabels.about}} </button>   
-      <button v-on:click="FAQFunction" id="navButtons"> {{uiLabels.faq}} </button>    
+      <button v-on:click="FAQFunction" id="navButtons"> {{uiLabels.rules}} </button>    
     </ResponsiveNav>
   </footer>
   </template>
@@ -80,7 +80,7 @@
         alert(this.uiLabels.aboutInfo)
       },
       FAQFunction: function() {
-        alert(this.uiLabels.aboutInfo)
+        alert(this.uiLabels.howToPlay)
       },
       closeMenu(event) {
         if (this.$refs.hamburgerMenu && !this.$refs.hamburgerMenu.contains(event.target)) {

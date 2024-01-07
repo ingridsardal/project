@@ -156,13 +156,11 @@ Data.prototype.giveScore = function (pollId, players, isChecked) {
     for (let i = 0; i < players.length; i++) {
       let player = poll.players.find((player) => player.nameId === players[i].nameId);
       player.points += players[i].points;
+      player.hasAnswered = false;
     }
     console.log("score given");
   }
 };
-
-
-
 
 
 
