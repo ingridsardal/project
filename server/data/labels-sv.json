@@ -17,7 +17,7 @@
 	"about": "Om oss",
 	"aboutInfo": "Vi är ett gäng studenter at Uppsala Universitet som har skapat denna webbapplikation som en del av kursen 1MD031. Spelet är inspirerat av sällskapsspelet 'Stad land och flod' och vi hoppas att du kommer att ha lika roligt med att spela spelet som vi hade när vi skapade det!",
 	"rules": "Regler",
-	"howToPlay":"Välkommen till webbversionen av spelet 'Stad, Land, Flod'! Spelet spelas i omgångar där varje omgång består av en bokstav och ett antal kategorier. Målet är att skriva ett ord under varje kategori som börjar med den givna bokstaven. När alla har skrivit sina svar kommer spelledaren att kontrollera svaren och ge poäng till spelarna. Spelaren med flest poäng efter att alla omgångar har spelats vinner spelet!",
+	"howToPlay":"Välkommen till webbversionen av spelet 'Stad, Land, Flod'! Spelet spelas i omgångar där varje omgång består av en bokstav och ett antal kategorier. Målet är att skriva ett ord under varje kategori som börjar med den givna bokstaven. När en spelar har skickat in sina svar har de andra åtta sekunder på sig att svara. När alla har skrivit sina svar kommer spelledaren att kontrollera svaren och ge poäng till spelarna. Spelaren med flest poäng efter att alla omgångar har spelats vinner spelet!",
 
 	"waitInfoLiveScore": "Vänta på att spelledaren rättar..",
 
