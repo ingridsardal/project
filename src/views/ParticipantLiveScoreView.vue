@@ -3,8 +3,6 @@
     <header>
       <h1>{{ uiLabels.liveScoreText }}</h1>
     </header>
-
-    <section id="Section1">
       <div class="wrapper">
 
         <div v-for="player in players" :key="player.id" class="player-item">
@@ -25,9 +23,6 @@
       </div>
 
       <button id="waitButton">{{ uiLabels.waitInfoLiveScore }} </button>
-
-    </section>
-
     <!--<div><img id="hamster" src="../../public/img/Hamster.gif" alt="Animated GIF" /></div>-->
   </body>
 </template>
@@ -113,9 +108,9 @@ body {
   /* Anpassar storleken på bilden så att den täcker hela sidan */
   background-position: center;
   /* Centrerar bakgrundsbilden på sidan */
-  height: 105vh;
+  height: 157vh;
   /* Gör elementet lika högt som fönstret (hela sidan) */
-  margin-top: -27px;
+
 }
 
 .wrapper {
@@ -226,8 +221,15 @@ ul {
   h1 {
     font-size: 25px;
   }
+  .player-item{  
+  /* Adjust width as needed */
+  margin: 7px;
+  padding: 7px;}
+  #playerAvatar img{width: 100px;}
+  .answerContainer{ margin-left:-30px;font-size: 12px;}
 }
 
 .background {
-  margin-top: -17px
+  margin-top: -17px;
+  height:212vh;
 }</style>

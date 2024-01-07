@@ -277,7 +277,7 @@ ul {
 @media screen and (max-width:50em) {
   h1{font-size:40px;}
   h3{font-size:18px;}
-  .background{height:263vh; margin-top:-27px}
+  .background{height:264vh; margin-top:-27px}
   .player-item{   flex: 0 0 20%;
   /* Adjust width as needed */
   margin: 7px;

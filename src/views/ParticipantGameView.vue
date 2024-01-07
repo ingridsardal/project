@@ -177,7 +177,7 @@ export default {
   /* Centrerar bakgrundsbilden på sidan */
   height: 110vh;
   /* Gör elementet lika högt som fönstret (hela sidan) */
-  margin-top: -34px
+  margin-top: -47px
 }
 
 body {
@@ -241,14 +241,6 @@ h3 {
 
 .letterInfo {
   flex-basis: 45%;
-}
-
-.letterInfo h2 {
-  
-}
-
-.letterInfo h2 {
- 
 }
 
 .lockButton {

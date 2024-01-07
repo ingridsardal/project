@@ -138,6 +138,7 @@ h3 {
   font-weight: normal;
   text-align: center;
   font-size: 200%;
+  margin-bottom: 0px;
 }
 
 h2 {
@@ -149,7 +150,9 @@ h2 {
 
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  margin-left:30px;
+  margin-right:30px;
   /* Creates 10 equal-width columns */
 
 }
@@ -274,5 +277,6 @@ li {
 
   h3 {
     font-size: 120%;
+    margin-bottom: 20%;;
   }
 }</style>
