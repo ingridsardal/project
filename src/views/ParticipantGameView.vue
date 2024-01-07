@@ -1,5 +1,5 @@
 <template>
-  <body>
+  <body class="background">
     <div v-if="!readyToStart" class="cover">
       <h1 class="startNum">{{ waitToStartNum }}</h1>
     </div>
@@ -159,6 +159,18 @@ export default {
   
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
+.background {
+  /* Stilen för att göra bilden till bakgrund på hela sidan */
+  background-image: url('/img/bluebg.png');
+  background-size: cover;
+  /* Anpassar storleken på bilden så att den täcker hela sidan */
+  background-position: center;
+  /* Centrerar bakgrundsbilden på sidan */
+  height: 110vh;
+  /* Gör elementet lika högt som fönstret (hela sidan) */
+  margin-top: -34px
+}
 
 body {
   font-family: 'Open Sans', sans-serif;

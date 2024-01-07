@@ -1,5 +1,5 @@
 <template>
-  <body id="apa">
+  <body id="apa" class="background">
     <header>
       <h1>RESULTS </h1>
     </header>
@@ -113,6 +113,19 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
+.background {
+  /* Stilen för att göra bilden till bakgrund på hela sidan */
+  background-image: url('/img/bluebg.png');
+  background-size: cover;
+  /* Anpassar storleken på bilden så att den täcker hela sidan */
+  background-position: center;
+  /* Centrerar bakgrundsbilden på sidan */
+  height: 100vh;
+  /* Gör elementet lika högt som fönstret (hela sidan) */
+  top: 0;
+  margin-top: -32px;
+}
 
 body {
   font-family: 'Open Sans', sans-serif;

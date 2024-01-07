@@ -1,7 +1,7 @@
 <template>
-  <body id="apa">
+  <body id="apa" class="background">
     <header>
-      <h1>{{ uiLabels.scoreboard }} {{ uilabelRound.toUpperCase() }} {{ roundCounter }}</h1>
+      <h1>{{ uiLabels.scoreboard }} {{ roundCounter }}</h1>
     </header>
 
     <div class="content" v-if="showContent">
@@ -201,6 +201,18 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
+.background {
+  /* Stilen för att göra bilden till bakgrund på hela sidan */
+  background-image: url('/img/bluebg.png');
+  background-size: cover;
+  /* Anpassar storleken på bilden så att den täcker hela sidan */
+  background-position: center;
+  /* Centrerar bakgrundsbilden på sidan */
+  height: 110vh;
+  /* Gör elementet lika högt som fönstret (hela sidan) */
+  margin-top: 0px
+}
 
 body {
   font-family: 'Open Sans', sans-serif;
