@@ -197,7 +197,7 @@ h3 {
 }
 
 .selected-avatar {
-  border: 3px solid green;
+  border: 6px solid green;
 }
 
 .background {
