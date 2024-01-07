@@ -326,13 +326,13 @@ tbody tr:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
   color: red;
   text-shadow: rgb(184, 0, 0) 1px 0 10px;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 120px;
 }
 
 .message.dominating {
   color: rgb(19, 209, 19);
   text-shadow: rgb(21, 174, 21) 1px 0 7px;
-  font-size: 30px;
+  font-size: 120px;
   font-weight: bold;
 }
 
