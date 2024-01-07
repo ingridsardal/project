@@ -315,6 +315,7 @@ h3 {font-weight: bold;
 
     .grid-item label {
       margin-right: 5%;
+      cursor: pointer;
     }
 
   #createButton {
@@ -457,6 +458,8 @@ margin-top: -100px;
   text-align: center;
   margin-left: 15%;
 }
+
+
 
 .numberOfRounds label {
   margin-right: 1.5%;
