@@ -124,7 +124,8 @@ export default {
       submittedAnswers: {},
       nameId: "",
       players: [],
-      selectedGif: "https://media.giphy.com/media/aYKTYtCYb2ECSKfyal/giphy.gif"
+      selectedGif: "https://media.giphy.com/media/aYKTYtCYb2ECSKfyal/giphy.gif",
+      tooMany: false
     }
   },
   created: function () {
@@ -141,17 +142,38 @@ export default {
     socket.on("isTaken", (isTaken) => {
       if (!isTaken) {
         alert("Name is taken or invalid poll id")
-      } else {
+      } 
+      else {
         this.$router.push("/participantwaiting/" + this.pollId + '/' + this.nameId)
+        console.log("socket on else", this.tooMany)
       }
     })
 
   },
 
   methods: {
-    joinButton: function () {
-      socket.emit("joinGame", { pollId: this.pollId, nameId: this.nameId, avatar: this.selectedGif })
-    }
+  joinButton: function () {
+    new Promise((resolve) => {  //kollar om det är för många spelare
+      socket.emit("getNumOfPlayers", this.pollId)
+      socket.on("numOfplayers", (players) => {
+        console.log("socket on", players.length)
+        if (players.length >= 6) {
+          this.tooMany = true
+          console.log("socket emit", this.tooMany)
+        }
+        resolve()
+      })
+    })
+    .then(() => {
+      if (!this.tooMany){
+        console.log("socket emit igen", this.tooMany)
+        socket.emit("joinGame", { pollId: this.pollId, nameId: this.nameId, avatar: this.selectedGif })
+      }
+      else {
+        alert("Too many players")
+      }
+    })
+  }
   }
 }
 </script>
