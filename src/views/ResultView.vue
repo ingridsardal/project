@@ -1,7 +1,7 @@
 <template>
   <body id="apa" class="background">
     <header>
-      <h1>{{uiLabels.finalResults}} </h1>
+      <h1>{{ uiLabels.finalResults }} </h1>
     </header>
 
 
@@ -71,6 +71,11 @@ export default {
 
   },
 
+  computed: {
+    sortedPlayers() {
+      return this.players.slice().sort((a, b) => b.points - a.points);
+    },
+  },
   methods: {
     startRound() {
       this.$router.push('/');
@@ -225,6 +230,3 @@ tbody tr:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
 @media screen and (max-width:50em) {
     h1 {font-size: 80px;}}
 </style>
-
-
-    

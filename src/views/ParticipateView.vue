@@ -183,6 +183,7 @@ export default {
 
 body {
   font-family: 'Open Sans', sans-serif;
+  color: rgb(0, 88, 117);
 }
 
 h1 {
@@ -220,6 +221,7 @@ h3 {
   right: 0;
 
   background-color: lightgreen;
+  color: rgb(0, 88, 117);
   border-radius: 10px;
   border: none;
   cursor: pointer;
@@ -228,11 +230,13 @@ h3 {
 
 #joinButton:hover {
   background-color: #70e070;
-  ;
+  
+  
 }
 
 #goBackButton {
   background-color: rgb(255, 206, 114);
+  color: rgb(0, 88, 117);
   height: 80px;
   width: 12em;
   margin: 25px;
