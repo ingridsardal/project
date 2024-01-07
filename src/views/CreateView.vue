@@ -395,37 +395,45 @@ h3 {font-weight: bold;
   }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 50em) {
+  .background {
+    margin-top: -13px;
+    height: 108vh;
+    
+  }
+
+  h1{font-size: 30px; margin-top: 13px;}
   /* Justera stilen för mindre skärmstorlekar */
+  h3{font-size:18px; margin-bottom: 50px;}
   .textWindow input {
-    font-size: 50px; /* Justera storleken som passar bäst för mindre skärmar */
-    left: 68%;
-    margin-top: 100px;
+    font-size: 54px; /* Justera storleken som passar bäst för mindre skärmar */
+    left: 73%;
+    margin-bottom: 100px;
     height: 6%;
     width: 80px;
   }
   .image-crop {
     left: 80%;
     margin-top: 100px;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
   }
   .firstRoundLetter {
     font-size: 14px;
     right: 30%;
     position: absolute;
     margin-left: 1px;
-    bottom: 0;
+    margin-bottom: 100px;;
    
   }
-  .numberOfRounds {
-    margin-top:40px;
-    
+
+  .container {
+margin-top: -100px;
   }
   .grid-container{
     font-size: 13px;
     margin-left: 15%;
-    margin-bottom:40px;
+    margin-bottom:120px;
   }
   .grid-item{
     margin-right: -30px;
@@ -453,10 +461,6 @@ h3 {font-weight: bold;
   cursor: pointer;
   width: 10%;
 }
-
-
-
-  /* Eventuellt andra justeringar för mindre skärmar */
 }
 
 
