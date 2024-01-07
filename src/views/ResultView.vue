@@ -323,8 +323,11 @@ tbody tr:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
 }
 
 #startRound:hover {
-  background-color: #70e070;
-}</style>
+  background-color: #70e070;}
+
+@media screen and (max-width:50em) {
+    h1 {font-size: 80px;}}
+</style>
 
 
     
