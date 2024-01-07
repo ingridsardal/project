@@ -1,6 +1,6 @@
 {
-	"joinGame": "Joina Spel",
-	"createGame": "Skapa Spel",
+	"joinGame": "Joina spel",
+	"createGame": "Skapa spel",
 	"createOwnGame": "Skapa ditt eget spel",
 	"startGame": "Starta spel",
 	"gameCode": "Spelkod",
@@ -15,7 +15,7 @@
 
 	"changeLanguage": "Change to English",
 	"about": "Om oss",
-	"aboutInfo": "gegegegeeegege",
+	"aboutInfo": "Vi är ett gäng studenter at Uppsala Universitet som har skapat denna webbapplikation som en del av kursen 1MD031. Spelet är inspirerat av sällskapsspelet 'Stad land och flod' och vi hoppas att du kommer att ha lika roligt med att spela spelet som vi hade när vi skapade det!",
 	"faq":"FAQ",
 
 	"waitInfoLiveScore": "Vänta på att spelledaren rättar..",
@@ -24,17 +24,17 @@
 
 	"NumberOfRounds":"Antal omgångar    ",
 
-	"cities":"Städer",
-	"countries":"Länder",
-	"rivers":"Floder",
-	"dishes":"Maträtter",
-	"fruits":"Frukter",
-	"carBrands":"Bilmärken",
-	"celebrities":"Kändisar",
-	"clothingBrands":"Klädmärken",
-	"touristAttractions":"Sevärdheter",
-
+	"städer":"Städer",
+	"länder":"Länder",
+	"floder":"Floder",
+	"maträtter":"Maträtter",
+	"frukter":"Frukter",
+	"bilmärken":"Bilmärken",
+	"kändisar":"Kändisar",
+	"klädmärken":"Klädmärken",
+	"sevärdheter":"Sevärdheter",
 	"firstRoundLetter": "Välj bokstav för första omgången: ",
+
 	"letter":"Bokstav: ",
     "categories":"Kategorier: ",
     "round": "Omgång ",
@@ -71,8 +71,6 @@
 	"gameId": "Spel ID",
 	"liveScoreTile": "Spelledaren kastar domslutets mantel över dig",
 	"selectedAvatar": "Din Avatar",
-	"selectAvatar": "Klicka på en ikon för att välja din avatar",
-	"everyoneHasNotAnswered": "Alla har inte svarat än!"
-
+	"selectAvatar": "Klicka på en ikon för att välja din avatar"
 
 }
