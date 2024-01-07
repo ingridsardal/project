@@ -15,7 +15,7 @@
 
 	"changeLanguage": "Byt till svenska",
 	"about": "About",
-	"aboutInfo": "We are a group of students at Uppsala University who have developed this game as a part of the course 1MD031. The game is based on the board game 'Stad land och flod' and is a fun way to spend time with friends and family. We hope you enjoy it!",
+	"aboutInfo": "We are a group of students at Uppsala University who have developed this game as a part of the course 1MD031. The game is based on the board game 'Stad, land och flod' and is a fun way to spend time with friends and family. We hope you enjoy it!",
 	"rules":"Rules",
 	"howToPlay":"Welcome to the web-version of the game 'Stad, Land, Flod'! The game is played in rounds and each round consists of a letter and a number of categories. The goal is to write one word under each category that starts with the given letter. After one player submits their answers, the others have eight seconds to answer. When everyone has written their answers, the game leader will check the answers and give points to the players. The player with the most points after all rounds have been played wins the game!",
 
@@ -58,7 +58,7 @@
 	
 	"waitInfoLiveScore": "Waiting for the game leader to correct...",
 	
-	"scoreboard": "SCOREBOARD ROUND",
+	"scoreboard": "Scoreboard round",
 	"scoreboardName": "Name",
 	"scoreboardRanking": "Ranking",
 	"scoreboardPoints": "Points",
