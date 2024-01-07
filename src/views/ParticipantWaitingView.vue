@@ -243,6 +243,8 @@ li {
 
 @media screen and (max-width:50em) {
 
+  .background{margin-top:-21px;}
+
   .wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

@@ -19,11 +19,11 @@
 	"rules": "Regler",
 	"howToPlay":"Välkommen till webbversionen av spelet 'Stad, Land, Flod'! Spelet spelas i omgångar där varje omgång består av en bokstav och ett antal kategorier. Målet är att skriva ett ord under varje kategori som börjar med den givna bokstaven. När en spelar har skickat in sina svar har de andra åtta sekunder på sig att svara. När alla har skrivit sina svar kommer spelledaren att kontrollera svaren och ge poäng till spelarna. Spelaren med flest poäng efter att alla omgångar har spelats vinner spelet!",
 
-	"waitInfoLiveScore": "Vänta på att spelledaren rättar..",
+	"waitInfoLiveScore": "Vänta på att spelledaren rättar...",
 
 	"backButton":"Tillbaka",
 
-	"NumberOfRounds":"Antal omgångar    ",
+	"NumberOfRounds":"Antal omgångar ",
 
 	"cities":"Städer",
 	"countries":"Länder",
