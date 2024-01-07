@@ -119,7 +119,7 @@ beforeDestroy() {
   top: 0;
 }
 
-  .buttons{margin-top: 49.5%;}
+  .buttons{margin-top: 54%;}
 
     header {
       background-color: rgb(255, 255, 255);
@@ -176,6 +176,7 @@ beforeDestroy() {
     .logo img {
       max-width: 20%;
       /*vertical-align: bottom;*/
+      margin-top: 20px;
 
 
     /*.logo {
