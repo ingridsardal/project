@@ -56,6 +56,7 @@
 	"headerJoinGame": "Join a game!",
 	"anotherGame": "Start another game",
 	
+	"waitInfoLiveScore": "Waiting for the game leader to correct...",
 	
 	"scoreboard": "SCOREBOARD ROUND",
 	"scoreboardName": "Name",

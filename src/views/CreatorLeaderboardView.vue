@@ -369,7 +369,7 @@ tbody tr:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
   /* Adjust as needed */
   height: 75px;
   /* Adjust as needed */
-  background-image: url('../../public/img/shuffledice.png');
+  background-image: url('../../public/img/dice2.png');
   background-position: center;
   /* Adjust as needed */
   background-size: cover;
