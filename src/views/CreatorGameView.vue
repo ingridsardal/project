@@ -157,7 +157,7 @@ body {font-family: 'Open Sans', sans-serif;}
   /* Anpassar storleken på bilden så att den täcker hela sidan */
   background-position: center;
   /* Centrerar bakgrundsbilden på sidan */
-  height: 100vh;
+  height: 178vh;
   /* Gör elementet lika högt som fönstret (hela sidan) */
   margin-top: -34px;
 
@@ -268,4 +268,17 @@ h3 {
 
 ul {
   list-style: none;
-}</style>
+}
+
+@media screen and (max-width:50em) {
+  h1{font-size:40px;}
+  h3{font-size:18px;}
+  .background{height:263vh; margin-top:-27px}
+  .player-item{   flex: 0 0 20%;
+  /* Adjust width as needed */
+  margin: 7px;
+  padding: 7px;}
+  #playerAvatar img{width: 100px;}
+  .answerContainer{ margin-left:-30px;font-size: 12px;}
+}
+</style>
