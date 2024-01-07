@@ -1,11 +1,11 @@
 <template>
-  <body>
+  <body class="background">
     <header>
       <div v-bind:class="['hamburger', {'close': !hideNav}]" 
            v-on:click="toggleNav" ref="hamburgerMenu">
       </div>
       <div class="logo">
-        <img src="/img/logo.gif">
+        <img src="/img/logga2.gif">
       </div>
     </header>
 
@@ -28,14 +28,15 @@
     </router-link>
   </div>
 
-  </body>
-  <footer>
+<div class="buttons">
   <ResponsiveNav v-bind:hideNav="hideNav">
       <button v-on:click="switchLanguage" :class="{ 'english': lang === 'en', 'swedish': lang === 'sv' }" ></button> 
       <button v-on:click="aboutFunction" id="navButtons"> {{uiLabels.about}} </button>   
       <button v-on:click="FAQFunction" id="navButtons"> {{uiLabels.rules}} </button>    
     </ResponsiveNav>
-  </footer>
+  </div>
+
+  </body>
   </template>
   
   <script>
@@ -106,7 +107,20 @@ beforeDestroy() {
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
     
     body {font-family: 'Open Sans', sans-serif;}
-  
+    .background {
+  /* Stilen för att göra bilden till bakgrund på hela sidan */
+  background-image: url('/img/bluebg.png');
+  background-size: cover;
+  /* Anpassar storleken på bilden så att den täcker hela sidan */
+  background-position: center;
+  /* Centrerar bakgrundsbilden på sidan */
+  height: 100vh;
+  /* Gör elementet lika högt som fönstret (hela sidan) */
+  top: 0;
+}
+
+  .buttons{margin-top: 49.5%;}
+
     header {
       background-color: rgb(255, 255, 255);
       height: 0;
@@ -158,14 +172,11 @@ beforeDestroy() {
       /*padding-top: 0.1em;*/
       position: relative; /* Required for z-index to work */
       z-index: 0; /* Any number less than the z-index of .hamburger */
-      margin-top: -5%;
-      margin-bottom: -5%;
     }
     .logo img {
       max-width: 20%;
       /*vertical-align: bottom;*/
-      margin-left:-30px;
-      margin-bottom: -20%;
+
 
     /*.logo {
       font-size: 5vw;
@@ -286,13 +297,12 @@ beforeDestroy() {
     h2{font-size: 20px;}
   
     .logo img {
-      max-width: 67%;
+      max-width: 75%;
       vertical-align: bottom;
       margin-left: 0%;
+      margin-top:30px;
 
   }
   }
-
-
 
   </style>
