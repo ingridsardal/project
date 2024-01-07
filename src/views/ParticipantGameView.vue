@@ -9,10 +9,6 @@
         <h1> {{ uiLabels.round }} {{ roundCounter }} </h1>
       </header>
 
-      <h3 id="infoText">
-        {{ uiLabels.infotext }}
-      </h3>
-
       <div class="contentWrapper">
         <div class="categories">
 
@@ -20,8 +16,10 @@
 
           <ul style="list-style: none;">
             <li v-for="(category, ans) in categories" :key="ans">
-              {{ uiLabels[category] }}: <br> <input v-model="submittedAnswers[category]"
+              <div class="input-container"> 
+              {{ uiLabels[category] }}: <br> <input class="small-input" v-model="submittedAnswers[category]"
                 :placeholder="uiLabels[category]">
+              </div>
             </li>
           </ul>
 
@@ -29,7 +27,7 @@
 
         <div class="letterInfo">
           <h2>{{ uiLabels.letter }} </h2>
-          <h1>{{ this.firstSelectedLetter.toUpperCase() }}</h1>
+          <h1 class="letterSize"> {{ this.firstSelectedLetter.toUpperCase() }}</h1>
         </div>
         <div class="countdown" v-if="gotFirstAnswer">
           {{ startCountdown() }}
@@ -160,6 +158,16 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
 
+.input-container {
+    margin-bottom: 10px; /* Add margin as needed */
+  }
+
+  .small-input {
+    width: 200px; /* Adjust the width as needed */
+    height: 22px; /* Adjust the height as needed */
+    font-size: 14px; /* Adjust the font size as needed */
+    /* Add any other styling properties as needed */
+  }
 .background {
   /* Stilen för att göra bilden till bakgrund på hela sidan */
   background-image: url('/img/bluebg.png');
@@ -179,7 +187,7 @@ body {
 h1 {
   color: rgb(249, 192, 86);
   text-shadow: rgb(255, 183, 0) 1px 0 10px;
-  font-size: 50px;
+  font-size: 70px;
 }
 
 .cover {
@@ -201,15 +209,12 @@ h1 {
   text-shadow: rgb(255, 183, 0) 1px 0 10px;
 }
 
-#infoText {
-  font-size: 15px;
-}
-
 h2 {
   font-weight: normal;
   text-align: center;
   color: rgb(0, 0, 0);
-  font-size: 30px
+  font-size: 30px;
+  margin-top: -30px;
 }
 
 
@@ -224,10 +229,12 @@ h3 {
 .contentWrapper {
   display: flex;
   justify-content: space-between;
+  
 }
 
 .categories {
   flex-basis: 50%;
+  font-size: 18px;
 }
 
 
@@ -237,15 +244,11 @@ h3 {
 }
 
 .letterInfo h2 {
-  margin-top: 23px;
+  
 }
 
 .letterInfo h2 {
-  margin-top: 23px;
-}
-
-#infoText {
-  font-size: 15px;
+ 
 }
 
 .lockButton {
@@ -279,8 +282,82 @@ h3 {
 }
 
 .countdown p {
+  font-size: 20em;
+  /* Adjust the font size as needed */
+  color: red;
+}
+
+.letterSize {
+  font-size: 20em;
+  margin-top: -35px; 
+  margin-left: 14px; 
+}
+
+@media screen and (max-width:50em) { 
+
+  .input-container {
+    margin-bottom: 10px; /* Add margin as needed */
+  }
+
+  .small-input {
+    width: 150px; /* Adjust the width as needed */
+    height: 22px; /* Adjust the height as needed */
+    font-size: 14px; /* Adjust the font size as needed */
+    /* Add any other styling properties as needed */
+  }
+
+  .lockButton {
+  
+  margin: 25px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 0;
+  width: 10em;
+}
+
+  h1 {
+  color: rgb(249, 192, 86);
+  text-shadow: rgb(255, 183, 0) 1px 0 10px;
+  font-size: 70px;
+}
+
+.letterSize {
+  font-size: 7em;
+  margin-top: -30px;  
+}
+
+.countdown p {
   font-size: 7em;
   /* Adjust the font size as needed */
   color: red;
+  margin-left: 220px;
+  margin-top: 400px;
+}
+
+h2 {
+  font-weight: normal;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-size: 30px
+}
+
+.contentWrapper {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.categories {
+  flex-basis: 50%;
+  font-size: 14px;
+}
+
+
+
+.letterInfo {
+  flex-basis: 45%;
+}
+
 }
 </style>
