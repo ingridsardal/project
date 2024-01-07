@@ -187,28 +187,24 @@ td {
 }
 
 th {
-  color: black;
+  color: rgb(0, 88, 117);
   background-color: white;
 }
 
 tbody tr:nth-child(1) {
   background-color: gold;
-  /* Set background color for the first row */
 }
 
 tbody tr:nth-child(2) {
   background-color: silver;
-  /* Set background color for the second row */
 }
 
 tbody tr:nth-child(3) {
   background-color: #cd7f32;
-  /* Set background color for the third row */
 }
 
 tbody tr:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
   background-color: darkred;
-  /* Set background color for the rest of the rows */
 }
 
 .message {
@@ -264,16 +260,6 @@ tbody tr:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
   text-shadow: rgb(21, 174, 21) 1px 0 7px;
   font-size: 120px;
   font-weight: bold;
-}
-
-.nextRound {
-  color: black;
-  font-size: 45px;
-  right: 400px;
-  position: absolute;
-  bottom: 0;
-  padding: 10px;
-  font-style: italic;
 }
 
 .image img {

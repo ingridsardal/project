@@ -72,6 +72,8 @@
 	"gameId": "Spel ID",
 	"liveScoreTile": "Spelledaren kastar domslutets mantel över dig",
 	"selectedAvatar": "Din Avatar",
-	"selectAvatar": "Klicka på en ikon för att välja din avatar"
+	"selectAvatar": "Klicka på en ikon för att välja din avatar",
+
+	"finalResults": "RESULTAT"
 
 }

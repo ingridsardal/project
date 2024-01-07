@@ -71,5 +71,7 @@
 	"goToResults": "Go to results",
 	"everyoneHasNotAnswered": "Everyone has not answered yet!",
 	"selectAvatar": "Click on an icon to choose your avatar",
-	"gameId": "Game ID"
+	"gameId": "Game ID",
+
+	"finalResults": "RESULTS"
 }

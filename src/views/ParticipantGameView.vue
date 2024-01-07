@@ -182,6 +182,7 @@ export default {
 
 body {
   font-family: 'Open Sans', sans-serif;
+  color: rgb(0, 88, 117);
 }
 
 h1 {
@@ -212,7 +213,6 @@ h1 {
 h2 {
   font-weight: normal;
   text-align: center;
-  color: rgb(0, 0, 0);
   font-size: 30px;
   margin-top: -30px;
 }
@@ -253,6 +253,7 @@ h3 {
 
 .lockButton {
   background-color: rgb(113, 255, 113);
+  color: rgb(0, 88, 117);
 
   height: 80px;
   width: 12em;
@@ -338,7 +339,6 @@ h3 {
 h2 {
   font-weight: normal;
   text-align: center;
-  color: rgb(0, 0, 0);
   font-size: 30px
 }
 

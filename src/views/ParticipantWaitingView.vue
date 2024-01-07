@@ -111,6 +111,8 @@ export default {
 
 body {
   font-family: 'Open Sans', sans-serif;
+  color: rgb(0, 88, 117);
+  
 }
 
 .background {
@@ -135,7 +137,6 @@ h1 {
 h3 {
   font-weight: normal;
   text-align: center;
-  color: rgb(0, 0, 0);
   font-size: 200%;
 }
 
@@ -155,6 +156,7 @@ h2 {
 
 #goBackButton {
   background-color: rgb(255, 206, 114);
+  color: rgb(0, 88, 117);
   height: 10%;
   width: 12em;
   margin: 2%;
@@ -194,6 +196,7 @@ h2 {
 
 #waitButton {
   background-color: rgb(255, 206, 114);
+  color: rgb(0, 88, 117);
   height: 10%;
   width: 12em;
   margin: 2%;

@@ -103,6 +103,7 @@ export default {
 
 body {
   font-family: 'Open Sans', sans-serif;
+  color: rgb(0, 88, 117);
 }
 
 .background {
@@ -163,7 +164,6 @@ h2 {
 h3 {
   font-weight: bold;
   text-align: center;
-  color: rgb(0, 0, 0);
   font-size: 30px
 }
 
@@ -204,6 +204,7 @@ ul {
 
 #waitButton {
   background-color: rgb(255, 206, 114);
+  color: rgb(0, 88, 117);
   opacity: 0.8;
   height: 10%;
   width: 12em;

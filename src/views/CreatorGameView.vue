@@ -149,7 +149,10 @@ export default {
 /* Add your styles here */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
     
-body {font-family: 'Open Sans', sans-serif;}
+body {font-family: 'Open Sans', sans-serif;
+color: rgb(0, 88, 117);
+}
+
 .background {
   /* Stilen för att göra bilden till bakgrund på hela sidan */
   background-image: url('/img/bluebg.png');
@@ -245,13 +248,13 @@ h2 {
 h3 {
   font-weight: normal;
   text-align: center;
-  color: rgb(0, 0, 0);
   font-size: 30px
 }
 
 
 #showScoreboardButton {
   background-color: rgb(113, 255, 113);
+  color: rgb(0, 88, 117);
   height: 80px;
   width: 12em;
   margin: 25px;

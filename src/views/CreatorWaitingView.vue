@@ -128,6 +128,7 @@ body {
   margin-top: -32px;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
+  color: rgb(0, 88, 117);
 }
 
 .background {
@@ -152,6 +153,7 @@ body {
 
 #goBackButton {
   background-color: rgb(255, 206, 114);
+  color: rgb(0, 88, 117);
   height: 10%;
   width: 12em;
   margin: 2%;
@@ -171,6 +173,7 @@ body {
 
 #startGameButton {
   background-color: rgb(113, 255, 113);
+  color: rgb(0, 88, 117);
   height: 10%;
   width: 12em;
   margin: 2%;
@@ -197,7 +200,6 @@ h1 {
 h3 {
   font-weight: normal;
   text-align: center;
-  color: rgb(0, 0, 0);
   font-size: 200%;
 }
 

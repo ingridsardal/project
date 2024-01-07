@@ -242,12 +242,17 @@ export default {
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
     
-body,header,footer {font-family: 'Open Sans', sans-serif;}
+body,header,footer {font-family: 'Open Sans', sans-serif;
+color: rgb(0, 88, 117);
+}
 
 body {
   margin: -32px;
   padding: 0;
 }
+
+
+
 header {
   color: orange;
 }
@@ -314,6 +319,7 @@ h3 {font-weight: bold;
 
   #createButton {
   background-color: rgb(113, 255, 113);
+  color: rgb(0, 88, 117);
   height: 10%;
   width: 12em;
   margin: 2%;
@@ -323,12 +329,15 @@ h3 {font-weight: bold;
   border-radius: 10px;
   border: none;
   cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
 }
 #createButton:hover {
   background-color: #70e070;}
 
 #goBackButton {
   background-color: rgb(255, 206, 114);
+  color: rgb(0, 88, 117);
+
   height: 10%;
   width: 12em;
   margin: 2%;
@@ -338,6 +347,7 @@ h3 {font-weight: bold;
   border-radius: 10px;
   border: none;
   cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -386,7 +396,6 @@ h3 {font-weight: bold;
 }
 
 .firstRoundLetter {
-    color: black;
     font-size: 40px;
     right: 30%;
     position: absolute;
