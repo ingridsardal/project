@@ -10,7 +10,7 @@
     </div>
 
     <div class="shuffleButton" @click="shuffleRandomLetter">
-      <div class="image-crop"></div>
+      <div class="image-crop" v-if="showContent"></div>
     </div>
 
     <footer>
