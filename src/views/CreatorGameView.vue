@@ -255,8 +255,9 @@ h3 {
   height: 80px;
   width: 12em;
   margin: 25px;
-  position: static;
-  margin-left: 88%;
+  position: fixed;
+  bottom:0;
+  right: 0;
   font-family: 'Open Sans', sans-serif;
   border: none;
   border-radius: 10px;
