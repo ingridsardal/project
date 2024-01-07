@@ -3,11 +3,11 @@
 
     <body class="background">
       <header>
-        <h1> {{ uiLabels.giveScore }} </h1>
-        <h3 style="font-weight: bold;">{{ uiLabels.roundNumber }} {{ roundCounter }}, {{ uiLabels.letter }}{{
+        <h1> {{ uiLabels.giveScore }} {{roundCounter}} </h1>
+        <h3 style="font-weight: bold;"> {{ uiLabels.letter }}{{
           selectedLetter.toUpperCase() }}</h3>
       </header>
-      <h3>{{ uiLabels.markScore }} </h3>
+      
 
       <section id="Section1">
         <div class="wrapper">
