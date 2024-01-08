@@ -89,7 +89,7 @@ export default {
 
 .background {
   /* Stilen för att göra bilden till bakgrund på hela sidan */
-  background-image: url('/img/bluebg.png');
+  background-image: url('/img/result.gif');
   background-size: cover;
   /* Anpassar storleken på bilden så att den täcker hela sidan */
   background-position: center;
