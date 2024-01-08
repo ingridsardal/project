@@ -8,9 +8,7 @@
         <img src="/img/logga2.gif">
       </div>
     </header>
-
     <div class = "container">
-
     <h1>{{ uiLabels["sales-pitch"] }}</h1>
     <h2>{{ uiLabels.subHeading }}</h2>
   
@@ -27,7 +25,6 @@
         </button>
     </router-link>
   </div>
-
 <div class="buttons">
   <ResponsiveNav v-bind:hideNav="hideNav">
       <button v-on:click="switchLanguage" :class="{ 'english': lang === 'en', 'swedish': lang === 'sv' }" ></button> 
@@ -35,7 +32,6 @@
       <button v-on:click="FAQFunction" id="navButtons"> {{uiLabels.rules}} </button>    
     </ResponsiveNav>
   </div>
-
   </body>
   </template>
   
@@ -65,7 +61,6 @@
         this.uiLabels = labels
       })
     },
-
     methods: {
       switchLanguage: function() {
         if (this.lang === "en") {
@@ -95,15 +90,12 @@
     mounted() {
   window.addEventListener('click', this.closeMenu);
 },
-
 beforeDestroy() {
   window.removeEventListener('click', this.closeMenu);
 }
   }
   </script>
-
   <style scoped>
-
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
     
     body {font-family: 'Open Sans', sans-serif;}
@@ -118,9 +110,7 @@ beforeDestroy() {
   /* Gör elementet lika högt som fönstret (hela sidan) */
   top: 0;
 }
-
-  .buttons{ margin-top: 10px; margin-left: 10px;}
-
+  .buttons{margin-top: 50%;}
     header {
       background-color: rgb(255, 255, 255);
       height: 0;
@@ -140,11 +130,8 @@ beforeDestroy() {
       width: 50%; /* Använd procentuell bredd */
       max-width: 700px;
       color: white;
-
-
       /*margin: 0 auto; /*Centrera horisontellt */
     }
-
   #participateButton,
   #createButton {
     height: 100px;
@@ -177,15 +164,12 @@ beforeDestroy() {
       max-width: 20%;
       /*vertical-align: bottom;*/
       margin-top: 20px;
-
-
     /*.logo {
       font-size: 5vw;
       display: flex;
       align-items: center;
       justify-content: center;
     }*/
-
     }
     .hamburger {
       color:white;
@@ -211,9 +195,7 @@ beforeDestroy() {
       width: 33%;
       margin:19px;
     }
-
     */
-
     body {
     min-height: 90vh;
   }
@@ -254,14 +236,11 @@ beforeDestroy() {
    
  
   }
-
-
   #navButtons:hover {
     background-color:rgba(209, 136, 0, 0.761);
     color: white;
   } 
   @media screen and (max-width:50em) {
-
     #participateButton,
   #createButton {
     height: 80px;
@@ -285,12 +264,10 @@ beforeDestroy() {
     .hide {
       left:-12em;
     }
-
     .container {
       top: 67%;
       padding-top:10px;
       padding-bottom: 15px;
-
     }
     h1{
       font-size: 28px;
@@ -302,8 +279,6 @@ beforeDestroy() {
       vertical-align: bottom;
       margin-left: 0%;
       margin-top:30px;
-
   }
   }
-
   </style>
