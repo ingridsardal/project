@@ -101,6 +101,12 @@ body {
   color: rgb(0, 88, 117);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .background {
   /* Stilen för att göra bilden till bakgrund på hela sidan */
   background-image: url('/img/bluebg.png');
@@ -145,6 +151,7 @@ h1 {
   color: rgb(249, 192, 86);
   text-shadow: rgb(255, 183, 0) 1px 0 10px;
   font-size: 40px;
+  padding-top: 30px;
   /*opacity: 0;
   animation: fadeIn 4s forwards;*/
 }
