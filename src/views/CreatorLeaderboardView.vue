@@ -20,8 +20,8 @@
     <table>
       <thead>
         <tr>
-          <th>{{ uiLabels.scoreboardName }}</th>
           <th>{{ uiLabels.scoreboardRanking }}</th>
+          <th>{{ uiLabels.scoreboardName }}</th>
           <th>{{ uiLabels.scoreboardPoints }}</th>
         </tr>
       </thead>
@@ -29,8 +29,8 @@
       <tbody>
         <!-- Loop through your sorted data here and create rows for each player -->
         <tr v-for="(player, index) in sortedPlayers" :key="player.id">
-          <td>{{ player.nameId }}</td>
           <td>{{ index + 1 }}</td>
+          <td>{{ player.nameId }}</td>
           <td>{{ player.points }}</td>
         </tr>
       </tbody>
