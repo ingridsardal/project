@@ -25,14 +25,14 @@
         </button>
     </router-link>
   </div>
-<div class="buttons">
+</body>
+<footer>
   <ResponsiveNav v-bind:hideNav="hideNav">
       <button v-on:click="switchLanguage" :class="{ 'english': lang === 'en', 'swedish': lang === 'sv' }" ></button> 
       <button v-on:click="aboutFunction" id="navButtons"> {{uiLabels.about}} </button>   
       <button v-on:click="FAQFunction" id="navButtons"> {{uiLabels.rules}} </button>    
     </ResponsiveNav>
-  </div>
-  </body>
+  </footer>
   </template>
   
   <script>
@@ -106,11 +106,10 @@ beforeDestroy() {
   /* Anpassar storleken på bilden så att den täcker hela sidan */
   background-position: center;
   /* Centrerar bakgrundsbilden på sidan */
-  height: 100vh;
+  height: 90vh;
   /* Gör elementet lika högt som fönstret (hela sidan) */
   top: 0;
 }
-  .buttons{margin-top: 50%;}
     header {
       background-color: rgb(255, 255, 255);
       height: 0;
@@ -203,6 +202,7 @@ beforeDestroy() {
     margin-bottom: 0%; /* This pushes the footer to the bottom */
     padding: 1%;
     text-align: center;
+    background-color:#84D4E1;
   }
   .english {
     background-size: cover;
