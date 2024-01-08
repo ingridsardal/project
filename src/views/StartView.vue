@@ -119,7 +119,7 @@ beforeDestroy() {
   top: 0;
 }
 
-  .buttons{margin-top: 54%;}
+  .buttons{ margin-top: 10px; margin-left: 10px;}
 
     header {
       background-color: rgb(255, 255, 255);
