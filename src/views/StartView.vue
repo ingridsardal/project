@@ -241,6 +241,7 @@ beforeDestroy() {
     color: white;
   } 
   @media screen and (max-width:50em) {
+    .background{height:100vh;}
     #participateButton,
   #createButton {
     height: 80px;
