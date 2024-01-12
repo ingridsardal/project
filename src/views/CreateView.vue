@@ -53,6 +53,21 @@
             <input type="checkbox" id="touristAttractions" value="touristAttractions" v-model="categories">
             <label for="touristAttractions">{{uiLabels.touristAttractions}}</label>
         </div>
+
+        <div class="grid-item">
+            <input type="checkbox" id="murderWeapons" value="murderWeapons" v-model="categories">
+            <label for="murderWeapons">{{uiLabels.murderWeapons}}</label>
+        </div>
+
+        <div class="grid-item">
+            <input type="checkbox" id="giftsForGirlfriends" value="giftsForGirlfriends" v-model="categories">
+            <label for="giftsForGirlfriends">{{uiLabels.giftsForGirlfriends}}</label>
+        </div>
+
+        <div class="grid-item">
+            <input type="checkbox" id="roundThings" value="roundThings" v-model="categories">
+            <label for="roundThings">{{uiLabels.roundThings}}</label>
+        </div>
     </div>
     <br>
 
@@ -226,7 +241,7 @@ h3 {
 }
 
 .numberOfRounds {
-    margin-top: 2%;
+    margin-top: 10%;
     margin-right: 15%;
     transform: scale(1.2);
     padding: 5%;
@@ -410,7 +425,7 @@ h3 {
     }
 
     .numberOfRounds {
-        margin-top: 2%;
+        margin-top: 10%;
         margin-right: 15%;
         transform: scale(1.2);
         padding: 5%;
